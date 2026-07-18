@@ -12,6 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="description" content="CICO by Rise Stronger — μέτρηση θερμίδων & θρεπτικών συστατικών με ελληνική βάση τροφών.">
 <title>CICO by Rise Stronger</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -421,6 +422,26 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .toast{position:fixed;left:14px;right:14px;bottom:calc(var(--navh) + var(--sab) + 12px);transform:translateY(140%);transition:transform .28s cubic-bezier(.2,.9,.3,1);background:var(--green);color:var(--cream);border:2px solid var(--ochre);border-radius:3px;padding:12px 16px;font-family:'Alegreya',serif;font-weight:700;font-size:15px;box-shadow:0 6px 22px rgba(0,0,0,.4);z-index:200;text-align:center}
 .toast.on{transform:translateY(0)}
 
+/* ---------- Οθόνη σύνδεσης ---------- */
+.auth-screen{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+  background-color:#dcccaa;background-image:radial-gradient(circle at 20% 20%,rgba(255,250,235,.5) 0,transparent 40%),radial-gradient(circle at 82% 82%,rgba(120,95,60,.16) 0,transparent 42%),repeating-linear-gradient(92deg,rgba(140,115,75,.05) 0 2px,transparent 2px 5px)}
+.auth-screen.on{display:flex}
+.auth-card{width:100%;max-width:380px;background:linear-gradient(175deg,var(--cream),var(--cream-2));border:3px double var(--green);border-radius:4px;box-shadow:0 14px 40px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.5);padding:26px 22px 22px;text-align:center}
+.auth-mark span{font-family:'Alegreya',serif;font-weight:900;font-size:42px;letter-spacing:.13em;color:var(--green);text-shadow:1px 1px 0 rgba(184,134,44,.3)}
+.auth-brand{font-family:'Alegreya',serif;font-style:italic;color:var(--ochre-d);margin:2px 0 18px;font-size:14px}
+.auth-tabs{display:flex;border:2px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px;box-shadow:2px 2px 0 var(--shadow)}
+.auth-tabs button{flex:1;min-height:44px;border:0;background:var(--cream);font-family:'Alegreya',serif;font-weight:700;font-size:16px;color:var(--ink-soft)}
+.auth-tabs button+button{border-left:2px solid var(--line)}
+.auth-tabs button.on{background:var(--green);color:var(--cream)}
+.auth-card label.f{text-align:left}
+.auth-msg{min-height:18px;margin-top:11px;font-size:13.5px;line-height:1.45}
+.auth-msg.err{color:var(--red)}
+.auth-msg.ok{color:var(--green-2);font-weight:600}
+.auth-skip{margin-top:15px;border:0;background:transparent;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic;font-size:14px;text-decoration:underline;min-height:40px;width:100%}
+/* ---------- Κάρτα λογαριασμού (Στόχοι) ---------- */
+.acct{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+.acct .em{font-weight:700;color:var(--green);word-break:break-all}
+
 /* ---------- Κάτω πλοήγηση ---------- */
 nav.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;height:calc(var(--navh) + var(--sab));padding-bottom:var(--sab);background:linear-gradient(180deg,var(--kraft) 0,var(--kraft-d) 100%);border-top:3px solid var(--ochre-d);box-shadow:0 -3px 12px rgba(42,32,22,.26);display:flex}
 nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%;background:repeating-linear-gradient(90deg,rgba(140,115,75,.05) 0 2px,transparent 2px 6px);pointer-events:none}
@@ -470,6 +491,14 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
 </style>
 </head>
 <body>
+
+<div class="auth-screen on" id="authScreen">
+  <div class="auth-card">
+    <div class="auth-mark"><span>CICO</span></div>
+    <div class="auth-brand">by Rise Stronger</div>
+    <div id="authBody"></div>
+  </div>
+</div>
 
 <header class="sign">
   <div class="sign-in">
@@ -612,6 +641,10 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
           <div class="card-h" data-t="rdiTitle">Πηγές Προσλήψεων</div>
           <div class="src" style="margin-top:0" id="rdiSrc"></div>
         </div>
+        <div class="card">
+          <div class="card-h" data-t="account">Λογαριασμός</div>
+          <div id="acctCard" class="acct"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -679,7 +712,7 @@ const Store=(()=>{let mem={},ok=false;
     set(k,v){try{ok?localStorage.setItem(k,v):mem[k]=v}catch(e){mem[k]=v}},ok:()=>ok};
 })();
 const load=(k,d)=>{try{const v=Store.get('cico.'+k);return v?JSON.parse(v):d}catch(e){return d}};
-const save=(k,v)=>Store.set('cico.'+k,JSON.stringify(v));
+const save=(k,v)=>{Store.set('cico.'+k,JSON.stringify(v));if(typeof cloudSync==='function')cloudSync();};
 
 /* ============================================================
    2. I18N — ελληνικά πρώτα
@@ -748,6 +781,12 @@ const T={
   botNo:'Δεν το βρήκα αυτό στη βάση των Ε&Α. Δοκίμασε με άλλα λόγια, ή ρίξε μια ματιά στην καρτέλα Ερωτήσεις & Απαντήσεις.',
   you:'Εσύ',
   storeWarn:'Ο browser δεν αποθηκεύει εδώ — η μέρα σου θα χαθεί στο refresh.',
+  aLogin:'Σύνδεση', aSignup:'Εγγραφή', aEmail:'Email', aPass:'Κωδικός',
+  aGuest:'Συνέχισε χωρίς λογαριασμό', aWait:'Περίμενε…',
+  aCheckEmail:'Σου στείλαμε email — πάτα τον σύνδεσμο επιβεβαίωσης και μετά κάνε Σύνδεση.',
+  aWelcome:'Καλώς ήρθες!', aErr:'Κάτι πήγε στραβά, δοκίμασε ξανά.', aBadInput:'Βάλε έγκυρο email και κωδικό (6+ χαρακτήρες).',
+  account:'Λογαριασμός', accLoggedAs:'Συνδεδεμένος ως', accLogout:'Αποσύνδεση',
+  accLocal:'Τοπική λειτουργία — χωρίς συγχρονισμό.', accLoginBtn:'Σύνδεση / Εγγραφή', accSync:'Τα δεδομένα σου συγχρονίζονται σε κάθε συσκευή.',
   tabFoodsSeg:'Τροφές', tabRecipesSeg:'Συνταγές',
   recipeIngredients:'Υλικά', recipeAddAll:'Πρόσθεσε όλα στη μέρα', recipeTotal:'Σύνολο συνταγής',
   newRecipe:'+ Νέα συνταγή', saveAsRecipe:'Αποθήκευση ως συνταγή', recipeName:'Όνομα συνταγής',
@@ -822,6 +861,12 @@ const T={
   botNo:"I couldn't find that in the Q&A base. Try rephrasing, or take a look at the Questions & Answers tab.",
   you:'You',
   storeWarn:'This browser will not save here — your day resets on refresh.',
+  aLogin:'Log in', aSignup:'Sign up', aEmail:'Email', aPass:'Password',
+  aGuest:'Continue without an account', aWait:'Please wait…',
+  aCheckEmail:'We sent you an email — click the confirmation link, then Log in.',
+  aWelcome:'Welcome!', aErr:'Something went wrong, try again.', aBadInput:'Enter a valid email and password (6+ chars).',
+  account:'Account', accLoggedAs:'Logged in as', accLogout:'Log out',
+  accLocal:'Local mode — no sync.', accLoginBtn:'Log in / Sign up', accSync:'Your data syncs across devices.',
   tabFoodsSeg:'Foods', tabRecipesSeg:'Recipes',
   recipeIngredients:'Ingredients', recipeAddAll:'Add all to day', recipeTotal:'Recipe total',
   newRecipe:'+ New recipe', saveAsRecipe:'Save as recipe', recipeName:'Recipe name',
@@ -2124,7 +2169,11 @@ function renderGoals(){
     <li>${L==='el'?'WHO/FAO/UNU — Protein and Amino Acid Requirements, Technical Report Series 935. Τα αμινοξέα σε ενήλικα αναφοράς 70 kg.':'WHO/FAO/UNU — Protein and Amino Acid Requirements, Technical Report Series 935. Amino acids referenced to a 70 kg adult.'}<br><a href="https://www.who.int/publications/i/item/WHO-TRS-935" target="_blank" rel="noopener">who.int — TRS 935</a><br><span class="dt">${t('updated')}: 2007 · ${t('accessed')}: 2026-07-18</span></li>
     <li>Mifflin MD, St Jeor ST, et al. Am J Clin Nutr 51(2):241-247.<br><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" target="_blank" rel="noopener">pubmed — 2305711</a><br><span class="dt">${t('updated')}: 1990 · ${t('accessed')}: 2026-07-18</span></li>
   </ul>`;
-  renderWeight();
+  renderWeight(); renderAccount();
+}
+function renderAccount(){const el=document.getElementById('acctCard');if(!el)return;
+  if(sbUser){el.innerHTML=`<div>${t('accLoggedAs')}: <span class="em">${(accountEmail()||'').replace(/</g,'&lt;')}</span></div><div class="note" style="margin-top:5px">${t('accSync')}</div><button class="btn ghost full" style="margin-top:12px" onclick="sbLogout()">${t('accLogout')}</button>`;}
+  else{el.innerHTML=`<div>${t('accLocal')}</div><button class="btn ochre full" style="margin-top:12px" onclick="showAuth()">${t('accLoginBtn')}</button>`;}
 }
 function setMode(m){goals.mode=m;save('goals',goals);renderGoals()}
 function saveGoals(){
@@ -2189,11 +2238,71 @@ function renderLearn(){
     return `<div class="faq" id="ln${i}"><q onclick="document.getElementById('ln${i}').classList.toggle('open')">${o.t}</q><div class="a">${o.b}</div></div>`}).join('');
 }
 
+/* ============================================================
+   SUPABASE — Λογαριασμός (επιβεβαίωση email) + Συγχρονισμός
+   ============================================================ */
+const SB_URL='https://ghiunrsljudvzciigzpt.supabase.co';
+const SB_KEY='sb_publishable_D1TupC_nTAQjPvpi0Amheg_kmbgAoYm';
+let sb=null, sbUser=null, cloudTimer=null, authMode='login';
+const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang'];
+function sbInit(){try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY);return true}}catch(e){}return false}
+function gatherState(){const o={};CLOUD_KEYS.forEach(k=>{const v=Store.get('cico.'+k);if(v!=null)o[k]=v});return o}
+function applyState(o){if(!o)return;CLOUD_KEYS.forEach(k=>{if(o[k]!=null)Store.set('cico.'+k,o[k])});
+  days=load('days',{});goals=load('goals',goals);favs=load('favs',[]);weights=load('weights',{});waterGoal=load('waterGoal',8);recipesUser=load('recipesUser',[]);mealSeq=load('mealSeq',mealSeq);accOpen=load('accOpen',accOpen);L=load('lang',L);cur=todayKey();}
+async function pullCloud(){if(!sb||!sbUser)return;try{
+  const {data,error}=await sb.from('user_state').select('data').eq('user_id',sbUser.id).maybeSingle();
+  if(error)return;
+  if(data&&data.data&&Object.keys(data.data).length){applyState(data.data);renderAll();}else{await pushCloud();}
+}catch(e){}}
+async function pushCloud(){if(!sb||!sbUser)return;try{await sb.from('user_state').upsert({user_id:sbUser.id,data:gatherState(),updated_at:new Date().toISOString()});}catch(e){}}
+function cloudSync(){if(!sb||!sbUser)return;clearTimeout(cloudTimer);cloudTimer=setTimeout(pushCloud,1400);}
+function accountEmail(){return sbUser?(sbUser.email||''):''}
+
+function showAuth(){renderAuth();document.getElementById('authScreen').classList.add('on');document.body.style.overflow='hidden';}
+function hideAuth(){document.getElementById('authScreen').classList.remove('on');document.body.style.overflow='';}
+function setAuthMode(m){authMode=m;renderAuth()}
+function renderAuth(){
+  const b=document.getElementById('authBody');if(!b)return;const su=authMode==='signup';
+  b.innerHTML=`
+    <div class="auth-tabs"><button class="${!su?'on':''}" onclick="setAuthMode('login')">${t('aLogin')}</button><button class="${su?'on':''}" onclick="setAuthMode('signup')">${t('aSignup')}</button></div>
+    <label class="f">${t('aEmail')}</label><input type="email" id="aEmail" inputmode="email" autocomplete="email" placeholder="you@email.com">
+    <label class="f" style="margin-top:10px">${t('aPass')}</label><input type="password" id="aPass" autocomplete="${su?'new-password':'current-password'}" placeholder="••••••" onkeydown="if(event.key==='Enter')${su?'sbSignUp()':'sbLogin()'}">
+    <button class="btn full" style="margin-top:15px" onclick="${su?'sbSignUp()':'sbLogin()'}">${su?t('aSignup'):t('aLogin')}</button>
+    <div id="authMsg" class="auth-msg"></div>
+    <button class="auth-skip" onclick="guestMode()">${t('aGuest')}</button>`;
+}
+function authMsg(m,ok){const e=document.getElementById('authMsg');if(e){e.textContent=m;e.className='auth-msg'+(ok?' ok':' err')}}
+async function sbSignUp(){if(!sb)return;const email=(document.getElementById('aEmail').value||'').trim(),p=document.getElementById('aPass').value||'';
+  if(!email||p.length<6){authMsg(t('aBadInput'));return} authMsg(t('aWait'),true);
+  try{const {data,error}=await sb.auth.signUp({email,password:p,options:{emailRedirectTo:location.href.split('#')[0]}});
+    if(error){authMsg(error.message);return}
+    if(data.session){sbUser=data.session.user;await pullCloud();hideAuth();renderGoals();toast(t('aWelcome'))}else{authMsg(t('aCheckEmail'),true)}
+  }catch(e){authMsg(t('aErr'))}}
+async function sbLogin(){if(!sb)return;const email=(document.getElementById('aEmail').value||'').trim(),p=document.getElementById('aPass').value||'';
+  if(!email||!p){authMsg(t('aBadInput'));return} authMsg(t('aWait'),true);
+  try{const {data,error}=await sb.auth.signInWithPassword({email,password:p});
+    if(error){authMsg(error.message);return}
+    sbUser=data.user;await pullCloud();hideAuth();renderGoals();toast(t('aWelcome'));
+  }catch(e){authMsg(t('aErr'))}}
+async function sbLogout(){if(sb){try{await sb.auth.signOut()}catch(e){}}sbUser=null;save('guest',false);renderGoals();showAuth();}
+function guestMode(){save('guest',true);hideAuth();}
+
 /* ---- boot ---- */
 function renderAll(){renderChrome();renderDay();renderFoods();renderGoals();renderLearn();document.getElementById('chat').dataset.init='';renderHelp()}
 renderAll();
 if(!Store.ok())setTimeout(()=>toast(t('storeWarn')),700);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+/* auth boot */
+(async function(){
+  if(!sbInit()){hideAuth();return}
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(session&&session.user){sbUser=session.user;hideAuth();await pullCloud();renderGoals();}
+    else if(load('guest',false)){hideAuth();}
+    else{showAuth();}
+    sb.auth.onAuthStateChange((ev,s)=>{if(s&&s.user){sbUser=s.user;hideAuth();pullCloud();renderGoals();}});
+  }catch(e){hideAuth();}
+})();
 </script>
 </body>
 </html>
