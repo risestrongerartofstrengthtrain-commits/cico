@@ -381,6 +381,29 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
+/* ── Νηστεία ── */
+.fastban{border:2px solid var(--ochre-d);border-radius:4px;padding:10px 12px;margin-bottom:13px;
+  background:linear-gradient(170deg,rgba(184,134,44,.16),rgba(184,134,44,.07))}
+.fastban.free{border-color:var(--green);background:linear-gradient(170deg,rgba(29,63,51,.12),rgba(29,63,51,.05))}
+.fbh{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:4px}
+.fbn{font-family:'Alegreya',serif;font-weight:800;font-size:17px;color:var(--green)}
+.fbl{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  border:1.5px solid var(--ochre-d);color:var(--ochre-d);border-radius:2px;padding:2px 7px}
+.fastban.free .fbl{border-color:var(--green);color:var(--green)}
+.fbw{font-size:13.5px;line-height:1.45;color:var(--ink-soft)}
+.fbt{margin-top:9px;width:100%;min-height:42px;border:2px solid var(--green);border-radius:3px;
+  background:var(--cream);color:var(--green);font-family:'Alegreya',serif;font-weight:800;font-size:14px}
+.fbt.act{background:var(--green);color:var(--cream)}
+.fastwarn{border:2px solid var(--red);border-radius:4px;padding:11px 12px;margin-top:14px;
+  background:rgba(150,56,42,.05)}
+.fastwh{font-family:'Alegreya',serif;font-weight:800;font-size:15px;color:var(--red);margin-bottom:8px}
+.fastwarn ul{margin:0;padding-left:17px}
+.fastwarn li{font-size:14px;line-height:1.5;margin-bottom:9px}
+.fastwhy{font-size:13px;line-height:1.5;color:var(--ink-soft);margin-top:3px}
+.fastdoc{margin-top:10px;padding:9px 11px;border-radius:3px;font-size:13px;line-height:1.5;
+  background:rgba(29,63,51,.08);border-left:3px solid var(--green)}
+.fastok{margin-top:14px;padding:10px 12px;border:2px solid var(--green);border-radius:4px;
+  background:rgba(29,63,51,.06);font-size:14px;color:var(--green);font-weight:700}
 /* ── Ο Βοηθός ── */
 .askbig{font-family:'Alegreya',serif;font-weight:800;font-size:26px;color:var(--green);
   display:inline-block;line-height:1.1}
@@ -897,6 +920,12 @@ const T={
   potMine:'Οι κατσαρόλες σου', potNew:'+ Νέα κατσαρόλα', potEdit:'Άλλαξε τα υλικά',
   potNote:'Η μερίδα βγαίνει από το σύνολο των υλικών διά τις μερίδες — γι’ αυτό είναι σωστή ό,τι κι αν έγινε με το νερό στο μαγείρεμα. Διάλεξε πάντα «μερίδα» και όχι γραμμάρια, γιατί τα γραμμάρια εδώ αφορούν την πρώτη ύλη.',
   botNo2:'Δεν το έπιασα αυτό. Δοκίμασε κάτι σαν «πόσες θερμίδες έχει ένα αυγό», «πόση πρωτεΐνη έχει το κοτόπουλο», «πού βρίσκω σίδηρο», «τι έχω φάει σήμερα» ή «με τι να φάω τις φακές».',
+  fastOn:'Λειτουργία νηστείας: ανοιχτή.', fastOff:'Λειτουργία νηστείας: κλειστή.',
+  fastToday:'Νηστεία', fastShow:'Δείξε μόνο νηστίσιμα', fastAll:'Δείξε τα πάντα',
+  fastWatch:'Πρόσεξε αυτά όσο νηστεύεις',
+  fastAllGood:'Μέχρι στιγμής καλύπτεις τα βασικά της νηστείας. Συνέχισε έτσι.',
+  fastDoc:'Αυτά είναι γενικές παρατηρήσεις από τα δεδομένα της ημέρας σου, όχι ιατρική συμβουλή. Πριν αλλάξεις τη διατροφή σου ή πάρεις οποιοδήποτε συμπλήρωμα, <b>μίλα με τον γιατρό ή τον διαιτολόγο σου</b> — εκείνοι ξέρουν το ιστορικό σου, τις εξετάσεις σου και τι πραγματικά χρειάζεσαι.',
+  fastNo:'Δεν επιτρέπεται σήμερα', fastStrict:'Αυστηρή', fastOil:'Με λάδι', fastFish:'Με ψάρι', fastFree:'Κατάλυση',
   recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
   mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
   ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
@@ -1010,6 +1039,12 @@ const T={
   potMine:'Your pots', potNew:'+ New pot', potEdit:'Change the ingredients',
   potNote:'The portion comes from total ingredients divided by portions — which is why it is right whatever happened to the water while cooking. Always pick "portion" rather than grams, because grams here refer to raw ingredients.',
   botNo2:'I did not catch that. Try something like "how many calories in an egg", "how much protein in chicken", "where do I find iron", "what have I eaten today" or "what to eat with lentils".',
+  fastOn:'Fasting mode: on.', fastOff:'Fasting mode: off.',
+  fastToday:'Fasting', fastShow:'Show only fasting foods', fastAll:'Show everything',
+  fastWatch:'Watch these while you fast',
+  fastAllGood:'So far you are covering the basics of the fast. Keep going.',
+  fastDoc:'These are general observations from your day’s data, not medical advice. Before changing your diet or taking any supplement, <b>talk to your doctor or dietitian</b> — they know your history, your blood work and what you actually need.',
+  fastNo:'Not allowed today', fastStrict:'Strict', fastOil:'With oil', fastFish:'With fish', fastFree:'Fast-free',
   recentF:'Recent', frequentF:'Your usual', allF:'All foods',
   mineTag:'Mine', addOwn:'+ My own food',
   ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
@@ -2286,6 +2321,140 @@ syncFMAP();
    τις μερίδες, η μερίδα βγαίνει ακριβής — χωρίς να χρειάζεται να ξέρουμε
    πόσο νερό έφυγε στο μαγείρεμα.
    ═══════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════
+   ΝΗΣΤΕΙΑ — ΤΟ ΟΡΘΟΔΟΞΟ ΗΜΕΡΟΛΟΓΙΟ
+   ───────────────────────────────────────────────────────────────────
+   Ο Έλληνας νηστεύει μεγάλο μέρος του χρόνου. Καμία ξένη εφαρμογή δεν
+   το ξέρει αυτό. Και δεν είναι μόνο πολιτισμικό — είναι και διατροφικά
+   πραγματικό: όταν κόβεις κρέας, ψάρι, γαλακτοκομικά και αυγά, πέφτουν
+   συγκεκριμένα θρεπτικά. Το λέμε, και παραπέμπουμε σε γιατρό.
+
+   Το Πάσχα υπολογίζεται με τον αλγόριθμο του Ιουλιανού Πασχαλίου
+   (Meeus). Επαληθεύτηκε: 2026 → 12 Απριλίου, 2027 → 2 Μαΐου,
+   2028 → 16 Απριλίου.
+   ═══════════════════════════════════════════════════════════════════ */
+function orthodoxEaster(y){
+  const a=y%4, b=y%7, c=y%19;
+  const d=(19*c+15)%30, e=(2*a+4*b-d+34)%7;
+  const mo=Math.floor((d+e+114)/31), da=((d+e+114)%31)+1;
+  const jul=new Date(Date.UTC(y,mo-1,da));
+  jul.setUTCDate(jul.getUTCDate()+13);   // Ιουλιανό -> Γρηγοριανό (1900–2099)
+  return jul;
+}
+const DAYMS=86400000;
+function dkey(dt){return dt.toISOString().slice(0,10)}
+function dParse(k){const [y,m,d]=k.split('-').map(Number);return new Date(Date.UTC(y,m-1,d))}
+function dOff(dt,n){const x=new Date(dt.getTime()+n*DAYMS);return x}
+/* Επίπεδα: 'strict' αυστηρή (χωρίς λάδι) · 'oil' με λάδι & κρασί · 'fish' με ψάρι · 'dairy' Τυρινή · null δεν νηστεύουμε */
+function fastInfo(key){
+  const dt=dParse(key), y=dt.getUTCFullYear();
+  const md=(dt.getUTCMonth()+1)*100+dt.getUTCDate();
+  const dow=dt.getUTCDay(); // 0 Κυρ
+  // Πάσχα της χρονιάς — και του προηγούμενου, για περιόδους που «πέφτουν» πίσω
+  const E=orthodoxEaster(y);
+  const diff=Math.round((dt-E)/DAYMS);
+  const nm=(el,en)=>({el,en});
+  // ── Ακίνητες περίοδοι χωρίς νηστεία ──
+  if(md>=1225||md<=104) return {fast:false, free:true, name:nm('Δωδεκαήμερο','Twelve Days'), why:nm('Από τα Χριστούγεννα ως τα Θεοφάνεια δεν νηστεύουμε.','No fasting from Christmas to Epiphany.')};
+  // ── Κινητές, γύρω από το Πάσχα ──
+  if(diff>=-69&&diff<=-64) return {fast:false, free:true, name:nm('Εβδομάδα Τελώνου & Φαρισαίου','Publican & Pharisee week'), why:nm('Κατάλυση εις πάντα — ούτε Τετάρτη ούτε Παρασκευή.','Fast-free week.')};
+  if(diff>=-55&&diff<=-49) return {fast:true, level:'dairy', name:nm('Τυρινή','Cheesefare week'), why:nm('Χωρίς κρέας, αλλά επιτρέπονται γαλακτοκομικά και αυγά.','No meat, but dairy and eggs are allowed.')};
+  if(diff>=-48&&diff<=-1){
+    const palm=(diff===-7), annun=(md===325);
+    if(palm||annun) return {fast:true, level:'fish', name:nm(palm?'Κυριακή των Βαΐων':'Ευαγγελισμός','Feast'), why:nm('Μέρα με κατάλυση ψαριού.','Fish is allowed today.')};
+    const strict=(dow>=1&&dow<=5);
+    return {fast:true, level:strict?'strict':'oil', name:nm('Μεγάλη Σαρακοστή','Great Lent'),
+      why:nm(strict?'Αυστηρή νηστεία — χωρίς λάδι και κρασί.':'Σαββατοκύριακο — επιτρέπεται λάδι και κρασί.',
+             strict?'Strict — no oil or wine.':'Weekend — oil and wine allowed.')};
+  }
+  if(diff>=0&&diff<=6) return {fast:false, free:true, name:nm('Διακαινήσιμος','Bright Week'), why:nm('Η εβδομάδα του Πάσχα — κατάλυση εις πάντα.','Easter week — fast-free.')};
+  if(diff>=50&&diff<=56) return {fast:false, free:true, name:nm('Εβδομάδα Αγίου Πνεύματος','Week after Pentecost'), why:nm('Κατάλυση εις πάντα.','Fast-free week.')};
+  // Νηστεία Αγίων Αποστόλων: από Δευτέρα μετά των Αγίων Πάντων ως 28 Ιουνίου
+  if(diff>=57&&md<=628) return {fast:true, level:(dow===3||dow===5)?'strict':'oil', name:nm('Νηστεία των Αγίων Αποστόλων','Apostles’ Fast'),
+    why:nm('Νηστεία με κατάλυση ψαριού τα περισσότερα Σαββατοκύριακα.','Fast, with fish on most weekends.')};
+  // Δεκαπενταύγουστος
+  if(md>=801&&md<=814) return {fast:true, level:(md===806)?'fish':((dow===0||dow===6)?'oil':'strict'), name:nm('Δεκαπενταύγουστος','Dormition Fast'),
+    why:nm(md===806?'Μεταμόρφωση του Σωτήρος — κατάλυση ψαριού.':'Νηστεία της Παναγίας.','Dormition fast.')};
+  // Σαρανταήμερο Χριστουγέννων
+  if(md>=1115&&md<=1224){
+    const fishOK=(md<1218)&&(dow===0||dow===6||dow===2||dow===4);
+    return {fast:true, level:fishOK?'fish':((dow===3||dow===5)?'strict':'oil'), name:nm('Σαρανταήμερο Χριστουγέννων','Nativity Fast'),
+      why:nm(md>=1218?'Οι τελευταίες μέρες είναι αυστηρότερες.':'Νηστεία με κατάλυση ψαριού αρκετές μέρες.','Nativity fast.')};
+  }
+  // Τετάρτη & Παρασκευή
+  if(dow===3||dow===5) return {fast:true, level:'oil', name:nm(dow===3?'Τετάρτη':'Παρασκευή','Wednesday/Friday'),
+    why:nm('Εβδομαδιαία νηστεία.','Weekly fast day.')};
+  return {fast:false, free:false, name:nm('','' ), why:nm('','')};
+}
+/* Κατηγορία τροφής για τη νηστεία */
+const FISH_IDS=new Set(['salmon','tuna','sardine','anchovy','cod','seabream']);
+const SHELL_IDS=new Set(['shrimp','squid','octopus']);
+const OILY_IDS=new Set(['oliveoil','butter','tahini','creamfr']);
+const WINE_IDS=new Set(['wine_red','wine_white','beer','ouzo']);
+function fastClass(f){
+  if(f.pot)return 'pot';
+  if(f.id==='egg')return 'egg';
+  if(f.cat==='dairy')return 'dairy';
+  if(SHELL_IDS.has(f.id))return 'shellfish';
+  if(FISH_IDS.has(f.id))return 'fish';
+  if(f.cat==='meat')return 'meat';
+  if(f.id==='oliveoil')return 'oil';
+  if(WINE_IDS.has(f.id))return 'wine';
+  if(OILY_IDS.has(f.id))return f.cat==='dairy'?'dairy':'oil';
+  return 'lent';
+}
+/* Επιτρέπεται σήμερα; */
+function fastAllows(f,info){
+  if(!info||!info.fast)return true;
+  const c=fastClass(f), lv=info.level;
+  if(c==='lent'||c==='shellfish')return true;
+  if(c==='pot')return true;                       // η κατσαρόλα κρίνεται από τα υλικά της
+  if(lv==='dairy')return c!=='meat';              // Τυρινή: όχι κρέας, ναι γαλακτοκομικά/αυγά/ψάρι
+  if(c==='meat')return false;
+  if(c==='dairy'||c==='egg')return false;
+  if(c==='fish')return lv==='fish';
+  if(c==='oil'||c==='wine')return lv==='oil'||lv==='fish';
+  return true;
+}
+let fastMode=load('fastMode',false);
+function toggleFast(){fastMode=!fastMode;save('fastMode',fastMode);renderDay();toast(fastMode?t('fastOn'):t('fastOff'))}
+
+/* Τα θρεπτικά που πραγματικά κινδυνεύουν στη νηστεία */
+const FASTRISK=[
+ {nut:'b12', el:'Βιταμίνη B12', need:2.4, u:'µg',
+  why:{el:'Υπάρχει <b>μόνο</b> σε ζωικές τροφές. Στην αυστηρή νηστεία η πρόσληψη πέφτει ουσιαστικά στο μηδέν. Τα αποθέματα του ήπατος κρατούν καιρό, γι’ αυτό μια Σαρακοστή δεν σε αδειάζει — αλλά η επαναλαμβανόμενη νηστεία χρόνο με τον χρόνο μετράει.',
+       en:'Found <b>only</b> in animal foods. During strict fasting intake drops essentially to zero.'}},
+ {nut:'fe', el:'Σίδηρος', need:14, u:'mg',
+  why:{el:'Χάνεις τον <b>αιμικό</b> σίδηρο (15–35% απορρόφηση) και μένεις με τον φυτικό (2–20%). Το νούμερο στον πίνακα μπορεί να δείχνει μια χαρά και να απορροφάς πολύ λιγότερο. Βάλε βιταμίνη C στο ίδιο γεύμα.',
+       en:'You lose heme iron and are left with plant iron. Add vitamin C to the same meal.'}},
+ {nut:'ca', el:'Ασβέστιο', need:1000, u:'mg',
+  why:{el:'Χωρίς γαλακτοκομικά, το ασβέστιο πρέπει να έρθει από ταχίνι, αμύγδαλα, μπρόκολο και όσπρια. Πρόσεξε: το σπανάκι δείχνει πολύ ασβέστιο αλλά απορροφάς μόλις ~5%.',
+       en:'Without dairy, calcium must come from tahini, almonds, broccoli and legumes.'}},
+ {nut:'protein', el:'Πρωτεΐνη', need:null, u:'g',
+  why:{el:'Οι φυτικές πρωτεΐνες έχουν ελλείψεις σε συγκεκριμένα αμινοξέα. Η λύση είναι παλιά και σοφή: <b>όσπρια μαζί με δημητριακά</b> — φακές με ρύζι, φασολάδα με ψωμί, ρεβίθια με πλιγούρι.',
+       en:'Plant proteins lack certain amino acids. Combine legumes with grains.'}},
+ {nut:'vitD', el:'Βιταμίνη D', need:20, u:'µg',
+  why:{el:'Έρχεται κυρίως από ψάρι, αυγό και ήλιο. Στη νηστεία του χειμώνα λείπουν και τα τρία.',
+       en:'Comes mainly from fish, egg and sun. During winter fasts all three are scarce.'}}
+];
+function fastWarnHTML(key){
+  const info=fastInfo(key); if(!info.fast)return '';
+  const tot=dayTotalsRaw?dayTotalsRaw(key):dayTotals(key);
+  const rows=FASTRISK.map(r=>{
+    const v=tot[r.nut]||0;
+    let need=r.need;
+    if(r.nut==='protein')need=Math.round((goals.protein||0));
+    if(!need)return '';
+    const p=Math.round(v/need*100);
+    if(p>=70)return '';
+    return `<li><b>${r.el}</b> — είσαι στο <b>${p}%</b> (${askFmt(v,1)} από ${need} ${r.u})
+      <div class="fastwhy">${r.why[L]||r.why.el}</div></li>`;
+  }).filter(Boolean).join('');
+  if(!rows)return `<div class="fastok">${t('fastAllGood')}</div>`;
+  return `<div class="fastwarn"><div class="fastwh">${t('fastWatch')}</div><ul>${rows}</ul>
+    <div class="fastdoc">${t('fastDoc')}</div></div>`;
+}
+
 let potsUser=load('potsUser',[]);
 let potDraft=null;
 function syncPots(){potsUser.forEach(p=>{if(p&&p.id)FMAP[p.id]=p})}
@@ -2703,6 +2872,17 @@ function setTab(x){
   window.scrollTo(0,0);
 }
 function fabAdd(){openAdd(null)}
+/* Η κορδέλα της νηστείας πάνω από τα γεύματα */
+function fastBannerHTML(){
+  const info=fastInfo(cur);
+  if(!info.fast&&!info.free)return '';
+  const lvl=info.free?t('fastFree'):(info.level==='strict'?t('fastStrict'):info.level==='fish'?t('fastFish'):info.level==='dairy'?'Τυρινή':t('fastOil'));
+  return `<div class="fastban ${info.fast?'on':'free'}">
+    <div class="fbh"><span class="fbn">${info.name[L]||info.name.el}</span><span class="fbl">${lvl}</span></div>
+    <div class="fbw">${info.why[L]||info.why.el}</div>
+    ${info.fast?`<button class="fbt ${fastMode?'act':''}" onclick="toggleFast()">${fastMode?t('fastAll'):t('fastShow')}</button>`:''}
+  </div>`;
+}
 function renderDay(){
   document.getElementById('dateLbl').innerHTML=fmtDate(cur);
   const d=getDay(cur);
@@ -2728,7 +2908,7 @@ function renderDay(){
       <div class="ledger">${rows}<button class="add-row" onclick="openAdd('${m.id}')">${t('addFood')}</button></div>
     </div>`;
   }).join('');
-  document.getElementById('meals').innerHTML=(d.meals.length?mealsHTML:`<div class="empty" style="padding:8px 2px 12px">${t('noMeals')}</div>`)+`<button class="btn ghost full addmeal" onclick="addMeal()">${t('addMeal')}</button>`;
+  document.getElementById('meals').innerHTML=fastBannerHTML()+(d.meals.length?mealsHTML:`<div class="empty" style="padding:8px 2px 12px">${t('noMeals')}</div>`)+`<button class="btn ghost full addmeal" onclick="addMeal()">${t('addMeal')}</button>`+(fastInfo(cur).fast?fastWarnHTML(cur):'');
   renderDial(); renderMacros(); renderHilite(); renderNut(); renderFavs(); renderExercise(); renderWater(); renderStreak();
 }
 function renderExercise(){
@@ -3147,11 +3327,15 @@ function addListHTML(q){
     html+=potBtn;
     if(rec.length)html+=`<div class="secl">${t('recentF')}</div>`+rec.map(id=>foodCardHTML(FMAP[id])).join('');
     if(frq.length)html+=`<div class="secl">${t('frequentF')}</div>`+frq.map(id=>foodCardHTML(FMAP[id])).join('');
-    const rest=all.filter(f=>!f.pot&&!rec.includes(f.id)&&!frq.includes(f.id));
+    const info=fastInfo(cur);
+    let rest=all.filter(f=>!f.pot&&!rec.includes(f.id)&&!frq.includes(f.id));
+    if(fastMode&&info.fast)rest=rest.filter(f=>fastAllows(f,info));
     html+=`<div class="secl">${t('allF')}</div>`;
     return html+rest.map(foodCardHTML).join('')+addOwnBtn();
   }
-  const list=all.filter(f=>foodMatches(f,q));
+  const info=fastInfo(cur);
+  let list=all.filter(f=>foodMatches(f,q));
+  if(fastMode&&info.fast)list=list.filter(f=>fastAllows(f,info));
   return (list.map(foodCardHTML).join('')||`<div class="empty">${t('noRes')}</div>`)+addOwnBtn(q);
 }
 function addOwnBtn(q){return `<button class="btn ghost full" style="margin-top:6px" onclick="openOwnFood(${q?JSON.stringify(q).replace(/"/g,'&quot;'):"''"})">${t('addOwn')}</button>`}
@@ -3772,7 +3956,7 @@ function renderLearn(){
 const SB_URL='https://ghiunrsljudvzciigzpt.supabase.co';
 const SB_KEY='sb_publishable_D1TupC_nTAQjPvpi0Amheg_kmbgAoYm';
 let sb=null, sbUser=null, cloudTimer=null, authMode='login';
-const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse','potsUser'];
+const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse','potsUser','fastMode'];
 function sbInit(){try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY);return true}}catch(e){}return false}
 function gatherState(){const o={};CLOUD_KEYS.forEach(k=>{const v=Store.get('cico.'+k);if(v!=null)o[k]=v});return o}
 function applyState(o){if(!o)return;CLOUD_KEYS.forEach(k=>{if(o[k]!=null)Store.set('cico.'+k,o[k])});
