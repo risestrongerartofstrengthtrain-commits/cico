@@ -377,8 +377,19 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive div{flex:1;min-width:0}
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
+/* ---------- Chips (κουτάκια επιλογής) ---------- */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chip{
+  font-family:'Alegreya',serif;font-weight:700;font-size:15px;
+  min-height:44px;padding:0 15px;border:2px solid var(--line);border-radius:3px;
+  background:var(--cream);color:var(--ink-soft);white-space:nowrap;flex:0 0 auto;
+  display:inline-flex;align-items:center;justify-content:center;
+  box-shadow:2px 2px 0 var(--shadow);
+}
+.chip:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--shadow)}
+.chip.on{background:var(--green);border-color:var(--green);color:var(--cream);box-shadow:2px 2px 0 rgba(0,0,0,.25)}
 /* ---------- Μεγέθη & φωτογραφίες μερίδας ---------- */
-.chip.psize{padding:0 13px}
+.chip.psize{padding:0 15px;border-color:var(--ochre-d);background:rgba(184,134,44,.14)}
 .chip.psize b{color:var(--green)}
 .pphotos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .pphoto{border:2px solid var(--line);border-radius:4px;background:var(--cream);padding:5px 5px 7px;display:flex;flex-direction:column;align-items:center;gap:1px;box-shadow:2px 2px 0 var(--shadow)}
@@ -434,8 +445,11 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .foot b{font-family:'Alegreya',serif;font-style:normal;letter-spacing:.1em;color:var(--ink-soft);display:block;margin-bottom:2px;font-weight:800}
 
 /* ---------- Toast ---------- */
-.toast{position:fixed;left:14px;right:14px;bottom:calc(var(--navh) + var(--sab) + 12px);transform:translateY(140%);transition:transform .28s cubic-bezier(.2,.9,.3,1);background:var(--green);color:var(--cream);border:2px solid var(--ochre);border-radius:3px;padding:12px 16px;font-family:'Alegreya',serif;font-weight:700;font-size:15px;box-shadow:0 6px 22px rgba(0,0,0,.4);z-index:200;text-align:center}
-.toast.on{transform:translateY(0)}
+.toast{position:fixed;left:14px;right:14px;bottom:calc(var(--navh) + var(--sab) + 12px);
+  transform:translateY(160%);opacity:0;visibility:hidden;pointer-events:none;
+  transition:transform .28s cubic-bezier(.2,.9,.3,1),opacity .22s ease,visibility .28s;
+  background:var(--green);color:var(--cream);border:2px solid var(--ochre);border-radius:3px;padding:12px 16px;font-family:'Alegreya',serif;font-weight:700;font-size:15px;box-shadow:0 6px 22px rgba(0,0,0,.4);z-index:200;text-align:center}
+.toast.on{transform:translateY(0);opacity:1;visibility:visible}
 
 /* ---------- Οθόνη σύνδεσης ---------- */
 .auth-screen{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
