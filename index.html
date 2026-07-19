@@ -192,7 +192,7 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 /* ---------- Η Ζυγαριά (gauge) ---------- */
 .scale-card{
   background:linear-gradient(170deg,var(--green-2),var(--green) 60%,var(--green-3));
-  border:2px solid var(--ochre-d);border-radius:3px;padding:15px 14px 14px;
+  border:2px solid var(--ochre-d);border-radius:3px;padding:10px 13px 11px;
   box-shadow:2px 2px 0 var(--shadow), inset 0 0 0 1px rgba(184,134,44,.3);
   color:var(--cream);position:relative;overflow:hidden;
 }
@@ -200,8 +200,8 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
   content:"";position:absolute;inset:0;
   background:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 3px,transparent 3px 9px);pointer-events:none;
 }
-.scale-card h3{font-size:18px;color:var(--ochre-l);text-align:center;margin-bottom:8px;font-weight:800}
-.dial{width:min(232px,68vw);margin:0 auto;display:block;position:relative}
+.scale-card h3{font-size:15px;color:var(--ochre-l);text-align:center;margin-bottom:4px;font-weight:800;letter-spacing:.02em}
+.dial{width:min(176px,50vw);margin:0 auto;display:block;position:relative}
 .dial text.big{font-family:'Alegreya',serif;font-weight:900;fill:var(--cream)}
 .dial text.sm{font-family:'Alegreya Sans',sans-serif;fill:#a8bdb0}
 .dial text.lb{font-family:'Alegreya',serif;font-weight:700;fill:var(--ochre-l);letter-spacing:.04em}
@@ -211,7 +211,7 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .esum small{font-size:10.5px;color:#a8bdb0;font-style:italic}
 .esum .rem b{color:var(--ochre-l)}
 .esum .rem b.over{color:#e79a8c}
-.mrow{margin-top:11px}
+.mrow{margin-top:7px}
 .mrow .t{display:flex;justify-content:space-between;font-size:14px;margin-bottom:3px;color:#c5d3ca;gap:8px}
 .mrow .t b{color:var(--cream);white-space:nowrap;font-weight:700}
 .bar{height:9px;background:rgba(0,0,0,.36);border:1px solid rgba(184,134,44,.34);border-radius:1px;overflow:hidden}
@@ -459,11 +459,12 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .fcard .fn,.fcard .fl{padding-right:48px}
 .ficbig{width:52px;height:52px;opacity:.62;flex:0 0 auto}
 /* ── Ο διακόπτης νύχτας ── */
-.nightbtn{position:fixed;right:15px;top:calc(var(--sat) + 12px);z-index:60;width:40px;height:40px;
-  border-radius:50%;border:2px solid var(--ochre-d);background:rgba(246,238,218,.85);
-  color:var(--ochre-d);font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 7px rgba(0,0,0,.2)}
-body.night .nightbtn{background:rgba(43,36,27,.9)}
+.topctl{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.nightbtn{width:38px;height:38px;flex:0 0 auto;
+  border-radius:50%;border:2px solid var(--ochre-d);background:rgba(246,238,218,.9);
+  color:var(--ochre-d);font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center}
+.nightbtn:active{transform:translateY(1px)}
+body.night .nightbtn{background:rgba(43,36,27,.95)}
 /* ── Onboarding ── */
 .onb{position:fixed;inset:0;z-index:400;display:none;background:linear-gradient(175deg,#1d3f33,#14291f);
   padding:calc(var(--sat) + 22px) 20px calc(var(--sab) + 22px);overflow-y:auto}
@@ -507,6 +508,8 @@ body.night .nightbtn{background:rgba(43,36,27,.9)}
 .potsum{margin-top:9px;padding:8px 11px;border-left:3px solid var(--ochre-d);
   background:rgba(184,134,44,.12);font-size:14px;border-radius:3px}
 .stamp.pot{border-color:var(--ochre-d);color:var(--ochre-d);background:rgba(184,134,44,.09)}
+".acchint{display:block;font-family:'Alegreya',serif;font-style:italic;font-weight:400;
+  font-size:12px;color:var(--ink-faint);letter-spacing:0;text-transform:none;margin-top:2px}
 /* ── Προέλευση & πραγματική απορρόφηση ── */
 .bioflag{display:inline-block;font-family:'Alegreya',serif;font-weight:800;font-size:12px;
   letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:2px;
@@ -715,7 +718,6 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
   </div>
 </div>
 
-<button class="nightbtn" id="nightBtn" onclick="toggleNight()" aria-label="night mode">☾</button>
 <div class="onb" id="onb"><div class="onb-card" id="onbBody"></div></div>
 
 <header class="sign">
@@ -727,7 +729,7 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
       <h1>CICO</h1>
       <div class="sub">by Rise Stronger</div>
     </div>
-    <div class="lang" id="lang"></div>
+    <div class="topctl"><button class="nightbtn" id="nightBtn" onclick="toggleNight()" aria-label="night mode">☾</button><div class="lang" id="lang"></div></div>
   </div>
 </header>
 
@@ -988,6 +990,8 @@ const T={
   absMid:'Μέτρια δεδομένα', absDebated:'Αμφιλεγόμενο',
   absStar:'Ο αστερίσκος (*) σημαίνει ότι το νούμερο είναι κατά προσέγγιση — το μέγεθος της επίδρασης αλλάζει ανάλογα με το γεύμα, τη δόση και το άτομο.',
   bioTitle:'Πόσο απορροφά πραγματικά ο άνθρωπος',
+  bioTeaser:'φυτικό ή ζωικό — και τι σημαίνει',
+  absTeaser:'τι τη βοηθά, τι την μπλοκάρει',
   bioAnimal:'Ζωικής προέλευσης', bioPlant:'Φυτικής προέλευσης', bioThisFood:'Σε αυτή την τροφή',
   bioHint:'Ο πίνακας πιο κάτω λέει πόσο περιέχει η τροφή. Εδώ λέει πόσο μπαίνει τελικά στο αίμα σου — γιατί δεν είναι το ίδιο πράγμα.',
   potTitle:'Η Κατσαρόλα', potSub:'Τι έριξες μέσα, πόσες μερίδες έβγαλε',
@@ -1114,6 +1118,8 @@ const T={
   absMid:'Moderate evidence', absDebated:'Debated',
   absStar:'An asterisk (*) means the number is approximate — the size of the effect changes with the meal, the dose and the person.',
   bioTitle:'How much you actually absorb',
+  bioTeaser:'plant or animal — and what it means',
+  absTeaser:'what helps, what blocks',
   bioAnimal:'Animal origin', bioPlant:'Plant origin', bioThisFood:'In this food',
   bioHint:'The table below says how much the food contains. This says how much ends up in your blood — because they are not the same thing.',
   potTitle:'The Pot', potSub:'What went in, how many portions it made',
@@ -3468,7 +3474,7 @@ function bioHTML(f){
   if(!rows)return '';
   const used=[...new Set(BIO.filter(b=>{const v=f.n[b.nut];return typeof v==='number'&&v>=b.min&&(b[org][L]||b[org].el)}).map(b=>b.ref))].sort((a,b)=>a-b);
   const refs=used.map(r=>`<li><sup>[${r+1}]</sup> ${ABSREF[r].t}<br><a href="${ABSREF[r].u}" target="_blank" rel="noopener">${ABSREF[r].u}</a></li>`).join('');
-  return `<div class="acc open"><button class="acc-h" onclick="this.parentNode.classList.toggle('open')"><span class="cv">–</span>${t('bioTitle')}</button>
+  return `<div class="acc"><button class="acc-h" onclick="accTog(this)"><span class="cv">+</span>${t('bioTitle')}<span class="acchint">${t('bioTeaser')}</span></button>
    <div class="acc-b">
      <div class="bioflag ${org}">${org==='animal'?t('bioAnimal'):t('bioPlant')}</div>
      <p class="abshint">${t('bioHint')}</p>
@@ -3492,7 +3498,7 @@ function absHTML(f){
   }).join('');
   const used=[...new Set(list.flatMap(a=>[...(a.plus||[]),...(a.minus||[]),...(a.fix||[])].map(x=>x.ref).concat(a.debate?a.debate.refs||[]:[])).filter(r=>r!=null))].sort((x,y)=>x-y);
   const refs=used.map(r=>`<li><sup>[${r+1}]</sup> ${ABSREF[r].t}<br><a href="${ABSREF[r].u}" target="_blank" rel="noopener">${ABSREF[r].u}</a></li>`).join('');
-  return `<div class="acc open"><button class="acc-h" onclick="this.parentNode.classList.toggle('open')"><span class="cv">–</span>${t('absTitle')}</button>
+  return `<div class="acc"><button class="acc-h" onclick="accTog(this)"><span class="cv">+</span>${t('absTitle')}<span class="acchint">${t('absTeaser')}</span></button>
     <div class="acc-b"><p class="abshint">${t('absStar')}</p>${blocks}
     <div class="src"><h4>${t('absRefs')}</h4><ul>${refs}</ul></div></div></div>`;
 }
@@ -3502,7 +3508,7 @@ function potIngredientsHTML(f){
   if(!f.pot||!f.potItems||!f.potItems.length)return '';
   const rows=f.potItems.map(it=>{const x=FMAP[it.id];if(!x)return '';
     return `<div class="ing"><span onclick="openFood('${it.id}')" style="cursor:pointer;color:var(--green-2)">${fName(x)}</span><span class="ig num">${it.g} g · ${Math.round((x.n.kcal||0)*it.g/100)} kcal</span></div>`}).join('');
-  return `<div class="acc open"><button class="acc-h" onclick="this.parentNode.classList.toggle('open')"><span class="cv">–</span>${t('potWhatWentIn')}</button>
+  return `<div class="acc open"><button class="acc-h" onclick="accTog(this)"><span class="cv">–</span>${t('potWhatWentIn')}</button>
     <div class="acc-b">${rows}<div class="potsum">${t('potTotal')}: <b class="num">${Math.round(f.potTotalG||0)} g</b> · ${f.potServ} ${t('potPortions')} · ${t('potEach')}: <b class="num">${f.portions&&f.portions[1]?f.portions[1].g:0} g</b></div></div></div>`;
 }
 function openFood(id){
@@ -4310,6 +4316,9 @@ function importData(inp){
   fr.readAsText(file);
   inp.value='';
 }
+
+function accTog(btn){const p=btn.parentNode;p.classList.toggle('open');
+  const cv=btn.querySelector('.cv'); if(cv)cv.textContent=p.classList.contains('open')?'–':'+';}
 
 /* ---- toast ---- */
 let tt;
