@@ -751,8 +751,7 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
           <svg class="dial" id="dial" viewBox="0 0 200 168" role="img"></svg>
           <div class="esum" id="esum"></div>
           <div id="macroBars"></div>
-          <div id="streak" style="text-align:center;margin-top:11px"></div>
-          <button class="btn ochre full" style="margin-top:11px" onclick="shareDay()" data-t="shareDay">Μοιράσου τη μέρα</button>
+          <div id="streak" style="text-align:center;margin-top:9px"></div>
         </div>
 
         <div class="card">
@@ -3156,7 +3155,7 @@ function renderDay(){
       <div class="ledger">${rows}<button class="add-row" onclick="openAdd('${m.id}')">${t('addFood')}</button></div>
     </div>`;
   }).join('');
-  document.getElementById('meals').innerHTML=fastBannerHTML()+(d.meals.length?mealsHTML:`<div class="empty" style="padding:8px 2px 12px">${t('noMeals')}</div>`)+`<button class="btn ghost full addmeal" onclick="addMeal()">${t('addMeal')}</button>`+(fastInfo(cur).fast?fastWarnHTML(cur):'');
+  document.getElementById('meals').innerHTML=fastBannerHTML()+(d.meals.length?mealsHTML:`<div class="empty" style="padding:8px 2px 12px">${t('noMeals')}</div>`)+`<button class="btn ghost full addmeal" onclick="addMeal()">${t('addMeal')}</button>`+`<button class="btn ochre full" style="margin-top:11px" onclick="shareDay()">${t('shareDay')}</button>`+(fastInfo(cur).fast?fastWarnHTML(cur):'');
   renderDial(); renderMacros(); renderHilite(); renderNut(); renderFavs(); renderExercise(); renderWater(); renderStreak();
 }
 function renderExercise(){
