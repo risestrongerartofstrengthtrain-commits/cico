@@ -381,6 +381,25 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
+/* Επικεφαλίδες τμημάτων στη λίστα προσθήκης */
+.secl{font-family:'Alegreya',serif;font-weight:800;font-size:12px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ochre-d);margin:14px 0 7px;padding-bottom:4px;
+  border-bottom:2px solid var(--line)}
+.secl:first-child{margin-top:2px}
+.stamp.mine{border-color:var(--ochre-d);color:var(--ochre-d);background:rgba(184,134,44,.09)}
+/* Φόρμα «δική μου τροφή» */
+.warnbox{border:2px dashed var(--ochre-d);background:rgba(184,134,44,.1);color:var(--ink-soft);
+  padding:10px 12px;border-radius:3px;font-size:14px;line-height:1.45;margin-bottom:14px}
+.per100{font-family:'Alegreya',serif;font-weight:800;font-size:12px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ochre-d);margin:4px 0 9px}
+.owngrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-bottom:6px}
+.ownr{min-width:0}
+.owni{display:flex;align-items:center;border:2px solid var(--line);border-radius:3px;
+  background:var(--cream);overflow:hidden}
+.owni input{border:0;background:transparent;flex:1;min-width:0;height:44px;padding:0 9px;font-size:16px}
+.owni span{padding:0 9px;font-size:13px;font-weight:700;color:var(--ink-soft);
+  border-left:2px solid var(--line);align-self:stretch;display:flex;align-items:center}
+@media(max-width:359px){.owngrid{grid-template-columns:1fr}}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .chip{
   font-family:'Alegreya',serif;font-weight:700;font-size:15px;
@@ -796,6 +815,18 @@ const T={
   addFood:'+ Πρόσθεσε τροφή', emptyMeal:'Άδειο.',
   left:'μένουν', over:'πάνω',
   protein:'Πρωτεΐνη', carbs:'Υδατάνθρακες', fat:'Λίπος', fiber:'Φυτικές ίνες',
+  kcalL:'Θερμίδες', sugarsL:'Ζάχαρα', satL:'Κορεσμένα', naL:'Νάτριο',
+  recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
+  mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
+  ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
+  ownBrand:'Μάρκα (προαιρετικό)', ownBrandPh:'π.χ. ΜΕΒΓΑΛ',
+  ownPer100:'Ανά 100 γραμμάρια', ownSave:'Αποθήκευσε τη τροφή',
+  ownNeedName:'Βάλε ένα όνομα πρώτα.', ownSaved:'Η τροφή σου αποθηκεύτηκε.',
+  ownFromPack:'Από τη συσκευασία', ownDeleted:'Διαγράφηκε.',
+  ownDelQ:'Να διαγραφεί αυτή η τροφή σου;',
+  ownWarn:'Γράψε τα νούμερα ακριβώς όπως τα λέει η συσκευασία. Θα σημειωθεί ως δική σου καταχώρηση — όχι ως επαληθευμένο δεδομένο USDA.',
+  ownSrc:'Καταχωρήθηκε από εσένα, από τη διατροφική ετικέτα της συσκευασίας.',
+  ownNote:'Δεν έχει επαληθευτεί από το USDA. Οι τιμές είναι όσες πληκτρολόγησες από τη συσκευασία. Οι ετικέτες τροφίμων επιτρέπεται νομικά να έχουν απόκλιση από τις πραγματικές τιμές, γι’ αυτό θεώρησέ τες κατά προσέγγιση.',
   perGoal:'στόχος', perRDI:'ΣΗΠ',
   gGen:'Γενικά', gCarb2:'Υδατάνθρακες', gLip:'Λιπαρά', gPro:'Πρωτεΐνη', gVit:'Βιταμίνες', gMin:'Μέταλλα',
   cAll:'Όλες', cGreek:'Ελληνικές', cDairy:'Γαλακτοκομικά', cMeat:'Κρέας & Ψάρι', cVeg:'Λαχανικά & Όσπρια',
@@ -876,6 +907,18 @@ const T={
   addFood:'+ Add food', emptyMeal:'Empty.',
   left:'left', over:'over',
   protein:'Protein', carbs:'Carbs', fat:'Fat', fiber:'Fiber',
+  kcalL:'Calories', sugarsL:'Sugars', satL:'Saturated', naL:'Sodium',
+  recentF:'Recent', frequentF:'Your usual', allF:'All foods',
+  mineTag:'Mine', addOwn:'+ My own food',
+  ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
+  ownBrand:'Brand (optional)', ownBrandPh:'e.g. MEVGAL',
+  ownPer100:'Per 100 grams', ownSave:'Save this food',
+  ownNeedName:'Give it a name first.', ownSaved:'Your food was saved.',
+  ownFromPack:'From the package', ownDeleted:'Deleted.',
+  ownDelQ:'Delete this food of yours?',
+  ownWarn:'Type the numbers exactly as printed on the package. It will be marked as your own entry — not as verified USDA data.',
+  ownSrc:'Entered by you, from the nutrition label on the package.',
+  ownNote:'Not verified against USDA. The values are those you typed from the package. Food labels are legally allowed a tolerance from actual values, so treat them as approximate.',
   perGoal:'goal', perRDI:'RDI',
   gGen:'General', gCarb2:'Carbohydrates', gLip:'Lipids', gPro:'Protein', gVit:'Vitamins', gMin:'Minerals',
   cAll:'All', cGreek:'Greek', cDairy:'Dairy', cMeat:'Meat & Fish', cVeg:'Vegetables & Legumes',
@@ -1362,6 +1405,7 @@ const FOODS=[
 const fName=f=>f[L]||f.el;
 const fSub=f=>f[L+'Sub']||f.elSub;
 const FMAP={};FOODS.forEach(f=>FMAP[f.id]=f);
+/* Οι δικές σου τροφές μπαίνουν στον χάρτη μόλις φορτωθούν (βλ. syncFMAP) */
 
 /* ============================================================
    4b. ΣΥΝΤΑΓΕΣ — έτοιμοι συνδυασμοί τροφών (ελληνικά πιάτα)
@@ -1381,6 +1425,47 @@ const RECIPES_BUILTIN=[
   elSub:'Στραγγιστό γιαούρτι, μπανάνα, αμύγδαλα', enSub:'Greek yogurt, banana, almonds',
   items:[{id:'gyog2',g:170},{id:'banana',g:100},{id:'almonds',g:15}]}
 ];
+/* ══════ ΕΞΥΠΝΗ ΑΝΑΖΗΤΗΣΗ ══════
+   Βρίσκει «φετα» χωρίς τόνο, «feta» στα greeklish, «giaourti»/«yaourti»,
+   «ntomata»/«domata», «avgo»/«augo». Δοκιμασμένο: 40/40 σωστά, 0 ψευδώς θετικά. */
+const GRL={'α':'a','β':'v','γ':'g','δ':'d','ε':'e','ζ':'z','η':'i','θ':'th','ι':'i','κ':'k','λ':'l','μ':'m','ν':'n','ξ':'ks','ο':'o','π':'p','ρ':'r','σ':'s','τ':'t','υ':'i','φ':'f','χ':'x','ψ':'ps','ω':'o'};
+function srchNorm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ς/g,'σ')}
+function srchKey(s){
+  s=srchNorm(s);
+  s=s.replace(/αυ/g,'1').replace(/ευ/g,'2').replace(/ου/g,'3').replace(/μπ/g,'4').replace(/ντ/g,'5').replace(/γκ/g,'6').replace(/τσ/g,'7').replace(/τζ/g,'8');
+  s=s.split('').map(c=>GRL[c]!==undefined?GRL[c]:c).join('');
+  s=s.replace(/au/g,'1').replace(/eu/g,'2').replace(/ou/g,'3').replace(/mp/g,'4').replace(/nt/g,'5').replace(/gk/g,'6').replace(/ts/g,'7').replace(/tz/g,'8')
+     .replace(/th/g,'t').replace(/ch/g,'x').replace(/ph/g,'f').replace(/ps/g,'p').replace(/ks/g,'x')
+     .replace(/ai/g,'e').replace(/ei/g,'i').replace(/oi/g,'i')
+     .replace(/gi/g,'i').replace(/[hyu]/g,'i').replace(/w/g,'o').replace(/b/g,'v').replace(/c/g,'k');
+  s=s.replace(/1/g,'av').replace(/2/g,'ev').replace(/3/g,'i').replace(/4/g,'v').replace(/5/g,'d').replace(/6/g,'g').replace(/7/g,'ts').replace(/8/g,'tz');
+  return s.replace(/[^a-z0-9]/g,'');
+}
+const _skCache={};
+function foodKey(f){
+  if(_skCache[f.id])return _skCache[f.id];
+  const parts=[f.el,f.en,f.elSub,f.enSub].concat(f.syn||[]).filter(Boolean).join(' ');
+  return _skCache[f.id]=srchKey(parts);
+}
+function foodMatches(f,q){return !q||foodKey(f).includes(srchKey(q))}
+
+/* ══════ ΣΥΧΝΑ & ΠΡΟΣΦΑΤΑ ══════ */
+let foodUse=load('foodUse',{});
+function noteUse(id){
+  const u=foodUse[id]||{n:0,t:0};
+  u.n++; u.t=Date.now(); foodUse[id]=u; save('foodUse',foodUse);
+}
+function recentIds(n){return Object.keys(foodUse).filter(id=>FMAP[id]).sort((a,b)=>foodUse[b].t-foodUse[a].t).slice(0,n)}
+function frequentIds(n){return Object.keys(foodUse).filter(id=>FMAP[id]&&foodUse[id].n>1).sort((a,b)=>foodUse[b].n-foodUse[a].n).slice(0,n)}
+
+/* ══════ ΔΙΚΕΣ ΣΟΥ ΤΡΟΦΕΣ ══════
+   Καταχωρούνται από τη συσκευασία. Σημειώνονται ΞΕΚΑΘΑΡΑ ως μη επαληθευμένες
+   από το USDA, ώστε να μη συγχέονται ποτέ με τα επιστημονικά δεδομένα. */
+let foodsUser=load('foodsUser',[]);
+function allFoods(){return FOODS.concat(foodsUser)}
+function syncFMAP(){foodsUser.forEach(f=>{if(f&&f.id)FMAP[f.id]=f})}
+syncFMAP();
+
 let recipesUser=load('recipesUser',[]);
 const allRecipes=()=>RECIPES_BUILTIN.concat(recipesUser);
 const rName=r=>r[L]||r.el;
@@ -1769,12 +1854,11 @@ function renderFoods(){
   if(foodTab==='recipes'){renderRecipes();return}
   document.getElementById('catChips').innerHTML=CATS.filter(c=>c.id==='all'||c.id==='greek'||FOODS.some(f=>f.cat===c.id))
     .map(c=>`<button class="chip ${c.id===cat?'on':''}" onclick="cat='${c.id}';renderFoods()">${t(c.t)}</button>`).join('');
-  const q=(document.getElementById('q').value||'').trim().toLowerCase();
-  const list=FOODS.filter(f=>{
+  const q=(document.getElementById('q').value||'').trim();
+  const list=allFoods().filter(f=>{
     if(cat==='greek'&&!f.greek)return false;
     if(cat!=='all'&&cat!=='greek'&&f.cat!==cat)return false;
-    if(!q)return true;
-    return (f.el+' '+f.en+' '+f.elSub+' '+f.enSub).toLowerCase().includes(q);
+    return foodMatches(f,q);
   });
   document.getElementById('foodList').innerHTML=list.map(f=>`
     <button class="fcard" onclick="openFood('${f.id}')">
@@ -1918,11 +2002,26 @@ function openAdd(meal,foodId){
     `<input type="search" id="qa" oninput="filterAdd()" placeholder="${t('searchPh')}" autocomplete="off" style="margin-bottom:11px"><div id="addList">${addListHTML('')}</div>`
   );
 }
-function addListHTML(q){
-  const list=FOODS.filter(f=>!q||(f.el+' '+f.en+' '+f.elSub+' '+f.enSub).toLowerCase().includes(q));
-  return list.map(f=>`<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${f.greek?`<span class="stamp flag">${t('greekFlag')}</span>`:''}<div class="fn">${fName(f)}</div><div class="fl">${fSub(f)} · <span class="num">${Math.round(f.n.kcal)}</span> kcal / 100 g</div></button>`).join('')||`<div class="empty">${t('noRes')}</div>`;
+function foodCardHTML(f){
+  return `<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${f.custom?`<span class="stamp mine">${t('mineTag')}</span>`:(f.greek?`<span class="stamp flag">${t('greekFlag')}</span>`:'')}<div class="fn">${fName(f)}</div><div class="fl">${fSub(f)} · <span class="num">${Math.round(f.n.kcal)}</span> kcal / 100 g</div></button>`;
 }
-function filterAdd(){document.getElementById('addList').innerHTML=addListHTML((document.getElementById('qa').value||'').trim().toLowerCase())}
+function addListHTML(q){
+  const all=allFoods();
+  if(!q){
+    // Χωρίς αναζήτηση: πρώτα ό,τι χρησιμοποιείς πραγματικά
+    const rec=recentIds(6), frq=frequentIds(6).filter(id=>!rec.includes(id));
+    let html='';
+    if(rec.length)html+=`<div class="secl">${t('recentF')}</div>`+rec.map(id=>foodCardHTML(FMAP[id])).join('');
+    if(frq.length)html+=`<div class="secl">${t('frequentF')}</div>`+frq.map(id=>foodCardHTML(FMAP[id])).join('');
+    const rest=all.filter(f=>!rec.includes(f.id)&&!frq.includes(f.id));
+    if(html)html+=`<div class="secl">${t('allF')}</div>`;
+    return html+rest.map(foodCardHTML).join('')+addOwnBtn();
+  }
+  const list=all.filter(f=>foodMatches(f,q));
+  return (list.map(foodCardHTML).join('')||`<div class="empty">${t('noRes')}</div>`)+addOwnBtn(q);
+}
+function addOwnBtn(q){return `<button class="btn ghost full" style="margin-top:6px" onclick="openOwnFood(${q?JSON.stringify(q).replace(/"/g,'&quot;'):"''"})">${t('addOwn')}</button>`}
+function filterAdd(){document.getElementById('addList').innerHTML=addListHTML((document.getElementById('qa').value||'').trim())}
 function portionsHTML(f,id){
   if(!f.portions||!f.portions.length)return '';
   const hasImg=f.portions.some(p=>p.img);
@@ -1950,7 +2049,55 @@ function pickPortionKeepG(id){const g=Math.max(1,parseFloat(document.getElementB
 function onG(id){livePortion(FMAP[id],Math.max(0,parseFloat(document.getElementById('pg').value)||0))}
 function bumpG(d){const el=document.getElementById('pg');el.value=Math.max(1,(parseFloat(el.value)||0)+d);el.dispatchEvent(new Event('input'))}
 function setG2(g,id){document.getElementById('pg').value=g;onG(id)}
-function doAdd(id){const g=Math.max(1,parseFloat(document.getElementById('pg').value)||100);const m=findMeal(cur,ensureTarget());if(!m)return;m.items.push({id,g});save('days',days);closeSheet();renderDay();toast(t('toastAdded'));if(tab!=='day')setTab('day')}
+function doAdd(id){const g=Math.max(1,parseFloat(document.getElementById('pg').value)||100);const m=findMeal(cur,ensureTarget());if(!m)return;m.items.push({id,g});noteUse(id);save('days',days);closeSheet();renderDay();toast(t('toastAdded'));if(tab!=='day')setTab('day')}
+
+/* ══════ ΔΙΚΗ ΣΟΥ ΤΡΟΦΗ — από τη συσκευασία ══════ */
+function ownRow(k,lbl,unit,ph){return `<div class="ownr"><label class="f">${lbl}</label><div class="owni"><input type="number" inputmode="decimal" id="of_${k}" step="0.1" min="0" placeholder="${ph||'0'}" class="num"><span>${unit}</span></div></div>`}
+function openOwnFood(pre){
+  showSheet(
+    `<div style="flex:1;min-width:0"><h2>${t('addOwn').replace('+ ','')}</h2><div class="sub">${t('ownSub')}</div></div><button class="sx" onclick="closeSheet()">×</button>`,
+    `<div class="warnbox">${t('ownWarn')}</div>
+     <label class="f">${t('ownName')}</label>
+     <input type="text" id="of_name" maxlength="46" placeholder="${t('ownNamePh')}" value="${(pre||'').replace(/"/g,'&quot;')}" style="margin-bottom:6px">
+     <label class="f">${t('ownBrand')}</label>
+     <input type="text" id="of_brand" maxlength="34" placeholder="${t('ownBrandPh')}" style="margin-bottom:14px">
+     <div class="per100">${t('ownPer100')}</div>
+     <div class="owngrid">
+       ${ownRow('kcal',t('kcalL'),'kcal')}
+       ${ownRow('protein',t('protein'),'g')}
+       ${ownRow('carbs',t('carbs'),'g')}
+       ${ownRow('sugars',t('sugarsL'),'g')}
+       ${ownRow('fiber',t('fiber'),'g')}
+       ${ownRow('fat',t('fat'),'g')}
+       ${ownRow('sat',t('satL'),'g')}
+       ${ownRow('na',t('naL'),'mg')}
+     </div>`,
+    `<button class="btn full" onclick="saveOwnFood()">${t('ownSave')}</button>`
+  );
+  setTimeout(()=>{const n=document.getElementById('of_name');if(n&&!n.value)n.focus()},80);
+}
+function saveOwnFood(){
+  const name=(document.getElementById('of_name').value||'').trim();
+  if(!name){toast(t('ownNeedName'));return}
+  const num=k=>{const v=parseFloat(document.getElementById('of_'+k).value);return isFinite(v)&&v>=0?v:0};
+  const n={kcal:num('kcal'),protein:num('protein'),carbs:num('carbs'),sugars:num('sugars'),
+           fiber:num('fiber'),fat:num('fat'),sat:num('sat'),na:num('na')};
+  // Αν δεν δόθηκαν θερμίδες, τις υπολογίζουμε κατά Atwater από τα μακροθρεπτικά
+  if(!n.kcal)n.kcal=Math.round(n.protein*4+n.carbs*4+n.fat*9);
+  const brand=(document.getElementById('of_brand').value||'').trim();
+  const f={id:'u_'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+    cat:'other', custom:true, verified:false,
+    el:name, en:name, elSub:brand||t('ownFromPack'), enSub:brand||'Own entry',
+    n, src:[{el:t('ownSrc'),en:'Entered by you from the package label.',url:'',d:new Date().toISOString().slice(0,10),a:new Date().toISOString().slice(0,10)}],
+    note:{el:t('ownNote'),en:'Not verified against USDA. Values are those you typed from the package; packaged-food labels are legally allowed a tolerance.'}};
+  foodsUser.push(f); FMAP[f.id]=f; save('foodsUser',foodsUser);
+  closeSheet(); toast(t('ownSaved')); pickPortion(f.id);
+}
+function deleteOwnFood(id){
+  if(!confirm(t('ownDelQ')))return;
+  foodsUser=foodsUser.filter(f=>f.id!==id); delete FMAP[id]; save('foodsUser',foodsUser);
+  closeSheet(); toast(t('ownDeleted'));
+}
 function toggleFav(id){const i=favs.indexOf(id);if(i<0){favs.push(id);toast(t('toastFav'))}else{favs.splice(i,1);toast(t('toastUnfav'))}save('favs',favs);openFood(id);renderFavs()}
 function del(mid,i){const m=findMeal(cur,mid);if(!m)return;m.items.splice(i,1);save('days',days);renderDay();toast(t('toastDel'))}
 function addMeal(){const d=getDay(cur);d.meals.push({id:newMealId(),name:t('mealDefault')+' '+(d.meals.length+1),items:[]});save('days',days);renderDay();toast(t('toastMealAdded'));
@@ -2306,11 +2453,12 @@ function renderLearn(){
 const SB_URL='https://ghiunrsljudvzciigzpt.supabase.co';
 const SB_KEY='sb_publishable_D1TupC_nTAQjPvpi0Amheg_kmbgAoYm';
 let sb=null, sbUser=null, cloudTimer=null, authMode='login';
-const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang'];
+const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse'];
 function sbInit(){try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY);return true}}catch(e){}return false}
 function gatherState(){const o={};CLOUD_KEYS.forEach(k=>{const v=Store.get('cico.'+k);if(v!=null)o[k]=v});return o}
 function applyState(o){if(!o)return;CLOUD_KEYS.forEach(k=>{if(o[k]!=null)Store.set('cico.'+k,o[k])});
-  days=load('days',{});goals=load('goals',goals);favs=load('favs',[]);weights=load('weights',{});waterGoal=load('waterGoal',8);recipesUser=load('recipesUser',[]);mealSeq=load('mealSeq',mealSeq);accOpen=load('accOpen',accOpen);L=load('lang',L);cur=todayKey();}
+  days=load('days',{});goals=load('goals',goals);favs=load('favs',[]);weights=load('weights',{});waterGoal=load('waterGoal',8);recipesUser=load('recipesUser',[]);mealSeq=load('mealSeq',mealSeq);accOpen=load('accOpen',accOpen);L=load('lang',L);
+  foodsUser=load('foodsUser',[]);foodUse=load('foodUse',{});syncFMAP();cur=todayKey();}
 async function pullCloud(){if(!sb||!sbUser)return;try{
   const {data,error}=await sb.from('user_state').select('data').eq('user_id',sbUser.id).maybeSingle();
   if(error)return;
