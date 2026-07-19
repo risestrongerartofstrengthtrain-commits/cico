@@ -381,6 +381,15 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
+/* ── Ο Βοηθός ── */
+.askbig{font-family:'Alegreya',serif;font-weight:800;font-size:26px;color:var(--green);
+  display:inline-block;line-height:1.1}
+.asksm{font-size:12px;color:var(--ink-soft);font-style:italic}
+.asksrc{font-size:11.5px;color:var(--ink-soft);margin-top:6px;padding-top:5px;
+  border-top:1px dotted var(--line)}
+.asksrc a{color:var(--green-2)}
+.askl{margin:7px 0 0;padding-left:18px}
+.askl li{font-size:14px;line-height:1.5;margin-bottom:4px}
 /* ── Η Κατσαρόλα ── */
 .potlist{border:2px solid var(--line);border-radius:4px;overflow:hidden;background:var(--cream)}
 .potempty{padding:16px 12px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:14px}
@@ -887,6 +896,7 @@ const T={
   potDelQ:'Να διαγραφεί αυτή η κατσαρόλα;', potDeleted:'Διαγράφηκε.',
   potMine:'Οι κατσαρόλες σου', potNew:'+ Νέα κατσαρόλα', potEdit:'Άλλαξε τα υλικά',
   potNote:'Η μερίδα βγαίνει από το σύνολο των υλικών διά τις μερίδες — γι’ αυτό είναι σωστή ό,τι κι αν έγινε με το νερό στο μαγείρεμα. Διάλεξε πάντα «μερίδα» και όχι γραμμάρια, γιατί τα γραμμάρια εδώ αφορούν την πρώτη ύλη.',
+  botNo2:'Δεν το έπιασα αυτό. Δοκίμασε κάτι σαν «πόσες θερμίδες έχει ένα αυγό», «πόση πρωτεΐνη έχει το κοτόπουλο», «πού βρίσκω σίδηρο», «τι έχω φάει σήμερα» ή «με τι να φάω τις φακές».',
   recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
   mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
   ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
@@ -999,6 +1009,7 @@ const T={
   potDelQ:'Delete this pot?', potDeleted:'Deleted.',
   potMine:'Your pots', potNew:'+ New pot', potEdit:'Change the ingredients',
   potNote:'The portion comes from total ingredients divided by portions — which is why it is right whatever happened to the water while cooking. Always pick "portion" rather than grams, because grams here refer to raw ingredients.',
+  botNo2:'I did not catch that. Try something like "how many calories in an egg", "how much protein in chicken", "where do I find iron", "what have I eaten today" or "what to eat with lentils".',
   recentF:'Recent', frequentF:'Your usual', allF:'All foods',
   mineTag:'Mine', addOwn:'+ My own food',
   ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
@@ -3553,11 +3564,196 @@ function renderHelp(){
 function bot(x){const c=document.getElementById('chat');c.insertAdjacentHTML('beforeend',`<div class="msg bot"><span class="who">CICO</span><span class="tx">${x}</span></div>`);c.scrollTop=c.scrollHeight}
 function me(x){const c=document.getElementById('chat');c.insertAdjacentHTML('beforeend',`<div class="msg me"><span class="who">${t('you')}</span><span class="tx">${x.replace(/</g,'&lt;')}</span></div>`);c.scrollTop=c.scrollHeight}
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+/* ═══════════════════════════════════════════════════════════════════
+   Ο ΒΟΗΘΟΣ — καταλαβαίνει την ερώτηση και διαβάζει τα ΠΡΑΓΜΑΤΙΚΑ δεδομένα
+   ───────────────────────────────────────────────────────────────────
+   Δεν είναι γλωσσικό μοντέλο και δεν προσπαθεί να το παίξει. Είναι μηχανή
+   που αναγνωρίζει τι ρωτάς και απαντά από τη βάση των επαληθευμένων
+   τροφών. Πλεονέκτημα: ΔΕΝ ΜΠΟΡΕΙ να εφεύρει νούμερο. Ό,τι λέει, το λέει
+   επειδή υπάρχει καταχωρημένο με πηγή.
+   ═══════════════════════════════════════════════════════════════════ */
+const ASKNUT=[
+ {id:'kcal', w:['θερμιδες','θερμιδα','καυσιμο','ενεργεια','kcal','calories','θερμιδικη'], el:'θερμίδες', u:'kcal', dec:0},
+ {id:'protein', w:['πρωτεινη','πρωτεινες','protein'], el:'πρωτεΐνη', u:'g', dec:1},
+ {id:'carbs', w:['υδατανθρακες','υδατανθρακα','carbs','carb'], el:'υδατάνθρακες', u:'g', dec:1},
+ {id:'fat', w:['λιπος','λιπαρα','fat'], el:'λίπος', u:'g', dec:1},
+ {id:'sat', w:['κορεσμενα','saturated'], el:'κορεσμένα λιπαρά', u:'g', dec:1},
+ {id:'fiber', w:['ινες','φυτικες','fiber','fibre'], el:'φυτικές ίνες', u:'g', dec:1},
+ {id:'sugars', w:['ζαχαρα','ζαχαρη','σακχαρα','sugar'], el:'ζάχαρα', u:'g', dec:1},
+ {id:'chol', w:['χοληστερινη','χοληστερολη','cholesterol'], el:'χοληστερίνη', u:'mg', dec:0},
+ {id:'fe', w:['σιδηρο','σιδηρος','σιδηρου','iron'], el:'σίδηρος', u:'mg', dec:2},
+ {id:'ca', w:['ασβεστιο','ασβεστιου','calcium'], el:'ασβέστιο', u:'mg', dec:0},
+ {id:'mg', w:['μαγνησιο','μαγνησιου','magnesium'], el:'μαγνήσιο', u:'mg', dec:0},
+ {id:'k', w:['καλιο','καλιου','potassium'], el:'κάλιο', u:'mg', dec:0},
+ {id:'na', w:['νατριο','αλατι','sodium','salt'], el:'νάτριο', u:'mg', dec:0},
+ {id:'zn', w:['ψευδαργυρο','ψευδαργυρος','zinc'], el:'ψευδάργυρος', u:'mg', dec:2},
+ {id:'se', w:['σεληνιο','selenium'], el:'σελήνιο', u:'µg', dec:1},
+ {id:'vitC', w:['βιταμινηc','βιταμινη c','vitaminc','ασκορβικο'], el:'βιταμίνη C', u:'mg', dec:1},
+ {id:'vitD', w:['βιταμινηd','βιταμινη d','vitamind'], el:'βιταμίνη D', u:'µg', dec:1},
+ {id:'vitA', w:['βιταμινηa','βιταμινη a','vitamina','ρετινολη'], el:'βιταμίνη A', u:'µg', dec:0},
+ {id:'vitE', w:['βιταμινηe','βιταμινη e','vitamine'], el:'βιταμίνη E', u:'mg', dec:2},
+ {id:'vitK', w:['βιταμινηk','βιταμινη k','vitamink'], el:'βιταμίνη K', u:'µg', dec:1},
+ {id:'b12', w:['b12','β12','κοβαλαμινη'], el:'βιταμίνη B12', u:'µg', dec:2},
+ {id:'b9', w:['φυλλικο','φολικο','folate','b9'], el:'φυλλικό οξύ', u:'µg', dec:0},
+ {id:'b6', w:['b6','β6'], el:'βιταμίνη B6', u:'mg', dec:2},
+ {id:'o3', w:['ωμεγα3','ωμεγα 3','omega3','omega 3','ω3'], el:'ωμέγα-3', u:'g', dec:2},
+ {id:'water', w:['νερο','water'], el:'νερό', u:'g', dec:1},
+ {id:'caffeine', w:['καφεινη','caffeine'], el:'καφεΐνη', u:'mg', dec:0},
+ {id:'alcohol', w:['αλκοολ','οινοπνευμα','alcohol'], el:'αλκοόλ', u:'g', dec:1}
+];
+const ASKNUM={'ενα':1,'μια':1,'ενας':1,'μιση':.5,'μισο':.5,'μιαμιση':1.5,'δυο':2,'δυο':2,'τρια':3,'τρεις':3,
+ 'τεσσερα':4,'τεσσερις':4,'πεντε':5,'εξι':6,'επτα':7,'εφτα':7,'οκτω':8,'οχτω':8,'εννεα':9,'εννια':9,'δεκα':10};
+/* Ρίζα λέξης: κόβει την κατάληξη ώστε «αυγό/αυγά», «σολομός/σολομό», «φακές/φακή» να ταιριάζουν */
+function askStem(s){
+  s=srchKey(s); if(s.length<4)return s;
+  let r=s.replace(/s$/,'');            // ονομαστική -ς
+  r=r.replace(/[aeiou]+$/,'');         // καταλήξεις φωνηέντων
+  return r.length>=3?r:s;
+}
+/* Λέξεις που περιγράφουν κατάσταση, όχι την ίδια την τροφή — δεν πρέπει να «πιάνουν» */
+const ASKSTOP=new Set(['omo','oma','omi','omos','omes','omoi','psito','psiti','vrasto','vrasti','vrasmeno','vrasmenes','vrasmena',
+ 'fresko','freskia','freskos','ksero','kseri','kseroi','ksera','pliris','plires','konserva','sketo','skети','mikro','mesaio','megalo']);
+/* Υποψήφια ονόματα: το πλήρες όνομα ΚΑΙ οι λέξεις του κύριου μέρους (πριν το κόμμα) */
+function askNames(f){
+  const out=[];
+  [f.el,f.en].concat(f.syn||[]).filter(Boolean).forEach(nm=>{
+    out.push(nm);
+    const main=nm.split(',')[0];
+    out.push(main);
+    main.split(/[\s\/]+/).forEach(wd=>{ if(wd.length>=4)out.push(wd); });
+  });
+  return out;
+}
+/* Βρίσκει τροφές που αναφέρονται στην ερώτηση — προτιμά το πιο ειδικό ταίριασμα */
+function askFindFoods(q){
+  const qk=srchKey(q); const hits=[];
+  allFoods().forEach(f=>{
+    let bestLen=0;
+    askNames(f).forEach(c=>{
+      const st=askStem(c);
+      if(st.length>=3 && !ASKSTOP.has(st) && qk.includes(st) && st.length>bestLen) bestLen=st.length;
+    });
+    if(bestLen)hits.push({f,len:bestLen});
+  });
+  hits.sort((a,b)=>b.len-a.len);
+  const out=[],seen=new Set();
+  hits.forEach(h=>{if(!seen.has(h.f.id)){seen.add(h.f.id);out.push(h.f)}});
+  return out.slice(0,3);
+}
+/* Το θρεπτικό — δουλεύει και σε greeklish, μέσω του ίδιου κλειδιού με την αναζήτηση */
+function askFindNut(q){
+  const qk=srchKey(q);
+  let best=null,len=0;
+  ASKNUT.forEach(n=>n.w.forEach(wd=>{
+    const k=srchKey(wd);
+    if(k.length>=2&&qk.includes(k)&&k.length>len){len=k.length;best=n}
+  }));
+  return best;
+}
+/* Πόσο; «ένα αυγό», «2 φέτες», «150 γραμμάρια» */
+function askQty(q,f){
+  // «β12», «ω3», «ωμεγα 3» είναι ονόματα θρεπτικών, ΟΧΙ ποσότητες
+  const qn=norm(q).replace(/[a-zα-ω]+\s*\d+/g,' ');
+  const mg=qn.match(/(\d+(?:[.,]\d+)?)\s*(?:g|gr|γρ|γραμμ)/);
+  if(mg)return {g:parseFloat(mg[1].replace(',','.')), label:null};
+  let mult=null;
+  const md=qn.match(/(\d+(?:[.,]\d+)?)/);
+  if(md)mult=parseFloat(md[1].replace(',','.'));
+  if(mult==null){ for(const k in ASKNUM){ if(new RegExp('(^|\\s)'+k+'(\\s|$)').test(qn)){mult=ASKNUM[k];break} } }
+  if(f&&f.portions&&f.portions.length){
+    const p=f.portions[Math.min(1,f.portions.length-1)];
+    if(mult!=null)return {g:Math.round(p.g*mult), label:(mult===1?'':mult+' × ')+(p[L]||p.el)};
+    return {g:p.g, label:(p[L]||p.el)};
+  }
+  if(mult!=null&&mult<=10)return {g:100*mult,label:null};
+  return {g:100,label:null};
+}
+function askFmt(v,dec){ if(v==null)return '—'; const r=Math.round(v*Math.pow(10,dec))/Math.pow(10,dec); return String(r).replace('.',','); }
+function askSrcLine(f){
+  const s=f.src&&f.src[0]; if(!s)return '';
+  if(f.pot)return `<div class="asksrc">Από την κατσαρόλα σου.</div>`;
+  if(f.custom)return `<div class="asksrc">Δική σου καταχώρηση — δεν έχει επαληθευτεί.</div>`;
+  return `<div class="asksrc">Πηγή: USDA FoodData Central${s.url?` · <a href="${s.url}" target="_blank" rel="noopener">δες την</a>`:''}</div>`;
+}
+function askAnswer(q){
+  const nut=askFindNut(q), foods=askFindFoods(q), qn=norm(q), qk=srchKey(q);
+  // «Πού βρίσκω…» — μόνο όταν ρωτάει καθαρά για πηγές, όχι για συγκεκριμένη τροφή
+  const wantsList=/(που βρισκ|πουθε|ποιες τροφ|ποια τροφ|ποιες ειναι|τι να φαω για|τι τρωω για|πηγες|πλουσι|εχουν πολ|εχει πολ)/.test(qn)
+    || /(pubvrisk|poiestrof|piges|plousi)/.test(qk);
+  const wantsToday=/(σημερα|εχω φαει|μου λειπ|πως παω|υπολοιπ)/.test(qn)||/(simera|exofai)/.test(qk);
+  const wantsCombo=/(συνδυα|μαζι με|απορροφ|μπλοκαρ|εμποδιζ|βοηθα[ει]? την|με τι να)/.test(qn)||/(sindia|aporrof|blokar)/.test(qk);
+  const wantsCompare=/( η | ή |εναντι|vs| i )/.test(' '+qn+' ')&&foods.length>=2;
+
+  // 1) Κατάσταση ημέρας
+  if(wantsToday){
+    const tot=dayTotals(cur); const gl=goals;
+    if(nut&&nut.id!=='kcal'&&tot[nut.id]!=null)
+      return `Σήμερα έχεις πάρει <b>${askFmt(tot[nut.id],nut.dec)} ${nut.u}</b> ${nut.el}.`;
+    const kc=Math.round(tot.kcal||0), tgt=gl.kcal||0, left=tgt-kc;
+    return `Σήμερα: <b>${kc} kcal</b>${tgt?` από στόχο <b>${tgt}</b> — ${left>=0?`σου μένουν <b>${left}</b>`:`είσαι <b>${-left}</b> πάνω`}`:''}.<br>
+      Πρωτεΐνη <b>${Math.round(tot.protein||0)} g</b> · Υδατάνθρακες <b>${Math.round(tot.carbs||0)} g</b> · Λίπος <b>${Math.round(tot.fat||0)} g</b>`;
+  }
+  // 2) Συνδυασμοί απορρόφησης
+  if(wantsCombo&&foods.length){
+    const f=foods[0], h=absHTML(f);
+    if(h){const txt=h.replace(/<div class="src">[\s\S]*?<\/div>\s*<\/div>/,'').replace(/<button[\s\S]*?<\/button>/,'');
+      return `Για <b>${fName(f)}</b>:<br>${txt}`;}
+    return `Για <b>${fName(f)}</b> δεν έχω καταγράψει ειδικούς συνδυασμούς. Άνοιξέ το από τις Τροφές για όλα τα στοιχεία.`;
+  }
+  // 3) Σύγκριση δύο τροφών — πριν τη λίστα, γιατί ονομάζει συγκεκριμένες τροφές
+  if(nut&&wantsCompare){
+    const [a,b]=foods, va=a.n[nut.id], vb=b.n[nut.id];
+    if(va!=null&&vb!=null){
+      const win=va>vb?a:b, lose=va>vb?b:a, hv=Math.max(va,vb), lv=Math.min(va,vb);
+      const times=lv>0?(hv/lv).toFixed(1).replace('.',','):null;
+      return `Σε <b>${nut.el}</b> (ανά 100 g):<br>
+        <b>${fName(a)}</b>: ${askFmt(va,nut.dec)} ${nut.u}<br>
+        <b>${fName(b)}</b>: ${askFmt(vb,nut.dec)} ${nut.u}<br>
+        Κερδίζει το <b>${fName(win)}</b>${times&&times!=='1,0'?`, με <b>${times}×</b> περισσότερο από ${fName(lose)}`:''}.`;
+    }
+  }
+  // 4) Πού βρίσκω το θρεπτικό Χ — κατάταξη τροφών
+  if(nut&&(wantsList||!foods.length)){
+    const top=allFoods().filter(f=>typeof f.n[nut.id]==='number'&&f.n[nut.id]>0)
+      .sort((a,b)=>b.n[nut.id]-a.n[nut.id]).slice(0,6);
+    if(!top.length)return `Δεν έχω δεδομένα για ${nut.el}.`;
+    const li=top.map(f=>`<li><b>${fName(f)}</b> — ${askFmt(f.n[nut.id],nut.dec)} ${nut.u} / 100 g</li>`).join('');
+    return `Οι πλουσιότερες τροφές της βάσης σε <b>${nut.el}</b>:<ul class="askl">${li}</ul>
+      <div class="asksrc">Ανά 100 γραμμάρια. Πρόσεξε ότι δεν τρως πάντα 100 g — π.χ. ο μαϊντανός βγαίνει ψηλά αλλά τρως μια κουταλιά.</div>`;
+  }
+  // 5) Το ζητούμενο: θρεπτικό μιας τροφής, σε πραγματική μερίδα
+  if(foods.length){
+    const f=foods[0], qty=askQty(q,f), ratio=qty.g/100;
+    const N=nut||ASKNUT[0];
+    const v=f.n[N.id];
+    if(v==null)return `Δεν έχω καταχωρημένο ${N.el} για <b>${fName(f)}</b>.`;
+    const val=askFmt(v*ratio,N.dec);
+    const per100=askFmt(v,N.dec);
+    const head=qty.label?`${qty.label} (${qty.g} g)`:`${qty.g} g`;
+    let extra='';
+    if(!nut){ // ρώτησε μόνο για την τροφή -> δίνουμε τη μεγάλη εικόνα
+      const p=f.n.protein,c=f.n.carbs,fa=f.n.fat;
+      extra=`<br>Πρωτεΐνη <b>${askFmt((p||0)*ratio,1)} g</b> · Υδατάνθρακες <b>${askFmt((c||0)*ratio,1)} g</b> · Λίπος <b>${askFmt((fa||0)*ratio,1)} g</b>`;
+    }
+    return `<b>${fName(f)}</b> — ${head}:<br>
+      <span class="askbig">${val} ${N.u}</span> ${N.el}${extra}
+      <br><span class="asksm">(${per100} ${N.u} ανά 100 g)</span>
+      ${askSrcLine(f)}
+      <button class="btn ghost full" style="margin-top:9px" onclick="openFood('${f.id}')">Δες όλα τα στοιχεία</button>`;
+  }
+  return null;
+}
 function sendAsk(){
   const el=document.getElementById('ask'), q=el.value.trim(); if(!q)return; me(q); el.value='';
-  const nq=norm(q); let best=null,score=0;
-  FAQ.forEach(f=>{const s=f.k.filter(k=>nq.includes(norm(k))).length;if(s>score){score=s;best=f}});
-  setTimeout(()=>{if(best){const o=best[L]||best.el;bot(`<b>${o.q}</b><br>${o.a}`)}else bot(t('botNo'))},320);
+  setTimeout(()=>{
+    let ans=null;
+    try{ ans=askAnswer(q); }catch(e){ ans=null; }
+    if(ans){bot(ans);return}
+    const nq=norm(q); let best=null,score=0;
+    FAQ.forEach(f=>{const s=f.k.filter(k=>nq.includes(norm(k))).length;if(s>score){score=s;best=f}});
+    if(best){const o=best[L]||best.el;bot(`<b>${o.q}</b><br>${o.a}`);return}
+    bot(t('botNo2'));
+  },300);
 }
 
 /* ---- toast ---- */
