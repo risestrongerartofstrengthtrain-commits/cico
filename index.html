@@ -88,7 +88,7 @@ header.sign::before{
 .lang button.on{background:var(--ochre);color:#22150a}
 
 /* ---------- Κορμός ---------- */
-.wrap{padding:14px 14px calc(var(--navh) + var(--sab) + 20px);max-width:100%}
+.wrap{padding:14px 14px calc(var(--navh) + var(--sab) + 96px);max-width:100%}
 .panel{display:none}
 .panel.on{display:block;animation:fade .2s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
@@ -237,11 +237,12 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .rx{width:38px;height:38px;flex:0 0 38px;border:0;background:transparent;color:var(--ink-faint);font-size:22px;line-height:1;border-radius:3px}
 .rx:active{color:var(--red);background:rgba(150,56,42,.1)}
 .add-row{
-  width:100%;min-height:var(--tap);border:0;border-top:2px dashed var(--line);
-  background:rgba(184,134,44,.09);color:var(--green);
-  font-family:'Alegreya',serif;font-size:15px;font-weight:700;
+  width:100%;min-height:48px;border:0;border-top:2px solid var(--line);
+  background:rgba(184,134,44,.2);color:var(--ochre-d);
+  font-family:'Alegreya',serif;font-size:16px;font-weight:800;
 }
-.add-row:active{background:rgba(184,134,44,.22)}
+.add-row:active{background:rgba(184,134,44,.34)}
+.addmeal{margin-top:6px;background:var(--ochre)!important;border-color:var(--ochre-d)!important;color:#241708!important;border-style:solid!important;font-size:16px}
 .empty{padding:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic;font-size:14px}
 
 /* ---------- Accordion θρεπτικών + δέντρο ---------- */
@@ -375,6 +376,19 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive div{flex:1;min-width:0}
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
+/* ---------- Μεγέθη & φωτογραφίες μερίδας ---------- */
+.chip.psize{padding:0 13px}
+.chip.psize b{color:var(--green)}
+.pphotos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.pphoto{border:2px solid var(--line);border-radius:4px;background:var(--cream);padding:5px 5px 7px;display:flex;flex-direction:column;align-items:center;gap:1px;box-shadow:2px 2px 0 var(--shadow)}
+.pphoto:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--shadow);border-color:var(--green-2)}
+.pphoto img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px;display:block}
+.pphoto .pl{font-family:'Alegreya',serif;font-weight:700;font-size:13.5px;color:var(--green);margin-top:4px}
+.pphoto .pg{font-size:11px;color:var(--ink-faint)}
+/* ---------- FAB (γρήγορη προσθήκη κινητό) ---------- */
+.fab{position:fixed;right:15px;bottom:calc(var(--navh) + var(--sab) + 15px);z-index:55;width:58px;height:58px;border-radius:50%;border:2px solid var(--ochre-d);background:var(--ochre);color:#241708;box-shadow:0 5px 16px rgba(42,32,22,.45);display:flex;align-items:center;justify-content:center;padding:0}
+.fab svg{width:28px;height:28px;stroke:#241708;stroke-width:2.6;fill:none;stroke-linecap:round}
+.fab:active{transform:scale(.93)}
 
 /* ---------- Πηγές ---------- */
 .src{background:rgba(184,134,44,.09);border:2px dashed var(--line);border-radius:3px;padding:11px 12px;margin-top:13px;font-size:13.5px}
@@ -485,6 +499,7 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
   .toast{left:auto;right:24px;bottom:24px;max-width:340px}
   .gg{grid-template-columns:1fr 1fr 1fr 1fr}
   .row:hover{background:rgba(184,134,44,.08)}
+  .fab{display:none!important}
 }
 @media(min-width:820px) and (max-width:1000px){.g2{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -688,6 +703,7 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
   <div class="foot"><b>Rise Stronger</b><span data-t="footer">Ουσία, αλήθεια, χαρακτήρας.</span></div>
 </main>
 
+<button class="fab" id="fab" onclick="fabAdd()" aria-label="add food"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
 <nav class="tabbar" id="tabbar"></nav>
 
 <div class="sheet" id="sheet">
@@ -769,7 +785,7 @@ const T={
   greekFlag:'Ελληνική', verified:'Επαληθευμένο',
   per100:'ανά 100 g', sources:'Επιστημονικές Πηγές', updated:'Ενημέρωση', accessed:'Έλεγχος',
   caveat:'Σημείωση δεδομένων', addToDay:'Πρόσθεσε', addFav:'★ Στα αγαπημένα', remFav:'★ Αφαίρεση',
-  grams:'γραμμάρια', noData:'—', pickMeal:'Σε ποιο γεύμα;',
+  grams:'γραμμάρια', noData:'—', pickMeal:'Σε ποιο γεύμα;', portionSize:'Μέγεθος μερίδας',
   toastAdded:'Προστέθηκε στη μέρα', toastCopied:'Η χθεσινή αντιγράφηκε', toastNoPrev:'Η χθεσινή μέρα είναι άδεια',
   toastFav:'Μπήκε στα αγαπημένα', toastUnfav:'Βγήκε από τα αγαπημένα', toastGoals:'Ο στόχος ενημερώθηκε', toastDel:'Αφαιρέθηκε',
   modeCut:'Έλλειμμα', modeMaint:'Συντήρηση', modeBulk:'Όγκος',
@@ -849,7 +865,7 @@ const T={
   greekFlag:'Greek', verified:'Verified',
   per100:'per 100 g', sources:'Scientific Sources', updated:'Updated', accessed:'Checked',
   caveat:'Data note', addToDay:'Add', addFav:'★ Favourite', remFav:'★ Remove',
-  grams:'grams', noData:'—', pickMeal:'Which meal?',
+  grams:'grams', noData:'—', pickMeal:'Which meal?', portionSize:'Portion size',
   toastAdded:'Added to your day', toastCopied:'Yesterday copied', toastNoPrev:'Yesterday is empty',
   toastFav:'Added to favourites', toastUnfav:'Removed from favourites', toastGoals:'Goal updated', toastDel:'Removed',
   modeCut:'Deficit', modeMaint:'Maintenance', modeBulk:'Bulk',
@@ -1160,6 +1176,7 @@ const FOODS=[
 {
  id:'egg', cat:'other', greek:false, verified:true,
  el:'Αυγό, βραστό', en:'Egg, hard-boiled', elSub:'Ολόκληρο, σφιχτό', enSub:'Egg, whole, cooked, hard-boiled',
+ portions:[{el:'Μικρό',en:'Small',g:44},{el:'Μεσαίο',en:'Medium',g:50},{el:'Μεγάλο',en:'Large',g:56}],
  n:{
   kcal:155, alcohol:0, caffeine:0, water:74.6, carbs:1.1, fiber:0, sugars:1.1,
   fat:10.6, mufa:4.077, f161:0.31, f181:3.725, pufa:1.414, o3:0.035, epa:0.005, dha:0.038, o6:1.188, aa:0.149,
@@ -1216,6 +1233,7 @@ const FOODS=[
 {
  id:'banana', cat:'fruit', greek:false, verified:true,
  el:'Μπανάνα', en:'Banana', elSub:'Ωμή', enSub:'Bananas, raw',
+ portions:[{el:'Μικρή',en:'Small',g:101},{el:'Μεσαία',en:'Medium',g:118},{el:'Μεγάλη',en:'Large',g:136}],
  n:{
   kcal:89, alcohol:0, caffeine:0, water:74.9, carbs:22.8, fiber:2.6, starch:5.4, sugars:12.2, fructose:4.9, galactose:0, glucose:5, lactose:0, maltose:0.01, sucrose:2.4,
   fat:0.33, mufa:0.032, f161:0.01, f181:0.022, pufa:0.073, o3:0.027, o6:0.046, sat:0.11, f10:0.001, f12:0.002, f14:0.002, f16:0.102, f18:0.005, phytosterol:16,
@@ -1641,8 +1659,10 @@ function setTab(x){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   document.getElementById('p-'+x).classList.add('on');
   document.querySelectorAll('.tb').forEach((b,i)=>b.classList.toggle('on',TABS[i].id===x));
+  const fab=document.getElementById('fab');if(fab)fab.style.display=(x==='day')?'flex':'none';
   window.scrollTo(0,0);
 }
+function fabAdd(){openAdd(null)}
 function renderDay(){
   document.getElementById('dateLbl').innerHTML=fmtDate(cur);
   const d=getDay(cur);
@@ -1871,18 +1891,28 @@ function addListHTML(q){
   return list.map(f=>`<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${f.greek?`<span class="stamp flag">${t('greekFlag')}</span>`:''}<div class="fn">${fName(f)}</div><div class="fl">${fSub(f)} · <span class="num">${Math.round(f.n.kcal)}</span> kcal / 100 g</div></button>`).join('')||`<div class="empty">${t('noRes')}</div>`;
 }
 function filterAdd(){document.getElementById('addList').innerHTML=addListHTML((document.getElementById('qa').value||'').trim().toLowerCase())}
+function portionsHTML(f,id){
+  if(!f.portions||!f.portions.length)return '';
+  const hasImg=f.portions.some(p=>p.img);
+  const cards=f.portions.map(p=>{const nm=(p[L]||p.el).replace(/</g,'&lt;');
+    if(p.img)return `<button class="pphoto" onclick="setG2(${p.g},'${id}')"><img src="${p.img}" alt="${nm}"><span class="pl">${nm}</span><span class="pg num">≈ ${p.g} g</span></button>`;
+    return `<button class="chip psize" onclick="setG2(${p.g},'${id}')">${nm} · <b class="num">${p.g}g</b></button>`;
+  }).join('');
+  return `<label class="f">${t('portionSize')}</label><div class="${hasImg?'pphotos':'chips'}" style="${hasImg?'':'display:flex;gap:7px;flex-wrap:wrap;'}margin-bottom:14px">${cards}</div>`;
+}
 function pickPortion(id){
   const f=FMAP[id];if(!f)return;
-  const quick=[30,50,100,150,200,250];
+  const quick=f.portions&&f.portions.length?[]:[30,50,100,150,200,250];
+  const startG=(f.portions&&f.portions.length)?(f.portions[Math.min(1,f.portions.length-1)].g):100;
   showSheet(
     `<div style="flex:1;min-width:0"><h2>${fName(f)}</h2><div class="sub">${fSub(f)}</div></div><button class="sx" onclick="closeSheet()">×</button>`,
-    `<div class="portion"><button class="pbtn" onclick="bumpG(-10)">−</button><div class="pin"><input type="number" inputmode="decimal" id="pg" value="100" min="1" step="5" oninput="onG('${id}')" class="num"><span>g</span></div><button class="pbtn" onclick="bumpG(10)">+</button></div>
-     <div class="chips" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px">${quick.map(q=>`<button class="chip" onclick="setG2(${q},'${id}')">${q} g</button>`).join('')}</div>
+    `${portionsHTML(f,id)}<label class="f">${t('grams')}</label><div class="portion"><button class="pbtn" onclick="bumpG(-10)">−</button><div class="pin"><input type="number" inputmode="decimal" id="pg" value="${startG}" min="1" step="5" oninput="onG('${id}')" class="num"><span>g</span></div><button class="pbtn" onclick="bumpG(10)">+</button></div>
+     <div class="chips" style="display:${quick.length?'flex':'none'};gap:7px;flex-wrap:wrap;margin-bottom:12px">${quick.map(q=>`<button class="chip" onclick="setG2(${q},'${id}')">${q} g</button>`).join('')}</div>
      <div class="plive" id="plive"></div>
      <div style="margin-top:12px"><label class="f">${t('pickMeal')}</label><div class="chips" id="mealPick" style="display:flex;gap:7px;flex-wrap:wrap">${mealPickHTML(id)}</div></div>`,
     `<button class="btn full" onclick="doAdd('${id}')">${t('addToDay')}</button>`
   );
-  livePortion(f,100);
+  livePortion(f,startG);
 }
 function pickPortionKeepG(id){const g=Math.max(1,parseFloat(document.getElementById('pg').value)||100);pickPortion(id);document.getElementById('pg').value=g;onG(id)}
 function onG(id){livePortion(FMAP[id],Math.max(0,parseFloat(document.getElementById('pg').value)||0))}
