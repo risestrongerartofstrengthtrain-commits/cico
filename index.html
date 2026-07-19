@@ -381,6 +381,30 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
+/* ── Συνδυασμοί απορρόφησης ── */
+.abshint{font-size:13px;line-height:1.5;color:var(--ink-soft);font-style:italic;
+  border-left:3px solid var(--ochre-d);padding:6px 0 6px 10px;margin:2px 0 14px}
+.absg{border:2px solid var(--line);border-radius:4px;padding:11px 12px;margin-bottom:12px;
+  background:rgba(255,255,255,.35)}
+.absh{font-family:'Alegreya',serif;font-weight:800;font-size:16px;color:var(--green);
+  margin-bottom:9px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.absbadge{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  border:1.5px solid var(--ink-soft);color:var(--ink-soft);border-radius:2px;padding:2px 6px}
+.absbadge.hi{border-color:var(--green);color:var(--green);background:rgba(29,63,51,.07)}
+.absbadge.deb{border-color:var(--red);color:var(--red);background:rgba(150,56,42,.06)}
+.abss{margin-bottom:9px}
+.abss:last-child{margin-bottom:0}
+.abss>b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
+.abss.up>b{color:var(--green)}
+.abss.dn>b{color:var(--red)}
+.abss.tip>b{color:var(--ochre-d)}
+.abss.deb>b{color:var(--red)}
+.abss ul{margin:0;padding-left:17px}
+.abss li{font-size:14px;line-height:1.5;margin-bottom:6px}
+.abss.deb p{font-size:14px;line-height:1.55;margin:0}
+.absm{margin-top:5px;padding:7px 9px;border-radius:3px;font-size:14px;line-height:1.5;
+  background:rgba(184,134,44,.13);border-left:3px solid var(--ochre-d)}
+.absr{font-size:11px;color:var(--ochre-d);font-weight:700}
 /* Επικεφαλίδες τμημάτων στη λίστα προσθήκης */
 .secl{font-family:'Alegreya',serif;font-weight:800;font-size:12px;letter-spacing:.09em;
   text-transform:uppercase;color:var(--ochre-d);margin:14px 0 7px;padding-bottom:4px;
@@ -816,6 +840,11 @@ const T={
   left:'μένουν', over:'πάνω',
   protein:'Πρωτεΐνη', carbs:'Υδατάνθρακες', fat:'Λίπος', fiber:'Φυτικές ίνες',
   kcalL:'Θερμίδες', sugarsL:'Ζάχαρα', satL:'Κορεσμένα', naL:'Νάτριο',
+  absTitle:'Με τι να το συνδυάσεις', absHelps:'Βοηθούν την απορρόφηση',
+  absBlocks:'Την εμποδίζουν', absTip:'Πρακτικό κόλπο', absCareful:'Προσοχή σε ό,τι θα διαβάσεις αλλού',
+  absRefs:'Μελέτες που χρησιμοποιήθηκαν', absStrong:'Ισχυρά δεδομένα',
+  absMid:'Μέτρια δεδομένα', absDebated:'Αμφιλεγόμενο',
+  absStar:'Ο αστερίσκος (*) σημαίνει ότι το νούμερο είναι κατά προσέγγιση — το μέγεθος της επίδρασης αλλάζει ανάλογα με το γεύμα, τη δόση και το άτομο.',
   recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
   mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
   ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
@@ -908,6 +937,11 @@ const T={
   left:'left', over:'over',
   protein:'Protein', carbs:'Carbs', fat:'Fat', fiber:'Fiber',
   kcalL:'Calories', sugarsL:'Sugars', satL:'Saturated', naL:'Sodium',
+  absTitle:'What to combine it with', absHelps:'Help absorption',
+  absBlocks:'Block absorption', absTip:'Practical trick', absCareful:'Careful with what you read elsewhere',
+  absRefs:'Studies used', absStrong:'Strong evidence',
+  absMid:'Moderate evidence', absDebated:'Debated',
+  absStar:'An asterisk (*) means the number is approximate — the size of the effect changes with the meal, the dose and the person.',
   recentF:'Recent', frequentF:'Your usual', allF:'All foods',
   mineTag:'Mine', addOwn:'+ My own food',
   ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
@@ -2664,6 +2698,106 @@ function showSheet(top,body,foot){
   unstick(sh);
 }
 function closeSheet(){document.getElementById('sheet').classList.remove('on');document.body.style.overflow=''}
+/* ═══════════════════════════════════════════════════════════════════
+   ΑΠΟΡΡΟΦΗΣΗ — ΣΥΝΔΥΑΣΜΟΙ ΠΟΥ ΒΟΗΘΟΥΝ ΚΑΙ ΠΟΥ ΕΜΠΟΔΙΖΟΥΝ
+   ───────────────────────────────────────────────────────────────────
+   Κανόνας: κανένα νούμερο χωρίς μελέτη. Όπου το μέγεθος της επίδρασης
+   ποικίλλει ή προέρχεται από λίγες μελέτες, μπαίνει ΑΣΤΕΡΙΣΚΟΣ (*) που
+   σημαίνει «κατά προσέγγιση». Όπου τα δεδομένα συγκρούονται, το λέμε.
+   Επίπεδα βεβαιότητας: 'hi' ισχυρό · 'mid' μέτριο · 'debated' αμφιλεγόμενο
+   ═══════════════════════════════════════════════════════════════════ */
+const ABS=[
+ {nut:'fe', min:1.2, lvl:'hi',
+  el:'Σίδηρος από φυτικές τροφές', en:'Iron from plant foods',
+  plus:[{el:'Βιταμίνη C στο ίδιο γεύμα — λεμόνι, πιπεριά, πορτοκάλι, μαϊντανός, ακτινίδιο',
+         en:'Vitamin C in the same meal — lemon, pepper, orange, parsley, kiwi',
+         math:{el:'50 mg βιταμίνης C ≈ <b>3× περισσότερος</b> σίδηρος · 100 mg ≈ <b>4×</b>',
+               en:'50 mg vitamin C ≈ <b>3× more</b> iron · 100 mg ≈ <b>4×</b>'}, ref:0},
+        {el:'Λίγο κρέας ή ψάρι μαζί με τα όσπρια («παράγοντας κρέατος»)',
+         en:'Some meat or fish alongside legumes (the "meat factor")', ref:1}],
+  minus:[{el:'Τσάι, καφές και κακάο στο ίδιο γεύμα (πολυφαινόλες)',
+          en:'Tea, coffee and cocoa with the meal (polyphenols)',
+          math:{el:'Ρόφημα με 20–50 mg πολυφαινόλες: <b>−50% έως −70%</b>* απορρόφηση · καφές με συμπλήρωμα σιδήρου: <b>−66%</b>*',
+                en:'Beverage with 20–50 mg polyphenols: <b>−50% to −70%</b>* absorption · coffee with an iron supplement: <b>−66%</b>*'}, ref:2},
+         {el:'Φυτικά οξέα σε ακατέργαστα δημητριακά και όσπρια. Το μούλιασμα και η ζύμωση τα μειώνουν.',
+          en:'Phytates in wholegrains and legumes. Soaking and fermenting reduce them.', ref:5}],
+  fix:[{el:'Πιες τον καφέ ή το τσάι <b>μία ώρα μετά</b> το γεύμα — η αναστολή πέφτει περίπου στη μισή*.',
+        en:'Drink coffee or tea <b>one hour after</b> the meal — inhibition drops by roughly half*.', ref:3}]},
+
+ {nut:'ca', min:120, lvl:'debated',
+  el:'Ασβέστιο', en:'Calcium',
+  plus:[{el:'Βιταμίνη D — από ήλιο, λιπαρά ψάρια, αυγό',
+         en:'Vitamin D — from sun, oily fish, egg',
+         math:{el:'Η απορρόφηση ασβεστίου ανεβαίνει από <b>52% σε 58%</b> καθώς η βιταμίνη D στο αίμα πάει από 20 σε 66 ng/ml. Πραγματικό αλλά <b>μέτριο</b> όφελος — όχι θαύμα.',
+               en:'Calcium absorption rises from <b>52% to 58%</b> as blood vitamin D goes from 20 to 66 ng/ml. Real but <b>modest</b> — not a miracle.'}, ref:6}],
+  minus:[],
+  debate:{el:'Θα διαβάσεις παντού ότι «το ασβέστιο μπλοκάρει τον σίδηρο». Σε μελέτες <b>ενός γεύματος</b> όντως τον μειώνει. Όμως σε μελέτες <b>εβδομάδων και μηνών</b> ο δείκτης σιδήρου δεν επηρεάζεται — ο οργανισμός προσαρμόζεται. Σε γυναίκες που δεν κυοφορούν, δόσεις <b>κάτω από 800 mg</b> δεν έδειξαν αναστολή. Γι’ αυτό <b>δεν σου δίνουμε ποσοστό</b>: θα ήταν εντυπωσιακό και λάθος.',
+   en:'You will read everywhere that "calcium blocks iron". In <b>single-meal</b> studies it does reduce it. But in studies over <b>weeks and months</b> iron status is unaffected — the body adapts. In non-pregnant women, doses <b>below 800 mg</b> showed no inhibition. That is why we <b>give you no percentage</b>: it would be striking and wrong.', refs:[7,8,9]}},
+
+ {nut:'betacar', min:400, lvl:'hi',
+  el:'Καροτενοειδή — προβιταμίνη Α, λουτεΐνη, λυκοπένιο', en:'Carotenoids — provitamin A, lutein, lycopene',
+  plus:[{el:'Λίπος στο ίδιο πιάτο — ελαιόλαδο, αβοκάντο, ξηροί καρποί, αυγό',
+         en:'Fat on the same plate — olive oil, avocado, nuts, egg',
+         math:{el:'Σαλάτα με αβοκάντο ή λάδι αβοκάντο: β-καροτένιο <b>×15,3</b>, α-καροτένιο <b>×7,2</b>, λουτεΐνη <b>×5,1</b>. Χρειάζονται <b>πάνω από 6 g λίπους</b> για σαλάτα· 3–5 g αρκούν σε μαγειρεμένο γεύμα.*',
+               en:'Salad with avocado or avocado oil: β-carotene <b>×15.3</b>, α-carotene <b>×7.2</b>, lutein <b>×5.1</b>. Salads need <b>more than 6 g fat</b>; 3–5 g suffice in a cooked meal.*'}, ref:4}],
+  minus:[{el:'Σαλάτα χωρίς καθόλου λίπος — τα καροτενοειδή περνούν σχεδόν αναξιοποίητα.',
+          en:'A completely fat-free salad — carotenoids pass through largely unused.', ref:4}]},
+
+ {nut:'zn', min:1.5, lvl:'mid',
+  el:'Ψευδάργυρος', en:'Zinc',
+  plus:[{el:'Πρωτεΐνη ζωικής προέλευσης στο γεύμα', en:'Animal protein in the meal', ref:5}],
+  minus:[{el:'Φυτικά οξέα από ακατέργαστα δημητριακά και όσπρια',
+          en:'Phytates from wholegrains and legumes',
+          math:{el:'Διατροφή κυρίως ακατέργαστων δημητριακών/οσπρίων: απορρόφηση <b>10–15%</b>. Μεικτή ζωική+φυτική: <b>20–30%</b>. Πλούσια σε ζωικά: <b>30–50%</b>.*',
+                en:'Diet mainly of unrefined grains/legumes: absorption <b>10–15%</b>. Mixed animal+plant: <b>20–30%</b>. Rich in animal foods: <b>30–50%</b>.*'}, ref:5}],
+  fix:[{el:'Μούλιασε τα όσπρια από το βράδυ και πέτα το νερό. Η ζύμωση (προζύμι) βοηθά ακόμα περισσότερο.',
+        en:'Soak legumes overnight and discard the water. Fermentation (sourdough) helps even more.', ref:5}]},
+
+ {nut:'vitD', min:1, lvl:'hi',
+  el:'Βιταμίνη D', en:'Vitamin D',
+  plus:[{el:'Λίπος στο γεύμα — είναι λιποδιαλυτή',
+         en:'Fat in the meal — it is fat-soluble', ref:4}], minus:[]},
+ {nut:'vitK', min:20, lvl:'hi',
+  el:'Βιταμίνη K', en:'Vitamin K',
+  plus:[{el:'Λίπος στο γεύμα — ελαιόλαδο πάνω στα χόρτα και τα πράσινα λαχανικά',
+         en:'Fat in the meal — olive oil over greens', ref:4}], minus:[]},
+ {nut:'vitE', min:2, lvl:'hi',
+  el:'Βιταμίνη E', en:'Vitamin E',
+  plus:[{el:'Λίπος στο γεύμα — είναι λιποδιαλυτή', en:'Fat in the meal — it is fat-soluble', ref:4}], minus:[]}
+];
+const ABSREF=[
+ {t:'Hallberg L, Brune M, Rossander L. «Effect of ascorbic acid on iron absorption from different types of meals.» Hum Nutr Appl Nutr, 1986. Μελέτη με ραδιοϊσότοπα σιδήρου σε 299 άτομα.', u:'https://pubmed.ncbi.nlm.nih.gov/3700141/'},
+ {t:'Iron bioavailability and dietary reference values. Am J Clin Nutr — ανασκόπηση για τον «παράγοντα κρέατος».', u:'https://ajcn.nutrition.org/article/S0002-9165(23)01839-7/fulltext'},
+ {t:'Hurrell RF, Reddy M, Cook JD. «Inhibition of non-haem iron absorption in man by polyphenolic-containing beverages.» Br J Nutr, 1999.', u:'https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/inhibition-of-nonhaem-iron-absorption-in-man-by-polyphenoliccontaining-beverages/5CFF5FF58F6CBA86D3646981A7DF0418'},
+ {t:'«A 1-h time interval between a meal containing iron and consumption of tea attenuates the inhibitory effects on iron absorption.» Μελέτη σταθερών ισοτόπων σε υγιείς γυναίκες, Am J Clin Nutr.', u:'https://www.sciencedirect.com/science/article/pii/S0002916522026983'},
+ {t:'Unlu NZ, Bohn T, Clinton SK, Schwartz SJ. «Carotenoid absorption from salad and salsa by humans is enhanced by the addition of avocado or avocado oil.» J Nutr 135:431-436, 2005.', u:'https://pubmed.ncbi.nlm.nih.gov/15735074/'},
+ {t:'Φυτικά οξέα και ψευδάργυρος — μοριακή αναλογία φυτικών/ψευδαργύρου και εκτιμώμενη απορρόφηση. Ανασκοπήσεις βιοδιαθεσιμότητας ιχνοστοιχείων, J Nutr / MJA.', u:'https://www.mja.com.au/journal/2013/199/4/zinc-and-vegetarian-diets'},
+ {t:'«Vitamin D supplementation increases calcium absorption without a threshold effect.» Am J Clin Nutr.', u:'https://ajcn.nutrition.org/article/S0002-9165(23)04993-6/fulltext'},
+ {t:'«Calcium Intake and Iron Status in Human Studies: A Systematic Review and Dose-Response Meta-Analysis.» J Nutr.', u:'https://www.sciencedirect.com/science/article/pii/S0022316622001420'},
+ {t:'«Calcium from milk or calcium-fortified foods does not inhibit nonheme-iron absorption from a whole diet consumed over a 4-d period.» Am J Clin Nutr, 2004.', u:'https://pubmed.ncbi.nlm.nih.gov/15277162/'},
+ {t:'«Calcium does not inhibit the absorption of 5 mg of nonheme or heme iron at doses less than 800 mg in nonpregnant women.» J Nutr, 2011.', u:'https://pubmed.ncbi.nlm.nih.gov/21795430/'}
+];
+/* Ποια θρεπτικά της τροφής αξίζει να σχολιάσουμε: μόνο όσα υπάρχουν σε ουσιαστική ποσότητα */
+function absFor(f){ return ABS.filter(a=>{const v=f.n[a.nut]; return typeof v==='number' && v>=a.min}); }
+function absHTML(f){
+  const list=absFor(f); if(!list.length)return '';
+  const li=x=>`<li>${x[L]||x.el}${x.math?`<div class="absm">${(x.math[L]||x.math.el)}</div>`:''}${x.ref!=null?`<sup class="absr">[${x.ref+1}]</sup>`:''}</li>`;
+  const blocks=list.map(a=>{
+    const badge=a.lvl==='debated'?`<span class="absbadge deb">${t('absDebated')}</span>`:(a.lvl==='hi'?`<span class="absbadge hi">${t('absStrong')}</span>`:`<span class="absbadge">${t('absMid')}</span>`);
+    let h=`<div class="absg"><div class="absh">${a[L]||a.el}${badge}</div>`;
+    if(a.plus&&a.plus.length)h+=`<div class="abss up"><b>${t('absHelps')}</b><ul>${a.plus.map(li).join('')}</ul></div>`;
+    if(a.minus&&a.minus.length)h+=`<div class="abss dn"><b>${t('absBlocks')}</b><ul>${a.minus.map(li).join('')}</ul></div>`;
+    if(a.fix&&a.fix.length)h+=`<div class="abss tip"><b>${t('absTip')}</b><ul>${a.fix.map(li).join('')}</ul></div>`;
+    if(a.debate)h+=`<div class="abss deb"><b>${t('absCareful')}</b><p>${a.debate[L]||a.debate.el}</p><div class="absr">${(a.debate.refs||[]).map(r=>'['+(r+1)+']').join(' ')}</div></div>`;
+    return h+'</div>';
+  }).join('');
+  const used=[...new Set(list.flatMap(a=>[...(a.plus||[]),...(a.minus||[]),...(a.fix||[])].map(x=>x.ref).concat(a.debate?a.debate.refs||[]:[])).filter(r=>r!=null))].sort((x,y)=>x-y);
+  const refs=used.map(r=>`<li><sup>[${r+1}]</sup> ${ABSREF[r].t}<br><a href="${ABSREF[r].u}" target="_blank" rel="noopener">${ABSREF[r].u}</a></li>`).join('');
+  return `<div class="acc open"><button class="acc-h" onclick="this.parentNode.classList.toggle('open')"><span class="cv">–</span>${t('absTitle')}</button>
+    <div class="acc-b"><p class="abshint">${t('absStar')}</p>${blocks}
+    <div class="src"><h4>${t('absRefs')}</h4><ul>${refs}</ul></div></div></div>`;
+}
+
 function openFood(id){
   const f=FMAP[id];if(!f)return;
   const isFav=favs.includes(id), gv=nid=>f.n[nid];
@@ -2679,7 +2813,7 @@ function openFood(id){
     `<div style="flex:1;min-width:0"><h2>${fName(f)}</h2><div class="sub">${fSub(f)} · ${t('per100')}</div>
        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">${f.greek?`<span class="stamp">${t('greekFlag')}</span>`:''}${f.verified?`<span class="stamp green">${t('verified')}</span>`:''}</div></div>
      <button class="sx" onclick="closeSheet()">×</button>`,
-    `<div class="plive" id="plive"></div>${tbl}
+    `<div class="plive" id="plive"></div>${absHTML(f)}${tbl}
      ${f.note?`<div class="warn"><b>${t('caveat')}</b>${f.note[L]||f.note.el}</div>`:''}
      <div class="src"><h4>${t('sources')}</h4><ul>${srcs}</ul></div>`,
     `<button class="btn ghost" onclick="toggleFav('${f.id}')" style="flex:0 0 auto">${isFav?t('remFav'):t('addFav')}</button>
