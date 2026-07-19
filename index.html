@@ -35,6 +35,28 @@
   --sat:env(safe-area-inset-top,0px);
   --sab:env(safe-area-inset-bottom,0px);
 }
+/* ── ΒΡΑΔΙΝΗ ΛΕΙΤΟΥΡΓΙΑ ──
+   Δεν γίνεται «μαύρη εφαρμογή». Μένει vintage: λάδι λάμπας, κεχριμπάρι,
+   παλιό χαρτί στο σκοτάδι. Ίδια ψυχή, χαμηλωμένα φώτα. */
+body.night{
+  --kraft:#241d16; --kraft-d:#1b1610;
+  --cream:#2b241b; --cream-2:#241e16;
+  --ink:#ede0c6; --ink-soft:#c3b193; --ink-faint:#93805f;
+  --green:#7fb89a; --green-2:#9ccdb0; --green-3:#12241d;
+  --ochre:#d8a949; --ochre-l:#e8c473; --ochre-d:#c9973a;
+  --red:#d97a63; --red-d:#b85c46;
+  --line:#4a3d2c; --line-2:#5c4c37;
+  --shadow:rgba(0,0,0,.55);
+  background-color:#191410;
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(216,169,73,.07) 0, transparent 36%),
+    radial-gradient(circle at 84% 80%, rgba(0,0,0,.4) 0, transparent 42%);
+}
+body.night .sign{background:linear-gradient(178deg,#201912,#181310)}
+body.night .scale-card{background:linear-gradient(170deg,#20301f,#16241c)}
+body.night input,body.night select,body.night textarea{background:#332a1f;color:var(--ink);border-color:var(--line)}
+body.night .fcard,body.night .ledger,body.night .potlist{background:rgba(255,240,210,.04)}
+body.night img.logoimg,body.night .auth-logo img{filter:brightness(.92) contrast(1.05)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
 body{
@@ -418,6 +440,58 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .asksrc a{color:var(--green-2)}
 .askl{margin:7px 0 0;padding-left:18px}
 .askl li{font-size:14px;line-height:1.5;margin-bottom:4px}
+/* ── Εγκυκλοπαίδεια & αντίγραφο ── */
+.encintro{font-size:14px;line-height:1.55;color:var(--ink-soft);margin-bottom:10px}
+.encdoc{font-size:13px;line-height:1.55;padding:10px 12px;border-radius:3px;margin-bottom:14px;
+  background:rgba(29,63,51,.08);border-left:3px solid var(--green)}
+.encdv{float:right;font-size:11.5px;font-weight:700;color:var(--ochre-d);letter-spacing:.02em}
+.enctip{padding:8px 10px;border-left:3px solid var(--ochre-d);background:rgba(184,134,44,.12);
+  border-radius:3px;font-size:14px;line-height:1.5}
+.encsrc{margin-top:10px;font-size:13.5px;color:var(--ink-soft)}
+.encsrc ul{margin:6px 0 7px;padding-left:18px}
+.encsrc li{margin-bottom:3px}
+.encsrc small{display:block;font-size:11.5px;font-style:italic;line-height:1.45}
+.bkwhy{font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin-bottom:12px}
+/* ── Εικονογράφηση τροφών ── */
+.fcard{position:relative}
+.fic{position:absolute;right:11px;top:50%;transform:translateY(-50%);width:34px;height:34px;
+  opacity:.5;pointer-events:none}
+.fcard .fn,.fcard .fl{padding-right:44px}
+.ficbig{width:52px;height:52px;opacity:.62;flex:0 0 auto}
+/* ── Ο διακόπτης νύχτας ── */
+.nightbtn{position:fixed;right:15px;top:calc(var(--sat) + 12px);z-index:60;width:40px;height:40px;
+  border-radius:50%;border:2px solid var(--ochre-d);background:rgba(246,238,218,.85);
+  color:var(--ochre-d);font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 7px rgba(0,0,0,.2)}
+body.night .nightbtn{background:rgba(43,36,27,.9)}
+/* ── Onboarding ── */
+.onb{position:fixed;inset:0;z-index:400;display:none;background:linear-gradient(175deg,#1d3f33,#14291f);
+  padding:calc(var(--sat) + 22px) 20px calc(var(--sab) + 22px);overflow-y:auto}
+.onb.on{display:flex;align-items:center;justify-content:center}
+.onb-card{width:100%;max-width:430px;background:linear-gradient(175deg,var(--cream),var(--cream-2));
+  border:3px solid var(--ochre);border-radius:8px;padding:24px 20px 20px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.onb-step{font-family:'Alegreya',serif;font-size:11px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ochre-d);text-align:center;margin-bottom:14px}
+.onb-ic{display:flex;justify-content:center;margin-bottom:14px}
+.onb-ic svg{width:76px;height:76px}
+.onb h2{font-family:'Alegreya',serif;font-size:25px;color:var(--green);text-align:center;
+  line-height:1.2;margin-bottom:11px}
+.onb p{font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:11px}
+.onb p b{color:var(--ink)}
+.onb-dots{display:flex;justify-content:center;gap:7px;margin:18px 0 15px}
+.onb-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);display:block}
+.onb-dots i.on{background:var(--green);transform:scale(1.25)}
+.onb-nav{display:flex;gap:9px}
+.onb-nav .btn{flex:1}
+.onb-skip{width:100%;margin-top:10px;background:none;border:0;color:var(--ink-faint);
+  font-size:13px;text-decoration:underline;min-height:36px}
+/* ── Μοιρασμένο πιάτο ── */
+.shareb{display:flex;align-items:center;gap:9px;border:2px dashed var(--ochre-d);border-radius:4px;
+  padding:9px 11px;margin-bottom:12px;background:rgba(184,134,44,.09)}
+.shareb .sl{flex:1;min-width:0;font-size:13.5px;line-height:1.35;color:var(--ink-soft)}
+.shareb .sn{display:flex;align-items:center;border:2px solid var(--line);border-radius:3px;background:var(--cream)}
+.shareb .sn button{width:34px;height:38px;border:0;background:transparent;font-size:19px;color:var(--green);font-weight:800}
+.shareb .sn span{min-width:26px;text-align:center;font-weight:800;font-size:16px}
 /* ── Η Κατσαρόλα ── */
 .potlist{border:2px solid var(--line);border-radius:4px;overflow:hidden;background:var(--cream)}
 .potempty{padding:16px 12px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:14px}
@@ -640,6 +714,9 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
     <div id="authBody"></div>
   </div>
 </div>
+
+<button class="nightbtn" id="nightBtn" onclick="toggleNight()" aria-label="night mode">☾</button>
+<div class="onb" id="onb"><div class="onb-card" id="onbBody"></div></div>
 
 <header class="sign">
   <div class="sign-in">
@@ -932,6 +1009,13 @@ const T={
   fastAllGood:'Μέχρι στιγμής καλύπτεις τα βασικά της νηστείας. Συνέχισε έτσι.',
   fastDoc:'Αυτά είναι γενικές παρατηρήσεις από τα δεδομένα της ημέρας σου, όχι ιατρική συμβουλή. Πριν αλλάξεις τη διατροφή σου ή πάρεις οποιοδήποτε συμπλήρωμα, <b>μίλα με τον γιατρό ή τον διαιτολόγο σου</b> — εκείνοι ξέρουν το ιστορικό σου, τις εξετάσεις σου και τι πραγματικά χρειάζεσαι.',
   fastNo:'Δεν επιτρέπεται σήμερα', fastStrict:'Αυστηρή', fastOil:'Με λάδι', fastFish:'Με ψάρι', fastFree:'Κατάλυση',
+  nightOn:'Βραδινή λειτουργία: ανοιχτή.', nightOff:'Βραδινή λειτουργία: κλειστή.',
+  shareLbl:'Το μοιραστήκατε; Πες σε πόσα άτομα — θα κρατήσω το δικό σου μερίδιο.',
+  bkTitle:'Αντίγραφο ασφαλείας', bkSave:'Κατέβασε αντίγραφο', bkLoad:'Φόρτωσε αντίγραφο',
+  bkDone:'Το αντίγραφο κατέβηκε.', bkLoaded:'Τα δεδομένα σου επανήλθαν.',
+  bkBad:'Το αρχείο δεν φαίνεται σωστό.', bkConfirm:'Θα αντικατασταθούν όλα τα τωρινά σου δεδομένα. Σίγουρα;',
+  bkWhy:'Τα δεδομένα σου ζουν στο κινητό σου. Αν καθαρίσεις τον browser ή αλλάξεις συσκευή, χάνονται. Κατέβασε ένα αντίγραφο κάθε τόσο — είναι ένα μικρό αρχείο που κρατά τα πάντα.',
+  encTitle:'Οι βιταμίνες και τα μέταλλα',
   recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
   mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
   ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
@@ -1051,6 +1135,13 @@ const T={
   fastAllGood:'So far you are covering the basics of the fast. Keep going.',
   fastDoc:'These are general observations from your day’s data, not medical advice. Before changing your diet or taking any supplement, <b>talk to your doctor or dietitian</b> — they know your history, your blood work and what you actually need.',
   fastNo:'Not allowed today', fastStrict:'Strict', fastOil:'With oil', fastFish:'With fish', fastFree:'Fast-free',
+  nightOn:'Night mode: on.', nightOff:'Night mode: off.',
+  shareLbl:'Did you share it? Say how many people — I will keep your share.',
+  bkTitle:'Backup', bkSave:'Download backup', bkLoad:'Load backup',
+  bkDone:'Backup downloaded.', bkLoaded:'Your data is back.',
+  bkBad:'That file does not look right.', bkConfirm:'This will replace all your current data. Sure?',
+  bkWhy:'Your data lives on your phone. If you clear the browser or change device, it is gone. Download a backup now and then.',
+  encTitle:'Vitamins and minerals',
   recentF:'Recent', frequentF:'Your usual', allF:'All foods',
   mineTag:'Mine', addOwn:'+ My own food',
   ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
@@ -2292,6 +2383,43 @@ const FOODS=[
      en:'USDA FoodData Central — "Pork, loin, boneless, lean and fat, cooked, broiled" (FDC ID 167841). 81-nutrient profile of the cooked meat.',
      url:'https://fdc.nal.usda.gov/food-details/167841/nutrients', d:'2019-04', a:'2026-07-19'}],
    note:{el:'<b>Το καλαμάκι δεν είναι τυποποιημένο.</b> Το βάρος αλλάζει από μαγαζί σε μαγαζί — υπολογίσαμε <b>55 g ψημένο κρέας</b> ανά καλαμάκι*, που αντιστοιχεί περίπου σε 70–75 g ωμό. Αν το δικό σου είναι μεγαλύτερο ή μικρότερο, άλλαξε τα γραμμάρια.<br><br><b>Δεν περιλαμβάνονται:</b> το λάδι της μαρινάδας και του ψησίματος (συνήθως προσθέτει <b>20–30 kcal</b> ανά καλαμάκι), η πίτα, το τζατζίκι, οι πατάτες και οι σάλτσες. Πρόσθεσέ τα ξεχωριστά αν τα έφαγες.<br><br>Τα θρεπτικά είναι του καθαρού ψημένου κρέατος από το USDA. Στην Ελλάδα το χοιρινό καλαμάκι φτιάχνεται συχνά από <b>λαιμό</b>, που είναι πιο λιπαρός από το φιλέτο — οπότε αν το δικό σου ήταν ζουμερό, βάλε λίγο παραπάνω.', en:'<b>A souvlaki skewer is not standardised.</b> We assume <b>55 g of cooked meat</b> per skewer*, roughly 70–75 g raw. Oil from the marinade and grilling (usually <b>20–30 kcal</b> per skewer), pita, tzatziki, chips and sauces are <b>not included</b> — add them separately.'}
+  },
+  {
+   id:'flour', cat:'grain', verified:true,
+   el:'Αλεύρι', en:'Wheat flour', elSub:'Λευκό, για όλες τις χρήσεις', enSub:'Wheat flour, white, all-purpose, enriched, unbleached',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:8},{el:'Κούπα',en:'Κούπα',g:125}],
+   n:{ kcal:364, alcohol:0, caffeine:0, water:11.9, carbs:76.3, fiber:2.7, sugars:0.27, fat:0.98, mufa:0.087, f161:0, f181:0.087, pufa:0.413, epa:0, dha:0, aa:0, sat:0.155, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.148, f18:0.007, chol:0, protein:10.3, ala_a:332, arg:417, asp:435, cys:219, glu:3480, gly:371, his:230, ile:357, leu:710, lys:228, met:183, phe:520, pro:1200, ser:516, thr:281, trp:127, tyr:312, val:415, b1:0.785, b2:0.494, b3:5.9, b5:0.438, b6:0.044, b12:0, b9:183, vitA:0, retinol:0, betacar:1, alphacar:0, betacryp:0, lutzea:79, lycopene:0, vitC:0, vitD:0, vitE:0.23, toco_b:0.14, toco_g:1.25, toco_d:0, vitK:0.3, ca:15, cu:0.144, fe:4.64, mg:22, mn:0.682, p:108, k:107, se:33.9, na:2, zn:0.7, ala:0.022, la:0.391, o3:0.022, o6:0.391 },
+   src:[{el:'USDA FoodData Central — «Wheat flour, white, all-purpose, enriched, unbleached» (FDC ID 168936). Προφίλ 79 θρεπτικών.',
+     en:'USDA FoodData Central — "Wheat flour, white, all-purpose, enriched, unbleached" (FDC ID 168936).',
+     url:'https://fdc.nal.usda.gov/food-details/168936/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'phyllo', cat:'grain', greek:true, verified:true,
+   el:'Φύλλο κρούστας', en:'Phyllo dough', elSub:'Ωμό', enSub:'Phyllo dough',
+   portions:[{el:'Φύλλο',en:'Φύλλο',g:20}],
+   n:{ kcal:299, alcohol:0, caffeine:0, water:32.6, carbs:52.6, fiber:1.9, sugars:0.18, fat:6, mufa:3.15, f161:0.011, f181:3.15, pufa:0.923, epa:0, dha:0, aa:0, sat:1.47, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.027, f16:0.794, f18:0.649, chol:0, protein:7.1, ala_a:229, arg:288, asp:300, cys:151, glu:2400, gly:256, his:159, ile:246, leu:490, lys:158, met:126, phe:359, pro:826, ser:356, thr:194, trp:88, tyr:215, val:286, b1:0.541, b2:0.341, b3:4.07, b5:0.302, b6:0.03, b12:0, choline:6.9, b9:88, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:11, lycopene:0, vitC:0, vitD:0, vitE:0.08, vitK:2.5, ca:11, cu:0.101, fe:3.21, mg:15, mn:0.476, p:75, k:74, se:23.3, na:483, zn:0.49, ala:0.047, la:0.876, o3:0.047, o6:0.876 },
+   src:[{el:'USDA FoodData Central — «Phyllo dough» (FDC ID 172791). Προφίλ 77 θρεπτικών.',
+     en:'USDA FoodData Central — "Phyllo dough" (FDC ID 172791).',
+     url:'https://fdc.nal.usda.gov/food-details/172791/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'pita', cat:'grain', greek:true, verified:true,
+   el:'Πίτα σουβλακιού', en:'Bread', elSub:'Λευκή', enSub:'Bread, pita, white, enriched',
+   portions:[{el:'Μία πίτα',en:'Μία πίτα',g:60}],
+   n:{ kcal:275, alcohol:0, caffeine:0, water:32.1, carbs:55.7, fiber:2.2, sugars:1.3, fat:1.2, mufa:0.105, f161:0.013, f181:0.092, pufa:0.535, epa:0, dha:0, aa:0, sat:0.166, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.156, f18:0.009, chol:0, protein:9.1, ala_a:302, arg:329, asp:408, cys:197, glu:3030, gly:319, his:195, ile:349, leu:634, lys:219, met:160, phe:446, pro:1010, ser:438, thr:257, trp:105, tyr:257, val:394, b1:0.599, b2:0.327, b3:4.63, b5:0.397, b6:0.034, b12:0, choline:14.6, b9:107, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:53, lycopene:0, vitC:0, vitD:0, vitE:0.3, vitK:0.2, ca:86, cu:0.168, fe:2.62, mg:26, mn:0.481, p:97, k:120, se:27.1, na:536, zn:0.84, ala:0.024, la:0.511, o3:0.024, o6:0.511 },
+   src:[{el:'USDA FoodData Central — «Bread, pita, white, enriched» (FDC ID 174915). Προφίλ 77 θρεπτικών.',
+     en:'USDA FoodData Central — "Bread, pita, white, enriched" (FDC ID 174915).',
+     url:'https://fdc.nal.usda.gov/food-details/174915/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'kefalotyri', cat:'dairy', greek:true, verified:true,
+   el:'Κεφαλοτύρι', en:'Cheese', elSub:'Σκληρό, τριμμένο', enSub:'Cheese, romano',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:6},{el:'Μερίδα',en:'Μερίδα',g:30}],
+   n:{ kcal:387, alcohol:0, caffeine:0, water:30.9, carbs:3.63, fiber:0, sugars:0.73, fat:26.9, mufa:7.84, f161:0.411, f181:6.94, pufa:0.593, epa:0, dha:0, aa:0, sat:17.1, f4:1.36, f6:0.508, f8:0.271, f10:0.671, f12:0.911, f14:3.04, f16:7.26, f18:2.4, chol:104, protein:31.8, ala_a:932, arg:1170, asp:1990, cys:209, glu:7300, gly:553, his:1230, ile:1680, leu:3070, lys:2940, met:852, phe:1710, pro:3720, ser:1840, thr:1170, trp:429, tyr:1780, val:2180, b1:0.037, b2:0.37, b3:0.077, b5:0.424, b6:0.085, b12:1.12, choline:15.4, b9:7, vitA:96, retinol:90, betacar:69, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.5, vitE:0.23, vitK:2.2, ca:1060, cu:0.03, fe:0.77, mg:41, mn:0.02, p:760, k:86, se:14.5, na:1430, zn:2.58, ala:0.31, la:0.284, o3:0.31, o6:0.284 },
+   src:[{el:'USDA FoodData Central — «Cheese, romano» (FDC ID 171249). Προφίλ 77 θρεπτικών.',
+     en:'USDA FoodData Central — "Cheese, romano" (FDC ID 171249).',
+     url:'https://fdc.nal.usda.gov/food-details/171249/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Το USDA δεν έχει κεφαλοτύρι. Χρησιμοποιείται το romano, σκληρό τυρί παρόμοιας ωρίμανσης και αλατότητας. Το ελληνικό κεφαλοτύρι είναι συχνά πρόβειο ή κατσικίσιο, οπότε τα λιπαρά και το αλάτι διαφέρουν ανά παραγωγό.', en:'USDA has no kefalotyri; romano is used as the closest documented equivalent.'}
   }
 ];
 const fName=f=>f[L]||f.el;
@@ -2354,7 +2482,7 @@ function frequentIds(n){return Object.keys(foodUse).filter(id=>FMAP[id]&&foodUse
    Καταχωρούνται από τη συσκευασία. Σημειώνονται ΞΕΚΑΘΑΡΑ ως μη επαληθευμένες
    από το USDA, ώστε να μη συγχέονται ποτέ με τα επιστημονικά δεδομένα. */
 let foodsUser=load('foodsUser',[]);
-function allFoods(){return FOODS.concat(foodsUser).concat(typeof potsUser!=='undefined'?potsUser:[])}
+function allFoods(){return FOODS.concat(DISHFOODS).concat(foodsUser).concat(typeof potsUser!=='undefined'?potsUser:[])}
 function syncFMAP(){foodsUser.forEach(f=>{if(f&&f.id)FMAP[f.id]=f})}
 syncFMAP();
 
@@ -2506,10 +2634,70 @@ function fastWarnHTML(key){
     <div class="fastdoc">${t('fastDoc')}</div></div>`;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   ΕΛΛΗΝΙΚΑ ΜΑΓΕΙΡΕΥΤΑ
+   ───────────────────────────────────────────────────────────────────
+   Δεν εφευρίσκουμε θρεπτικά για τον μουσακά. Δηλώνουμε τι μπαίνει στο
+   ταψί και το υπολογίζουμε από τα υλικά — που όλα έχουν πηγή USDA.
+   Έτσι ο χρήστης βλέπει ΚΑΙ τη συνταγή ΚΑΙ από πού βγήκε ο αριθμός.
+   Οι αναλογίες είναι τυπικές οικιακές· κάθε σπίτι μαγειρεύει αλλιώς.
+   ═══════════════════════════════════════════════════════════════════ */
+const DISHES=[
+ {id:'d_mousakas', el:'Μουσακάς', en:'Moussaka', serv:8,
+  items:[['eggplant',1000],['potato',500],['beefmince',500],['onion',150],['tomato',400],
+         ['oliveoil',120],['milk35',600],['flour',60],['butter',60],['egg',50],['kefalotyri',80]]},
+ {id:'d_gemista', el:'Γεμιστά', en:'Stuffed vegetables', serv:8,
+  items:[['tomato',1200],['pepper',600],['rice',300],['onion',200],['oliveoil',120],['parsley',30],['potato',300]]},
+ {id:'d_pastitsio', el:'Παστίτσιο', en:'Pastitsio', serv:8,
+  items:[['pasta',500],['beefmince',500],['tomato',400],['onion',150],['milk35',800],
+         ['flour',80],['butter',80],['egg',100],['kefalotyri',100]]},
+ {id:'d_spanakopita', el:'Σπανακόπιτα', en:'Spinach pie', serv:8,
+  items:[['phyllo',400],['spinach',1000],['feta',300],['onion',150],['egg',100],['oliveoil',100],['dill',30]]},
+ {id:'d_briam', el:'Μπριάμ', en:'Briam (roasted vegetables)', serv:6,
+  items:[['eggplant',500],['zucchini',500],['potato',500],['tomato',400],['onion',200],['oliveoil',120],['parsley',20]]},
+ {id:'d_fasolada', el:'Φασολάδα', en:'Bean soup', serv:6,
+  items:[['whitebeans',800],['oliveoil',100],['onion',150],['carrot',150],['tomato',300],['parsley',20]]},
+ {id:'d_tzatziki', el:'Τζατζίκι', en:'Tzatziki', serv:8,
+  items:[['gyog2',500],['cucumber',200],['oliveoil',40],['garlic',10]]},
+ {id:'d_gyros', el:'Γύρος χοιρινός σε πίτα', en:'Pork gyros in pita', serv:1,
+  items:[['kalam_xoirino',120],['pita',60],['tomato',30],['onion',20],['oliveoil',5]],
+  note:'noSauce'},
+ {id:'d_horiatiki', el:'Χωριάτικη σαλάτα', en:'Greek salad', serv:2,
+  items:[['tomato',300],['cucumber',150],['feta',100],['onion',50],['olives',40],['oliveoil',40],['pepper',80]]}
+];
+const DISHNOTE={
+ base:{el:'<b>Οι αναλογίες είναι τυπικές, όχι νόμος.</b> Κάθε σπίτι βάζει αλλιώς λάδι, κιμά και τυρί — και το λάδι είναι που αλλάζει περισσότερο τις θερμίδες. Πάτα «Τι μπήκε στην κατσαρόλα» για να δεις ακριβώς τη συνταγή που υπολογίσαμε.<br><br>Αν η δική σου διαφέρει, φτιάξε τη <b>δική σου κατσαρόλα</b> με τα δικά σου υλικά — θα είναι ακριβέστερη από κάθε έτοιμη εγγραφή.<br><br>Τα γραμμάρια αφορούν <b>πρώτη ύλη</b>, γι’ αυτό διάλεξε μερίδα και όχι γραμμάρια. Το μαγείρεμα μειώνει επίσης μέρος των υδατοδιαλυτών βιταμινών.',
+  en:'<b>These proportions are typical, not law.</b> Every household uses different amounts of oil, mince and cheese — and oil is what shifts the calories most. Tap the ingredient list to see exactly what we computed. If yours differs, build your own pot.'},
+ noSauce:{el:'<b>Δεν περιλαμβάνονται τζατζίκι, πατάτες και σάλτσες</b> — πρόσθεσέ τα ξεχωριστά. Ο γύρος του μαγαζιού είναι συνήθως πιο λιπαρός από το ψητό χοιρινό που υπολογίσαμε, γιατί ψήνεται στη σούβλα με το λίπος του.',
+  en:'<b>Tzatziki, chips and sauces are not included</b> — add them separately. Shop gyros is usually fattier than the roast pork we computed.'}
+};
+/* Τα μαγειρευτά γίνονται κανονικές τροφές κατά την εκκίνηση */
+function buildDishes(){
+  DISHES.forEach(d=>{
+    const c=potCompute(d.items.map(([id,g])=>({id,g})), d.serv);
+    if(!c)return;
+    const names=d.items.map(([id])=>FMAP[id]?fName(FMAP[id]):null).filter(Boolean);
+    const f={
+      id:d.id, cat:'other', pot:true, dish:true, greek:true, verified:true,
+      el:d.el, en:d.en, elSub:'Μαγειρευτό · '+c.servG+' g η μερίδα', enSub:'Greek dish · '+c.servG+' g per portion',
+      syn:[d.en],
+      n:c.per100, portions:potPortionsFor(c.servG),
+      potItems:d.items.map(([id,g])=>({id,g})), potServ:d.serv, potTotalG:c.totalG,
+      src:[{el:'Υπολογίστηκε από τα υλικά: '+names.join(', ')+' — σύνολο '+Math.round(c.totalG)+' g, διαιρεμένα σε '+d.serv+' μερίδες. Κάθε υλικό κρατά τη δική του πηγή USDA.',
+            en:'Computed from the ingredients, divided into '+d.serv+' portions. Each ingredient keeps its own USDA source.',
+            url:'', d:'2026-07-19', a:'2026-07-19'}],
+      note:d.note?{el:DISHNOTE[d.note].el+'<br><br>'+DISHNOTE.base.el, en:DISHNOTE[d.note].en+' '+DISHNOTE.base.en}:DISHNOTE.base
+    };
+    FMAP[d.id]=f; DISHFOODS.push(f);
+  });
+}
+const DISHFOODS=[];
+
 let potsUser=load('potsUser',[]);
 let potDraft=null;
 function syncPots(){potsUser.forEach(p=>{if(p&&p.id)FMAP[p.id]=p})}
 syncPots();
+try{buildDishes()}catch(e){}
 
 /* Υπολογισμός: υλικά -> θρεπτικά ανά 100 g πρώτης ύλης + βάρος μερίδας */
 function potCompute(items,serv){
@@ -3359,13 +3547,40 @@ function openAdd(meal,foodId){
     `<input type="search" id="qa" oninput="filterAdd()" placeholder="${t('searchPh')}" autocomplete="off" style="margin-bottom:11px"><div id="addList">${addListHTML('')}</div>`
   );
 }
+/* ═══════════ ΕΙΚΟΝΟΓΡΑΦΗΣΗ — σκίτσα με μελάνι, στο ύφος παλιού βιβλίου ═══════════ */
+const FICON={
+ dairy:'<path d="M20 14h24l-3 8v30a4 4 0 0 1-4 4H27a4 4 0 0 1-4-4V22z"/><path d="M20 14l4-6h16l4 6"/><path d="M26 34h12"/>',
+ meat:'<path d="M16 40c0-13 10-24 24-24 8 0 14 5 14 12 0 9-7 14-14 18-8 5-12 8-16 8-5 0-8-6-8-14z"/><circle cx="43" cy="27" r="5"/>',
+ veg:'<path d="M32 56c-11 0-19-9-19-20 0-9 6-16 14-16 3 0 5 1 5 1s2-1 5-1c8 0 14 7 14 16 0 11-8 20-19 20z"/><path d="M32 21V9"/><path d="M32 13c5-5 11-5 11-5s0 7-6 8"/>',
+ fruit:'<path d="M32 57c-10 0-18-9-18-21 0-11 7-18 14-18 2 0 4 1 4 1s2-1 4-1c7 0 14 7 14 18 0 12-8 21-18 21z"/><path d="M32 19V8"/><path d="M32 12c6-4 12-3 12-3s-2 7-8 7"/>',
+ grain:'<path d="M32 58V20"/><path d="M32 22c0-8 6-13 6-13s2 8-3 13-3 0-3 0z"/><path d="M32 34c0-8 6-13 6-13s2 8-3 13-3 0-3 0z"/><path d="M32 46c0-8 6-13 6-13s2 8-3 13-3 0-3 0z"/><path d="M32 22c0-8-6-13-6-13s-2 8 3 13 3 0 3 0z"/><path d="M32 34c0-8-6-13-6-13s-2 8 3 13 3 0 3 0z"/><path d="M32 46c0-8-6-13-6-13s-2 8 3 13 3 0 3 0z"/>',
+ fatnut:'<path d="M32 57c-10 0-17-8-17-19S22 8 32 8s17 19 17 30-7 19-17 19z"/><path d="M32 12v42"/><path d="M32 22c5 3 9 8 11 14"/><path d="M32 22c-5 3-9 8-11 14"/>',
+ other:'<circle cx="32" cy="32" r="21"/><path d="M32 18v14l9 6"/>',
+ pot:'<path d="M12 24h40v20a10 10 0 0 1-10 10H22a10 10 0 0 1-10-10z"/><path d="M12 24h40"/><path d="M6 28h6M52 28h6"/><path d="M26 16c0-4 4-4 4-8M34 16c0-4 4-4 4-8"/>'
+};
+function foodIcon(f,cls){
+  const k=f.pot?'pot':(FICON[f.cat]?f.cat:'other');
+  return `<svg class="${cls||'fic'}" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${FICON[k]}</svg>`;
+}
 function foodCardHTML(f){
   const tag=f.pot?`<span class="stamp pot">${t('potTag')}</span>`
            :f.custom?`<span class="stamp mine">${t('mineTag')}</span>`
            :f.greek?`<span class="stamp flag">${t('greekFlag')}</span>`:'';
   const sub=f.pot?`${fSub(f)} · <span class="num">${Math.round((f.n.kcal||0)*(f.portions&&f.portions[1]?f.portions[1].g:100)/100)}</span> kcal / ${t('potPortion')}`
                  :`${fSub(f)} · <span class="num">${Math.round(f.n.kcal)}</span> kcal / 100 g`;
-  return `<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${tag}<div class="fn">${fName(f)}</div><div class="fl">${sub}</div></button>`;
+  return `<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${tag}${foodIcon(f)}<div class="fn">${fName(f)}</div><div class="fl">${sub}</div></button>`;
+}
+
+/* ═══════════ ΜΟΙΡΑΣΜΕΝΟ ΠΙΑΤΟ — το ελληνικό τραπέζι ═══════════
+   Στην Ελλάδα δεν παραγγέλνει ο καθένας το πιάτο του. Παραγγέλνεις
+   έξι μεζέδες και τους μοιράζεστε. Καμία ξένη εφαρμογή δεν το χειρίζεται. */
+let shareN=1;
+function shareSet(n){ shareN=Math.min(12,Math.max(1,n)); const el=document.getElementById('shareN'); if(el)el.textContent=shareN; const id=document.getElementById('pg')?document.getElementById('pg').dataset.fid:null; if(id)onG(id); }
+function shareBoxHTML(){
+  return `<div class="shareb">
+    <div class="sl">${t('shareLbl')}</div>
+    <div class="sn"><button onclick="shareSet(shareN-1)" aria-label="−">−</button><span id="shareN" class="num">${shareN}</span><button onclick="shareSet(shareN+1)" aria-label="+">+</button></div>
+  </div>`;
 }
 function addListHTML(q){
   const all=allFoods();
@@ -3402,11 +3617,12 @@ function portionsHTML(f,id){
 }
 function pickPortion(id){
   const f=FMAP[id];if(!f)return;
+  if(!window.__keepShare)shareN=1; window.__keepShare=false;
   const quick=f.portions&&f.portions.length?[]:[30,50,100,150,200,250];
   const startG=(f.portions&&f.portions.length)?(f.portions[Math.min(1,f.portions.length-1)].g):100;
   showSheet(
     `<div style="flex:1;min-width:0"><h2>${fName(f)}</h2><div class="sub">${fSub(f)}</div></div><button class="sx" onclick="closeSheet()">×</button>`,
-    `${portionsHTML(f,id)}<label class="f">${t('grams')}</label><div class="portion"><button class="pbtn" onclick="bumpG(-10)">−</button><div class="pin"><input type="number" inputmode="decimal" id="pg" value="${startG}" min="1" step="5" oninput="onG('${id}')" class="num"><span>g</span></div><button class="pbtn" onclick="bumpG(10)">+</button></div>
+    `${portionsHTML(f,id)}${shareBoxHTML()}<label class="f">${t('grams')}</label><div class="portion"><button class="pbtn" onclick="bumpG(-10)">−</button><div class="pin"><input type="number" inputmode="decimal" id="pg" data-fid="${id}" value="${startG}" min="1" step="5" oninput="onG('${id}')" class="num"><span>g</span></div><button class="pbtn" onclick="bumpG(10)">+</button></div>
      <div class="chips" style="display:${quick.length?'flex':'none'};gap:7px;flex-wrap:wrap;margin-bottom:12px">${quick.map(q=>`<button class="chip" onclick="setG2(${q},'${id}')">${q} g</button>`).join('')}</div>
      <div class="plive" id="plive"></div>
      <div style="margin-top:12px"><label class="f">${t('pickMeal')}</label><div class="chips" id="mealPick" style="display:flex;gap:7px;flex-wrap:wrap">${mealPickHTML(id)}</div></div>`,
@@ -3414,11 +3630,11 @@ function pickPortion(id){
   );
   livePortion(f,startG);
 }
-function pickPortionKeepG(id){const g=Math.max(1,parseFloat(document.getElementById('pg').value)||100);pickPortion(id);document.getElementById('pg').value=g;onG(id)}
-function onG(id){livePortion(FMAP[id],Math.max(0,parseFloat(document.getElementById('pg').value)||0))}
+function pickPortionKeepG(id){const g=Math.max(1,parseFloat(document.getElementById('pg').value)||100);window.__keepShare=true;pickPortion(id);document.getElementById('pg').value=g;onG(id)}
+function onG(id){livePortion(FMAP[id],Math.max(0,parseFloat(document.getElementById('pg').value)||0)/Math.max(1,shareN))}
 function bumpG(d){const el=document.getElementById('pg');el.value=Math.max(1,(parseFloat(el.value)||0)+d);el.dispatchEvent(new Event('input'))}
 function setG2(g,id){document.getElementById('pg').value=g;onG(id)}
-function doAdd(id){const g=Math.max(1,parseFloat(document.getElementById('pg').value)||100);const m=findMeal(cur,ensureTarget());if(!m)return;m.items.push({id,g});noteUse(id);save('days',days);closeSheet();renderDay();toast(t('toastAdded'));if(tab!=='day')setTab('day')}
+function doAdd(id){const g=Math.max(1,Math.round((parseFloat(document.getElementById('pg').value)||100)/Math.max(1,shareN)));const m=findMeal(cur,ensureTarget());if(!m)return;m.items.push({id,g});noteUse(id);save('days',days);closeSheet();renderDay();toast(t('toastAdded'));if(tab!=='day')setTab('day')}
 
 /* ══════ ΔΙΚΗ ΣΟΥ ΤΡΟΦΗ — από τη συσκευασία ══════ */
 function ownRow(k,lbl,unit,ph){return `<div class="ownr"><label class="f">${lbl}</label><div class="owni"><input type="number" inputmode="decimal" id="of_${k}" step="0.1" min="0" placeholder="${ph||'0'}" class="num"><span>${unit}</span></div></div>`}
@@ -3725,6 +3941,14 @@ function fmtDatePlain(k){const [y,m,dd]=k.split('-').map(Number);const dt=new Da
 /* ============================================================
    12. ΣΤΟΧΟΙ
    ============================================================ */
+function backupHTML(){
+  return `<div class="card"><div class="card-h">${t('bkTitle')}</div>
+    <p class="bkwhy">${t('bkWhy')}</p>
+    <button class="btn full" onclick="exportData()">${t('bkSave')}</button>
+    <label class="btn ghost full" style="margin-top:9px;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      ${t('bkLoad')}<input type="file" accept="application/json,.json" onchange="importData(this)" style="display:none">
+    </label></div>`;
+}
 function renderGoals(){
   const MODES=[{id:'cut',t:'modeCut'},{id:'maint',t:'modeMaint'},{id:'bulk',t:'modeBulk'}];
   document.getElementById('modeChips').innerHTML=MODES.map(m=>`<button class="chip ${m.id===goals.mode?'on':''}" onclick="setMode('${m.id}')">${t(m.t)}</button>`).join('');
@@ -3752,6 +3976,10 @@ function renderGoals(){
 function renderAccount(){const el=document.getElementById('acctCard');if(!el)return;
   if(sbUser){el.innerHTML=`<div>${t('accLoggedAs')}: <span class="em">${(accountEmail()||'').replace(/</g,'&lt;')}</span></div><div class="note" style="margin-top:5px">${t('accSync')}</div><button class="btn ghost full" style="margin-top:12px" onclick="sbLogout()">${t('accLogout')}</button>`;}
   else{el.innerHTML=`<div>${t('accLocal')}</div><button class="btn ochre full" style="margin-top:12px" onclick="showAuth()">${t('accLoginBtn')}</button>`;}
+  // Το αντίγραφο ασφαλείας μπαίνει αμέσως μετά τον λογαριασμό
+  let bk=document.getElementById('bkCard');
+  if(!bk){bk=document.createElement('div');bk.id='bkCard';el.parentNode.insertBefore(bk,el.nextSibling);}
+  bk.innerHTML=backupHTML();
 }
 function setMode(m){goals.mode=m;save('goals',goals);renderGoals()}
 function saveGoals(){
@@ -4004,14 +4232,159 @@ function sendAsk(){
   },300);
 }
 
+/* ═══════════ ΒΡΑΔΙΝΗ ΛΕΙΤΟΥΡΓΙΑ ═══════════ */
+let night=load('night',false);
+function applyNight(){document.body.classList.toggle('night',!!night);
+  const b=document.getElementById('nightBtn'); if(b)b.textContent=night?'☀':'☾';
+  const m=document.querySelector('meta[name=theme-color]'); if(m)m.setAttribute('content',night?'#191410':'#1d3f33');}
+function toggleNight(){night=!night;save('night',night);applyNight();toast(night?t('nightOn'):t('nightOff'))}
+
+/* ═══════════ ONBOARDING — η φωνή του Μπακάλη ═══════════
+   Πέντε οθόνες, καμία περιττή. Δεν εξηγούμε κουμπιά· εξηγούμε γιατί
+   αξίζει να μετρήσεις, και τι ΔΕΝ θα σου πούμε ποτέ. */
+const ONB=[
+ {ic:'<circle cx="32" cy="32" r="22"/><path d="M32 16v16l11 7"/>',
+  t:'Καλώς ήρθες',
+  b:'Δεν είμαι δίαιτα. Δεν θα σου πω τι να φας, ούτε θα σε μαλώσω αν φας.<br><br>Είμαι μια <b>ζυγαριά για τη μέρα σου</b>. Ό,τι δείχνω, το δείχνω με πηγή.'},
+ {ic:'<path d="M12 46h40M16 46V26a16 16 0 0 1 32 0v20"/><path d="M32 10v-4"/><path d="M22 54h20"/>',
+  t:'Γιατί να μετρήσεις',
+  b:'Οι περισσότεροι δεν ξέρουν πόσο τρώνε — και δεν είναι θέμα θέλησης, είναι θέμα <b>ορατότητας</b>.<br><br>Δεν χρειάζεται να το κάνεις για πάντα. <b>Δύο βδομάδες</b> φτάνουν για να μάθεις πώς μοιάζει το φαγητό σου σε νούμερα.'},
+ {ic:'<path d="M12 24h40v20a10 10 0 0 1-10 10H22a10 10 0 0 1-10-10z"/><path d="M12 24h40"/><path d="M6 28h6M52 28h6"/><path d="M26 16c0-4 4-4 4-8M34 16c0-4 4-4 4-8"/>',
+  t:'Φτιαγμένη για ελληνικό φαγητό',
+  b:'Κανείς δεν τρώει «100 γραμμάρια βρασμένες φακές». Τρώει <b>ένα πιάτο φασολάδα</b>.<br><br>Γι’ αυτό έχει <b>Κατσαρόλα</b>: λες τι έριξες μέσα και πόσες μερίδες έβγαλε. Και έχει μουσακά, γεμιστά, καλαμάκια — και <b>νηστεία</b> με το ορθόδοξο ημερολόγιο.'},
+ {ic:'<path d="M32 8l6 14 15 2-11 10 3 15-13-7-13 7 3-15-11-10 15-2z"/>',
+  t:'Κάθε αριθμός έχει πηγή',
+  b:'Τα δεδομένα έρχονται από το <b>USDA FoodData Central</b>. Κάτω από κάθε τροφή θα βρεις τον σύνδεσμο.<br><br>Όπου κάτι είναι <b>κατά προσέγγιση</b>, μπαίνει αστερίσκος. Όπου η επιστήμη διαφωνεί, στο λέμε αντί να διαλέξουμε το εντυπωσιακό νούμερο.'},
+ {ic:'<path d="M20 32h24M32 20v24"/><circle cx="32" cy="32" r="22"/>',
+  t:'Ένα πράγμα ακόμα',
+  b:'Δεν είμαι γιατρός ούτε διαιτολόγος. Ό,τι σου δείχνω είναι <b>δεδομένα, όχι ιατρική συμβουλή</b>.<br><br>Πριν αλλάξεις κάτι σοβαρό στη διατροφή σου ή πάρεις συμπλήρωμα, <b>μίλα με τον γιατρό ή τον διαιτολόγο σου</b>.<br><br>Καλή αρχή. — <i>Rise Stronger</i>'}
+];
+let onbStep=0;
+function showOnb(){onbStep=0;document.getElementById('onb').classList.add('on');document.body.style.overflow='hidden';renderOnb()}
+function renderOnb(){
+  const s=ONB[onbStep], last=onbStep===ONB.length-1;
+  document.getElementById('onbBody').innerHTML=`
+    <div class="onb-step">${onbStep+1} / ${ONB.length}</div>
+    <div class="onb-ic"><svg viewBox="0 0 64 64" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${s.ic}</svg></div>
+    <h2>${s.t}</h2><p>${s.b}</p>
+    <div class="onb-dots">${ONB.map((_,i)=>`<i class="${i===onbStep?'on':''}"></i>`).join('')}</div>
+    <div class="onb-nav">
+      ${onbStep>0?`<button class="btn ghost" onclick="onbGo(-1)">Πίσω</button>`:''}
+      <button class="btn" onclick="${last?'closeOnb()':'onbGo(1)'}">${last?'Ξεκινάμε':'Παρακάτω'}</button>
+    </div>
+    ${!last?`<button class="onb-skip" onclick="closeOnb()">Προσπέρασε</button>`:''}`;
+}
+function onbGo(d){onbStep=Math.max(0,Math.min(ONB.length-1,onbStep+d));renderOnb()}
+function closeOnb(){document.getElementById('onb').classList.remove('on');document.body.style.overflow='';save('onbDone',true)}
+
+/* ═══════════ ΑΝΤΙΓΡΑΦΟ ΑΣΦΑΛΕΙΑΣ ═══════════
+   Πας να το χρησιμοποιείς κάθε μέρα. Μια καθαρισμένη cache δεν πρέπει
+   να σου φάει μήνες καταγραφής. */
+function exportData(){
+  const o={app:'CICO by Rise Stronger', version:1, exported:new Date().toISOString()};
+  CLOUD_KEYS.forEach(k=>{const v=Store.get('cico.'+k); if(v!=null){try{o[k]=JSON.parse(v)}catch(e){o[k]=v}}});
+  const blob=new Blob([JSON.stringify(o,null,1)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='cico-'+todayKey()+'.json';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},400);
+  toast(t('bkDone'));
+}
+function importData(inp){
+  const file=inp.files&&inp.files[0]; if(!file)return;
+  const fr=new FileReader();
+  fr.onload=()=>{
+    try{
+      const o=JSON.parse(fr.result);
+      if(!o||o.app!=='CICO by Rise Stronger'){toast(t('bkBad'));return}
+      if(!confirm(t('bkConfirm')))return;
+      CLOUD_KEYS.forEach(k=>{if(o[k]!=null)Store.set('cico.'+k,JSON.stringify(o[k]))});
+      applyState({});   // ξαναφόρτωμα από τον αποθηκευτικό χώρο
+      renderAll(); toast(t('bkLoaded'));
+    }catch(e){toast(t('bkBad'))}
+  };
+  fr.readAsText(file);
+  inp.value='';
+}
+
 /* ---- toast ---- */
 let tt;
 function toast(x){const e=document.getElementById('toast');e.textContent=x;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),2000)}
 
+/* ═══════════════════════════════════════════════════════════════════
+   ΕΓΚΥΚΛΟΠΑΙΔΕΙΑ ΒΙΤΑΜΙΝΩΝ & ΜΕΤΑΛΛΩΝ
+   ───────────────────────────────────────────────────────────────────
+   Οι πηγές δεν είναι γραμμένες στο χέρι — υπολογίζονται από τη ΔΙΚΗ ΜΑΣ
+   βάση τροφών κάθε φορά. Άρα δεν μπορούν να ξεπεράσουν τα δεδομένα μας
+   ούτε να γεράσουν. Οι συστάσεις είναι οι Ημερήσιες Τιμές του FDA.
+   ═══════════════════════════════════════════════════════════════════ */
+const ENCY=[
+ {n:'kcal', skip:true},
+ {n:'protein', el:'Πρωτεΐνη', dv:50, u:'g', body:'Το υλικό με το οποίο χτίζεις και επιδιορθώνεις μυς, δέρμα, μαλλιά, ένζυμα και ορμόνες.',
+  weight:'Αυτή <b>κλιμακώνεται με τα κιλά σου</b>: γενικά 0,8 g/kg για συντήρηση, 1,4–2,0 g/kg αν γυμνάζεσαι ή χάνεις βάρος. Στα '+70+' κιλά, αυτό είναι 56 g έως 140 g.',
+  tip:'Οι ζωικές πηγές είναι πλήρεις. Οι φυτικές θέλουν <b>συνδυασμό οσπρίων με δημητριακά</b>.'},
+ {n:'fiber', el:'Φυτικές ίνες', dv:28, u:'g', body:'Ταΐζουν τα καλά βακτήρια του εντέρου, ρυθμίζουν το σάκχαρο και σε χορταίνουν.',
+  tip:'Ο μέσος Έλληνας παίρνει κάτω από τις μισές. Όσπρια, χόρτα και ολικής άλεσης το λύνουν.'},
+ {n:'ca', el:'Ασβέστιο', dv:1300, u:'mg', body:'Οστά και δόντια, αλλά και συστολή μυών και μετάδοση νευρικών σημάτων.',
+  tip:'Η <b>απορρόφηση</b> μετράει όσο και η ποσότητα: γαλακτοκομικά ~32%, μπρόκολο ~61%, αλλά σπανάκι μόλις ~5% λόγω οξαλικών.'},
+ {n:'fe', el:'Σίδηρος', dv:18, u:'mg', body:'Μεταφέρει το οξυγόνο στο αίμα. Η έλλειψη φέρνει κούραση που δεν φεύγει με ύπνο.',
+  tip:'Ο ζωικός (αιμικός) απορροφάται 15–35%, ο φυτικός μόλις 2–20%. <b>Βιταμίνη C</b> στο ίδιο γεύμα τον τριπλασιάζει· <b>τσάι και καφές</b> τον κόβουν.'},
+ {n:'mg', el:'Μαγνήσιο', dv:420, u:'mg', body:'Συμμετέχει σε πάνω από 300 ένζυμα — μυϊκή λειτουργία, νευρικό σύστημα, ύπνος.',
+  tip:'Ξηροί καρποί, όσπρια και ολικής άλεσης. Η επεξεργασία των δημητριακών το αφαιρεί σχεδόν όλο.'},
+ {n:'k', el:'Κάλιο', dv:4700, u:'mg', body:'Εξισορροπεί το νάτριο και βοηθά στη ρύθμιση της πίεσης.',
+  tip:'Δεν είναι μόνο η μπανάνα — τα όσπρια, η πατάτα και τα χόρτα έχουν περισσότερο.'},
+ {n:'na', el:'Νάτριο', dv:2300, u:'mg', body:'Χρειάζεται, αλλά σχεδόν όλοι παίρνουμε παραπάνω.', invert:true,
+  tip:'Το περισσότερο δεν έρχεται από την αλατιέρα αλλά από <b>τυρί, αλλαντικά και ψωμί</b>.'},
+ {n:'zn', el:'Ψευδάργυρος', dv:11, u:'mg', body:'Ανοσοποιητικό, επούλωση πληγών, γεύση και όσφρηση.',
+  tip:'Τα φυτικά οξέα των οσπρίων τον δεσμεύουν. <b>Μούλιασμα και ζύμωση</b> βοηθούν.'},
+ {n:'se', el:'Σελήνιο', dv:55, u:'µg', body:'Αντιοξειδωτικό και απαραίτητο για τον θυρεοειδή.'},
+ {n:'vitC', el:'Βιταμίνη C', dv:90, u:'mg', body:'Κολλαγόνο, ανοσοποιητικό, και ο καλύτερος σύμμαχος του φυτικού σιδήρου.',
+  tip:'Καταστρέφεται με το μαγείρεμα και τον χρόνο. Το φρέσκο και το ωμό υπερτερούν.'},
+ {n:'vitD', el:'Βιταμίνη D', dv:20, u:'µg', body:'Χωρίς αυτήν δεν απορροφάς σωστά το ασβέστιο. Επηρεάζει και το ανοσοποιητικό.',
+  tip:'Στην Ελλάδα έχουμε ήλιο — και παρόλα αυτά η έλλειψη είναι συχνή, ειδικά τον χειμώνα. <b>Ρώτα τον γιατρό σου</b> πριν πάρεις συμπλήρωμα.'},
+ {n:'vitA', el:'Βιταμίνη A', dv:900, u:'µg', body:'Όραση, δέρμα, ανοσοποιητικό.',
+  tip:'Από ζωικές τροφές έρχεται έτοιμη (ρετινόλη). Από φυτικές ως β-καροτένιο, που θέλει μετατροπή ~12 προς 1.'},
+ {n:'vitE', el:'Βιταμίνη E', dv:15, u:'mg', body:'Προστατεύει τα λιπαρά των κυττάρων από οξείδωση.',
+  tip:'Ελαιόλαδο, ξηροί καρποί, ηλιόσποροι.'},
+ {n:'vitK', el:'Βιταμίνη K', dv:120, u:'µg', body:'Πήξη του αίματος και υγεία των οστών.',
+  tip:'Πράσινα φυλλώδη. <b>Αν παίρνεις αντιπηκτικά, μίλα με τον γιατρό σου</b> — η βιταμίνη K αλληλεπιδρά με τη φαρμακευτική αγωγή.'},
+ {n:'b12', el:'Βιταμίνη B12', dv:2.4, u:'µg', body:'Νευρικό σύστημα και σχηματισμός ερυθρών αιμοσφαιρίων.',
+  tip:'Υπάρχει <b>μόνο σε ζωικές τροφές</b>. Όποιος νηστεύει πολύ ή είναι χορτοφάγος πρέπει να το προσέξει — <b>και να το συζητήσει με γιατρό</b>.'},
+ {n:'b9', el:'Φυλλικό οξύ', dv:400, u:'µg', body:'Διαίρεση κυττάρων. Κρίσιμο στην εγκυμοσύνη.',
+  tip:'Χόρτα, όσπρια, μαϊντανός. Χάνεται με το πολύ βράσιμο.'},
+ {n:'b6', el:'Βιταμίνη B6', dv:1.7, u:'mg', body:'Μεταβολισμός πρωτεϊνών και παραγωγή νευροδιαβιβαστών.'},
+ {n:'o3', el:'Ωμέγα-3', dv:1.6, u:'g', body:'Καρδιά και εγκέφαλος. Τα EPA/DHA του ψαριού είναι τα δραστικά.',
+  tip:'Το φυτικό ALA (καρύδια, λινάρι) μετατρέπεται φτωχά: ~8% σε EPA στους άνδρες. <b>Δεν αντικαθιστά το ψάρι.</b>'},
+ {n:'chol', el:'Χοληστερίνη', dv:300, u:'mg', body:'Η διατροφική χοληστερίνη επηρεάζει το αίμα λιγότερο απ’ όσο πιστεύαμε παλιά.', invert:true,
+  tip:'Τα κορεσμένα λιπαρά μετράνε περισσότερο. Οι σύγχρονες συστάσεις εστιάζουν εκεί.'}
+];
+function encyHTML(){
+  const foods=allFoods().filter(f=>!f.custom&&!f.pot);
+  const blocks=ENCY.filter(e=>!e.skip).map(e=>{
+    const top=foods.filter(f=>typeof f.n[e.n]==='number'&&f.n[e.n]>0)
+      .sort((a,b)=>(e.invert?a.n[e.n]-b.n[e.n]:b.n[e.n]-a.n[e.n])).slice(0,5);
+    const li=top.map(f=>`<li>${fName(f)} — <b class="num">${askFmt(f.n[e.n],e.n==='b12'||e.n==='o3'?2:(f.n[e.n]<10?1:0))} ${e.u}</b></li>`).join('');
+    return `<div class="faq"><q onclick="this.parentNode.classList.toggle('open')">${e.el}<span class="encdv">${e.dv} ${e.u}/μέρα</span></q>
+      <div class="a">
+        <p>${e.body}</p>
+        ${e.weight?`<p>${e.weight}</p>`:''}
+        ${e.tip?`<p class="enctip">${e.tip}</p>`:''}
+        <div class="encsrc">${e.invert?'Οι τροφές με τα <b>λιγότερα</b> στη βάση μας:':'Οι <b>πλουσιότερες</b> τροφές της βάσης μας:'}<ul>${li}</ul>
+        <small>Ανά 100 g. Η ημερήσια τιμή είναι η Daily Value του FDA (21 CFR 101.9) για ενήλικες — δεν είναι εξατομικευμένη σύσταση.</small></div>
+      </div></div>`;
+  }).join('');
+  return `<div class="card"><div class="card-h">${t('encTitle')}</div>
+    <div class="encintro">Κάθε βιταμίνη: τι κάνει, πόση χρειάζεσαι, τι τη βοηθά και πού θα τη βρεις. <b>Οι πηγές υπολογίζονται από τη βάση τροφών της εφαρμογής</b>, οπότε μεγαλώνουν μαζί της.</div>
+    <div class="encdoc">Αυτά είναι γενικές πληροφορίες, <b>όχι ιατρική συμβουλή</b>. Οι ανάγκες αλλάζουν με την ηλικία, το φύλο, την εγκυμοσύνη, τα φάρμακα και τις παθήσεις. Πριν πάρεις οποιοδήποτε συμπλήρωμα ή αλλάξεις τη διατροφή σου, <b>μίλα με τον γιατρό ή τον διαιτολόγο σου</b>.</div>
+    ${blocks}</div>`;
+}
+
 /* ---- Μάθε ---- */
 function renderLearn(){
   document.getElementById('learnList').innerHTML=LESSONS.map((l,i)=>{const o=l[L]||l.el;
-    return `<div class="faq" id="ln${i}"><q onclick="document.getElementById('ln${i}').classList.toggle('open')">${o.t}</q><div class="a">${o.b}</div></div>`}).join('');
+    return `<div class="faq" id="ln${i}"><q onclick="document.getElementById('ln${i}').classList.toggle('open')">${o.t}</q><div class="a">${o.b}</div></div>`}).join('')
+    + encyHTML();
 }
 
 /* ============================================================
@@ -4020,7 +4393,7 @@ function renderLearn(){
 const SB_URL='https://ghiunrsljudvzciigzpt.supabase.co';
 const SB_KEY='sb_publishable_D1TupC_nTAQjPvpi0Amheg_kmbgAoYm';
 let sb=null, sbUser=null, cloudTimer=null, authMode='login';
-const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse','potsUser','fastMode'];
+const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse','potsUser','fastMode','night','onbDone'];
 function sbInit(){try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY);return true}}catch(e){}return false}
 function gatherState(){const o={};CLOUD_KEYS.forEach(k=>{const v=Store.get('cico.'+k);if(v!=null)o[k]=v});return o}
 function applyState(o){if(!o)return;CLOUD_KEYS.forEach(k=>{if(o[k]!=null)Store.set('cico.'+k,o[k])});
@@ -4037,7 +4410,7 @@ function cloudSync(){if(!sb||!sbUser)return;clearTimeout(cloudTimer);cloudTimer=
 function accountEmail(){return sbUser?(sbUser.email||''):''}
 
 function showAuth(){renderAuth();document.getElementById('authScreen').classList.add('on');document.body.style.overflow='hidden';}
-function hideAuth(){document.getElementById('authScreen').classList.remove('on');document.body.style.overflow='';}
+function hideAuth(){document.getElementById('authScreen').classList.remove('on');document.body.style.overflow='';if(typeof maybeOnb==='function')maybeOnb();}
 function setAuthMode(m){authMode=m;renderAuth()}
 function renderAuth(){
   const b=document.getElementById('authBody');if(!b)return;const su=authMode==='signup';
@@ -4068,7 +4441,14 @@ function guestMode(){save('guest',true);hideAuth();}
 /* ---- boot ---- */
 function renderAll(){renderChrome();renderDay();renderFoods();renderGoals();renderLearn();document.getElementById('chat').dataset.init='';renderHelp()}
 renderAll();
+applyNight();
 if(!Store.ok())setTimeout(()=>toast(t('storeWarn')),700);
+/* Το onboarding μόνο την πρώτη φορά, και αφού περάσει η οθόνη σύνδεσης */
+function maybeOnb(){ if(!load('onbDone',false)) setTimeout(showOnb,450); }
+/* Offline: η εφαρμογή δουλεύει και χωρίς ίντερνετ */
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})});
+}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
 /* auth boot */
 (async function(){
