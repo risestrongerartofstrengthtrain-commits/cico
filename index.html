@@ -2247,6 +2247,18 @@ const FOODS=[
    src:[{el:'USDA FoodData Central — «Pasta, dry, enriched» (FDC ID 169736). Προφίλ 89 θρεπτικών συστατικών.',
      en:'USDA FoodData Central — "Pasta, dry, enriched" (FDC ID 169736). 89-nutrient profile.',
      url:'https://fdc.nal.usda.gov/food-details/169736/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'fage2', cat:'dairy', greek:true, verified:true, brand:true,
+   el:'ΦΑΓΕ Total 2%', en:'FAGE Total 2%', elSub:'Στραγγιστό γιαούρτι', enSub:'Greek strained yogurt, 2% milkfat',
+   syn:['fage','φαγε','total','γιαουρτι φαγε'],
+   portions:[{el:'Μισό κεσεδάκι',en:'Half pot',g:85},{el:'Κεσεδάκι 170 g',en:'Pot 170 g',g:170},{el:'Κεσεδάκι 200 g',en:'Pot 200 g',g:200}],
+   n:{ kcal:70.6, protein:10, fat:2.06, sat:1.47, carbs:2.94, sugars:2.94, fiber:0, na:32 },
+   src:[{el:'Επίσημη διατροφική ετικέτα ΦΑΓΕ — μερίδα 170 g: 120 kcal, 17 g πρωτεΐνη, 3,5 g λίπος (2,5 g κορεσμένα), 5 g υδατάνθρακες, 5 g ζάχαρα, 55 mg νάτριο. Οι τιμές ανά 100 g προκύπτουν με διαίρεση.',
+     en:'Official FAGE nutrition label — 170 g serving: 120 kcal, 17 g protein, 3.5 g fat (2.5 g saturated), 5 g carbohydrate, 5 g sugars, 55 mg sodium. Per-100 g values derived by division.',
+     url:'https://usa.fage/products/yogurt/fage-total-2', d:'2026', a:'2026-07-19'}],
+   note:{el:'<b>Προσοχή — αυτή είναι εγγραφή από ετικέτα, όχι εργαστηριακή ανάλυση.</b> Οι συσκευασίες δηλώνουν μόνο 8 θρεπτικά, γι’ αυτό ο πίνακας πιο κάτω θα είναι σχεδόν άδειος στις βιταμίνες και τα μέταλλα. Αν θέλεις πλήρη εικόνα μικροθρεπτικών, δες το «Γιαούρτι στραγγιστό» που έχει εργαστηριακό προφίλ USDA με 60 θρεπτικά.<br><br>Δύο ακόμα: (1) Οι ετικέτες τροφίμων επιτρέπεται νομικά να αποκλίνουν από τις πραγματικές τιμές. (2) Τα στοιχεία είναι από την επίσημη ετικέτα της αμερικανικής αγοράς· η συνταγή στην Ελλάδα μπορεί να διαφέρει ελαφρώς. Αν το κεσεδάκι σου γράφει άλλα νούμερα, καταχώρησέ το με το «Δική μου τροφή».',
+     en:'<b>This is a label entry, not a laboratory analysis.</b> Packages declare only 8 nutrients, so the table below will be almost empty for vitamins and minerals. For a full micronutrient picture see the generic Greek yogurt entry. Labels are legally allowed a tolerance, and the Greek recipe may differ slightly from the US one.'}
   }
 ];
 const fName=f=>f[L]||f.el;
@@ -3816,12 +3828,25 @@ function askNames(f){
 }
 /* Βρίσκει τροφές που αναφέρονται στην ερώτηση — προτιμά το πιο ειδικό ταίριασμα */
 function askFindFoods(q){
-  const qk=srchKey(q); const hits=[];
+  const qk=srchKey(q);
+  // Ταίριασμα σε ΟΡΙΑ ΛΕΞΕΩΝ, όχι οπουδήποτε μέσα στην πρόταση.
+  // Αλλιώς το «Tuna» (ρίζα «tin») κρύβεται μέσα στο «πρωΤΕΪΝη».
+  const words=norm(q).split(/[^a-zα-ωά-ώϊϋΐΰ0-9]+/).filter(x=>x.length>=3)
+    .map(x=>({k:srchKey(x), s:askStem(x)})).filter(x=>x.k.length>=3);
+  const hits=[];
   allFoods().forEach(f=>{
     let bestLen=0;
     askNames(f).forEach(c=>{
-      const st=askStem(c);
-      if(st.length>=3 && !ASKSTOP.has(st) && qk.includes(st) && st.length>bestLen) bestLen=st.length;
+      const ck=srchKey(c), cs=askStem(c);
+      if(cs.length<3||ASKSTOP.has(cs))return;
+      words.forEach(w=>{
+        const hit = w.s===cs                                  // ίδια ρίζα
+                 || (w.k.startsWith(cs) && cs.length>=3)       // κλίση: «σολομό» ← «σολομ»
+                 || (cs.startsWith(w.s) && w.s.length>=4);     // συντομογραφία
+        if(hit && cs.length>bestLen) bestLen=cs.length;
+      });
+      // Ονόματα πολλών λέξεων: ελέγχουμε και ολόκληρη τη φράση
+      if(ck.length>=7 && qk.includes(ck) && ck.length>bestLen) bestLen=ck.length;
     });
     if(bestLen)hits.push({f,len:bestLen});
   });
