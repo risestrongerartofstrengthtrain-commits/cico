@@ -348,14 +348,17 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .sheet{position:fixed;inset:0;z-index:100;display:none}
 .sheet.on{display:block}
 .sheet-bg{position:absolute;inset:0;background:rgba(28,20,12,.68);animation:bgin .22s}
-@keyframes bgin{from{opacity:0}}
+@keyframes bgin{from{opacity:0}to{opacity:1}}
 .sheet-in{
   position:absolute;left:8px;right:8px;bottom:calc(var(--sab) + 16px);max-height:80vh;max-height:84dvh;display:flex;flex-direction:column;
   background:linear-gradient(175deg,var(--cream),var(--cream-2));
   border:3px solid var(--green);border-radius:14px;
   box-shadow:0 10px 38px rgba(0,0,0,.55);animation:up .26s cubic-bezier(.2,.9,.3,1);
 }
-@keyframes up{from{transform:translateY(100%)}}
+/* Το πλαίσιο ΔΕΝ βασίζεται ποτέ στο animation για να βρεθεί στη σωστή θέση.
+   Αν το animation παγώσει (Low Power Mode, in-app browser, bfcache), η χειρότερη
+   περίπτωση είναι μια μετατόπιση 14px — όχι πλαίσιο εκτός οθόνης. */
+@keyframes up{from{transform:translateY(14px)}to{transform:translateY(0)}}
 .grab{width:42px;height:5px;border-radius:3px;background:var(--line);margin:9px auto 4px;flex:0 0 auto}
 .sheet-top{padding:4px 16px 10px;border-bottom:2px solid var(--line);flex:0 0 auto;display:flex;align-items:flex-start;gap:10px}
 .sheet-top h2{font-size:22px;color:var(--green);line-height:1.2;flex:1;min-width:0;font-weight:800}
@@ -1851,12 +1854,26 @@ function saveRecipeFrom(mid){
 /* ============================================================
    11. BOTTOM SHEET — τροφή / προσθήκη / μερίδα
    ============================================================ */
+/* Δίχτυ ασφαλείας: αν το ρολόι των animations παγώσει, τα τερματίζουμε με το ζόρι
+   ώστε το στοιχείο να πάει στην τελική (σωστή) του θέση. */
+function unstick(root){
+  if(!root||!root.getAnimations)return;
+  const go=()=>{
+    let list=[];
+    try{list=root.getAnimations({subtree:true})}catch(e){try{list=root.getAnimations()}catch(e2){return}}
+    list.forEach(a=>{try{if(a.playState!=='finished')a.finish()}catch(e){}});
+  };
+  requestAnimationFrame(()=>requestAnimationFrame(go));
+  setTimeout(go,320); setTimeout(go,1000);
+}
 function showSheet(top,body,foot){
   document.getElementById('sheetTop').innerHTML=top;
   document.getElementById('sheetBody').innerHTML=body;
   const f=document.getElementById('sheetFoot');
   if(foot){f.innerHTML=foot;f.style.display='flex'}else{f.style.display='none'}
-  document.getElementById('sheet').classList.add('on');document.body.style.overflow='hidden';
+  const sh=document.getElementById('sheet');
+  sh.classList.add('on');document.body.style.overflow='hidden';
+  unstick(sh);
 }
 function closeSheet(){document.getElementById('sheet').classList.remove('on');document.body.style.overflow=''}
 function openFood(id){
