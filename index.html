@@ -493,7 +493,18 @@ body.night .nightbtn{background:rgba(43,36,27,.95)}
 .shareb .sn{display:flex;align-items:center;border:2px solid var(--line);border-radius:3px;background:var(--cream)}
 .shareb .sn button{width:34px;height:38px;border:0;background:transparent;font-size:19px;color:var(--green);font-weight:800}
 .shareb .sn span{min-width:26px;text-align:center;font-weight:800;font-size:16px}
+/* ── Οι τρεις στόχοι, σε ανθρώπινα ελληνικά ── */
+.goalcards{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.goalcard{display:block;width:100%;text-align:left;padding:11px 13px;
+  border:2px solid var(--line);border-radius:4px;background:var(--cream);
+  box-shadow:2px 2px 0 var(--shadow);min-height:var(--tap)}
+.goalcard:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--shadow)}
+.goalcard.on{border-color:var(--green);background:linear-gradient(170deg,rgba(29,63,51,.10),rgba(29,63,51,.04))}
+.gct{display:block;font-family:'Alegreya',serif;font-weight:800;font-size:17px;color:var(--green);line-height:1.2}
+.goalcard.on .gct::after{content:" ✓";color:var(--green)}
+.gcs{display:block;font-size:12.5px;line-height:1.4;color:var(--ink-soft);margin-top:3px}
 /* ── Διατροφικά πρότυπα ── */
+.dhint{font-size:12.5px;font-style:italic;line-height:1.45;color:var(--ink-faint);margin:-2px 0 8px}
 .dietnote{font-size:13px;line-height:1.5;color:var(--ink-soft);margin-bottom:12px}
 .dietnote p{margin-bottom:7px}
 .dietdoc{padding:8px 10px;border-left:3px solid var(--green);background:rgba(29,63,51,.08);
@@ -835,8 +846,9 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
       <div>
         <div class="card">
           <div class="card-h" data-t="goalTitle">Ο Στόχος Σου</div>
-          <div class="chips" id="modeChips" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px"></div>
+          <div id="modeChips" class="goalcards"></div>
           <label class="f" data-t="dietLbl">Διατροφικό πρότυπο</label>
+          <div class="dhint" data-t="dietHint">Αν δεν ξέρεις τι να διαλέξεις, άφησε την «Ισορροπημένη» — δουλεύει για τους περισσότερους.</div>
           <div class="chips" id="dietChips" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:6px"></div>
           <div id="dietNote" class="dietnote"></div>
           <div class="gg">
@@ -984,6 +996,7 @@ const T={
   goalTitle:'Ο Στόχος Σου', profTitle:'Το Προφίλ Σου',
   gKcal:'Θερμίδες / μέρα', gProt:'Πρωτεΐνη (g)', gCarb:'Υδατάνθρακες (g)', gFat:'Λίπος (g)',
   dietLbl:'Διατροφικό πρότυπο',
+  dietHint:'Αν δεν ξέρεις τι να διαλέξεις, άφησε την «Ισορροπημένη» — δουλεύει για τους περισσότερους.',
   macroOff:'Τα μακροθρεπτικά σου βγάζουν {n} kcal διαφορά από τον στόχο θερμίδων. Δεν είναι λάθος — απλώς να το ξέρεις.',
   pSex:'Φύλο', pAge:'Ηλικία', pW:'Βάρος (kg)', pH:'Ύψος (cm)', pAct:'Δραστηριότητα',
   calcBtn:'Υπολόγισε τον στόχο μου',
@@ -1060,7 +1073,10 @@ const T={
   grams:'γραμμάρια', noData:'—', pickMeal:'Σε ποιο γεύμα;', portionSize:'Μέγεθος μερίδας',
   toastAdded:'Προστέθηκε στη μέρα', toastCopied:'Η χθεσινή αντιγράφηκε', toastNoPrev:'Η χθεσινή μέρα είναι άδεια',
   toastFav:'Μπήκε στα αγαπημένα', toastUnfav:'Βγήκε από τα αγαπημένα', toastGoals:'Ο στόχος ενημερώθηκε', toastDel:'Αφαιρέθηκε',
-  modeCut:'Έλλειμμα', modeMaint:'Συντήρηση', modeBulk:'Όγκος',
+  modeCut:'Θέλω να χάσω', modeMaint:'Θέλω να μείνω εδώ', modeBulk:'Θέλω να πάρω',
+  modeCutS:'400 θερμίδες κάτω από όσες καις — περίπου μισό κιλό τον μήνα',
+  modeMaintS:'Όσες καις, τόσες τρως — σταθερό βάρος',
+  modeBulkS:'300 θερμίδες πάνω — για να χτίσεις μυς με προπόνηση',
   sexM:'Άνδρας', sexF:'Γυναίκα',
   act1:'Καθιστική ζωή', act2:'Ελαφριά (1-3 μέρες/εβδ.)', act3:'Μέτρια (3-5 μέρες/εβδ.)', act4:'Έντονη (6-7 μέρες/εβδ.)', act5:'Πολύ έντονη (2× προπόνηση)',
   macroOk:'Τα μακροθρεπτικά βγάζουν {x} kcal — ταιριάζουν με τον στόχο σου.',
@@ -1114,6 +1130,7 @@ const T={
   goalTitle:'Your Goal', profTitle:'Your Profile',
   gKcal:'Calories / day', gProt:'Protein (g)', gCarb:'Carbs (g)', gFat:'Fat (g)',
   dietLbl:'Dietary pattern',
+  dietHint:'If you are not sure, leave it on Balanced — it works for most people.',
   macroOff:'Your macros come to {n} kcal away from your calorie goal. Not an error — just so you know.',
   pSex:'Sex', pAge:'Age', pW:'Weight (kg)', pH:'Height (cm)', pAct:'Activity',
   calcBtn:'Calculate my goal',
@@ -1190,7 +1207,10 @@ const T={
   grams:'grams', noData:'—', pickMeal:'Which meal?', portionSize:'Portion size',
   toastAdded:'Added to your day', toastCopied:'Yesterday copied', toastNoPrev:'Yesterday is empty',
   toastFav:'Added to favourites', toastUnfav:'Removed from favourites', toastGoals:'Goal updated', toastDel:'Removed',
-  modeCut:'Deficit', modeMaint:'Maintenance', modeBulk:'Bulk',
+  modeCut:'I want to lose', modeMaint:'I want to stay here', modeBulk:'I want to gain',
+  modeCutS:'400 calories below what you burn — about half a kilo a month',
+  modeMaintS:'As much as you burn — steady weight',
+  modeBulkS:'300 calories above — to build muscle alongside training',
   sexM:'Male', sexF:'Female',
   act1:'Sedentary', act2:'Light (1-3 days/wk)', act3:'Moderate (3-5 days/wk)', act4:'Hard (6-7 days/wk)', act5:'Very hard (2× training)',
   macroOk:'Your macros come to {x} kcal — they match your goal.',
@@ -3980,8 +4000,10 @@ function backupHTML(){
     </label></div>`;
 }
 function renderGoals(){
-  const MODES=[{id:'cut',t:'modeCut'},{id:'maint',t:'modeMaint'},{id:'bulk',t:'modeBulk'}];
-  document.getElementById('modeChips').innerHTML=MODES.map(m=>`<button class="chip ${m.id===goals.mode?'on':''}" onclick="setMode('${m.id}')">${t(m.t)}</button>`).join('');
+  const MODES=[{id:'cut',t:'modeCut',s:'modeCutS'},{id:'maint',t:'modeMaint',s:'modeMaintS'},{id:'bulk',t:'modeBulk',s:'modeBulkS'}];
+  document.getElementById('modeChips').innerHTML=MODES.map(m=>
+    `<button class="goalcard ${m.id===goals.mode?'on':''}" onclick="setMode('${m.id}')">
+       <span class="gct">${t(m.t)}</span><span class="gcs">${t(m.s)}</span></button>`).join('');
   const dc=document.getElementById('dietChips');
   if(dc){dc.innerHTML=DIETS.map(D=>`<button class="chip ${D.id===(goals.diet||'bal')?'on':''}" onclick="applyDiet('${D.id}')">${D[L]||D.el}</button>`).join('');
     const D=DIETS.find(x=>x.id===(goals.diet||'bal'));
