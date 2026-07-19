@@ -503,6 +503,39 @@ body.night .nightbtn{background:rgba(43,36,27,.95)}
 .gct{display:block;font-family:'Alegreya',serif;font-weight:800;font-size:17px;color:var(--green);line-height:1.2}
 .goalcard.on .gct::after{content:" ✓";color:var(--green)}
 .gcs{display:block;font-size:12.5px;line-height:1.4;color:var(--ink-soft);margin-top:3px}
+/* ── Οθόνη φόρτωσης ── */
+.boot{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(175deg,#1d3f33,#14291f);transition:opacity .4s ease,visibility .4s}
+.boot.gone{opacity:0;visibility:hidden;pointer-events:none}
+.boot-in{text-align:center;color:#d8a949}
+.boot-dial svg{width:78px;height:78px}
+.boot-arc{transform-origin:32px 44px;animation:bootspin 1.1s cubic-bezier(.5,.1,.4,.9) infinite}
+@keyframes bootspin{to{transform:rotate(360deg)}}
+.boot-t{font-family:'Alegreya',serif;font-weight:900;font-size:34px;letter-spacing:.14em;
+  color:#f6eeda;margin-top:12px}
+.boot-s{font-family:'Alegreya',serif;font-style:italic;font-size:14px;color:#d8a949;margin-top:2px}
+/* ── Κενή μέρα ── */
+.emptyday{text-align:center;padding:22px 16px 20px}
+.emptyday svg{width:56px;height:56px;color:var(--line);margin-bottom:9px}
+.emptyday b{display:block;font-family:'Alegreya',serif;font-size:18px;color:var(--green);margin-bottom:5px}
+.emptyday p{font-size:14px;line-height:1.5;color:var(--ink-soft);max-width:300px;margin:0 auto 13px}
+/* ── Απόρρητο ── */
+.pv h3{font-family:'Alegreya',serif;font-size:17px;color:var(--green);margin:16px 0 6px;
+  padding-bottom:4px;border-bottom:2px solid var(--line)}
+.pv h3:first-child{margin-top:0}
+.pv p{font-size:14.5px;line-height:1.6;margin-bottom:8px}
+.pv ul{margin:0 0 9px;padding-left:18px}
+.pv li{font-size:14.5px;line-height:1.55;margin-bottom:5px}
+.pv-warn{padding:9px 11px;border-left:3px solid var(--red);background:rgba(150,56,42,.07);border-radius:3px}
+.pv-consent{display:flex;gap:9px;align-items:flex-start;margin-top:14px;padding:10px 11px;
+  border:2px dashed var(--ochre-d);border-radius:4px;background:rgba(184,134,44,.1);cursor:pointer}
+.pv-consent input{width:20px;height:20px;flex:0 0 20px;margin-top:1px}
+.pv-consent span{font-size:13px;line-height:1.45}
+.pv-link{width:100%;margin-top:8px;border:0;background:transparent;color:var(--green-2);
+  font-family:'Alegreya',serif;font-size:13.5px;text-decoration:underline;min-height:36px}
+.repbtn{width:100%;margin-top:10px;min-height:44px;border:2px dashed var(--line);border-radius:4px;
+  background:transparent;color:var(--ink-soft);font-family:'Alegreya',serif;font-size:14px}
+.repbtn small{display:block;font-size:11.5px;font-style:italic;color:var(--ink-faint);margin-top:2px}
 /* ── Διατροφικά πρότυπα ── */
 .dhint{font-size:12.5px;font-style:italic;line-height:1.45;color:var(--ink-faint);margin:-2px 0 8px}
 .dietnote{font-size:13px;line-height:1.5;color:var(--ink-soft);margin-bottom:12px}
@@ -734,6 +767,16 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
 </style>
 </head>
 <body>
+
+<div class="boot" id="boot">
+  <div class="boot-in">
+    <div class="boot-dial"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+      <path d="M10 44a26 26 0 1 1 44 0" opacity=".28"/><path d="M10 44a26 26 0 0 1 8-19" class="boot-arc"/>
+      <circle cx="32" cy="44" r="3.5" fill="currentColor" stroke="none"/></svg></div>
+    <div class="boot-t">CICO</div>
+    <div class="boot-s">by Rise Stronger</div>
+  </div>
+</div>
 
 <div class="auth-screen on" id="authScreen">
   <div class="auth-card">
@@ -1088,6 +1131,12 @@ const T={
   storeWarn:'Ο browser δεν αποθηκεύει εδώ — η μέρα σου θα χαθεί στο refresh.',
   aLogin:'Σύνδεση', aSignup:'Εγγραφή', aEmail:'Email', aPass:'Κωδικός',
   aGuest:'Συνέχισε χωρίς λογαριασμό', aWait:'Περίμενε…',
+  edTitle:'Άδειο τετράδιο, καλή αρχή',
+  edBody:'Πάτα «Πρόσθεσε φαγητό» και βάλε ό,τι έφαγες τελευταία. Δεν χρειάζεται να είναι τέλειο — ούτε να τα βάλεις όλα σήμερα.',
+  pvTitle:'Απόρρητο & όροι', pvSub:'Τι κρατάμε, τι δεν κάνουμε, τι δικαιώματα έχεις',
+  pvClose:'Κατάλαβα', pvConsent:'Διάβασα το απόρρητο και συμφωνώ να αποθηκεύονται τα διατροφικά μου δεδομένα, που είναι δεδομένα υγείας.',
+  pvNeed:'Χρειάζεται να συμφωνήσεις με το απόρρητο για να φτιάξεις λογαριασμό.',
+  report:'Κάτι δεν πάει καλά;', reportSub:'Πες μου τι χάλασε — ανοίγει έτοιμο email',
   aCheckEmail:'Σου στείλαμε email — πάτα τον σύνδεσμο επιβεβαίωσης και μετά κάνε Σύνδεση.',
   aWelcome:'Καλώς ήρθες!', aErr:'Κάτι πήγε στραβά, δοκίμασε ξανά.', aBadInput:'Βάλε έγκυρο email και κωδικό (6+ χαρακτήρες).',
   account:'Λογαριασμός', accLoggedAs:'Συνδεδεμένος ως', accLogout:'Αποσύνδεση',
@@ -1222,6 +1271,12 @@ const T={
   storeWarn:'This browser will not save here — your day resets on refresh.',
   aLogin:'Log in', aSignup:'Sign up', aEmail:'Email', aPass:'Password',
   aGuest:'Continue without an account', aWait:'Please wait…',
+  edTitle:'An empty notebook. Good start.',
+  edBody:'Tap "Add food" and put in whatever you ate last. It does not need to be perfect.',
+  pvTitle:'Privacy & terms', pvSub:'What we keep, what we do not do, your rights',
+  pvClose:'Got it', pvConsent:'I have read the privacy notice and agree to my nutrition data being stored, which counts as health data.',
+  pvNeed:'You need to agree to the privacy notice to create an account.',
+  report:'Something wrong?', reportSub:'Tell me what broke — opens a ready email',
   aCheckEmail:'We sent you an email — click the confirmation link, then Log in.',
   aWelcome:'Welcome!', aErr:'Something went wrong, try again.', aBadInput:'Enter a valid email and password (6+ chars).',
   account:'Account', accLoggedAs:'Logged in as', accLogout:'Log out',
@@ -1369,6 +1424,7 @@ const FOODS=[
 {
  id:'feta', cat:'dairy', greek:true, verified:true,
  el:'Φέτα', en:'Feta cheese', elSub:'Λευκό τυρί άλμης', enSub:'Cheese, feta',
+ portions:[{el:'Φέτα',en:'Slice',g:30},{el:'Μερίδα',en:'Portion',g:60},{el:'Στη σαλάτα',en:'On salad',g:100}],
  n:{
   kcal:265, alcohol:0, caffeine:0, water:55.22,
   carbs:3.88, fiber:0, sugars:0,
@@ -1398,6 +1454,7 @@ const FOODS=[
  id:'gyog2', cat:'dairy', greek:true, verified:true,
  el:'Γιαούρτι στραγγιστό, χαμηλά λιπαρά', en:'Greek yogurt, plain, lowfat',
  elSub:'Απλό, χωρίς πρόσθετα', enSub:'Yogurt, Greek, plain, lowfat',
+ portions:[{el:'Μισό κεσεδάκι',en:'Half pot',g:100},{el:'Κεσεδάκι',en:'Pot',g:200},{el:'Κούπα',en:'Cup',g:245}],
  n:{
   kcal:73, alcohol:0, caffeine:0, water:83.6,
   carbs:3.94, fiber:0, starch:0, sugars:3.63, fructose:0, galactose:0.64, glucose:0, lactose:2.9, maltose:0, sucrose:0,
@@ -1423,6 +1480,7 @@ const FOODS=[
 {
  id:'oliveoil', cat:'fatnut', greek:true, verified:true,
  el:'Ελαιόλαδο', en:'Olive oil', elSub:'Για σαλάτα ή μαγείρεμα', enSub:'Oil, olive, salad or cooking',
+ portions:[{el:'Κουταλάκι',en:'Teaspoon',g:5},{el:'Κουταλιά',en:'Tablespoon',g:14},{el:'Στη σαλάτα',en:'On salad',g:25}],
  n:{
   kcal:884, alcohol:0, caffeine:0, water:0,
   carbs:0, fiber:0, sugars:0, starch:0,
@@ -1446,6 +1504,7 @@ const FOODS=[
 {
  id:'lentils', cat:'veg', greek:false, verified:true,
  el:'Φακές, βρασμένες', en:'Lentils, boiled', elSub:'Χωρίς αλάτι · βρασμένες', enSub:'Lentils, mature seeds, cooked, boiled, without salt',
+ portions:[{el:'Μερίδα',en:'Portion',g:200},{el:'Μεγάλο πιάτο',en:'Large plate',g:300}],
  n:{
   kcal:116, alcohol:0, caffeine:0, water:69.64,
   carbs:20.13, fiber:7.9, sugars:1.8,
@@ -1470,6 +1529,7 @@ const FOODS=[
 {
  id:'chickpeas', cat:'veg', greek:false, verified:true,
  el:'Ρεβίθια, βρασμένα', en:'Chickpeas, boiled', elSub:'Χωρίς αλάτι · βρασμένα', enSub:'Chickpeas (garbanzo beans), cooked, boiled, without salt',
+ portions:[{el:'Μερίδα',en:'Portion',g:200},{el:'Μεγάλο πιάτο',en:'Large plate',g:300}],
  n:{
   kcal:164, alcohol:0, caffeine:0, water:60.21,
   carbs:27.42, fiber:7.6, sugars:4.8,
@@ -1494,6 +1554,7 @@ const FOODS=[
 {
  id:'tomato', cat:'veg', greek:false, verified:true,
  el:'Ντομάτα, ωμή', en:'Tomato, raw', elSub:'Κόκκινη, ώριμη · μέσος όρος έτους', enSub:'Tomatoes, red, ripe, raw, year round average',
+ portions:[{el:'Μικρή',en:'Small',g:90},{el:'Μεσαία',en:'Medium',g:123},{el:'Μεγάλη',en:'Large',g:180}],
  n:{
   kcal:18, alcohol:0, caffeine:0, water:94.52,
   carbs:3.89, fiber:1.2, starch:0, sugars:2.63, fructose:1.4, galactose:0, glucose:1.3, lactose:0, maltose:0, sucrose:0,
@@ -1539,6 +1600,7 @@ const FOODS=[
 {
  id:'chicken', cat:'meat', greek:false, verified:true,
  el:'Κοτόπουλο στήθος, ψητό', en:'Chicken breast, roasted', elSub:'Χωρίς πέτσα · ψητό', enSub:'Chicken, breast, meat only, cooked, roasted',
+ portions:[{el:'Μικρή μερίδα',en:'Small',g:100},{el:'Μερίδα',en:'Portion',g:150},{el:'Μεγάλη',en:'Large',g:200}],
  n:{
   kcal:165, alcohol:0, caffeine:0, water:65.3, carbs:0, fiber:0, sugars:0,
   fat:3.6, mufa:1.24, f161:0.15, f181:1.04, pufa:0.77, o3:0.03, epa:0.01, dha:0.02, o6:0.59, aa:0.06,
@@ -1558,6 +1620,7 @@ const FOODS=[
 {
  id:'rice', cat:'grain', greek:false, verified:true,
  el:'Ρύζι λευκό, βρασμένο', en:'White rice, cooked', elSub:'Μακρύκοκκο, εμπλουτισμένο', enSub:'Rice, white, long-grain, regular, enriched, cooked',
+ portions:[{el:'Μερίδα',en:'Portion',g:150},{el:'Μεγάλο πιάτο',en:'Large plate',g:250}],
  n:{
   kcal:130, alcohol:0, caffeine:0, water:68.4, carbs:28.2, fiber:0.4, sugars:0.05,
   fat:0.28, mufa:0.088, f161:0.001, f181:0.087, pufa:0.076, o3:0.013, o6:0.062, sat:0.08, f14:0.002, f16:0.069, f18:0.005,
@@ -1595,6 +1658,7 @@ const FOODS=[
 {
  id:'almonds', cat:'fatnut', greek:false, verified:true,
  el:'Αμύγδαλα', en:'Almonds', elSub:'Ωμά', enSub:'Nuts, almonds',
+ portions:[{el:'10 αμύγδαλα',en:'10 almonds',g:12},{el:'Χούφτα',en:'Handful',g:30}],
  n:{
   kcal:579, alcohol:0, caffeine:0, water:4.4, carbs:21.6, fiber:12.5, starch:0.72, sugars:4.4, fructose:0.11, galactose:0.07, glucose:0.17, lactose:0, maltose:0.04, sucrose:4,
   fat:49.9, mufa:31.551, f161:0.239, f181:31.294, pufa:12.329, o3:0.003, ala:0.003, o6:12.322, la:12.32, cla:0.002,
@@ -1614,6 +1678,7 @@ const FOODS=[
 {
  id:'onion', cat:'veg', greek:false, verified:true,
  el:'Κρεμμύδι, ωμό', en:'Onion, raw', elSub:'Ξερό κρεμμύδι', enSub:'Onions, raw',
+ portions:[{el:'Μικρό',en:'Small',g:70},{el:'Μεσαίο',en:'Medium',g:110},{el:'Μεγάλο',en:'Large',g:150}],
  n:{
   kcal:40, alcohol:0, caffeine:0, water:89.1, carbs:9.3, fiber:1.7, starch:0, sugars:4.2, fructose:1.3, galactose:0, glucose:2, lactose:0, maltose:0, sucrose:0.99,
   fat:0.1, mufa:0.013, f181:0.013, pufa:0.017, o3:0.004, o6:0.013, sat:0.04, f14:0.004, f16:0.034, f18:0.004, phytosterol:15,
@@ -1632,6 +1697,7 @@ const FOODS=[
 {
  id:'cucumber', cat:'veg', greek:false, verified:true,
  el:'Αγγούρι', en:'Cucumber', elSub:'Ξεφλουδισμένο, ωμό', enSub:'Cucumber, peeled, raw',
+ portions:[{el:'Μισό',en:'Half',g:150},{el:'Ένα',en:'One',g:300}],
  n:{
   kcal:10, alcohol:0, caffeine:0, water:96.7, carbs:2.2, fiber:0.7, starch:0.08, sugars:1.4, fructose:0.75, galactose:0, glucose:0.63, lactose:0, maltose:0, sucrose:0,
   fat:0.16, mufa:0.01, f181:0.01, pufa:0.019, o3:0.01, o6:0.01, sat:0.08, f14:0.01, f16:0.058, f18:0.01,
@@ -1650,6 +1716,7 @@ const FOODS=[
 {
  id:'olives', cat:'fatnut', greek:true, verified:true,
  el:'Ελιές', en:'Olives', elSub:'Μαύρες, σε άλμη', enSub:'Olives, ripe, canned (small-extra large)',
+ portions:[{el:'5 ελιές',en:'5 olives',g:20},{el:'10 ελιές',en:'10 olives',g:40}],
  n:{
   kcal:116, alcohol:0, caffeine:0, water:80, carbs:6, fiber:1.6, sugars:0,
   fat:10.9, mufa:7.652, f161:0.15, f181:7.47, pufa:0.629, o3:0, o6:0.629, aa:0, sat:2.3, f16:1.73, f18:0.318, chol:0,
@@ -1668,6 +1735,7 @@ const FOODS=[
 {
  id:'whitebeans', cat:'veg', greek:false, verified:true,
  el:'Φασόλια λευκά, βρασμένα', en:'White beans, boiled', elSub:'Χωρίς αλάτι · βρασμένα', enSub:'Beans, white, mature seeds, cooked, boiled, without salt',
+ portions:[{el:'Μερίδα',en:'Portion',g:200},{el:'Μεγάλο πιάτο',en:'Large plate',g:300}],
  n:{
   kcal:139, alcohol:0, caffeine:0, water:63.1, carbs:25.1, fiber:6.3, sugars:0.34,
   fat:0.35, mufa:0.031, f181:0.031, pufa:0.152, o3:0.069, o6:0.083, sat:0.09, f16:0.085, f18:0.005,
@@ -3198,7 +3266,10 @@ function renderDay(){
       <div class="ledger">${rows}<button class="add-row" onclick="openAdd('${m.id}')">${t('addFood')}</button></div>
     </div>`;
   }).join('');
-  document.getElementById('meals').innerHTML=fastBannerHTML()+(d.meals.length?mealsHTML:`<div class="empty" style="padding:8px 2px 12px">${t('noMeals')}</div>`)+`<button class="btn ghost full addmeal" onclick="addMeal()">${t('addMeal')}</button>`+`<button class="btn ochre full" style="margin-top:11px" onclick="shareDay()">${t('shareDay')}</button>`+(fastInfo(cur).fast?fastWarnHTML(cur):'');
+  document.getElementById('meals').innerHTML=fastBannerHTML()+(d.meals.length?mealsHTML:`<div class="emptyday">
+       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12h36v40a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4z"/><path d="M22 24h20M22 34h20M22 44h12"/></svg>
+       <b>${t('edTitle')}</b><p>${t('edBody')}</p>
+     </div>`)+`<button class="btn ghost full addmeal" onclick="addMeal()">${t('addMeal')}</button>`+`<button class="btn ochre full" style="margin-top:11px" onclick="shareDay()">${t('shareDay')}</button>`+(fastInfo(cur).fast?fastWarnHTML(cur):'');
   renderDial(); renderMacros(); renderHilite(); renderNut(); renderFavs(); renderExercise(); renderWater(); renderStreak();
 }
 function renderExercise(){
@@ -3998,7 +4069,9 @@ function backupHTML(){
     <button class="btn full" onclick="exportData()">${t('bkSave')}</button>
     <label class="btn ghost full" style="margin-top:9px;display:flex;align-items:center;justify-content:center;cursor:pointer">
       ${t('bkLoad')}<input type="file" accept="application/json,.json" onchange="importData(this)" style="display:none">
-    </label></div>`;
+    </label>
+    <button class="repbtn" onclick="reportIssue()">${t('report')}<small>${t('reportSub')}</small></button>
+    <button class="pv-link" onclick="showPrivacy()">${t('pvTitle')}</button></div>`;
 }
 function renderGoals(){
   const MODES=[{id:'cut',t:'modeCut',s:'modeCutS'},{id:'maint',t:'modeMaint',s:'modeMaintS'},{id:'bulk',t:'modeBulk',s:'modeBulkS'}];
@@ -4426,6 +4499,95 @@ function importData(inp){
 function accTog(btn){const p=btn.parentNode;p.classList.toggle('open');
   const cv=btn.querySelector('.cv'); if(cv)cv.textContent=p.classList.contains('open')?'–':'+';}
 
+/* ═══════════════════════════════════════════════════════════════════
+   ΠΟΛΙΤΙΚΗ ΑΠΟΡΡΗΤΟΥ
+   ───────────────────────────────────────────────────────────────────
+   Γραμμένη με βάση το τι ΠΡΑΓΜΑΤΙΚΑ κάνει ο κώδικας, όχι με πρότυπο
+   κείμενο από το ίντερνετ. Ελέγχθηκε: καμία analytics, κανένα cookie,
+   κανένα tracking. Μόνο Supabase, Google Fonts, jsDelivr, GitHub Pages.
+   Τα δεδομένα διατροφής είναι δεδομένα υγείας κατά GDPR (άρθρο 9) —
+   γι' αυτό ζητάμε ρητή συγκατάθεση, όχι σιωπηρή.
+   ═══════════════════════════════════════════════════════════════════ */
+const PRIVACY={el:`
+<h3>Τι κρατάμε</h3>
+<p><b>Το email σου.</b> Μόνο για να μπαίνεις στον λογαριασμό σου και να συγχρονίζονται τα δεδομένα σου ανάμεσα σε συσκευές.</p>
+<p><b>Ό,τι καταγράφεις:</b> τρόφιμα και ποσότητες, γεύματα, βάρος, στόχοι, άσκηση, νερό, οι δικές σου τροφές και κατσαρόλες.</p>
+<p class="pv-warn"><b>Πρόσεξε αυτό:</b> τα δεδομένα διατροφής και βάρους θεωρούνται <b>δεδομένα υγείας</b> από τον GDPR. Είναι πιο ευαίσθητα από ένα απλό email. Γι’ αυτό σου ζητάμε ρητή συγκατάθεση αντί να το θεωρήσουμε δεδομένο.</p>
+
+<h3>Τι ΔΕΝ κάνουμε</h3>
+<ul>
+<li><b>Δεν πουλάμε τίποτα σε κανέναν.</b> Ούτε emails, ούτε δεδομένα, ούτε «ανώνυμα στατιστικά».</li>
+<li><b>Δεν έχουμε διαφημίσεις.</b></li>
+<li><b>Δεν έχουμε analytics.</b> Ούτε Google Analytics, ούτε Facebook pixel, ούτε τίποτα παρόμοιο. Δεν ξέρουμε πού κλικάρεις.</li>
+<li><b>Δεν βάζουμε cookies</b> παρακολούθησης.</li>
+<li><b>Δεν διαβάζουμε τα δεδομένα σου.</b> Η βάση έχει κανόνα ασφαλείας που επιτρέπει σε κάθε λογαριασμό να βλέπει <b>μόνο τη δική του γραμμή</b>.</li>
+</ul>
+
+<h3>Πού βρίσκονται τα δεδομένα σου</h3>
+<p><b>Στη συσκευή σου.</b> Όλα αποθηκεύονται πρώτα τοπικά στο κινητό ή τον υπολογιστή σου. Αν δεν κάνεις λογαριασμό, <b>δεν φεύγουν ποτέ από εκεί</b>.</p>
+<p><b>Στο Supabase</b> (supabase.com) — μόνο αν κάνεις λογαριασμό. Εκεί φυλάσσονται το email και τα δεδομένα σου για τον συγχρονισμό.</p>
+<p>Τρεις ακόμα υπηρεσίες βλέπουν τη <b>διεύθυνση IP</b> σου όταν φορτώνει η σελίδα, όπως συμβαίνει με κάθε ιστοσελίδα:</p>
+<ul>
+<li><b>GitHub Pages</b> — φιλοξενεί την εφαρμογή</li>
+<li><b>Google Fonts</b> — φορτώνει τη γραμματοσειρά</li>
+<li><b>jsDelivr</b> — φορτώνει τη βιβλιοθήκη σύνδεσης</li>
+</ul>
+<p>Καμία τους δεν παίρνει τα διατροφικά σου δεδομένα.</p>
+
+<h3>Πόσο καιρό</h3>
+<p>Όσο έχεις λογαριασμό. Τα σβήνεις όποτε θες — και τότε φεύγουν κι από εμάς.</p>
+
+<h3>Τα δικαιώματά σου</h3>
+<p>Ο GDPR σου δίνει το δικαίωμα να <b>δεις</b>, να <b>διορθώσεις</b>, να <b>κατεβάσεις</b> και να <b>διαγράψεις</b> τα δεδομένα σου, καθώς και να <b>αποσύρεις τη συγκατάθεσή σου</b> οποτεδήποτε.</p>
+<p><b>Το κατέβασμα το κάνεις μόνος σου τώρα:</b> Στόχοι → Αντίγραφο ασφαλείας → Κατέβασε αντίγραφο. Παίρνεις τα πάντα σε ένα αρχείο.</p>
+<p>Για διαγραφή λογαριασμού, στείλε μου email και σβήνεται. Δεν χρειάζεται να εξηγήσεις γιατί.</p>
+<p>Αν θεωρείς ότι κάτι δεν πάει καλά με τα δεδομένα σου, μπορείς να απευθυνθείς στην <b>Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα</b> (dpa.gr).</p>
+
+<h3>Ποιος είναι υπεύθυνος</h3>
+<p><b>Rise Stronger</b> — Ηλίας Βαρυτιμιάδης<br>
+<a href="mailto:risestrongerartofstrengthtrain@gmail.com">risestrongerartofstrengthtrain@gmail.com</a></p>
+
+<h3>Και κάτι που δεν είναι νομικό</h3>
+<p>Η CICO <b>δεν είναι ιατρικό εργαλείο</b>. Δεν κάνει διάγνωση, δεν συνταγογραφεί, δεν αντικαθιστά γιατρό ούτε διαιτολόγο. Είναι μια ζυγαριά για τη μέρα σου.</p>
+<p>Πριν αλλάξεις σοβαρά τη διατροφή σου ή πάρεις οποιοδήποτε συμπλήρωμα, <b>μίλα με τον γιατρό ή τον διαιτολόγο σου</b>. Ιδίως αν παίρνεις φάρμακα, είσαι έγκυος ή θηλάζεις, ή έχεις κάποια πάθηση.</p>
+<p class="pv-warn">Αν έχεις ή είχες <b>διατροφική διαταραχή</b>, η καταγραφή θερμίδων μπορεί να μην σου κάνει καλό. Μίλα πρώτα με κάποιον που σε ξέρει.</p>
+`, en:`
+<h3>What we keep</h3><p>Your email, and what you log: foods, meals, weight, goals, exercise, water.</p>
+<p class="pv-warn"><b>Note:</b> nutrition and weight data count as <b>health data</b> under GDPR. That is why we ask for explicit consent.</p>
+<h3>What we do NOT do</h3><ul><li>We do not sell anything to anyone.</li><li>No ads.</li><li>No analytics of any kind.</li><li>No tracking cookies.</li><li>We do not read your data — the database only lets each account see its own row.</li></ul>
+<h3>Where your data lives</h3><p>On your device first. In Supabase only if you create an account. GitHub Pages, Google Fonts and jsDelivr see your IP address when the page loads, as with any website. None of them receive your nutrition data.</p>
+<h3>Your rights</h3><p>Access, correct, download, delete, and withdraw consent at any time. Download it yourself: Goals → Backup. Email us to delete your account.</p>
+<h3>Not a medical tool</h3><p>CICO does not diagnose or replace a doctor or dietitian. Talk to yours before changing your diet or taking supplements.</p>
+<p class="pv-warn">If you have or had an eating disorder, calorie tracking may not be good for you. Talk to someone who knows you first.</p>
+`};
+function showPrivacy(){
+  showSheet(
+    `<div style="flex:1;min-width:0"><h2>${t('pvTitle')}</h2><div class="sub">${t('pvSub')}</div></div>
+     <button class="sx" onclick="closeSheet()">×</button>`,
+    `<div class="pv">${PRIVACY[L]||PRIVACY.el}</div>`,
+    `<button class="btn full" onclick="closeSheet()">${t('pvClose')}</button>`
+  );
+}
+
+/* ═══════ ΑΝΑΦΟΡΑ ΠΡΟΒΛΗΜΑΤΟΣ ═══════
+   Αν 20 άτομα δοκιμάσουν την εφαρμογή, χρειάζονται τρόπο να πουν τι χάλασε
+   χωρίς να ψάχνουν το τηλέφωνό σου. Ανοίγει έτοιμο email με τα τεχνικά
+   στοιχεία συμπληρωμένα — ώστε να μη χρειάζεται να τα εξηγήσουν. */
+function reportIssue(){
+  const info=[
+    'Τι πήγε στραβά (γράψε εδώ):','','','--- τεχνικά, μην τα σβήσεις ---',
+    'Οθόνη: '+window.innerWidth+'×'+window.innerHeight,
+    'Καρτέλα: '+tab,
+    'Τροφές: '+allFoods().length,
+    'Λογαριασμός: '+(sbUser?'ναι':'όχι'),
+    'Πρόγραμμα: '+navigator.userAgent.slice(0,120)
+  ].join('\n');
+  const url='mailto:risestrongerartofstrengthtrain@gmail.com'
+    +'?subject='+encodeURIComponent('CICO — κάτι δεν πάει καλά')
+    +'&body='+encodeURIComponent(info);
+  location.href=url;
+}
+
 /* ---- toast ---- */
 let tt;
 function toast(x){const e=document.getElementById('toast');e.textContent=x;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),2000)}
@@ -4538,11 +4700,16 @@ function renderAuth(){
     <label class="f" style="margin-top:10px">${t('aPass')}</label><input type="password" id="aPass" autocomplete="${su?'new-password':'current-password'}" placeholder="••••••" onkeydown="if(event.key==='Enter')${su?'sbSignUp()':'sbLogin()'}">
     <button class="btn full" style="margin-top:15px" onclick="${su?'sbSignUp()':'sbLogin()'}">${su?t('aSignup'):t('aLogin')}</button>
     <div id="authMsg" class="auth-msg"></div>
-    <button class="auth-skip" onclick="guestMode()">${t('aGuest')}</button>`;
+    ${su?`<label class="pv-consent"><input type="checkbox" id="aConsent"><span>${t('pvConsent')}</span></label>`:''}
+    <button class="auth-skip" onclick="guestMode()">${t('aGuest')}</button>
+    <button class="pv-link" onclick="showPrivacy()">${t('pvTitle')}</button>`;
 }
 function authMsg(m,ok){const e=document.getElementById('authMsg');if(e){e.textContent=m;e.className='auth-msg'+(ok?' ok':' err')}}
 async function sbSignUp(){if(!sb)return;const email=(document.getElementById('aEmail').value||'').trim(),p=document.getElementById('aPass').value||'';
+  const cons=document.getElementById('aConsent');
+  if(cons&&!cons.checked){authMsg(t('pvNeed'));return}
   if(!email||p.length<6){authMsg(t('aBadInput'));return} authMsg(t('aWait'),true);
+  save('pvOK',new Date().toISOString());
   try{const {data,error}=await sb.auth.signUp({email,password:p,options:{emailRedirectTo:location.href.split('#')[0]}});
     if(error){authMsg(error.message);return}
     if(data.session){sbUser=data.session.user;await pullCloud();hideAuth();renderGoals();toast(t('aWelcome'))}else{authMsg(t('aCheckEmail'),true)}
@@ -4560,6 +4727,8 @@ function guestMode(){save('guest',true);hideAuth();}
 function renderAll(){renderChrome();renderDay();renderFoods();renderGoals();renderLearn();document.getElementById('chat').dataset.init='';renderHelp()}
 renderAll();
 applyNight();
+(function(){const b=document.getElementById('boot');
+ if(b)setTimeout(()=>{b.classList.add('gone');setTimeout(()=>b.remove(),600)},260);})();
 if(!Store.ok())setTimeout(()=>toast(t('storeWarn')),700);
 /* Το onboarding μόνο την πρώτη φορά, και αφού περάσει η οθόνη σύνδεσης */
 function maybeOnb(){ if(!load('onbDone',false)) setTimeout(showOnb,450); }
