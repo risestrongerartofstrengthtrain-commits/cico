@@ -493,6 +493,21 @@ body.night .nightbtn{background:rgba(43,36,27,.95)}
 .shareb .sn{display:flex;align-items:center;border:2px solid var(--line);border-radius:3px;background:var(--cream)}
 .shareb .sn button{width:34px;height:38px;border:0;background:transparent;font-size:19px;color:var(--green);font-weight:800}
 .shareb .sn span{min-width:26px;text-align:center;font-weight:800;font-size:16px}
+/* ── Διατροφικά πρότυπα ── */
+.dietnote{font-size:13px;line-height:1.5;color:var(--ink-soft);margin-bottom:12px}
+.dietnote p{margin-bottom:7px}
+.dietdoc{padding:8px 10px;border-left:3px solid var(--green);background:rgba(29,63,51,.08);
+  border-radius:3px;font-size:12.5px;line-height:1.5}
+.msplit{display:flex;height:12px;border:2px solid var(--line);border-radius:2px;overflow:hidden;margin-top:10px}
+.msplit span:nth-child(1){background:var(--green-2)}
+.msplit span:nth-child(2){background:var(--ochre)}
+.msplit span:nth-child(3){background:var(--red)}
+.mlegend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;margin-top:6px;color:var(--ink-soft);align-items:center}
+.mlegend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px}
+.mlegend i.p{background:var(--green-2)}.mlegend i.c{background:var(--ochre)}.mlegend i.f{background:var(--red)}
+.mmsg{margin-top:8px;font-size:12.5px;line-height:1.45}
+.mwarn{margin-top:7px;padding:7px 9px;border-left:3px solid var(--ochre-d);background:rgba(184,134,44,.12);
+  border-radius:3px;font-size:12.5px;line-height:1.45}
 /* ── Η Κατσαρόλα ── */
 .potlist{border:2px solid var(--line);border-radius:4px;overflow:hidden;background:var(--cream)}
 .potempty{padding:16px 12px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:14px}
@@ -821,6 +836,9 @@ nav.tabbar::before{content:"";position:absolute;top:0;left:0;right:0;height:100%
         <div class="card">
           <div class="card-h" data-t="goalTitle">Ο Στόχος Σου</div>
           <div class="chips" id="modeChips" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px"></div>
+          <label class="f" data-t="dietLbl">Διατροφικό πρότυπο</label>
+          <div class="chips" id="dietChips" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:6px"></div>
+          <div id="dietNote" class="dietnote"></div>
           <div class="gg">
             <div class="wide"><label class="f" data-t="gKcal">Θερμίδες / μέρα</label><input type="number" inputmode="numeric" id="gKcal" oninput="saveGoals()"></div>
             <div><label class="f" data-t="gProt">Πρωτεΐνη (g)</label><input type="number" inputmode="numeric" id="gProt" oninput="saveGoals()"></div>
@@ -965,6 +983,8 @@ const T={
   noRes:'Καμία τροφή δεν ταιριάζει.',
   goalTitle:'Ο Στόχος Σου', profTitle:'Το Προφίλ Σου',
   gKcal:'Θερμίδες / μέρα', gProt:'Πρωτεΐνη (g)', gCarb:'Υδατάνθρακες (g)', gFat:'Λίπος (g)',
+  dietLbl:'Διατροφικό πρότυπο',
+  macroOff:'Τα μακροθρεπτικά σου βγάζουν {n} kcal διαφορά από τον στόχο θερμίδων. Δεν είναι λάθος — απλώς να το ξέρεις.',
   pSex:'Φύλο', pAge:'Ηλικία', pW:'Βάρος (kg)', pH:'Ύψος (cm)', pAct:'Δραστηριότητα',
   calcBtn:'Υπολόγισε τον στόχο μου',
   tdeeTitle:'Ενεργειακή Δαπάνη', tdeeOf:'kcal / μέρα συντήρηση',
@@ -1093,6 +1113,8 @@ const T={
   noRes:'No food matches.',
   goalTitle:'Your Goal', profTitle:'Your Profile',
   gKcal:'Calories / day', gProt:'Protein (g)', gCarb:'Carbs (g)', gFat:'Fat (g)',
+  dietLbl:'Dietary pattern',
+  macroOff:'Your macros come to {n} kcal away from your calorie goal. Not an error — just so you know.',
   pSex:'Sex', pAge:'Age', pW:'Weight (kg)', pH:'Height (cm)', pAct:'Activity',
   calcBtn:'Calculate my goal',
   tdeeTitle:'Energy Expenditure', tdeeOf:'kcal / day maintenance',
@@ -3960,6 +3982,10 @@ function backupHTML(){
 function renderGoals(){
   const MODES=[{id:'cut',t:'modeCut'},{id:'maint',t:'modeMaint'},{id:'bulk',t:'modeBulk'}];
   document.getElementById('modeChips').innerHTML=MODES.map(m=>`<button class="chip ${m.id===goals.mode?'on':''}" onclick="setMode('${m.id}')">${t(m.t)}</button>`).join('');
+  const dc=document.getElementById('dietChips');
+  if(dc){dc.innerHTML=DIETS.map(D=>`<button class="chip ${D.id===(goals.diet||'bal')?'on':''}" onclick="applyDiet('${D.id}')">${D[L]||D.el}</button>`).join('');
+    const D=DIETS.find(x=>x.id===(goals.diet||'bal'));
+    document.getElementById('dietNote').innerHTML=(D?`<p>${D.note[L]||D.note.el}</p>`:'')+`<div class="dietdoc">${DIETDOC[L]||DIETDOC.el}</div>`;}
   document.getElementById('gKcal').value=goals.kcal;
   document.getElementById('gProt').value=goals.protein;
   document.getElementById('gCarb').value=goals.carbs;
@@ -3973,7 +3999,8 @@ function renderGoals(){
   document.getElementById('tdeeV').textContent=Math.round(bmr*goals.act);
   document.getElementById('bmrV').textContent='BMR '+Math.round(bmr)+' kcal';
   const mk=Math.round(goals.protein*4+goals.carbs*4+goals.fat*9), d=mk-goals.kcal;
-  document.getElementById('macroCheck').textContent=Math.abs(d)<=50?t('macroOk').replace('{x}',mk):t('macroOff').replace('{x}',mk).replace('{d}',(d>0?'+':'')+d+' kcal');
+  const msg=Math.abs(d)<=50?t('macroOk').replace('{x}',mk):t('macroOff').replace('{x}',mk).replace('{d}',(d>0?'+':'')+d+' kcal');
+  document.getElementById('macroCheck').innerHTML=macroSplitHTML()+'<div class="mmsg">'+msg+'</div>';
   document.getElementById('rdiSrc').innerHTML=`<h4>${t('sources')}</h4><ul>
     <li>${L==='el'?'FDA — Daily Values για ενήλικες & παιδιά ≥4 ετών (21 CFR 101.9). Η βάση για όλα τα ποσοστά ΣΗΠ στα μικροθρεπτικά.':'FDA — Daily Values for adults & children ≥4 years (21 CFR 101.9). The basis for every RDI percentage on micronutrients.'}<br><a href="https://www.fda.gov/food/nutrition-facts-label/daily-value-nutrition-and-supplement-facts-labels" target="_blank" rel="noopener">fda.gov — Daily Value</a><br><span class="dt">${t('updated')}: 2024 · ${t('accessed')}: 2026-07-18</span></li>
     <li>${L==='el'?'WHO/FAO/UNU — Protein and Amino Acid Requirements, Technical Report Series 935. Τα αμινοξέα σε ενήλικα αναφοράς 70 kg.':'WHO/FAO/UNU — Protein and Amino Acid Requirements, Technical Report Series 935. Amino acids referenced to a 70 kg adult.'}<br><a href="https://www.who.int/publications/i/item/WHO-TRS-935" target="_blank" rel="noopener">who.int — TRS 935</a><br><span class="dt">${t('updated')}: 2007 · ${t('accessed')}: 2026-07-18</span></li>
@@ -3990,7 +4017,8 @@ function renderAccount(){const el=document.getElementById('acctCard');if(!el)ret
   bk.innerHTML=backupHTML();
 }
 function setMode(m){goals.mode=m;save('goals',goals);renderGoals()}
-function saveGoals(){
+function saveGoals(fromUser){
+  const before=goals.protein+'|'+goals.carbs+'|'+goals.fat;
   goals.kcal=+document.getElementById('gKcal').value||0;
   goals.protein=+document.getElementById('gProt').value||0;
   goals.carbs=+document.getElementById('gCarb').value||0;
@@ -4000,16 +4028,72 @@ function saveGoals(){
   goals.w=+document.getElementById('pW').value||0;
   goals.h=+document.getElementById('pH').value||0;
   goals.act=+document.getElementById('pAct').value;
+  // Αν άλλαξε χειροκίνητα τα μακροθρεπτικά, το πρότυπο γίνεται «Δικός μου»
+  if(before!==goals.protein+'|'+goals.carbs+'|'+goals.fat) goals.diet='custom';
   save('goals',goals);renderGoals();renderDial();renderMacros();renderHilite();renderNut();
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   ΔΙΑΤΡΟΦΙΚΑ ΠΡΟΤΥΠΑ
+   ───────────────────────────────────────────────────────────────────
+   Δεν κρίνουμε τι τρώει ο καθένας. Δίνουμε τα εργαλεία να ορίσει τους
+   δικούς του στόχους — κετογονική, carnivore ή ό,τι άλλο — και του
+   λέμε τίμια τι να προσέξει σε κάθε περίπτωση.
+   Οι υπολογισμοί: πρωτεΐνη σε g ανά κιλό σωματικού βάρους, υδατάνθρακες
+   σταθεροί ή υπόλοιπο, λίπος το υπόλοιπο των θερμίδων.
+   ═══════════════════════════════════════════════════════════════════ */
+const DIETS=[
+ {id:'bal', el:'Ισορροπημένη', en:'Balanced', pro:1.8, proCut:2.1, fatPct:0.27,
+  note:{el:'Η κλασική αναλογία. Πρωτεΐνη 1,8–2,1 g ανά κιλό, λίπος γύρω στο 27% των θερμίδων, οι υδατάνθρακες παίρνουν το υπόλοιπο.',
+        en:'The classic split. Protein 1.8–2.1 g/kg, fat around 27% of calories, carbs take the rest.'}},
+ {id:'lowcarb', el:'Χαμηλοί υδατάνθρακες', en:'Low carb', pro:2.0, carbsFixed:100,
+  note:{el:'Υδατάνθρακες γύρω στα 100 g. Πρωτεΐνη 2,0 g ανά κιλό, το λίπος καλύπτει τις υπόλοιπες θερμίδες. Πρόσεξε τις <b>φυτικές ίνες</b> — πέφτουν εύκολα όταν κόβεις υδατάνθρακες.',
+        en:'Carbs around 100 g. Watch your fibre — it drops easily when you cut carbs.'}},
+ {id:'keto', el:'Κετογονική', en:'Ketogenic', pro:1.6, carbsFixed:25,
+  note:{el:'Υδατάνθρακες <b>25 g</b>, πρωτεΐνη 1,6 g ανά κιλό, το λίπος καλύπτει τα υπόλοιπα — συνήθως 70–75% των θερμίδων. <b>Πρόσεξε:</b> φυτικές ίνες, μαγνήσιο, κάλιο και φυλλικό πέφτουν συχνά. Στις πρώτες μέρες χάνεις πολύ νερό και αλάτι.',
+        en:'Carbs 25 g, protein 1.6 g/kg, fat covers the rest — usually 70–75% of calories. Watch fibre, magnesium, potassium and folate.'}},
+ {id:'carnivore', el:'Carnivore', en:'Carnivore', pro:2.2, carbsFixed:5,
+  note:{el:'Σχεδόν μηδέν υδατάνθρακες, πρωτεΐνη 2,2 g ανά κιλό, τα υπόλοιπα από λίπος. <b>Πρόσεξε:</b> βιταμίνη C, φυτικές ίνες, φυλλικό, μαγνήσιο και κάλιο έρχονται σχεδόν αποκλειστικά από φυτικές τροφές — σε αυτό το πρότυπο θα δεις μεγάλα κενά στον πίνακα.',
+        en:'Near-zero carbs, protein 2.2 g/kg, the rest from fat. Vitamin C, fibre, folate, magnesium and potassium come almost entirely from plants — expect large gaps.'}},
+ {id:'highpro', el:'Υψηλή πρωτεΐνη', en:'High protein', pro:2.4, fatPct:0.25,
+  note:{el:'Πρωτεΐνη 2,4 g ανά κιλό — για περίοδο έντονης προπόνησης ή διατήρησης μυών σε έλλειμμα.',
+        en:'Protein 2.4 g/kg — for hard training or preserving muscle in a deficit.'}},
+ {id:'custom', el:'Δικός μου', en:'My own', custom:true,
+  note:{el:'Γράψε ό,τι θέλεις στα τρία πεδία. Η εφαρμογή δεν θα τα ξαναπειράξει — ούτε όταν πατήσεις «Υπολόγισε τον στόχο μου».',
+        en:'Type whatever you want. The app will not touch them again.'}}
+];
+const DIETDOC={el:'Κάθε αυστηρό διατροφικό πρότυπο αλλάζει σημαντικά το τι παίρνει το σώμα σου. Δεν είμαστε γιατροί — <b>συζήτησέ το με τον γιατρό ή τον διαιτολόγο σου</b>, ειδικά αν παίρνεις φάρμακα, είσαι έγκυος ή έχεις κάποια πάθηση.',
+ en:'Any strict dietary pattern significantly changes what your body receives. We are not doctors — discuss it with your doctor or dietitian.'};
+function applyDiet(id){
+  goals.diet=id; const D=DIETS.find(x=>x.id===id);
+  if(D&&!D.custom&&goals.kcal>0){
+    const wkg=goals.w||70;
+    const pro=Math.round(wkg*(goals.mode==='cut'&&D.proCut?D.proCut:D.pro));
+    let carbs, fat;
+    if(D.carbsFixed!=null){ carbs=D.carbsFixed; fat=Math.max(0,Math.round((goals.kcal-pro*4-carbs*4)/9)); }
+    else { fat=Math.round(goals.kcal*D.fatPct/9); carbs=Math.max(0,Math.round((goals.kcal-pro*4-fat*9)/4)); }
+    goals.protein=pro; goals.carbs=carbs; goals.fat=fat;
+  }
+  save('goals',goals);renderGoals();renderDial();renderMacros();renderHilite();renderNut();
+}
+/* Ζωντανός έλεγχος: βγαίνουν τα μακροθρεπτικά τις θερμίδες που όρισες; */
+function macroSplitHTML(){
+  const kc=goals.protein*4+goals.carbs*4+goals.fat*9;
+  if(!kc)return '';
+  const split=k=>Math.round(k/kc*100)||0;
+  const bar=`<div class="msplit"><span style="flex:${goals.protein*4||1}" title="πρωτεΐνη"></span><span style="flex:${goals.carbs*4||1}"></span><span style="flex:${goals.fat*9||1}"></span></div>
+    <div class="mlegend"><i class="p"></i>${split(goals.protein*4)}% ${t('protein')} <i class="c"></i>${split(goals.carbs*4)}% ${t('carbs')} <i class="f"></i>${split(goals.fat*9)}% ${t('fat')}</div>`;
+  return bar;
+}
+
 function calcTDEE(){
   const bmr=goals.sex==='m'?10*goals.w+6.25*goals.h-5*goals.age+5:10*goals.w+6.25*goals.h-5*goals.age-161;
   const tdee=bmr*goals.act, adj=goals.mode==='cut'?-400:goals.mode==='bulk'?300:0;
   goals.kcal=Math.round((tdee+adj)/10)*10;
-  goals.protein=Math.round(goals.w*(goals.mode==='cut'?2.1:1.8));
-  goals.fat=Math.round(goals.kcal*0.27/9);
-  goals.carbs=Math.max(0,Math.round((goals.kcal-goals.protein*4-goals.fat*9)/4));
-  save('goals',goals);renderGoals();renderDial();renderMacros();renderHilite();renderNut();toast(t('toastGoals'));
+  save('goals',goals);
+  // Τα μακροθρεπτικά ακολουθούν το πρότυπο που διάλεξες — και δεν πειράζονται αν είναι «Δικός μου»
+  applyDiet(goals.diet||'bal');
+  toast(t('toastGoals'));
 }
 
 /* ============================================================
