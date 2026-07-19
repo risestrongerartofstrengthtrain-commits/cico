@@ -1400,7 +1400,711 @@ const FOODS=[
    url:'https://fdc.nal.usda.gov/food-details/175203/nutrients', d:'2019-04', a:'2026-07-18'}],
  note:{el:'Βρασμένα λευκά φασόλια χωρίς αλάτι — η βάση της φασολάδας. Ζύγισε μαγειρεμένα. Της κονσέρβας έχουν πολύ περισσότερο νάτριο.',
    en:'Boiled white beans without salt — the base of fasolada. Weigh them cooked. The canned version carries far more sodium.'}
-}
+},
+
+  /* ══════ 77 ΤΡΟΦΕΣ ΑΠΟ USDA FoodData Central — 19 Ιουλίου 2026 ══════
+     Κάθε μία επαληθεύτηκε με υποχρεωτικές λέξεις-κλειδιά στην επίσημη περιγραφή.
+     Έλεγχοι που πέρασαν όλες: Atwater, άθροισμα≤100g, ίνες≤υδατ., κορεσμένα≤λίπος,
+     ζάχαρα≤υδατ., καμία αρνητική τιμή. Μέσος όρος 78 θρεπτικά ανά τροφή. */
+{
+   id:'sunflower', cat:'fatnut', verified:true,
+   el:'Ηλιόσποροι', en:'Sunflower seeds', elSub:'Ωμοί', enSub:'Seeds, sunflower seed kernels, dried',
+   portions:[{el:'Χούφτα',en:'Χούφτα',g:30}],
+   n:{ kcal:584, alcohol:0, caffeine:0, water:4.73, carbs:20, fiber:8.6, sugars:2.62, sucrose:2.5, fat:51.5, mufa:18.5, f161:0.02, f181:18.4, pufa:23.1, epa:0.014, dha:0, aa:0, sat:4.46, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.025, f16:2.21, f18:1.69, chol:0, phytosterol:534, protein:20.8, ala_a:1120, arg:2400, asp:2450, cys:451, glu:5580, gly:1460, his:632, ile:1140, leu:1660, lys:937, met:494, phe:1170, pro:1180, ser:1080, thr:928, trp:348, tyr:666, val:1320, b1:1.48, b2:0.355, b3:8.34, b5:1.13, b6:1.34, b12:0, choline:55.1, b9:227, vitA:3, retinol:0, betacar:30, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:1.4, vitD:0, vitE:35.2, toco_b:1.18, toco_g:0.37, toco_d:0.02, vitK:0, ca:78, cu:1.8, fe:5.25, mg:325, mn:1.95, p:660, k:645, se:53, na:9, zn:5, ala:0.06, la:23, o3:0.074, o6:23 },
+   src:[{el:'USDA FoodData Central — «Seeds, sunflower seed kernels, dried» (FDC ID 170562). Προφίλ 82 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Seeds, sunflower seed kernels, dried" (FDC ID 170562). 82-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170562/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'graviera', cat:'dairy', greek:true, verified:true,
+   el:'Γραβιέρα', en:'Graviera (gruyère-type)', elSub:'Σκληρό τυρί', enSub:'Cheese, gruyere',
+   portions:[{el:'Φέτα',en:'Φέτα',g:30}],
+   n:{ kcal:413, alcohol:0, caffeine:0, water:33.2, carbs:0.36, fiber:0, sugars:0.36, fat:32.3, mufa:10, f161:0.724, f181:8.58, pufa:1.73, epa:0, dha:0, aa:0, sat:18.9, f4:1.05, f6:0.621, f8:0.355, f10:0.751, f12:0.911, f14:3.37, f16:8.75, f18:2.32, chol:110, protein:29.8, ala_a:958, arg:972, asp:1640, cys:304, glu:5980, gly:533, his:1120, ile:1610, leu:3100, lys:2710, met:822, phe:1740, pro:3870, ser:1720, thr:1090, trp:421, tyr:1780, val:2240, b1:0.06, b2:0.279, b3:0.106, b5:0.562, b6:0.081, b12:1.6, choline:15.4, b9:10, vitA:271, retinol:268, betacar:33, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.6, vitE:0.28, vitK:2.7, ca:1010, cu:0.032, fe:0.17, mg:36, mn:0.017, p:605, k:81, se:14.5, na:714, zn:3.9, ala:0.433, la:1.3, o3:0.433, o6:1.3 },
+   src:[{el:'USDA FoodData Central — «Cheese, gruyere» (FDC ID 171242). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cheese, gruyere" (FDC ID 171242). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171242/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Το USDA δεν έχει μετρήσεις για ελληνικά τυριά. Χρησιμοποιείται το πλησιέστερο τεκμηριωμένο αντίστοιχο. Το ελληνικό τυρί είναι συχνά από πρόβειο ή κατσικίσιο γάλα, οπότε τα λιπαρά, το ασβέστιο και το νάτριο διαφέρουν ανάλογα με τον παραγωγό και την ωρίμανση. Θεώρησέ το κατά προσέγγιση.', en:'USDA has no measurements for Greek cheeses. The closest documented equivalent is used. Greek cheese is often made from sheep or goat milk, so fat, calcium and sodium vary by producer and ripening. Treat as approximate.'}
+  },
+  {
+   id:'tahini', cat:'fatnut', greek:true, verified:true,
+   el:'Ταχίνι', en:'Tahini', elSub:'Από σουσάμι', enSub:'Seeds, sesame butter, tahini',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:15}],
+   n:{ kcal:592, alcohol:0, caffeine:0, water:3, carbs:21.5, fiber:4.7, fat:53, mufa:20, f161:0.159, f181:19.8, pufa:23.2, epa:0, dha:0, aa:0, sat:7.42, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.132, f16:4.74, f18:2.23, chol:0, protein:17.4, b1:1.59, b2:0.12, b3:5.64, b6:0.15, b12:0, b9:98, vitA:3, retinol:0, vitC:4.2, vitD:0, ca:141, cu:1.61, fe:4.42, mg:95, p:790, k:459, se:34.4, na:35, zn:4.62, ala:0.401, la:22.8, o3:0.401, o6:22.8 },
+   src:[{el:'USDA FoodData Central — «Seeds, sesame butter, tahini» (FDC ID 168604). Προφίλ 48 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Seeds, sesame butter, tahini" (FDC ID 168604). 48-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/168604/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'mizithra', cat:'dairy', greek:true, verified:true,
+   el:'Μυζήθρα / Ανθότυρο', en:'Mizithra / Anthotyro (ricotta-type)', elSub:'Τυρί τυρογάλακτος', enSub:'Cheese, ricotta, part skim milk',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:60}],
+   n:{ kcal:138, alcohol:0, caffeine:0, water:74.4, carbs:5.14, fiber:0, sugars:0.31, fat:7.91, mufa:2.31, f161:0.277, f181:1.92, pufa:0.26, epa:0, dha:0, aa:0, sat:4.93, f4:0.254, f6:0.065, f8:0.073, f10:0.151, f12:0.105, f14:0.808, f16:2.44, f18:0.866, chol:31, protein:11.4, ala_a:505, arg:639, asp:1010, cys:100, glu:2470, gly:298, his:464, ile:596, leu:1240, lys:1350, met:284, phe:562, pro:1080, ser:582, thr:523, trp:127, tyr:596, val:700, b1:0.021, b2:0.185, b3:0.078, b5:0.242, b6:0.02, b12:0.29, choline:16.3, b9:13, vitA:107, retinol:105, betacar:20, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.1, vitE:0.07, vitK:0.7, ca:272, cu:0.034, fe:0.44, mg:15, mn:0.01, p:183, k:125, se:16.7, na:99, zn:1.34, ala:0.07, la:0.19, o3:0.07, o6:0.19 },
+   src:[{el:'USDA FoodData Central — «Cheese, ricotta, part skim milk» (FDC ID 171248). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cheese, ricotta, part skim milk" (FDC ID 171248). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171248/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Το USDA δεν έχει μετρήσεις για ελληνικά τυριά. Χρησιμοποιείται το πλησιέστερο τεκμηριωμένο αντίστοιχο. Το ελληνικό τυρί είναι συχνά από πρόβειο ή κατσικίσιο γάλα, οπότε τα λιπαρά, το ασβέστιο και το νάτριο διαφέρουν ανάλογα με τον παραγωγό και την ωρίμανση. Θεώρησέ το κατά προσέγγιση.', en:'USDA has no measurements for Greek cheeses. The closest documented equivalent is used. Greek cheese is often made from sheep or goat milk, so fat, calcium and sodium vary by producer and ripening. Treat as approximate.'}
+  },
+  {
+   id:'avocado', cat:'fruit', verified:true,
+   el:'Αβοκάντο', en:'Avocado', elSub:'Ωμό', enSub:'Avocados, raw, all commercial varieties',
+   portions:[{el:'Μισό',en:'Μισό',g:100},{el:'Ένα',en:'Ένα',g:200}],
+   n:{ kcal:160, alcohol:0, caffeine:0, water:73.2, carbs:8.53, fiber:6.7, starch:0.11, sugars:0.66, fructose:0.12, galactose:0.1, glucose:0.37, lactose:0, maltose:0, sucrose:0.06, fat:14.7, mufa:9.8, f161:0.698, f181:9.07, pufa:1.82, epa:0, dha:0, aa:0, sat:2.13, f4:0, f6:0, f8:0.001, f10:0, f12:0, f14:0, f16:2.08, f18:0.049, trans:0, chol:0, protein:2, ala_a:109, arg:88, asp:236, cys:27, glu:287, gly:104, his:49, ile:84, leu:143, lys:132, met:38, phe:97, pro:98, ser:114, thr:73, trp:25, tyr:49, val:107, b1:0.067, b2:0.13, b3:1.74, b5:1.39, b6:0.257, b12:0, choline:14.2, b9:81, vitA:7, retinol:0, betacar:62, alphacar:24, betacryp:28, lutzea:271, lycopene:0, vitC:10, vitD:0, vitE:2.07, toco_b:0.05, toco_g:0.33, toco_d:0.02, vitK:21, ca:12, cu:0.19, fl:7, fe:0.55, mg:29, mn:0.142, p:52, k:485, se:0.4, na:7, zn:0.64, ala:0.111, la:1.67, o3:0.111, o6:1.69 },
+   src:[{el:'USDA FoodData Central — «Avocados, raw, all commercial varieties» (FDC ID 171705). Προφίλ 89 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Avocados, raw, all commercial varieties" (FDC ID 171705). 89-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171705/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'parmesan', cat:'dairy', verified:true,
+   el:'Παρμεζάνα', en:'Parmesan', elSub:'Σκληρό, τριμμένο', enSub:'Cheese, parmesan, hard',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:5}],
+   n:{ kcal:392, alcohol:0, caffeine:0, water:30, carbs:3.22, fiber:0, sugars:0.11, fat:25, mufa:7.52, f161:0.394, f181:6.66, pufa:0.569, epa:0, dha:0, aa:0, sat:14.8, f4:1.3, f6:0.487, f8:0.26, f10:0.648, f12:0.873, f14:2.91, f16:6.97, f18:2.3, chol:68, protein:35.8, ala_a:1050, arg:1320, asp:2240, cys:235, glu:8210, gly:622, his:1380, ile:1890, leu:3450, lys:3310, met:958, phe:1920, pro:4180, ser:2070, thr:1320, trp:482, tyr:2000, val:2450, b1:0.039, b2:0.332, b3:0.271, b5:0.453, b6:0.091, b12:1.2, choline:15.4, b9:7, vitA:207, retinol:201, betacar:66, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.5, vitE:0.22, vitK:1.7, ca:1180, cu:0.032, fe:0.82, mg:44, mn:0.02, p:694, k:92, se:22.5, na:1180, zn:2.75, ala:0.297, la:0.272, o3:0.297, o6:0.272 },
+   src:[{el:'USDA FoodData Central — «Cheese, parmesan, hard» (FDC ID 170848). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cheese, parmesan, hard" (FDC ID 170848). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170848/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'wine_red', cat:'other', greek:true, verified:true,
+   el:'Κρασί κόκκινο', en:'Red wine', elSub:'Ξηρό', enSub:'Alcoholic beverage, wine, table, red',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:147}],
+   n:{ kcal:85, alcohol:10.6, caffeine:0, water:86.5, carbs:2.61, fiber:0, sugars:0.62, fat:0, mufa:0, f161:0, f181:0, pufa:0, epa:0, dha:0, aa:0, sat:0, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0, f18:0, trans:0, chol:0, protein:0.07, b1:0.005, b2:0.031, b3:0.224, b5:0.03, b6:0.057, b12:0, choline:5.7, b9:1, vitA:0, retinol:0, betacar:1, alphacar:0, betacryp:0, lutzea:6, lycopene:0, vitC:0, vitD:0, vitE:0, vitK:0.4, ca:8, cu:0.011, fl:105, fe:0.46, mg:12, mn:0.132, p:23, k:127, se:0.2, na:4, zn:0.14, ala:0, la:0, o3:0, o6:0 },
+   src:[{el:'USDA FoodData Central — «Alcoholic beverage, wine, table, red» (FDC ID 173190). Προφίλ 61 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Alcoholic beverage, wine, table, red" (FDC ID 173190). 61-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/173190/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'butter', cat:'fatnut', verified:true,
+   el:'Βούτυρο', en:'Butter', elSub:'Αλατισμένο', enSub:'Butter, salted',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:14}],
+   n:{ kcal:717, alcohol:0, caffeine:0, water:16.2, carbs:0.06, fiber:0, sugars:0.06, fat:81.1, mufa:21, f161:0.961, f181:20, pufa:3.04, epa:0, dha:0, aa:0, sat:51.4, f4:3.23, f6:2.01, f8:1.19, f10:2.53, f12:2.59, f14:7.44, f16:21.7, f18:10, trans:3.28, chol:215, protein:0.85, ala_a:29, arg:31, asp:64, cys:8, glu:178, gly:18, his:23, ile:51, leu:83, lys:67, met:21, phe:41, pro:82, ser:46, thr:38, trp:12, tyr:41, val:57, b1:0.005, b2:0.034, b3:0.042, b5:0.11, b6:0.003, b12:0.17, choline:18.8, b9:3, vitA:684, retinol:671, betacar:158, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:2.32, toco_b:0, toco_g:0, toco_d:0, vitK:7, ca:24, cu:0, fl:2.8, fe:0.02, mg:2, mn:0, p:24, k:24, se:1, na:643, zn:0.09, ala:0.315, la:2.17, o3:0.315, o6:2.17 },
+   src:[{el:'USDA FoodData Central — «Butter, salted» (FDC ID 173410). Προφίλ 82 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Butter, salted" (FDC ID 173410). 82-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/173410/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'wine_white', cat:'other', greek:true, verified:true,
+   el:'Κρασί λευκό', en:'White wine', elSub:'Ξηρό', enSub:'Alcoholic beverage, wine, table, white',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:147}],
+   n:{ kcal:82, alcohol:10.3, caffeine:0, water:86.9, carbs:2.6, fiber:0, sugars:0.96, fat:0, mufa:0, f161:0, f181:0, pufa:0, epa:0, dha:0, aa:0, sat:0, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0, f18:0, trans:0, chol:0, protein:0.07, b1:0.005, b2:0.015, b3:0.108, b5:0.045, b6:0.05, b12:0, choline:4.3, b9:1, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0, vitK:0.4, ca:9, cu:0.004, fl:202, fe:0.27, mg:10, mn:0.117, p:18, k:71, se:0.1, na:5, zn:0.12, ala:0, la:0, o3:0, o6:0 },
+   src:[{el:'USDA FoodData Central — «Alcoholic beverage, wine, table, white» (FDC ID 174837). Προφίλ 61 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Alcoholic beverage, wine, table, white" (FDC ID 174837). 61-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174837/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'creamfr', cat:'dairy', verified:true,
+   el:'Κρέμα γάλακτος', en:'Heavy cream', elSub:'35% λιπαρά', enSub:'Cream, fluid, heavy whipping',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:15}],
+   n:{ kcal:340, alcohol:0, caffeine:0, water:57.7, carbs:2.84, fiber:0, sugars:2.92, fructose:0, galactose:0, glucose:0, lactose:2.92, maltose:0, sucrose:0, fat:36.1, mufa:9.1, f161:0.656, f181:7.97, pufa:1.57, epa:0.009, dha:0, aa:0.058, sat:23, f4:0.732, f6:0.609, f8:0.384, f10:0.905, f12:1.05, f14:3.33, f16:9.3, f18:3.57, trans:1.24, chol:113, protein:2.84, ala_a:91, arg:66, asp:209, cys:15, glu:572, gly:66, his:66, ile:146, leu:234, lys:124, met:66, phe:130, pro:302, ser:94, thr:126, trp:66, tyr:134, val:170, b1:0.02, b2:0.188, b3:0.064, b5:0.495, b6:0.035, b12:0.16, choline:16.8, b9:4, vitA:411, retinol:405, betacar:72, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0.6, vitD:1.6, vitE:0.92, toco_b:0, toco_g:0.24, toco_d:0, vitK:3.2, ca:66, cu:0.011, fl:3, fe:0.1, mg:7, mn:0.006, p:58, k:95, se:3, na:27, zn:0.24, ala:0.122, la:0.874, o3:0.151, o6:0.942 },
+   src:[{el:'USDA FoodData Central — «Cream, fluid, heavy whipping» (FDC ID 170859). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cream, fluid, heavy whipping" (FDC ID 170859). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170859/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'beer', cat:'other', verified:true,
+   el:'Μπύρα', en:'Beer', elSub:'Κανονική', enSub:'Alcoholic beverage, beer, regular, all',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:330},{el:'Κουτί',en:'Κουτί',g:330}],
+   n:{ kcal:43, alcohol:3.9, caffeine:0, water:92, carbs:3.55, fiber:0, starch:0, sugars:0, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0, fat:0, mufa:0, f161:0, f181:0, pufa:0, epa:0, dha:0, aa:0, sat:0, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0, f18:0, trans:0, chol:0, protein:0.46, ala_a:12, arg:0, asp:16, cys:0, glu:47, gly:13, his:0, ile:0, leu:0, lys:0, met:0, phe:0, pro:35, ser:0, thr:0, trp:0, tyr:0, val:0, b1:0.005, b2:0.025, b3:0.513, b5:0.041, b6:0.046, b12:0.02, choline:10.1, b9:6, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0, toco_b:0, toco_g:0, toco_d:0, vitK:0, ca:4, cu:0.005, fl:44.2, fe:0.02, mg:6, mn:0.008, p:14, k:27, se:0.6, na:4, zn:0.01, ala:0, la:0, o3:0, o6:0 },
+   src:[{el:'USDA FoodData Central — «Alcoholic beverage, beer, regular, all» (FDC ID 168746). Προφίλ 89 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Alcoholic beverage, beer, regular, all" (FDC ID 168746). 89-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/168746/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'breadw', cat:'grain', verified:true,
+   el:'Ψωμί λευκό', en:'White bread', elSub:'Φραντζόλα / τοστ', enSub:'Bread, white, commercially prepared (includes soft bread crumbs)',
+   portions:[{el:'Φέτα',en:'Φέτα',g:28}],
+   n:{ kcal:266, alcohol:0, caffeine:0, water:36.4, carbs:49.4, fiber:2.7, starch:37.2, sugars:5.67, fructose:2.43, galactose:0, glucose:1.57, lactose:0, maltose:1.67, sucrose:0, fat:3.33, mufa:0.599, f161:0.018, f181:0.569, pufa:1.6, epa:0.001, dha:0, aa:0.002, sat:0.698, f4:0.003, f6:0, f8:0.005, f10:0.005, f12:0.013, f14:0.009, f16:0.419, f18:0.218, trans:0.027, chol:0, protein:8.85, b1:0.533, b2:0.243, b3:4.78, b5:0.536, b6:0.087, b12:0, choline:14.6, b9:111, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:44, lycopene:0, vitC:0, vitD:0, vitE:0.22, vitK:0.2, ca:144, cu:0.101, fl:48.9, fe:3.61, mg:23, mn:0.536, p:98, k:126, se:22, na:490, zn:0.74, ala:0.166, la:1.42, o3:0.167, o6:1.42 },
+   src:[{el:'USDA FoodData Central — «Bread, white, commercially prepared (includes soft bread crumbs)» (FDC ID 174924). Προφίλ 68 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Bread, white, commercially prepared (includes soft bread crumbs)" (FDC ID 174924). 68-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174924/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'ouzo', cat:'other', greek:true, verified:true,
+   el:'Ούζο / Τσίπουρο', en:'Ouzo / tsipouro', elSub:'40% αλκοόλ', enSub:'Alcoholic beverage, distilled, 80 proof',
+   portions:[{el:'Ποτηράκι',en:'Ποτηράκι',g:45}],
+   n:{ kcal:231, alcohol:33.4, caffeine:0, water:66.6, carbs:0, fiber:0, sugars:0, fat:0, mufa:0, f161:0, f181:0, pufa:0, epa:0, dha:0, aa:0, sat:0, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0, f18:0, trans:0, chol:0, protein:0, ala_a:0, arg:0, asp:0, cys:0, glu:0, gly:0, his:0, ile:0, leu:0, lys:0, met:0, phe:0, pro:0, ser:0, thr:0, trp:0, tyr:0, val:0, b1:0.008, b2:0, b3:0, b5:0, b6:0, b12:0, choline:0, b9:0, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0, vitK:0, ca:0, cu:0.05, fe:0.12, mg:0, mn:0.018, p:5, k:2, se:0, na:1, zn:0.07, ala:0, la:0, o3:0, o6:0 },
+   src:[{el:'USDA FoodData Central — «Alcoholic beverage, distilled, 80 proof» (FDC ID 174817). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Alcoholic beverage, distilled, 80 proof" (FDC ID 174817). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174817/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Όλα τα αποστάγματα 40% έχουν πρακτικά ταυτόσημο διατροφικό προφίλ: αιθανόλη και νερό. Οι θερμίδες προέρχονται αποκλειστικά από το αλκοόλ. Το ούζο με ζάχαρη ή γλυκάνισο μπορεί να έχει ελάχιστα παραπάνω.', en:'All 40% distilled spirits have a practically identical profile: ethanol and water. Calories come entirely from alcohol. Sweetened ouzo may be marginally higher.'}
+  },
+  {
+   id:'breadwh', cat:'grain', verified:true,
+   el:'Ψωμί ολικής άλεσης', en:'Wholemeal bread', elSub:'', enSub:'Bread, whole-wheat, commercially prepared',
+   portions:[{el:'Φέτα',en:'Φέτα',g:32}],
+   n:{ kcal:252, alcohol:0, caffeine:0, water:39, carbs:42.7, fiber:6, starch:28.7, sugars:4.34, fructose:2.21, galactose:0, glucose:1.07, lactose:0.01, maltose:1.02, sucrose:0.03, fat:3.5, mufa:0.62, f161:0.016, f181:0.584, pufa:1.59, epa:0, dha:0, aa:0.004, sat:0.722, f4:0, f6:0, f8:0.002, f10:0.008, f12:0.012, f14:0.008, f16:0.435, f18:0.231, trans:0.02, chol:0, protein:12.4, b1:0.394, b2:0.167, b3:4.44, b5:0.646, b6:0.215, b12:0, choline:27.2, b9:42, vitA:0, retinol:0, betacar:2, alphacar:0, betacryp:0, lutzea:87, lycopene:0, vitC:0, vitD:0, vitE:2.66, toco_b:0.25, toco_g:0.89, toco_d:0.28, vitK:7.8, ca:161, cu:0.227, fe:2.47, mg:75, mn:2.17, p:212, k:254, se:25.7, na:455, zn:1.77, ala:0.137, la:1.44, o3:0.137, o6:1.45 },
+   src:[{el:'USDA FoodData Central — «Bread, whole-wheat, commercially prepared» (FDC ID 172688). Προφίλ 70 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Bread, whole-wheat, commercially prepared" (FDC ID 172688). 70-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/172688/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'orangejuice', cat:'fruit', greek:true, verified:true,
+   el:'Χυμός πορτοκάλι', en:'Orange juice', elSub:'Φρεσκοστυμμένος', enSub:'Orange juice, raw',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:248}],
+   n:{ kcal:45, alcohol:0, caffeine:0, water:88.3, carbs:10.4, fiber:0.2, sugars:8.4, fat:0.2, mufa:0.036, f161:0.005, f181:0.032, pufa:0.04, epa:0, dha:0, aa:0, sat:0.024, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.001, f16:0.021, f18:0.001, trans:0, chol:0, protein:0.7, ala_a:15, arg:47, asp:75, cys:5, glu:33, gly:9, his:3, ile:8, leu:13, lys:9, met:3, phe:9, pro:44, ser:13, thr:8, trp:2, tyr:4, val:11, b1:0.09, b2:0.03, b3:0.4, b5:0.19, b6:0.04, b12:0, choline:6.2, b9:30, vitA:10, retinol:0, betacar:33, alphacar:6, betacryp:169, lutzea:115, lycopene:0, vitC:50, vitD:0, vitE:0.04, vitK:0.1, ca:11, cu:0.044, fe:0.2, mg:11, mn:0.014, p:17, k:200, se:0.1, na:1, zn:0.05, ala:0.011, la:0.029, o3:0.011, o6:0.029 },
+   src:[{el:'USDA FoodData Central — «Orange juice, raw» (FDC ID 169098). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Orange juice, raw" (FDC ID 169098). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169098/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'potato', cat:'veg', verified:true,
+   el:'Πατάτα', en:'Potato', elSub:'Ωμή, με τη φλούδα', enSub:'Potatoes, flesh and skin, raw',
+   portions:[{el:'Μικρή',en:'Μικρή',g:170},{el:'Μεσαία',en:'Μεσαία',g:213},{el:'Μεγάλη',en:'Μεγάλη',g:369}],
+   n:{ kcal:77, alcohol:0, caffeine:0, water:79.2, carbs:17.5, fiber:2.1, starch:15.3, sugars:0.82, fructose:0.26, galactose:0, glucose:0.31, lactose:0, maltose:0, sucrose:0.17, fat:0.09, mufa:0.002, f161:0.001, f181:0.001, pufa:0.042, epa:0, dha:0, aa:0, sat:0.025, f4:0, f6:0, f8:0, f10:0.001, f12:0.003, f14:0.001, f16:0.016, f18:0.004, trans:0, chol:0, protein:2.05, ala_a:63, arg:101, asp:480, cys:24, glu:351, gly:57, his:35, ile:66, leu:98, lys:107, met:32, phe:81, pro:63, ser:74, thr:67, trp:21, tyr:48, val:103, b1:0.081, b2:0.032, b3:1.06, b5:0.295, b6:0.298, b12:0, choline:12.1, b9:15, vitA:0, retinol:0, betacar:1, alphacar:0, betacryp:0, lutzea:9, lycopene:0, vitC:19.7, vitD:0, vitE:0.01, toco_b:0, toco_g:0, toco_d:0, vitK:2, ca:12, cu:0.11, fe:0.81, mg:23, mn:0.153, p:57, k:425, se:0.4, na:6, zn:0.3, ala:0.01, la:0.032, o3:0.01, o6:0.032 },
+   src:[{el:'USDA FoodData Central — «Potatoes, flesh and skin, raw» (FDC ID 170026). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Potatoes, flesh and skin, raw" (FDC ID 170026). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170026/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'tea', cat:'other', verified:true,
+   el:'Τσάι', en:'Tea', elSub:'Σκέτο', enSub:'Beverages, tea, black, brewed, prepared with tap water',
+   portions:[{el:'Φλιτζάνι',en:'Φλιτζάνι',g:237}],
+   n:{ kcal:1, alcohol:0, caffeine:20, water:99.7, carbs:0.3, fiber:0, sugars:0, fat:0, mufa:0.001, f161:0, f181:0, pufa:0.004, epa:0, dha:0, aa:0, sat:0.002, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.001, f18:0, trans:0, chol:0, protein:0, ala_a:0, arg:0, asp:0, cys:0, glu:0, gly:0, his:0, ile:0, leu:0, lys:0, met:0, phe:0, pro:0, ser:0, thr:0, trp:0, tyr:0, val:0, b1:0, b2:0.014, b3:0, b5:0.011, b6:0, b12:0, choline:0.4, b9:5, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0, toco_g:0, toco_d:0, vitK:0, ca:0, cu:0.01, fl:373, fe:0.02, mg:3, mn:0.219, p:1, k:37, se:0, na:3, zn:0.02, ala:0.003, la:0.001, o3:0.003, o6:0.001 },
+   src:[{el:'USDA FoodData Central — «Beverages, tea, black, brewed, prepared with tap water» (FDC ID 173227). Προφίλ 81 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Beverages, tea, black, brewed, prepared with tap water" (FDC ID 173227). 81-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/173227/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'honey', cat:'other', greek:true, verified:true,
+   el:'Μέλι', en:'Honey', elSub:'', enSub:'Honey',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:21}],
+   n:{ kcal:304, alcohol:0, caffeine:0, water:17.1, carbs:82.4, fiber:0.2, sugars:82.1, fructose:40.9, galactose:3.1, glucose:35.8, maltose:1.44, sucrose:0.89, fat:0, mufa:0, f161:0, f181:0, pufa:0, epa:0, dha:0, aa:0, sat:0, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0, f18:0, chol:0, protein:0.3, ala_a:6, arg:5, asp:27, cys:3, glu:18, gly:7, his:1, ile:8, leu:10, lys:8, met:1, phe:11, pro:90, ser:6, thr:4, trp:4, tyr:8, val:9, b1:0, b2:0.038, b3:0.121, b5:0.068, b6:0.024, b12:0, choline:2.2, b9:2, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0.5, vitD:0, vitE:0, vitK:0, ca:6, cu:0.036, fl:7, fe:0.42, mg:2, mn:0.08, p:4, k:52, se:0.8, na:4, zn:0.22, ala:0, la:0, o3:0, o6:0 },
+   src:[{el:'USDA FoodData Central — «Honey» (FDC ID 169640). Προφίλ 83 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Honey" (FDC ID 169640). 83-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169640/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'coffee', cat:'other', verified:true,
+   el:'Καφές', en:'Coffee', elSub:'Φίλτρου, σκέτος', enSub:'Beverages, coffee, brewed, prepared with tap water',
+   portions:[{el:'Φλιτζάνι',en:'Φλιτζάνι',g:237}],
+   n:{ kcal:1, alcohol:0, caffeine:40, water:99.4, carbs:0, fiber:0, sugars:0, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0, fat:0.02, mufa:0.015, f161:0, f181:0, pufa:0.001, epa:0, dha:0, aa:0, sat:0.002, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.002, f18:0, trans:0, chol:0, protein:0.12, ala_a:3, arg:1, asp:5, cys:2, glu:20, gly:4, his:2, ile:2, leu:5, lys:1, met:0, phe:3, pro:4, ser:1, thr:1, trp:0, tyr:2, val:3, b1:0.014, b2:0.076, b3:0.191, b5:0.254, b6:0.001, b12:0, choline:2.6, b9:2, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0.01, toco_b:0, toco_g:0.01, toco_d:0, vitK:0.1, ca:2, cu:0.002, fl:90.7, fe:0.01, mg:3, mn:0.023, p:3, k:49, se:0, na:2, zn:0.02, ala:0, la:0.001, o3:0, o6:0.001 },
+   src:[{el:'USDA FoodData Central — «Beverages, coffee, brewed, prepared with tap water» (FDC ID 171890). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Beverages, coffee, brewed, prepared with tap water" (FDC ID 171890). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171890/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'chickthigh', cat:'meat', verified:true,
+   el:'Κοτόπουλο μπούτι', en:'Chicken thigh', elSub:'Χωρίς πέτσα, ωμό', enSub:'Chicken, broilers or fryers, dark meat, thigh, meat only, raw',
+   portions:[{el:'Μπούτι',en:'Μπούτι',g:95}],
+   n:{ kcal:121, alcohol:0, caffeine:0, water:76.2, carbs:0, fiber:0, sugars:0, fat:4.12, mufa:1.5, f161:0.212, f181:1.26, pufa:0.94, epa:0.002, dha:0.007, aa:0.09, sat:1.1, f4:0.001, f6:0, f8:0.001, f10:0.002, f12:0.003, f14:0.02, f16:0.798, f18:0.252, trans:0.02, chol:94, protein:19.7, ala_a:1180, arg:1370, asp:1930, cys:230, glu:3220, gly:902, his:587, ile:939, leu:1680, lys:1860, met:562, phe:785, pro:793, ser:823, thr:930, trp:222, tyr:739, val:956, b1:0.088, b2:0.196, b3:5.56, b6:0.451, b12:0.61, choline:53.6, b9:4, vitA:7, retinol:7, betacar:0, alphacar:0, betacryp:0, lutzea:110, lycopene:0, vitC:0, vitD:0, vitE:0.18, toco_b:0, toco_g:0.07, toco_d:0, vitK:2.9, ca:7, cu:0.062, fe:0.81, mg:23, mn:0.013, p:185, k:242, se:22.9, na:95, zn:1.58, ala:0.03, la:0.736, o3:0.047, o6:0.84 },
+   src:[{el:'USDA FoodData Central — «Chicken, broilers or fryers, dark meat, thigh, meat only, raw» (FDC ID 173627). Προφίλ 80 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Chicken, broilers or fryers, dark meat, thigh, meat only, raw" (FDC ID 173627). 80-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/173627/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'beefmince', cat:'meat', verified:true,
+   el:'Μοσχαρίσιος κιμάς', en:'Minced beef', elSub:'15% λίπος, ωμός', enSub:'Beef, ground, 85% lean meat / 15% fat, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:120}],
+   n:{ kcal:215, alcohol:0, caffeine:0, water:65.7, carbs:0, fiber:0, sugars:0, fat:15, mufa:6.47, f161:0.534, f181:5.75, pufa:0.433, epa:0.002, dha:0.001, aa:0.034, sat:5.72, f4:0, f6:0, f8:0, f10:0, f12:0.011, f14:0.431, f16:3.2, f18:1.82, trans:0.86, chol:68, protein:18.6, ala_a:1160, arg:1210, asp:1670, cys:191, glu:2790, gly:1260, his:604, ile:822, leu:1450, lys:1540, met:478, phe:725, pro:948, ser:744, thr:720, trp:94, tyr:572, val:914, b1:0.042, b2:0.151, b3:4.65, b5:0.549, b6:0.346, b12:2.17, choline:61.2, b9:6, vitA:4, retinol:4, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.1, vitE:0.17, vitK:1.3, ca:15, cu:0.067, fl:22.4, fe:2.09, mg:18, mn:0.01, p:171, k:295, se:15.8, na:66, zn:4.48, ala:0.042, la:0.331, o3:0.057, o6:0.377 },
+   src:[{el:'USDA FoodData Central — «Beef, ground, 85% lean meat / 15% fat, raw» (FDC ID 171796). Προφίλ 79 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Beef, ground, 85% lean meat / 15% fat, raw" (FDC ID 171796). 79-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171796/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'beefsteak', cat:'meat', verified:true,
+   el:'Μοσχάρι φιλέτο', en:'Beef tenderloin', elSub:'Ωμό', enSub:'Beef, New Zealand, imported, tenderloin, separable lean only, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:150}],
+   n:{ kcal:140, alcohol:0, caffeine:0, water:71.8, carbs:0, fiber:0, sugars:0, fat:6.1, mufa:1.76, f161:0.108, f181:1.63, pufa:0.251, epa:0.019, dha:0.004, aa:0.026, sat:2.45, f4:0, f6:0, f8:0, f10:0.003, f12:0.003, f14:0.103, f16:1.13, f18:1.11, trans:0.121, chol:58, protein:21.2, ala_a:1100, arg:1390, glu:2950, gly:1150, his:763, ile:881, leu:1600, lys:1680, met:697, phe:824, pro:680, ser:745, thr:767, trp:222, tyr:713, val:935, b1:0.054, b2:0.119, b3:4.05, b5:0.575, b6:0.267, b12:1.78, vitA:9, retinol:9, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.1, vitE:0.6, ca:4, cu:0.104, fe:2.21, mg:24, mn:0.012, p:204, k:362, se:4.3, na:39, zn:2.34, ala:0.059, la:0.081, o3:0.103, o6:0.115 },
+   src:[{el:'USDA FoodData Central — «Beef, New Zealand, imported, tenderloin, separable lean only, raw» (FDC ID 174736). Προφίλ 73 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Beef, New Zealand, imported, tenderloin, separable lean only, raw" (FDC ID 174736). 73-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174736/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'lamb', cat:'meat', verified:true,
+   el:'Αρνί', en:'Lamb leg', elSub:'Μπούτι, ωμό', enSub:'Lamb, leg, shank half, separable lean only, choice, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:150}],
+   n:{ kcal:125, water:74.4, carbs:0, fiber:0, fat:4.19, mufa:1.69, f161:0.13, f181:1.53, pufa:0.38, aa:0.04, sat:1.5, f10:0.01, f12:0.01, f14:0.11, f16:0.81, f18:0.5, chol:64, protein:20.5, ala_a:1230, arg:1220, asp:1810, cys:245, glu:2980, gly:1000, his:650, ile:990, leu:1600, lys:1810, met:527, phe:835, pro:861, ser:763, thr:878, trp:240, tyr:690, val:1110, b1:0.14, b2:0.25, b3:6.19, b5:0.7, b6:0.17, b12:2.64, b9:23, vitA:0, retinol:0, vitC:0, vitE:0.2, ca:6, cu:0.124, fe:1.82, mg:27, mn:0.024, p:195, k:290, se:23.4, na:61, zn:3.89, ala:0.06, la:0.29, o3:0.06, o6:0.33 },
+   src:[{el:'USDA FoodData Central — «Lamb, leg, shank half, separable lean only, choice, raw» (FDC ID 172486). Προφίλ 61 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Lamb, leg, shank half, separable lean only, choice, raw" (FDC ID 172486). 61-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/172486/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'turkey', cat:'meat', verified:true,
+   el:'Γαλοπούλα στήθος', en:'Turkey breast', elSub:'Ωμή', enSub:'Turkey, whole, breast, meat only, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:120}],
+   n:{ kcal:114, alcohol:0, caffeine:0, water:74.9, carbs:0.14, fiber:0, starch:0.09, sugars:0.05, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0.05, fat:1.48, mufa:0.264, f161:0.023, f181:0.235, pufa:0.258, epa:0, dha:0.002, aa:0.028, sat:0.289, f4:0, f6:0, f8:0, f10:0.004, f12:0.003, f14:0.004, f16:0.177, f18:0.093, trans:0.013, chol:57, protein:23.7, ala_a:1280, arg:1340, asp:1890, cys:223, glu:3210, gly:1010, his:641, ile:678, leu:1640, lys:1950, met:619, phe:763, pro:1280, ser:937, thr:859, trp:252, tyr:703, val:756, b1:0.042, b2:0.145, b3:9.92, b5:0.775, b6:0.813, b12:0.63, choline:61.3, b9:7, vitA:6, retinol:6, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.1, vitE:0.06, toco_b:0, toco_g:0.01, toco_d:0, vitK:0, ca:11, cu:0.07, fe:0.73, mg:28, mn:0.011, p:201, k:242, se:22.7, na:113, zn:1.28, ala:0.009, la:0.196, o3:0.014, o6:0.227 },
+   src:[{el:'USDA FoodData Central — «Turkey, whole, breast, meat only, raw» (FDC ID 171098). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Turkey, whole, breast, meat only, raw" (FDC ID 171098). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171098/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'sardine', cat:'meat', greek:true, verified:true,
+   el:'Σαρδέλα', en:'Sardines in oil', elSub:'Κονσέρβα σε λάδι', enSub:'Fish, sardine, Atlantic, canned in oil, drained solids with bone',
+   portions:[{el:'Κονσέρβα',en:'Κονσέρβα',g:92}],
+   n:{ kcal:208, alcohol:0, caffeine:0, water:59.6, carbs:0, fiber:0, sugars:0, fat:11.4, mufa:3.87, f161:0.22, f181:2.14, pufa:5.15, epa:0.473, dha:0.509, aa:0, sat:1.53, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.192, f16:0.993, f18:0.343, chol:142, protein:24.6, ala_a:1490, arg:1470, asp:2520, cys:264, glu:3670, gly:1180, his:725, ile:1130, leu:2000, lys:2260, met:729, phe:961, pro:870, ser:1000, thr:1080, trp:276, tyr:831, val:1270, b1:0.08, b2:0.227, b3:5.24, b5:0.642, b6:0.167, b12:8.94, choline:75, b9:10, vitA:32, retinol:32, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:4.8, vitE:2.04, vitK:2.6, ca:382, cu:0.186, fe:2.92, mg:39, mn:0.108, p:490, k:397, se:52.7, na:307, zn:1.31, ala:0.498, la:3.54, o3:1.48, o6:3.54 },
+   src:[{el:'USDA FoodData Central — «Fish, sardine, Atlantic, canned in oil, drained solids with bone» (FDC ID 175139). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Fish, sardine, Atlantic, canned in oil, drained solids with bone" (FDC ID 175139). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/175139/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'anchovy', cat:'meat', greek:true, verified:true,
+   el:'Γαύρος', en:'Anchovy', elSub:'Ωμός', enSub:'Fish, anchovy, european, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:131, alcohol:0, caffeine:0, water:73.4, carbs:0, fiber:0, sugars:0, fat:4.84, mufa:1.18, f161:0.4, f181:0.624, pufa:1.64, epa:0.538, dha:0.911, aa:0.007, sat:1.28, f4:0, f6:0, f8:0, f10:0, f12:0.014, f14:0.302, f16:0.715, f18:0.252, chol:60, protein:20.4, ala_a:1230, arg:1220, asp:2080, cys:218, glu:3040, gly:977, his:599, ile:938, leu:1650, lys:1870, met:602, phe:794, pro:720, ser:830, thr:892, trp:228, tyr:687, val:1050, b1:0.055, b2:0.256, b3:14, b5:0.645, b6:0.143, b12:0.62, b9:9, vitA:15, retinol:15, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitE:0.57, vitK:0.1, ca:147, cu:0.211, fe:3.25, mg:41, mn:0.07, p:174, k:383, se:36.5, na:104, zn:1.72, ala:0, la:0.097, o3:1.48, o6:0.104 },
+   src:[{el:'USDA FoodData Central — «Fish, anchovy, european, raw» (FDC ID 174182). Προφίλ 75 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Fish, anchovy, european, raw" (FDC ID 174182). 75-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174182/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'seabream', cat:'meat', greek:true, verified:true,
+   el:'Τσιπούρα / Λαβράκι', en:'Sea bream / sea bass', elSub:'Ωμή', enSub:'Fish, sea bass, mixed species, raw',
+   portions:[{el:'Ψάρι',en:'Ψάρι',g:200}],
+   n:{ kcal:97, alcohol:0, caffeine:0, water:78.3, carbs:0, fiber:0, sugars:0, fat:2, mufa:0.424, f161:0.13, f181:0.294, pufa:0.743, epa:0.161, dha:0.434, aa:0, sat:0.511, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.049, f16:0.322, f18:0.138, chol:41, protein:18.4, ala_a:1120, arg:1100, asp:1890, cys:198, glu:2750, gly:885, his:543, ile:849, leu:1500, lys:1690, met:546, phe:720, pro:652, ser:752, thr:808, trp:206, tyr:622, val:950, b1:0.11, b2:0.12, b3:1.6, b5:0.75, b6:0.4, b12:0.3, choline:60.8, b9:5, vitA:46, retinol:46, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:5.6, vitE:0.84, vitK:0.1, ca:10, cu:0.019, fe:0.29, mg:41, mn:0.015, p:194, k:256, se:36.5, na:68, zn:0.4, ala:0, la:0.024, o3:0.671, o6:0.024 },
+   src:[{el:'USDA FoodData Central — «Fish, sea bass, mixed species, raw» (FDC ID 175142). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Fish, sea bass, mixed species, raw" (FDC ID 175142). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/175142/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Δεν υπάρχει ξεχωριστή καταχώρηση USDA για τσιπούρα ή λαβράκι Μεσογείου. Χρησιμοποιείται η γενική κατηγορία «sea bass, mixed species». Τα λιπαρά διαφέρουν σημαντικά μεταξύ άγριου και ιχθυοτροφείου.', en:'No separate USDA entry exists for Mediterranean sea bream or sea bass. The general "sea bass, mixed species" category is used. Fat content differs substantially between wild and farmed.'}
+  },
+  {
+   id:'squid', cat:'meat', greek:true, verified:true,
+   el:'Καλαμάρι', en:'Squid', elSub:'Ωμό', enSub:'Mollusks, squid, mixed species, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:92, alcohol:0, caffeine:0, water:78.6, carbs:3.08, fiber:0, sugars:0, fat:1.38, mufa:0.107, f161:0.008, f181:0.046, pufa:0.524, epa:0.146, dha:0.342, aa:0.009, sat:0.358, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.036, f16:0.263, f18:0.058, chol:233, protein:15.6, ala_a:942, arg:1140, asp:1500, cys:204, glu:2120, gly:974, his:299, ile:678, leu:1100, lys:1160, met:351, phe:558, pro:635, ser:698, thr:670, trp:174, tyr:498, val:680, b1:0.02, b2:0.412, b3:2.18, b5:0.5, b6:0.056, b12:1.3, choline:65, b9:5, vitA:10, retinol:10, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:4.7, vitD:0, vitE:1.2, vitK:0, ca:32, cu:1.89, fe:0.68, mg:33, mn:0.035, p:221, k:246, se:44.8, na:44, zn:1.53, ala:0.004, la:0.002, o3:0.496, o6:0.011 },
+   src:[{el:'USDA FoodData Central — «Mollusks, squid, mixed species, raw» (FDC ID 174223). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Mollusks, squid, mixed species, raw" (FDC ID 174223). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174223/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'octopus', cat:'meat', greek:true, verified:true,
+   el:'Χταπόδι', en:'Octopus', elSub:'Ωμό', enSub:'Mollusks, octopus, common, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:82, alcohol:0, caffeine:0, water:80.2, carbs:2.2, fiber:0, sugars:0, fat:1.04, mufa:0.162, f161:0.066, f181:0.062, pufa:0.239, epa:0.076, dha:0.081, aa:0.039, sat:0.227, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.025, f16:0.148, f18:0.05, chol:48, protein:14.9, ala_a:902, arg:1090, asp:1440, cys:196, glu:2030, gly:933, his:286, ile:649, leu:1050, lys:1110, met:336, phe:534, pro:608, ser:668, thr:642, trp:167, tyr:477, val:651, b1:0.03, b2:0.04, b3:2.1, b5:0.5, b6:0.36, b12:20, choline:65, b9:16, vitA:45, retinol:45, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:5, vitD:0, vitE:1.2, vitK:0.1, ca:53, cu:0.435, fe:5.3, mg:30, mn:0.025, p:186, k:350, se:44.8, na:230, zn:1.68, ala:0, la:0.009, o3:0.163, o6:0.048 },
+   src:[{el:'USDA FoodData Central — «Mollusks, octopus, common, raw» (FDC ID 174218). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Mollusks, octopus, common, raw" (FDC ID 174218). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174218/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'pepper', cat:'veg', greek:true, verified:true,
+   el:'Πιπεριά', en:'Green pepper', elSub:'Πράσινη, ωμή', enSub:'Peppers, sweet, green, raw',
+   portions:[{el:'Μία',en:'Μία',g:120}],
+   n:{ kcal:20, alcohol:0, caffeine:0, water:93.9, carbs:4.64, fiber:1.7, starch:0, sugars:2.4, fructose:1.12, galactose:0, glucose:1.16, lactose:0, maltose:0, sucrose:0.11, fat:0.17, mufa:0.008, f161:0, f181:0.008, pufa:0.062, epa:0, dha:0, aa:0, sat:0.058, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.05, f18:0.008, trans:0, chol:0, phytosterol:9, protein:0.86, ala_a:36, arg:27, asp:208, cys:12, glu:194, gly:30, his:10, ile:24, leu:36, lys:39, met:7, phe:92, pro:24, ser:54, thr:36, trp:12, tyr:12, val:36, b1:0.057, b2:0.028, b3:0.48, b5:0.099, b6:0.224, b12:0, choline:5.5, b9:10, vitA:18, retinol:0, betacar:208, alphacar:21, betacryp:7, lutzea:341, lycopene:0, vitC:80.4, vitD:0, vitE:0.37, toco_b:0, toco_g:0, toco_d:0, vitK:7.4, ca:10, cu:0.066, fl:2, fe:0.34, mg:10, mn:0.122, p:20, k:175, se:0, na:3, zn:0.13, ala:0.008, la:0.054, o3:0.008, o6:0.054 },
+   src:[{el:'USDA FoodData Central — «Peppers, sweet, green, raw» (FDC ID 170427). Προφίλ 90 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Peppers, sweet, green, raw" (FDC ID 170427). 90-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170427/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'spinach', cat:'veg', greek:true, verified:true,
+   el:'Σπανάκι', en:'Spinach', elSub:'Ωμό', enSub:'Spinach, raw',
+   portions:[{el:'Χούφτα',en:'Χούφτα',g:30},{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:23, alcohol:0, caffeine:0, water:91.4, carbs:3.63, fiber:2.2, sugars:0.42, fructose:0.15, galactose:0.1, glucose:0.11, lactose:0, maltose:0, sucrose:0.07, fat:0.39, mufa:0.01, f161:0.005, f181:0.005, pufa:0.165, epa:0, dha:0, aa:0, sat:0.063, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.01, f16:0.049, f18:0.004, trans:0, chol:0, phytosterol:9, protein:2.86, ala_a:142, arg:162, asp:240, cys:35, glu:343, gly:134, his:64, ile:147, leu:223, lys:174, met:53, phe:129, pro:112, ser:104, thr:122, trp:39, tyr:108, val:161, b1:0.078, b2:0.189, b3:0.724, b5:0.065, b6:0.195, b12:0, choline:19.3, b9:194, vitA:469, retinol:0, betacar:5630, alphacar:0, betacryp:0, lutzea:12200, lycopene:0, vitC:28.1, vitD:0, vitE:2.03, toco_b:0, toco_g:0.18, toco_d:0, vitK:483, ca:99, cu:0.13, fe:2.71, mg:79, mn:0.897, p:49, k:558, se:1, na:79, zn:0.53, ala:0.138, la:0.026, o3:0.138, o6:0.026 },
+   src:[{el:'USDA FoodData Central — «Spinach, raw» (FDC ID 168462). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Spinach, raw" (FDC ID 168462). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/168462/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'parsley', cat:'veg', greek:true, verified:true,
+   el:'Μαϊντανός', en:'Parsley', elSub:'Φρέσκος', enSub:'Parsley, fresh',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:4}],
+   n:{ kcal:36, alcohol:0, caffeine:0, water:87.7, carbs:6.33, fiber:3.3, sugars:0.85, fat:0.79, mufa:0.295, f161:0.008, f181:0.287, pufa:0.124, epa:0, dha:0, aa:0, sat:0.132, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.008, f16:0.084, f18:0.039, trans:0, chol:0, phytosterol:5, protein:2.97, ala_a:195, arg:122, asp:294, cys:14, glu:249, gly:145, his:61, ile:118, leu:204, lys:181, met:42, phe:145, pro:213, ser:136, thr:122, trp:45, tyr:82, val:172, b1:0.086, b2:0.098, b3:1.31, b5:0.4, b6:0.09, b12:0, choline:12.8, b9:152, vitA:421, retinol:0, betacar:5050, alphacar:0, betacryp:0, lutzea:5560, lycopene:0, vitC:133, vitD:0, vitE:0.75, toco_b:0, toco_g:0.53, toco_d:0, vitK:1640, ca:138, cu:0.149, fe:6.2, mg:50, mn:0.16, p:58, k:554, se:0.1, na:56, zn:1.07, ala:0.008, la:0.115, o3:0.008, o6:0.115 },
+   src:[{el:'USDA FoodData Central — «Parsley, fresh» (FDC ID 170416). Προφίλ 82 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Parsley, fresh" (FDC ID 170416). 82-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170416/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'dill', cat:'veg', greek:true, verified:true,
+   el:'Άνηθος', en:'Dill', elSub:'Φρέσκος', enSub:'Dill weed, fresh',
+   portions:[{el:'Κουταλιά',en:'Κουταλιά',g:3}],
+   n:{ kcal:43, water:86, carbs:7.02, fiber:2.1, fat:1.12, mufa:0.802, f161:0.004, f181:0.798, pufa:0.095, sat:0.06, f12:0.001, f14:0.001, f16:0.049, f18:0.009, trans:0, chol:0, protein:3.46, ala_a:227, arg:142, asp:343, cys:17, glu:290, gly:169, his:71, ile:195, leu:159, lys:246, met:11, phe:65, pro:248, ser:158, thr:68, trp:14, tyr:96, val:154, b1:0.058, b2:0.296, b3:1.57, b5:0.397, b6:0.185, b12:0, b9:150, vitA:386, retinol:0, vitC:85, vitD:0, ca:208, cu:0.146, fe:6.59, mg:55, mn:1.26, p:66, k:738, na:61, zn:0.91, ala:0.013, la:0.082, o3:0.013, o6:0.082 },
+   src:[{el:'USDA FoodData Central — «Dill weed, fresh» (FDC ID 172233). Προφίλ 59 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Dill weed, fresh" (FDC ID 172233). 59-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/172233/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'greens', cat:'veg', greek:true, verified:true,
+   el:'Χόρτα', en:'Wild greens (horta)', elSub:'Ραδίκια, ωμά', enSub:'Dandelion greens, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:150}],
+   n:{ kcal:45, alcohol:0, caffeine:0, water:85.6, carbs:9.2, fiber:3.5, sugars:0.71, fat:0.7, mufa:0.014, f161:0, f181:0.014, pufa:0.306, epa:0, dha:0, aa:0, sat:0.17, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.009, f16:0.145, f18:0.007, trans:0, chol:0, protein:2.7, b1:0.19, b2:0.26, b3:0.806, b5:0.084, b6:0.251, b12:0, choline:35.3, b9:27, vitA:508, retinol:0, betacar:5850, alphacar:363, betacryp:121, lutzea:13600, lycopene:0, vitC:35, vitD:0, vitE:3.44, vitK:778, ca:187, cu:0.171, fe:3.1, mg:36, mn:0.342, p:66, k:397, se:0.5, na:76, zn:0.41, ala:0.044, la:0.261, o3:0.044, o6:0.261 },
+   src:[{el:'USDA FoodData Central — «Dandelion greens, raw» (FDC ID 169226). Προφίλ 60 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Dandelion greens, raw" (FDC ID 169226). 60-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169226/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Τα ελληνικά χόρτα είναι δεκάδες διαφορετικά είδη (ραδίκια, βλήτα, σταμναγκάθι, ζοχοί) με μεγάλη διακύμανση. Χρησιμοποιούνται τα ραδίκια ως αντιπροσωπευτικά. Τα δεδομένα αφορούν ωμά· το βράσιμο μειώνει τις υδατοδιαλυτές βιταμίνες.', en:'Greek "horta" covers dozens of species with wide variation. Dandelion greens are used as representative. Data are for raw greens; boiling reduces water-soluble vitamins.'}
+  },
+  {
+   id:'mushroom', cat:'veg', verified:true,
+   el:'Μανιτάρια', en:'Mushrooms', elSub:'Ωμά', enSub:'Mushrooms, white, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:22, alcohol:0, caffeine:0, water:92.4, carbs:3.26, fiber:1, starch:0, sugars:1.98, fructose:0.17, galactose:0, glucose:1.48, lactose:0, maltose:0, sucrose:0, fat:0.34, mufa:0, f161:0, f181:0, pufa:0.16, epa:0, dha:0, aa:0, sat:0.05, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.04, f18:0.01, trans:0, chol:0, protein:3.09, ala_a:199, arg:78, asp:195, cys:12, glu:343, gly:92, his:57, ile:76, leu:120, lys:107, met:31, phe:85, pro:76, ser:94, thr:107, trp:35, tyr:44, val:232, b1:0.081, b2:0.402, b3:3.61, b5:1.5, b6:0.104, b12:0.04, choline:17.3, b9:17, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:2.1, vitD:0.2, vitE:0.01, toco_b:0.01, toco_g:0.01, toco_d:0.01, vitK:0, ca:3, cu:0.318, fe:0.5, mg:9, mn:0.047, p:86, k:318, se:9.3, na:5, zn:0.52, ala:0, la:0.16, o3:0, o6:0.16 },
+   src:[{el:'USDA FoodData Central — «Mushrooms, white, raw» (FDC ID 169251). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Mushrooms, white, raw" (FDC ID 169251). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169251/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'orange', cat:'fruit', greek:true, verified:true,
+   el:'Πορτοκάλι', en:'Orange', elSub:'Φρέσκο', enSub:'Oranges, raw, all commercial varieties',
+   portions:[{el:'Μικρό',en:'Μικρό',g:96},{el:'Μεσαίο',en:'Μεσαίο',g:131},{el:'Μεγάλο',en:'Μεγάλο',g:184}],
+   n:{ kcal:47, alcohol:0, caffeine:0, water:86.8, carbs:11.8, fiber:2.4, sugars:9.35, fat:0.12, mufa:0.023, f161:0.003, f181:0.02, pufa:0.025, epa:0, dha:0, aa:0, sat:0.015, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.013, f18:0, trans:0, chol:0, protein:0.94, ala_a:50, arg:65, asp:114, cys:10, glu:94, gly:94, his:18, ile:25, leu:23, lys:47, met:20, phe:31, pro:46, ser:32, thr:15, trp:9, tyr:16, val:40, b1:0.087, b2:0.04, b3:0.282, b5:0.25, b6:0.06, b12:0, choline:8.4, b9:30, vitA:11, retinol:0, betacar:71, alphacar:11, betacryp:116, lutzea:129, lycopene:0, vitC:53.2, vitD:0, vitE:0.18, vitK:0, ca:40, cu:0.045, fe:0.1, mg:10, mn:0.025, p:14, k:181, se:0.5, na:0, zn:0.07, ala:0.007, la:0.018, o3:0.007, o6:0.018 },
+   src:[{el:'USDA FoodData Central — «Oranges, raw, all commercial varieties» (FDC ID 169097). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Oranges, raw, all commercial varieties" (FDC ID 169097). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169097/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'fig', cat:'fruit', greek:true, verified:true,
+   el:'Σύκο', en:'Fig', elSub:'Φρέσκο', enSub:'Figs, raw',
+   portions:[{el:'Ένα',en:'Ένα',g:50}],
+   n:{ kcal:74, alcohol:0, caffeine:0, water:79.1, carbs:19.2, fiber:2.9, sugars:16.3, fat:0.3, mufa:0.066, f161:0, f181:0.066, pufa:0.144, epa:0, dha:0, aa:0, sat:0.06, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.002, f16:0.046, f18:0.012, trans:0, chol:0, phytosterol:31, protein:0.75, ala_a:45, arg:17, asp:176, cys:12, glu:72, gly:25, his:11, ile:23, leu:33, lys:30, met:6, phe:18, pro:49, ser:37, thr:24, trp:6, tyr:32, val:28, b1:0.06, b2:0.05, b3:0.4, b5:0.3, b6:0.113, b12:0, choline:4.7, b9:6, vitA:7, retinol:0, betacar:85, alphacar:0, betacryp:0, lutzea:9, lycopene:0, vitC:2, vitD:0, vitE:0.11, vitK:4.7, ca:35, cu:0.07, fe:0.37, mg:17, mn:0.128, p:14, k:232, se:0.2, na:1, zn:0.15, ala:0, la:0.144, o3:0, o6:0.144 },
+   src:[{el:'USDA FoodData Central — «Figs, raw» (FDC ID 173021). Προφίλ 79 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Figs, raw" (FDC ID 173021). 79-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/173021/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'apricot', cat:'fruit', greek:true, verified:true,
+   el:'Βερίκοκο', en:'Apricot', elSub:'Φρέσκο', enSub:'Apricots, raw',
+   portions:[{el:'Ένα',en:'Ένα',g:35}],
+   n:{ kcal:48, alcohol:0, caffeine:0, water:86.4, carbs:11.1, fiber:2, sugars:9.24, fructose:0.94, galactose:0, glucose:2.37, lactose:0, maltose:0.06, sucrose:5.87, fat:0.39, mufa:0.17, f161:0, f181:0.17, pufa:0.077, epa:0, dha:0, aa:0, sat:0.027, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.024, f18:0.003, trans:0, chol:0, phytosterol:18, protein:1.4, ala_a:68, arg:45, asp:314, cys:3, glu:157, gly:40, his:27, ile:41, leu:77, lys:97, met:6, phe:52, pro:101, ser:83, thr:47, trp:15, tyr:29, val:47, b1:0.03, b2:0.04, b3:0.6, b5:0.24, b6:0.054, b12:0, choline:2.8, b9:9, vitA:96, retinol:0, betacar:1090, alphacar:19, betacryp:104, lutzea:89, lycopene:0, vitC:10, vitD:0, vitE:0.89, vitK:3.3, ca:13, cu:0.078, fe:0.39, mg:10, mn:0.077, p:23, k:259, se:0.1, na:1, zn:0.2, ala:0, la:0.077, o3:0, o6:0.077 },
+   src:[{el:'USDA FoodData Central — «Apricots, raw» (FDC ID 171697). Προφίλ 85 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Apricots, raw" (FDC ID 171697). 85-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171697/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'lemon', cat:'fruit', greek:true, verified:true,
+   el:'Λεμόνι', en:'Lemon', elSub:'Χωρίς φλούδα', enSub:'Lemons, raw, without peel',
+   portions:[{el:'Ένα',en:'Ένα',g:58}],
+   n:{ kcal:29, alcohol:0, caffeine:0, water:89, carbs:9.32, fiber:2.8, sugars:2.5, fat:0.3, mufa:0.011, f161:0.001, f181:0.01, pufa:0.089, epa:0, dha:0, aa:0, sat:0.039, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.001, f16:0.035, f18:0.002, trans:0, chol:0, protein:1.1, b1:0.04, b2:0.02, b3:0.1, b5:0.19, b6:0.08, b12:0, choline:5.1, b9:11, vitA:1, retinol:0, betacar:3, alphacar:1, betacryp:20, lutzea:11, lycopene:0, vitC:53, vitD:0, vitE:0.15, vitK:0, ca:26, cu:0.037, fe:0.6, mg:8, mn:0.03, p:16, k:138, se:0.4, na:2, zn:0.06, ala:0.026, la:0.063, o3:0.026, o6:0.063 },
+   src:[{el:'USDA FoodData Central — «Lemons, raw, without peel» (FDC ID 167746). Προφίλ 60 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Lemons, raw, without peel" (FDC ID 167746). 60-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/167746/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'gigantes', cat:'veg', greek:true, verified:true,
+   el:'Γίγαντες', en:'Gigantes (butter beans)', elSub:'Ξεροί, ωμοί', enSub:'Lima beans, large, mature seeds, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:80}],
+   n:{ kcal:338, alcohol:0, caffeine:0, water:10.2, carbs:63.4, fiber:19, sugars:8.5, fat:0.69, mufa:0.062, f161:0.004, f181:0.052, pufa:0.309, epa:0, dha:0, aa:0, sat:0.161, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.002, f16:0.118, f18:0.032, trans:0, chol:0, protein:21.5, ala_a:1100, arg:1320, asp:2770, cys:237, glu:3040, gly:906, his:656, ile:1130, leu:1850, lys:1440, met:271, phe:1240, pro:975, ser:1430, thr:927, trp:254, tyr:759, val:1290, b1:0.507, b2:0.202, b3:1.54, b5:1.36, b6:0.512, b12:0, choline:96.7, b9:395, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0.72, vitK:6, ca:81, cu:0.74, fe:7.51, mg:224, mn:1.67, p:385, k:1720, se:7.2, na:18, zn:2.83, ala:0.095, la:0.215, o3:0.095, o6:0.215 },
+   src:[{el:'USDA FoodData Central — «Lima beans, large, mature seeds, raw» (FDC ID 174252). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Lima beans, large, mature seeds, raw" (FDC ID 174252). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174252/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'fava', cat:'veg', greek:true, verified:true,
+   el:'Φάβα / Κουκιά', en:'Fava / broad beans', elSub:'Ξερά, ωμά', enSub:'Broadbeans (fava beans), mature seeds, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:80}],
+   n:{ kcal:341, alcohol:0, caffeine:0, water:11, carbs:58.3, fiber:25, sugars:5.7, fat:1.53, mufa:0.303, f161:0.002, f181:0.297, pufa:0.627, epa:0, dha:0, aa:0, sat:0.254, f4:0, f6:0, f8:0, f10:0, f12:0.004, f14:0.002, f16:0.204, f18:0.031, trans:0, chol:0, phytosterol:124, protein:26.1, ala_a:1070, arg:2410, asp:2920, cys:334, glu:4440, gly:1100, his:664, ile:1050, leu:1960, lys:1670, met:213, phe:1100, pro:1100, ser:1200, thr:928, trp:247, tyr:827, val:1160, b1:0.555, b2:0.333, b3:2.83, b5:0.976, b6:0.366, b12:0, choline:95.8, b9:423, vitA:3, retinol:0, betacar:32, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:1.4, vitD:0, vitE:0.05, vitK:9, ca:103, cu:0.824, fe:6.7, mg:192, mn:1.63, p:421, k:1060, se:8.2, na:13, zn:3.14, ala:0.046, la:0.581, o3:0.046, o6:0.581 },
+   src:[{el:'USDA FoodData Central — «Broadbeans (fava beans), mature seeds, raw» (FDC ID 175205). Προφίλ 79 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Broadbeans (fava beans), mature seeds, raw" (FDC ID 175205). 79-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/175205/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'peas', cat:'veg', verified:true,
+   el:'Αρακάς', en:'Green peas', elSub:'Ωμός', enSub:'Peas, green, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:81, alcohol:0, caffeine:0, water:78.9, carbs:14.4, fiber:5.7, sugars:5.67, fructose:0.39, galactose:0, glucose:0.12, lactose:0, maltose:0.17, sucrose:4.99, fat:0.4, mufa:0.035, f161:0, f181:0.035, pufa:0.187, epa:0, dha:0, aa:0, sat:0.071, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.064, f18:0.007, trans:0, chol:0, protein:5.42, ala_a:240, arg:428, asp:496, cys:32, glu:741, gly:184, his:107, ile:195, leu:323, lys:317, met:82, phe:200, pro:173, ser:181, thr:203, trp:37, tyr:114, val:235, b1:0.266, b2:0.132, b3:2.09, b5:0.104, b6:0.169, b12:0, choline:28.4, b9:65, vitA:38, retinol:0, betacar:449, alphacar:21, betacryp:0, lutzea:2480, lycopene:0, vitC:40, vitD:0, vitE:0.13, toco_b:0, toco_g:0.95, toco_d:0.02, vitK:24.8, ca:25, cu:0.176, fe:1.47, mg:33, mn:0.41, p:108, k:244, se:1.8, na:5, zn:1.24, ala:0.035, la:0.152, o3:0.035, o6:0.152 },
+   src:[{el:'USDA FoodData Central — «Peas, green, raw» (FDC ID 170419). Προφίλ 87 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Peas, green, raw" (FDC ID 170419). 87-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170419/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'milk35', cat:'dairy', verified:true,
+   el:'Γάλα πλήρες', en:'Whole milk', elSub:'3,5% λιπαρά', enSub:'Milk, whole, 3.25% milkfat, with added vitamin D',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:244},{el:'Κούπα',en:'Κούπα',g:200}],
+   n:{ kcal:60, water:88.1, carbs:4.63, fructose:0, galactose:0, glucose:0, lactose:4.81, maltose:0, sucrose:0, fat:3.2, mufa:0.688, pufa:0.108, epa:0.001, dha:0, aa:0.004, sat:1.86, f4:0.067, f6:0.054, f8:0.034, f10:0.084, f12:0.097, f14:0.303, f16:0.857, f18:0.309, trans:0.112, chol:12, protein:3.27, ala_a:110, arg:127, asp:279, glu:788, gly:69, his:97, ile:173, leu:333, lys:298, met:90, phe:161, pro:333, ser:188, thr:154, trp:43, tyr:162, val:207, b1:0.056, b2:0.138, b3:0.105, b5:0.362, b6:0.061, b12:0.54, choline:17.8, b9:0, vitA:32, retinol:31, betacar:7, alphacar:0, betacryp:0, lycopene:0, vitD:0.96, vitE:0.05, toco_b:0, toco_g:0, toco_d:0, ca:123, cu:0.001, fe:0, mg:11.9, mn:0, p:101, k:150, se:1.9, na:38, zn:0.42, ala:0.012, la:0.084, o3:0.015, o6:0.09 },
+   src:[{el:'USDA FoodData Central — «Milk, whole, 3.25% milkfat, with added vitamin D» (FDC ID 746782). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Milk, whole, 3.25% milkfat, with added vitamin D" (FDC ID 746782). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/746782/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'milk2', cat:'dairy', verified:true,
+   el:'Γάλα ημίπαχο', en:'Semi-skimmed milk', elSub:'2% λιπαρά', enSub:'Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:244}],
+   n:{ kcal:50, water:89.1, carbs:4.9, fructose:0, galactose:0, glucose:0, lactose:4.89, maltose:0, sucrose:0, fat:1.9, mufa:0.4, pufa:0.058, epa:0, dha:0, aa:0.003, sat:1.11, f4:0.041, f6:0.032, f8:0.021, f10:0.049, f12:0.058, f14:0.181, f16:0.512, f18:0.184, trans:0.07, chol:8, protein:3.36, ala_a:113, arg:125, asp:291, glu:801, gly:68, his:99, ile:173, leu:335, lys:293, met:89, phe:163, pro:332, ser:197, thr:162, trp:42, tyr:165, val:213, b1:0.059, b2:0.137, b3:0.112, b5:0.39, b6:0.061, b12:0.55, choline:18.2, b9:2, vitA:83, retinol:83, betacar:3, alphacar:0, betacryp:0, lycopene:0, vitD:1.13, vitE:0.03, toco_b:0, toco_g:0, toco_d:0, ca:126, cu:0.001, fe:0, mg:12, mn:0.001, p:103, k:159, se:1.8, na:39, zn:0.43, ala:0.007, la:0.045, o3:0.008, o6:0.048 },
+   src:[{el:'USDA FoodData Central — «Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D» (FDC ID 746778). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D" (FDC ID 746778). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/746778/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'milk0', cat:'dairy', verified:true,
+   el:'Γάλα άπαχο', en:'Skimmed milk', elSub:'0% λιπαρά', enSub:'Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)',
+   portions:[{el:'Ποτήρι',en:'Ποτήρι',g:244}],
+   n:{ kcal:34, water:90.8, carbs:4.92, fructose:0, galactose:0, glucose:0, lactose:5.05, maltose:0, sucrose:0, fat:0.08, mufa:0.017, pufa:0.006, epa:0, dha:0, aa:0, sat:0.049, f4:0.003, f6:0.001, f8:0.001, f10:0.002, f12:0.002, f14:0.008, f16:0.021, f18:0.009, trans:0, chol:3, protein:3.43, ala_a:118, arg:131, asp:299, glu:832, gly:71, his:101, ile:182, leu:347, lys:302, met:93, phe:168, pro:348, ser:202, thr:166, trp:48, tyr:168, val:222, b1:0.056, b2:0.131, b3:0.118, b5:0.388, b6:0.058, b12:0.58, choline:18.2, b9:2, vitA:64, retinol:64, betacar:2, alphacar:0, betacryp:0, lycopene:0, vitD:1.1, vitE:0, toco_b:0, toco_g:0, toco_d:0, ca:132, cu:0.002, fe:0, mg:12.5, mn:0.001, p:107, k:167, se:2, na:41, zn:0.45, ala:0, la:0.005, o3:0, o6:0.005 },
+   src:[{el:'USDA FoodData Central — «Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)» (FDC ID 746776). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)" (FDC ID 746776). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/746776/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'yogfull', cat:'dairy', verified:true,
+   el:'Γιαούρτι πλήρες', en:'Yogurt, whole', elSub:'Αγελάδας', enSub:'Yogurt, plain, whole milk',
+   portions:[{el:'Κεσεδάκι',en:'Κεσεδάκι',g:200}],
+   n:{ kcal:61, alcohol:0, caffeine:0, water:87.9, carbs:4.66, fiber:0, sugars:4.66, fat:3.25, mufa:0.893, f161:0.071, f181:0.743, pufa:0.092, epa:0, dha:0, aa:0, sat:2.1, f4:0.096, f6:0.066, f8:0.042, f10:0.093, f12:0.111, f14:0.343, f16:0.886, f18:0.317, chol:13, protein:3.47, ala_a:148, arg:104, asp:275, cys:32, glu:679, gly:84, his:86, ile:189, leu:350, lys:311, met:102, phe:189, pro:411, ser:215, thr:142, trp:20, tyr:175, val:287, b1:0.029, b2:0.142, b3:0.075, b5:0.389, b6:0.032, b12:0.37, choline:15.2, b9:7, vitA:27, retinol:27, betacar:5, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0.5, vitD:0.1, vitE:0.06, vitK:0.2, ca:121, cu:0.009, fl:12, fe:0.05, mg:12, mn:0.004, p:95, k:155, se:2.2, na:46, zn:0.59, ala:0.027, la:0.065, o3:0.027, o6:0.065 },
+   src:[{el:'USDA FoodData Central — «Yogurt, plain, whole milk» (FDC ID 171284). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Yogurt, plain, whole milk" (FDC ID 171284). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171284/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'gyogfull', cat:'dairy', greek:true, verified:true,
+   el:'Γιαούρτι στραγγιστό', en:'Greek yogurt, whole', elSub:'Πλήρες', enSub:'Yogurt, Greek, plain, whole milk',
+   portions:[{el:'Κεσεδάκι',en:'Κεσεδάκι',g:200},{el:'Κούπα',en:'Κούπα',g:245}],
+   n:{ kcal:97, alcohol:0, caffeine:0, water:81.3, carbs:3.98, fiber:0, sugars:4, fat:5, mufa:2.14, f161:0.049, f181:0.993, pufa:0.469, epa:0, dha:0.004, aa:0, sat:2.4, f4:0, f6:0.051, f8:0.086, f10:0.264, f12:0.127, f14:0.316, f16:1, f18:0.422, trans:0, chol:13, protein:9, b1:0.023, b2:0.278, b3:0.208, b5:0.331, b6:0.063, b12:0.75, choline:15.1, b9:5, vitA:2, retinol:1, betacar:7, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0.01, vitK:0, ca:100, cu:0.017, fe:0, mg:11, mn:0.009, p:135, k:141, se:9.7, na:35, zn:0.52, ala:0.023, la:0.209, o3:0.027, o6:0.209 },
+   src:[{el:'USDA FoodData Central — «Yogurt, Greek, plain, whole milk» (FDC ID 171304). Προφίλ 60 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Yogurt, Greek, plain, whole milk" (FDC ID 171304). 60-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171304/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'kaseri', cat:'dairy', greek:true, verified:true,
+   el:'Κασέρι', en:'Kasseri (provolone-type)', elSub:'Ημίσκληρο τυρί', enSub:'Cheese, provolone',
+   portions:[{el:'Φέτα',en:'Φέτα',g:28}],
+   n:{ kcal:351, alcohol:0, caffeine:0, water:41, carbs:2.14, fiber:0, sugars:0.56, fat:26.6, mufa:7.39, f161:0.878, f181:6.16, pufa:0.769, epa:0, dha:0, aa:0, sat:17.1, f4:0.981, f6:0.37, f8:0.256, f10:0.482, f12:0.355, f14:2.75, f16:8.16, f18:3.06, chol:69, protein:25.6, ala_a:706, arg:1020, asp:1740, cys:116, glu:6240, gly:433, his:1120, ile:1090, leu:2300, lys:2650, met:686, phe:1290, pro:2770, ser:1470, thr:982, trp:345, tyr:1520, val:1640, b1:0.019, b2:0.321, b3:0.156, b5:0.476, b6:0.073, b12:1.46, choline:15.4, b9:10, vitA:236, retinol:230, betacar:68, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.5, vitE:0.23, vitK:2.2, ca:756, cu:0.026, fe:0.52, mg:28, mn:0.01, p:496, k:138, se:14.5, na:727, zn:3.23, ala:0.275, la:0.494, o3:0.275, o6:0.494 },
+   src:[{el:'USDA FoodData Central — «Cheese, provolone» (FDC ID 170850). Προφίλ 77 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cheese, provolone" (FDC ID 170850). 77-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170850/nutrients', d:'2019-04', a:'2026-07-19'}],
+   note:{el:'Το USDA δεν έχει μετρήσεις για ελληνικά τυριά. Χρησιμοποιείται το πλησιέστερο τεκμηριωμένο αντίστοιχο. Το ελληνικό τυρί είναι συχνά από πρόβειο ή κατσικίσιο γάλα, οπότε τα λιπαρά, το ασβέστιο και το νάτριο διαφέρουν ανάλογα με τον παραγωγό και την ωρίμανση. Θεώρησέ το κατά προσέγγιση.', en:'USDA has no measurements for Greek cheeses. The closest documented equivalent is used. Greek cheese is often made from sheep or goat milk, so fat, calcium and sodium vary by producer and ripening. Treat as approximate.'}
+  },
+  {
+   id:'ricebr', cat:'grain', verified:true,
+   el:'Ρύζι καστανό', en:'Brown rice', elSub:'Ωμό', enSub:'Rice, brown, long-grain, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:75}],
+   n:{ kcal:367, alcohol:0, caffeine:0, water:11.8, carbs:76.2, fiber:3.6, starch:72.5, sugars:0.66, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0.66, fat:3.2, mufa:1.05, f161:0.004, f181:1.04, pufa:1, epa:0, dha:0, aa:0, sat:0.591, f4:0, f6:0, f8:0.002, f10:0.017, f12:0.005, f14:0.017, f16:0.46, f18:0.056, trans:0.001, chol:0, protein:7.54, ala_a:463, arg:602, asp:743, cys:96, glu:1620, gly:391, his:202, ile:336, leu:657, lys:303, met:179, phe:410, pro:372, ser:411, thr:291, trp:101, tyr:298, val:466, b1:0.541, b2:0.095, b3:6.49, b5:1.06, b6:0.477, b12:0, choline:21.5, b9:23, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0.6, toco_b:0.04, toco_g:0.19, toco_d:0, vitK:0.6, ca:9, cu:0.302, fe:1.29, mg:116, mn:2.85, p:311, k:250, se:17.1, na:5, zn:2.13, ala:0.032, la:0.967, o3:0.032, o6:0.967 },
+   src:[{el:'USDA FoodData Central — «Rice, brown, long-grain, raw» (FDC ID 169703). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Rice, brown, long-grain, raw" (FDC ID 169703). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169703/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'sugar', cat:'other', verified:true,
+   el:'Ζάχαρη', en:'Sugar', elSub:'Λευκή', enSub:'Sugars, granulated',
+   portions:[{el:'Κουταλάκι',en:'Κουταλάκι',g:4},{el:'Κουταλιά',en:'Κουταλιά',g:12}],
+   n:{ kcal:387, alcohol:0, caffeine:0, water:0.02, carbs:100, fiber:0, sugars:99.8, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:99.8, fat:0, mufa:0, f161:0, f181:0, pufa:0, epa:0, dha:0, aa:0, sat:0, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0, f18:0, chol:0, protein:0, b1:0, b2:0.019, b3:0, b5:0, b6:0, b12:0, choline:0, b9:0, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:0, vitK:0, ca:1, cu:0.007, fl:0, fe:0.05, mg:0, mn:0.004, p:0, k:2, se:0.6, na:1, zn:0.01, ala:0, la:0, o3:0, o6:0 },
+   src:[{el:'USDA FoodData Central — «Sugars, granulated» (FDC ID 169655). Προφίλ 66 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Sugars, granulated" (FDC ID 169655). 66-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169655/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'oats', cat:'grain', verified:true,
+   el:'Βρώμη', en:'Oats', elSub:'Νιφάδες, ωμές', enSub:'Cereals, oats, regular and quick, not fortified, dry',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:40},{el:'Κούπα',en:'Κούπα',g:81}],
+   n:{ kcal:379, alcohol:0, caffeine:0, water:10.8, carbs:67.7, fiber:10.1, starch:57.9, sugars:0.99, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0.99, fat:6.52, mufa:1.98, f161:0.01, f181:1.97, pufa:2.3, epa:0, dha:0, aa:0, sat:1.11, f4:0, f6:0, f8:0, f10:0, f12:0.02, f14:0.01, f16:0.94, f18:0.06, chol:0, protein:13.2, ala_a:563, arg:850, asp:1220, cys:455, glu:2830, gly:642, his:275, ile:503, leu:980, lys:637, met:207, phe:665, pro:451, ser:705, thr:382, trp:182, tyr:395, val:688, b1:0.46, b2:0.155, b3:1.12, b5:1.12, b6:0.1, b12:0, choline:40.4, b9:32, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:180, lycopene:0, vitC:0, vitD:0, vitE:0.42, toco_b:0.03, toco_g:0.12, toco_d:0, vitK:2, ca:52, cu:0.391, fe:4.25, mg:138, mn:3.63, p:410, k:362, se:28.9, na:6, zn:3.64, ala:0.1, la:2.2, o3:0.1, o6:2.2 },
+   src:[{el:'USDA FoodData Central — «Cereals, oats, regular and quick, not fortified, dry» (FDC ID 173904). Προφίλ 87 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cereals, oats, regular and quick, not fortified, dry" (FDC ID 173904). 87-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/173904/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'porkchop', cat:'meat', verified:true,
+   el:'Χοιρινή μπριζόλα', en:'Pork chop', elSub:'Ωμή', enSub:'Pork, fresh, loin, top loin (chops), boneless, separable lean and fat, raw',
+   portions:[{el:'Μπριζόλα',en:'Μπριζόλα',g:150}],
+   n:{ kcal:155, alcohol:0, caffeine:0, water:70.4, carbs:0, fiber:0, sugars:0, fat:6.94, mufa:2.98, f161:0.166, f181:2.77, pufa:0.878, epa:0, dha:0, aa:0.051, sat:2.45, f4:0, f6:0, f8:0, f10:0.003, f12:0.003, f14:0.088, f16:1.52, f18:0.805, trans:0.064, chol:67, protein:21.6, ala_a:1260, arg:1430, asp:2110, cys:249, glu:3440, gly:971, his:931, ile:1060, leu:1840, lys:2000, met:594, phe:906, pro:871, ser:932, thr:968, trp:227, tyr:820, val:1130, b1:0.667, b2:0.185, b3:7.99, b5:0.727, b6:0.726, b12:0.53, choline:57.8, b9:0, vitA:1, retinol:1, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.4, vitE:0.13, toco_b:0, toco_g:0.04, toco_d:0.02, vitK:0, ca:7, cu:0.056, fe:0.5, mg:26, mn:0.007, p:226, k:373, se:33.1, na:48, zn:1.55, ala:0.032, la:0.743, o3:0.032, o6:0.822 },
+   src:[{el:'USDA FoodData Central — «Pork, fresh, loin, top loin (chops), boneless, separable lean and fat, raw» (FDC ID 167839). Προφίλ 81 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Pork, fresh, loin, top loin (chops), boneless, separable lean and fat, raw" (FDC ID 167839). 81-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/167839/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'porkfilet', cat:'meat', verified:true,
+   el:'Χοιρινό ψαρονέφρι', en:'Pork tenderloin', elSub:'Ωμό', enSub:'Pork, fresh, loin, tenderloin, separable lean and fat, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:120}],
+   n:{ kcal:120, alcohol:0, caffeine:0, water:75, carbs:0, fiber:0, sugars:0, fat:3.53, mufa:1.36, f161:0.075, f181:1.26, pufa:0.562, epa:0, dha:0, aa:0.054, sat:1.18, f4:0, f6:0, f8:0, f10:0.001, f12:0.001, f14:0.039, f16:0.725, f18:0.404, trans:0.036, chol:65, protein:20.6, ala_a:1210, arg:1370, asp:2020, cys:238, glu:3300, gly:930, his:892, ile:1020, leu:1760, lys:1920, met:569, phe:868, pro:835, ser:893, thr:927, trp:217, tyr:786, val:1080, b1:0.982, b2:0.337, b3:6.61, b5:0.837, b6:0.765, b12:0.52, choline:79.7, b9:0, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.3, vitE:0.22, toco_b:0, toco_g:0.03, toco_d:0, vitK:0, ca:6, cu:0.089, fe:0.97, mg:27, mn:0.014, p:243, k:393, se:30.3, na:52, zn:1.87, ala:0.016, la:0.463, o3:0.016, o6:0.531 },
+   src:[{el:'USDA FoodData Central — «Pork, fresh, loin, tenderloin, separable lean and fat, raw» (FDC ID 168312). Προφίλ 81 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Pork, fresh, loin, tenderloin, separable lean and fat, raw" (FDC ID 168312). 81-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/168312/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'salmon', cat:'meat', verified:true,
+   el:'Σολομός', en:'Salmon', elSub:'Ωμός', enSub:'Fish, salmon, Atlantic, farmed, raw',
+   portions:[{el:'Φιλέτο',en:'Φιλέτο',g:150}],
+   n:{ kcal:208, alcohol:0, caffeine:0, water:64.9, carbs:0, fiber:0, sugars:0, fat:13.4, mufa:3.77, f161:0.791, f181:2.72, pufa:3.89, epa:0.862, dha:1.1, aa:0.092, sat:3.05, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.556, f16:1.88, f18:0.495, chol:55, protein:20.4, ala_a:1270, arg:1220, asp:2020, cys:219, glu:2830, gly:960, his:549, ile:968, leu:1620, lys:1870, met:626, phe:845, pro:721, ser:896, thr:860, trp:209, tyr:759, val:1110, b1:0.207, b2:0.155, b3:8.67, b5:1.55, b6:0.636, b12:3.23, choline:78.5, b9:26, vitA:58, retinol:58, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:3.9, vitD:11, vitE:3.55, toco_b:0.01, toco_g:0.3, toco_d:0.05, vitK:0.5, ca:9, cu:0.045, fe:0.34, mg:27, mn:0.011, p:240, k:363, se:24, na:59, zn:0.36, ala:0.148, la:0.9, o3:2.5, o6:1.07 },
+   src:[{el:'USDA FoodData Central — «Fish, salmon, Atlantic, farmed, raw» (FDC ID 175167). Προφίλ 80 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Fish, salmon, Atlantic, farmed, raw" (FDC ID 175167). 80-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/175167/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'tuna', cat:'meat', verified:true,
+   el:'Τόνος σε νερό', en:'Tuna in water', elSub:'Κονσέρβα, στραγγισμένος', enSub:'Fish, tuna, light, canned in water, drained solids',
+   portions:[{el:'Κονσέρβα',en:'Κονσέρβα',g:115}],
+   n:{ kcal:90, water:79, carbs:0.08, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0, fat:0.94, mufa:0.114, pufa:0.259, epa:0.025, dha:0.197, aa:0.022, sat:0.224, f4:0.001, f6:0, f8:0, f10:0.002, f12:0, f14:0.011, f16:0.134, f18:0.054, trans:0.002, chol:36, protein:19, b1:0.03, b2:0.082, b3:9.92, b5:0.148, b6:0.32, b12:2.57, vitD:1.2, ca:18, cu:0.048, fe:1.67, mg:22.7, mn:0.019, p:137, k:176, se:67.8, na:219, zn:0.66, ala:0.002, la:0.013, o3:0.228, o6:0.037 },
+   src:[{el:'USDA FoodData Central — «Fish, tuna, light, canned in water, drained solids» (FDC ID 334194). Προφίλ 48 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Fish, tuna, light, canned in water, drained solids" (FDC ID 334194). 48-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/334194/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'cod', cat:'meat', greek:true, verified:true,
+   el:'Μπακαλιάρος', en:'Cod', elSub:'Ωμός', enSub:'Fish, cod, Pacific, raw',
+   portions:[{el:'Φιλέτο',en:'Φιλέτο',g:150}],
+   n:{ kcal:69, alcohol:0, caffeine:0, water:84, carbs:0, fiber:0, starch:0, sugars:0, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, fat:0.41, mufa:0.073, f161:0.004, f181:0.042, pufa:0.164, epa:0.034, dha:0.096, aa:0.008, sat:0.085, f4:0, f6:0, f8:0, f10:0, f12:0.001, f14:0.003, f16:0.057, f18:0.021, trans:0.005, chol:47, protein:15.3, ala_a:877, arg:982, asp:1520, cys:136, glu:2300, gly:710, his:324, ile:679, leu:1210, lys:1400, met:418, phe:595, pro:512, ser:647, thr:658, trp:188, tyr:553, val:731, b1:0.033, b2:0.045, b3:1.1, b5:0.294, b6:0.117, b12:1.98, choline:65, b9:7, vitA:2, retinol:2, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.5, vitE:0.54, toco_b:0, toco_g:0, toco_d:0, vitK:0, ca:8, cu:0.019, fe:0.16, mg:20, mn:0.012, p:281, k:235, se:22.9, na:303, zn:0.31, ala:0.001, la:0.015, o3:0.135, o6:0.024 },
+   src:[{el:'USDA FoodData Central — «Fish, cod, Pacific, raw» (FDC ID 174191). Προφίλ 87 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Fish, cod, Pacific, raw" (FDC ID 174191). 87-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174191/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'shrimp', cat:'meat', greek:true, verified:true,
+   el:'Γαρίδες', en:'Shrimp', elSub:'Ωμές', enSub:'Crustaceans, shrimp, mixed species, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:71, alcohol:0, caffeine:0, water:83, carbs:0.91, fiber:0, starch:0, sugars:0, fructose:0, galactose:0, glucose:0, lactose:0, maltose:0, sucrose:0, fat:1.01, mufa:0.181, f161:0.02, f181:0.112, pufa:0.295, epa:0.068, dha:0.07, aa:0.034, sat:0.261, f4:0, f6:0, f8:0, f10:0, f12:0.005, f14:0.011, f16:0.142, f18:0.078, trans:0.018, chol:126, protein:13.6, ala_a:842, arg:1340, asp:1520, cys:162, glu:2390, gly:801, his:300, ile:627, leu:1160, lys:1300, met:397, phe:593, pro:626, ser:555, thr:540, trp:155, tyr:515, val:637, b1:0.02, b2:0.015, b3:1.78, b5:0.31, b6:0.161, b12:1.11, choline:80.9, b9:19, vitA:54, retinol:54, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0.1, vitE:1.32, toco_b:0, toco_g:0.12, toco_d:0.03, vitK:0.3, ca:54, cu:0.182, fe:0.21, mg:22, mn:0.029, p:244, k:113, se:29.6, na:566, zn:0.97, ala:0.006, la:0.089, o3:0.15, o6:0.129 },
+   src:[{el:'USDA FoodData Central — «Crustaceans, shrimp, mixed species, raw» (FDC ID 174210). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Crustaceans, shrimp, mixed species, raw" (FDC ID 174210). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174210/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'eggplant', cat:'veg', greek:true, verified:true,
+   el:'Μελιτζάνα', en:'Aubergine', elSub:'Ωμή', enSub:'Eggplant, raw',
+   portions:[{el:'Μία',en:'Μία',g:250}],
+   n:{ kcal:25, alcohol:0, caffeine:0, water:92.3, carbs:5.88, fiber:3, sugars:3.53, fructose:1.54, glucose:1.58, sucrose:0.26, fat:0.18, mufa:0.016, f161:0.002, f181:0.014, pufa:0.076, epa:0, dha:0, aa:0, sat:0.034, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.025, f18:0.009, trans:0, chol:0, phytosterol:7, protein:0.98, ala_a:51, arg:57, asp:164, cys:6, glu:186, gly:41, his:23, ile:45, leu:64, lys:47, met:11, phe:43, pro:43, ser:42, thr:37, trp:9, tyr:27, val:53, b1:0.039, b2:0.037, b3:0.649, b5:0.281, b6:0.084, b12:0, choline:6.9, b9:22, vitA:1, retinol:0, betacar:14, alphacar:0, betacryp:0, lutzea:36, lycopene:0, vitC:2.2, vitD:0, vitE:0.3, vitK:3.5, ca:9, cu:0.081, fe:0.23, mg:14, mn:0.232, p:24, k:229, se:0.3, na:2, zn:0.16, ala:0.013, la:0.063, o3:0.013, o6:0.063 },
+   src:[{el:'USDA FoodData Central — «Eggplant, raw» (FDC ID 169228). Προφίλ 82 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Eggplant, raw" (FDC ID 169228). 82-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169228/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'zucchini', cat:'veg', greek:true, verified:true,
+   el:'Κολοκύθι', en:'Courgette', elSub:'Ωμό', enSub:'Squash, summer, zucchini, includes skin, raw',
+   portions:[{el:'Ένα',en:'Ένα',g:196}],
+   n:{ kcal:17, alcohol:0, caffeine:0, water:94.8, carbs:3.11, fiber:1, starch:0, sugars:2.5, fructose:1.38, galactose:0, glucose:1.07, lactose:0, maltose:0, sucrose:0.05, fat:0.32, mufa:0.011, f161:0.002, f181:0.007, pufa:0.091, epa:0, dha:0, aa:0, sat:0.084, f4:0, f6:0, f8:0, f10:0.016, f12:0.003, f14:0.001, f16:0.048, f18:0.006, trans:0, chol:0, protein:1.21, ala_a:63, arg:51, asp:147, cys:12, glu:129, gly:46, his:26, ile:44, leu:71, lys:67, met:18, phe:43, pro:37, ser:49, thr:29, trp:10, tyr:32, val:54, b1:0.045, b2:0.094, b3:0.451, b5:0.204, b6:0.163, b12:0, choline:9.5, b9:24, vitA:10, retinol:0, betacar:120, alphacar:0, betacryp:0, lutzea:2120, lycopene:0, vitC:17.9, vitD:0, vitE:0.12, vitK:4.3, ca:16, cu:0.053, fe:0.37, mg:18, mn:0.177, p:38, k:261, se:0.2, na:8, zn:0.32, ala:0.061, la:0.03, o3:0.061, o6:0.03 },
+   src:[{el:'USDA FoodData Central — «Squash, summer, zucchini, includes skin, raw» (FDC ID 169291). Προφίλ 85 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Squash, summer, zucchini, includes skin, raw" (FDC ID 169291). 85-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169291/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'broccoli', cat:'veg', verified:true,
+   el:'Μπρόκολο', en:'Broccoli', elSub:'Ωμό', enSub:'Broccoli, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:90}],
+   n:{ kcal:32, water:90, carbs:6.27, fiber:2.4, starch:0, fructose:0.82, galactose:0, glucose:0.58, lactose:0, maltose:0, sucrose:0.01, fat:0.34, mufa:0.011, f181:0.01, pufa:0.017, aa:0, sat:0.039, f8:0, f10:0, f12:0, f14:0.001, f16:0.029, f18:0.006, protein:2.57, ala_a:104, arg:191, asp:325, cys:28, glu:542, gly:89, his:59, ile:79, leu:129, lys:135, met:38, phe:117, pro:110, ser:121, thr:88, trp:33, tyr:50, val:125, b1:0.077, b2:0.114, b3:0.639, b5:0.61, b6:0.191, b9:65, vitA:8, betacar:93, alphacar:0, betacryp:0, lutzea:745, lycopene:0, vitC:91.3, vitE:0.15, toco_b:0, toco_g:0.04, toco_d:0, vitK:102, ca:46, cu:0.059, fe:0.69, mg:21, mn:0.197, p:67, k:303, se:1.6, na:36, zn:0.42, ala:0.021, la:0.017, o3:0.021, o6:0.017 },
+   src:[{el:'USDA FoodData Central — «Broccoli, raw» (FDC ID 747447). Προφίλ 74 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Broccoli, raw" (FDC ID 747447). 74-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/747447/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'lettuce', cat:'veg', greek:true, verified:true,
+   el:'Μαρούλι', en:'Romaine lettuce', elSub:'Ωμό', enSub:'Lettuce, cos or romaine, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:50}],
+   n:{ kcal:17, alcohol:0, caffeine:0, water:94.6, carbs:3.29, fiber:2.1, starch:0, sugars:1.19, fructose:0.8, galactose:0, glucose:0.39, lactose:0, maltose:0, sucrose:0, fat:0.3, mufa:0.012, f161:0.003, f181:0.009, pufa:0.16, epa:0, dha:0, aa:0, sat:0.039, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.035, f18:0.005, trans:0, chol:0, protein:1.23, ala_a:56, arg:54, asp:139, cys:6, glu:178, gly:49, his:21, ile:45, leu:76, lys:64, met:15, phe:65, pro:45, ser:50, thr:43, trp:10, tyr:25, val:55, b1:0.072, b2:0.067, b3:0.313, b5:0.142, b6:0.074, b12:0, choline:9.9, b9:136, vitA:436, retinol:0, betacar:5230, alphacar:0, betacryp:0, lutzea:2310, lycopene:0, vitC:4, vitD:0, vitE:0.13, toco_b:0, toco_g:0.36, toco_d:0.01, vitK:102, ca:33, cu:0.048, fe:0.97, mg:14, mn:0.155, p:30, k:247, se:0.4, na:8, zn:0.23, ala:0.113, la:0.047, o3:0.113, o6:0.047 },
+   src:[{el:'USDA FoodData Central — «Lettuce, cos or romaine, raw» (FDC ID 169247). Προφίλ 88 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Lettuce, cos or romaine, raw" (FDC ID 169247). 88-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169247/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'cabbage', cat:'veg', greek:true, verified:true,
+   el:'Λάχανο', en:'Cabbage', elSub:'Ωμό', enSub:'Cabbage, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:90}],
+   n:{ kcal:25, alcohol:0, caffeine:0, water:92.2, carbs:5.8, fiber:2.5, starch:0, sugars:3.2, fructose:1.45, galactose:0, glucose:1.67, lactose:0, maltose:0.01, sucrose:0.08, fat:0.1, mufa:0.017, f161:0, f181:0.017, pufa:0.017, epa:0, dha:0, aa:0, sat:0.034, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.034, f18:0, trans:0, chol:0, phytosterol:11, protein:1.28, ala_a:42, arg:75, asp:122, cys:11, glu:294, gly:30, his:22, ile:30, leu:41, lys:44, met:12, phe:32, pro:48, ser:53, thr:35, trp:11, tyr:19, val:42, b1:0.061, b2:0.04, b3:0.234, b5:0.212, b6:0.124, b12:0, choline:10.7, b9:43, vitA:5, retinol:0, betacar:42, alphacar:33, betacryp:0, lutzea:30, lycopene:0, vitC:36.6, vitD:0, vitE:0.15, toco_b:0, toco_g:0, toco_d:0, vitK:76, ca:40, cu:0.019, fl:1, fe:0.47, mg:12, mn:0.16, p:26, k:170, se:0.3, na:18, zn:0.18, ala:0, la:0.017, o3:0, o6:0.017 },
+   src:[{el:'USDA FoodData Central — «Cabbage, raw» (FDC ID 169975). Προφίλ 90 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cabbage, raw" (FDC ID 169975). 90-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169975/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'carrot', cat:'veg', verified:true,
+   el:'Καρότο', en:'Carrot', elSub:'Ωμό', enSub:'Carrots, raw',
+   portions:[{el:'Μικρό',en:'Μικρό',g:50},{el:'Μεσαίο',en:'Μεσαίο',g:61},{el:'Μεγάλο',en:'Μεγάλο',g:72}],
+   n:{ kcal:41, alcohol:0, caffeine:0, water:88.3, carbs:9.58, fiber:2.8, starch:1.43, sugars:4.74, fructose:0.55, galactose:0, glucose:0.59, lactose:0, maltose:0, sucrose:3.59, fat:0.24, mufa:0.012, f161:0.002, f181:0.011, pufa:0.102, epa:0, dha:0, aa:0, sat:0.032, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.03, f18:0.002, trans:0, chol:0, protein:0.93, ala_a:113, arg:91, asp:190, cys:83, glu:366, gly:47, his:40, ile:77, leu:102, lys:101, met:20, phe:61, pro:54, ser:54, thr:191, trp:12, tyr:43, val:69, b1:0.066, b2:0.058, b3:0.983, b5:0.273, b6:0.138, b12:0, choline:8.8, b9:19, vitA:835, retinol:0, betacar:8280, alphacar:3480, betacryp:0, lutzea:256, lycopene:1, vitC:5.9, vitD:0, vitE:0.66, toco_b:0.01, toco_g:0, toco_d:0, vitK:13.2, ca:33, cu:0.045, fl:3.2, fe:0.3, mg:12, mn:0.143, p:35, k:320, se:0.1, na:69, zn:0.24, ala:0.002, la:0.1, o3:0.002, o6:0.1 },
+   src:[{el:'USDA FoodData Central — «Carrots, raw» (FDC ID 170393). Προφίλ 89 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Carrots, raw" (FDC ID 170393). 89-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170393/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'garlic', cat:'veg', greek:true, verified:true,
+   el:'Σκόρδο', en:'Garlic', elSub:'Ωμό', enSub:'Garlic, raw',
+   portions:[{el:'Σκελίδα',en:'Σκελίδα',g:3}],
+   n:{ kcal:149, alcohol:0, caffeine:0, water:58.6, carbs:33.1, fiber:2.1, sugars:1, fat:0.5, mufa:0.011, f161:0, f181:0.011, pufa:0.249, epa:0, dha:0, aa:0, sat:0.089, f4:0, f6:0, f8:0, f10:0.002, f12:0, f14:0, f16:0.087, f18:0, trans:0, chol:0, protein:6.36, ala_a:132, arg:634, asp:489, cys:65, glu:805, gly:200, his:113, ile:217, leu:308, lys:273, met:76, phe:183, pro:100, ser:190, thr:157, trp:66, tyr:81, val:291, b1:0.2, b2:0.11, b3:0.7, b5:0.596, b6:1.24, b12:0, choline:23.2, b9:3, vitA:0, retinol:0, betacar:5, alphacar:0, betacryp:0, lutzea:16, lycopene:0, vitC:31.2, vitD:0, vitE:0.08, vitK:1.7, ca:181, cu:0.299, fe:1.7, mg:25, mn:1.67, p:153, k:401, se:14.2, na:17, zn:1.16, ala:0.02, la:0.229, o3:0.02, o6:0.229 },
+   src:[{el:'USDA FoodData Central — «Garlic, raw» (FDC ID 169230). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Garlic, raw" (FDC ID 169230). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169230/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'apple', cat:'fruit', verified:true,
+   el:'Μήλο', en:'Apple', elSub:'Με τη φλούδα', enSub:'Apples, raw, golden delicious, with skin',
+   portions:[{el:'Μικρό',en:'Μικρό',g:150},{el:'Μεσαίο',en:'Μεσαίο',g:182},{el:'Μεγάλο',en:'Μεγάλο',g:223}],
+   n:{ kcal:57, water:85.8, carbs:13.6, fiber:2.4, starch:0.05, sugars:10, fructose:6.1, galactose:0, glucose:1.87, lactose:0, maltose:0, sucrose:2.07, fat:0.15, trans:0, protein:0.28, ala_a:12, arg:6, asp:75, cys:1, glu:26, gly:9, his:5, ile:6, leu:14, lys:13, met:1, phe:7, pro:6, ser:11, thr:6, trp:1, tyr:1, val:13, b1:0.018, b2:0.026, b3:0.094, b5:0.074, b6:0.051, choline:5.1, b9:3, vitA:3, betacar:25, alphacar:0, betacryp:12, lutzea:28, lycopene:0, vitE:0.18, vitK:1.8, ca:6, cu:0.03, fe:0.13, mg:5, mn:0.035, p:10, k:100, se:0, na:2, zn:0.04 },
+   src:[{el:'USDA FoodData Central — «Apples, raw, golden delicious, with skin» (FDC ID 168202). Προφίλ 58 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Apples, raw, golden delicious, with skin" (FDC ID 168202). 58-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/168202/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'watermelon', cat:'fruit', greek:true, verified:true,
+   el:'Καρπούζι', en:'Watermelon', elSub:'Φρέσκο', enSub:'Watermelon, raw',
+   portions:[{el:'Φέτα',en:'Φέτα',g:280}],
+   n:{ kcal:30, alcohol:0, caffeine:0, water:91.4, carbs:7.55, fiber:0.4, starch:0, sugars:6.2, fructose:3.36, galactose:0, glucose:1.58, lactose:0, maltose:0.06, sucrose:1.21, fat:0.15, mufa:0.037, f161:0, f181:0.037, pufa:0.05, epa:0, dha:0, aa:0, sat:0.016, f4:0, f6:0, f8:0, f10:0.001, f12:0.001, f14:0, f16:0.008, f18:0.006, trans:0, chol:0, phytosterol:2, protein:0.61, ala_a:17, arg:59, asp:39, cys:2, glu:63, gly:10, his:6, ile:19, leu:18, lys:62, met:6, phe:15, pro:24, ser:16, thr:27, trp:7, tyr:12, val:16, b1:0.033, b2:0.021, b3:0.178, b5:0.221, b6:0.045, b12:0, choline:4.1, b9:3, vitA:28, retinol:0, betacar:303, alphacar:0, betacryp:78, lutzea:8, lycopene:4530, vitC:8.1, vitD:0, vitE:0.05, toco_b:0, toco_g:0, toco_d:0, vitK:0.1, ca:7, cu:0.042, fl:1.5, fe:0.24, mg:10, mn:0.038, p:11, k:112, se:0.4, na:1, zn:0.1, ala:0, la:0.05, o3:0, o6:0.05 },
+   src:[{el:'USDA FoodData Central — «Watermelon, raw» (FDC ID 167765). Προφίλ 90 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Watermelon, raw" (FDC ID 167765). 90-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/167765/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'grape', cat:'fruit', greek:true, verified:true,
+   el:'Σταφύλι', en:'Grapes', elSub:'Φρέσκο', enSub:'Grapes, red or green (European type), raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:69, alcohol:0, caffeine:0, water:80.5, carbs:18.1, fiber:0.9, starch:0, sugars:15.5, fructose:8.13, galactose:0, glucose:7.2, lactose:0, maltose:0, sucrose:0.15, fat:0.16, mufa:0.007, f161:0, f181:0.007, pufa:0.048, epa:0, dha:0, aa:0, sat:0.054, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.001, f16:0.046, f18:0.006, trans:0, chol:0, phytosterol:4, protein:0.72, ala_a:22, arg:130, asp:38, cys:10, glu:81, gly:16, his:22, ile:11, leu:22, lys:27, met:9, phe:19, pro:80, ser:22, thr:22, trp:11, tyr:10, val:22, b1:0.069, b2:0.07, b3:0.188, b5:0.05, b6:0.086, b12:0, choline:5.6, b9:2, vitA:3, retinol:0, betacar:39, alphacar:1, betacryp:0, lutzea:72, lycopene:0, vitC:3.2, vitD:0, vitE:0.19, toco_b:0, toco_g:0.07, toco_d:0, vitK:14.6, ca:10, cu:0.127, fl:7.8, fe:0.36, mg:7, mn:0.071, p:20, k:191, se:0.1, na:2, zn:0.07, ala:0.011, la:0.037, o3:0.011, o6:0.037 },
+   src:[{el:'USDA FoodData Central — «Grapes, red or green (European type), raw» (FDC ID 174683). Προφίλ 90 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Grapes, red or green (European type), raw" (FDC ID 174683). 90-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/174683/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'peach', cat:'fruit', greek:true, verified:true,
+   el:'Ροδάκινο', en:'Peach', elSub:'Φρέσκο', enSub:'Peaches, yellow, raw',
+   portions:[{el:'Μικρό',en:'Μικρό',g:130},{el:'Μεσαίο',en:'Μεσαίο',g:150},{el:'Μεγάλο',en:'Μεγάλο',g:175}],
+   n:{ kcal:42, water:88.3, carbs:10.1, fiber:1.5, starch:0, fructose:1.53, galactose:0.06, glucose:1.95, lactose:0, maltose:0.08, sucrose:4.76, fat:0.27, protein:0.91, ala_a:27, arg:17, asp:415, cys:11, glu:54, gly:20, his:12, ile:16, leu:26, lys:28, met:9, phe:18, pro:17, ser:31, thr:15, trp:9, tyr:14, val:21, b1:0.024, b2:0.031, b3:0.806, b5:0.153, b6:0.025, b9:6, vitA:24, betacar:224, alphacar:0, betacryp:117, lutzea:132, lycopene:0, vitC:4.1, vitK:3, ca:4, cu:0.078, fe:0.34, mg:8, mn:0.026, p:22, k:122, se:2.1, na:13, zn:0.23 },
+   src:[{el:'USDA FoodData Central — «Peaches, yellow, raw» (FDC ID 325430). Προφίλ 55 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Peaches, yellow, raw" (FDC ID 325430). 55-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/325430/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'pear', cat:'fruit', verified:true,
+   el:'Αχλάδι', en:'Pear', elSub:'Φρέσκο', enSub:'Pears, raw, bartlett',
+   portions:[{el:'Μικρό',en:'Μικρό',g:148},{el:'Μεσαίο',en:'Μεσαίο',g:178},{el:'Μεγάλο',en:'Μεγάλο',g:230}],
+   n:{ kcal:57, water:84.1, carbs:15.1, fiber:3.1, fructose:6.76, galactose:0, glucose:2.5, lactose:0, maltose:0, sucrose:0.43, fat:0.16, protein:0.38, ala_a:16, arg:12, asp:104, cys:2, glu:36, gly:15, his:2, ile:14, leu:23, lys:21, met:2, phe:13, pro:17, ser:16, thr:13, trp:2, tyr:2, val:19, b1:0.012, b2:0.026, b3:0.164, b5:0.042, b6:0.026, b9:6, vitA:1, betacar:8, alphacar:0, betacryp:3, lutzea:48, lycopene:0, vitC:4.4, vitK:3.8, ca:8, cu:0.07, fe:0.17, mg:5.7, mn:0.032, p:10, k:87, se:0.2, na:7, zn:0.07 },
+   src:[{el:'USDA FoodData Central — «Pears, raw, bartlett» (FDC ID 746773). Προφίλ 54 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Pears, raw, bartlett" (FDC ID 746773). 54-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/746773/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'strawberry', cat:'fruit', verified:true,
+   el:'Φράουλα', en:'Strawberries', elSub:'Φρέσκια', enSub:'Strawberries, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:32, alcohol:0, caffeine:0, water:91, carbs:7.68, fiber:2, starch:0.04, sugars:4.89, fructose:2.44, galactose:0, glucose:1.99, lactose:0, maltose:0, sucrose:0.47, fat:0.3, mufa:0.043, f161:0.001, f181:0.042, pufa:0.155, epa:0, dha:0, aa:0, sat:0.015, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.012, f18:0.003, trans:0, chol:0, phytosterol:12, protein:0.67, ala_a:33, arg:28, asp:149, cys:6, glu:98, gly:26, his:12, ile:16, leu:34, lys:26, met:2, phe:19, pro:20, ser:25, thr:20, trp:8, tyr:22, val:19, b1:0.024, b2:0.022, b3:0.386, b5:0.125, b6:0.047, b12:0, choline:5.7, b9:24, vitA:1, retinol:0, betacar:7, alphacar:0, betacryp:0, lutzea:26, lycopene:0, vitC:58.8, vitD:0, vitE:0.29, toco_b:0.01, toco_g:0.08, toco_d:0.01, vitK:2.2, ca:16, cu:0.048, fl:4.4, fe:0.41, mg:13, mn:0.386, p:24, k:153, se:0.4, na:1, zn:0.14, ala:0.065, la:0.09, o3:0.065, o6:0.09 },
+   src:[{el:'USDA FoodData Central — «Strawberries, raw» (FDC ID 167762). Προφίλ 90 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Strawberries, raw" (FDC ID 167762). 90-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/167762/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'cherry', cat:'fruit', greek:true, verified:true,
+   el:'Κεράσι', en:'Cherries', elSub:'Φρέσκο', enSub:'Cherries, sweet, raw',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:100}],
+   n:{ kcal:63, alcohol:0, caffeine:0, water:82.2, carbs:16, fiber:2.1, starch:0, sugars:12.8, fructose:5.37, galactose:0.59, glucose:6.59, lactose:0, maltose:0.12, sucrose:0.15, fat:0.2, mufa:0.047, f161:0.001, f181:0.047, pufa:0.052, epa:0, dha:0, aa:0, sat:0.038, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.001, f16:0.027, f18:0.009, trans:0, chol:0, phytosterol:12, protein:1.06, ala_a:26, arg:18, asp:569, cys:10, glu:83, gly:23, his:15, ile:20, leu:30, lys:32, met:10, phe:24, pro:39, ser:30, thr:22, trp:9, tyr:14, val:24, b1:0.027, b2:0.033, b3:0.154, b5:0.199, b6:0.049, b12:0, choline:6.1, b9:4, vitA:3, retinol:0, betacar:38, alphacar:0, betacryp:0, lutzea:85, lycopene:0, vitC:7, vitD:0, vitE:0.07, toco_b:0.01, toco_g:0.04, toco_d:0, vitK:2.1, ca:13, cu:0.06, fl:2, fe:0.36, mg:11, mn:0.07, p:21, k:222, se:0, na:0, zn:0.07, ala:0.026, la:0.027, o3:0.026, o6:0.027 },
+   src:[{el:'USDA FoodData Central — «Cherries, sweet, raw» (FDC ID 171719). Προφίλ 90 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Cherries, sweet, raw" (FDC ID 171719). 90-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/171719/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'kiwi', cat:'fruit', verified:true,
+   el:'Ακτινίδιο', en:'Kiwi', elSub:'Φρέσκο', enSub:'Kiwifruit, green, raw',
+   portions:[{el:'Ένα',en:'Ένα',g:75}],
+   n:{ kcal:58, water:83.9, carbs:14, fiber:3, starch:0, fructose:4.35, galactose:0.17, glucose:4.11, lactose:0.02, maltose:0.19, sucrose:0.15, fat:0.44, protein:1.06, ala_a:48, arg:73, asp:113, cys:28, glu:165, gly:54, his:24, ile:46, leu:59, lys:55, met:22, phe:39, pro:40, ser:47, thr:43, trp:13, tyr:30, val:52, b1:0.027, b2:0.025, b3:0.37, b5:0.206, b6:0.061, b9:26, vitA:4, betacar:52, alphacar:0, betacryp:0, lutzea:122, lycopene:0, vitC:74.7, vitE:1.3, toco_b:0, toco_g:0.03, toco_d:0, vitK:40.3, ca:35, cu:0.134, fe:0.24, mg:15.7, mn:0.064, p:34, k:198, se:0.2, na:5, zn:0.14 },
+   src:[{el:'USDA FoodData Central — «Kiwifruit, green, raw» (FDC ID 327046). Προφίλ 59 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Kiwifruit, green, raw" (FDC ID 327046). 59-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/327046/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'walnut', cat:'fatnut', greek:true, verified:true,
+   el:'Καρύδια', en:'Walnuts', elSub:'Ωμά', enSub:'Nuts, walnuts, english',
+   portions:[{el:'Χούφτα',en:'Χούφτα',g:30}],
+   n:{ kcal:654, alcohol:0, caffeine:0, water:4.07, carbs:13.7, fiber:6.7, starch:0.06, sugars:2.61, fructose:0.09, glucose:0.08, lactose:0, maltose:0, sucrose:2.43, fat:65.2, mufa:8.93, f161:0, f181:8.8, pufa:47.2, epa:0, dha:0, aa:0, sat:6.13, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:4.4, f18:1.66, chol:0, protein:15.2, ala_a:696, arg:2280, asp:1830, cys:208, glu:2820, gly:816, his:391, ile:625, leu:1170, lys:424, met:236, phe:711, pro:706, ser:934, thr:596, trp:170, tyr:406, val:753, b1:0.341, b2:0.15, b3:1.12, b5:0.57, b6:0.537, b12:0, choline:39.2, b9:98, vitA:1, retinol:0, betacar:12, alphacar:0, betacryp:0, lutzea:9, lycopene:0, vitC:1.3, vitD:0, vitE:0.7, toco_b:0.15, toco_g:20.8, toco_d:1.89, vitK:2.7, ca:98, cu:1.59, fe:2.91, mg:158, mn:3.41, p:346, k:441, se:4.9, na:2, zn:3.09, ala:9.08, la:38.1, o3:9.08, o6:38.1 },
+   src:[{el:'USDA FoodData Central — «Nuts, walnuts, english» (FDC ID 170187). Προφίλ 86 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Nuts, walnuts, english" (FDC ID 170187). 86-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170187/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'peanut', cat:'fatnut', verified:true,
+   el:'Φιστίκια αράπικα', en:'Peanuts', elSub:'Ωμά', enSub:'Peanuts, all types, raw',
+   portions:[{el:'Χούφτα',en:'Χούφτα',g:30}],
+   n:{ kcal:567, alcohol:0, caffeine:0, water:6.5, carbs:16.1, fiber:8.5, sugars:4.72, fat:49.2, mufa:24.4, f161:0.009, f181:23.8, pufa:15.6, epa:0, dha:0, aa:0, sat:6.28, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0.025, f16:5.15, f18:1.1, trans:0, chol:0, protein:25.8, ala_a:1020, arg:3080, asp:3150, cys:331, glu:5390, gly:1550, his:652, ile:907, leu:1670, lys:926, met:317, phe:1380, pro:1140, ser:1270, thr:883, trp:250, tyr:1050, val:1080, b1:0.64, b2:0.135, b3:12.1, b5:1.77, b6:0.348, b12:0, choline:52.5, b9:240, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:0, lycopene:0, vitC:0, vitD:0, vitE:8.33, vitK:0, ca:92, cu:1.14, fe:4.58, mg:168, mn:1.93, p:376, k:705, se:7.2, na:18, zn:3.27, ala:0.003, la:15.6, o3:0.003, o6:15.6 },
+   src:[{el:'USDA FoodData Central — «Peanuts, all types, raw» (FDC ID 172430). Προφίλ 78 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Peanuts, all types, raw" (FDC ID 172430). 78-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/172430/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'pistachio', cat:'fatnut', greek:true, verified:true,
+   el:'Φιστίκι Αιγίνης', en:'Pistachios', elSub:'Ωμό', enSub:'Nuts, pistachio nuts, raw',
+   portions:[{el:'Χούφτα',en:'Χούφτα',g:30}],
+   n:{ kcal:560, alcohol:0, caffeine:0, water:4.37, carbs:27.2, fiber:10.6, starch:1.67, sugars:7.66, fructose:0.24, glucose:0.32, lactose:0, maltose:0.17, sucrose:6.87, fat:45.3, mufa:23.3, f161:0.495, f181:22.7, pufa:14.4, epa:0, dha:0, aa:0, sat:5.91, f4:0, f6:0.012, f8:0, f10:0.004, f12:0, f14:0.019, f16:5.26, f18:0.478, trans:0, chol:0, phytosterol:214, protein:20.2, ala_a:973, arg:2130, asp:1880, cys:292, glu:4300, gly:1010, his:512, ile:917, leu:1600, lys:1140, met:360, phe:1090, pro:938, ser:1280, thr:684, trp:251, tyr:509, val:1250, b1:0.87, b2:0.16, b3:1.3, b5:0.52, b6:1.7, b12:0, b9:51, vitA:26, retinol:0, betacar:305, alphacar:10, betacryp:0, lutzea:2900, vitC:5.6, vitD:0, vitE:2.86, toco_b:0, toco_g:20.4, toco_d:0.8, ca:105, cu:1.3, fl:3.4, fe:3.92, mg:121, mn:1.2, p:490, k:1020, se:7, na:1, zn:2.2, ala:0.289, la:14.1, o3:0.289, o6:14.1 },
+   src:[{el:'USDA FoodData Central — «Nuts, pistachio nuts, raw» (FDC ID 170184). Προφίλ 86 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Nuts, pistachio nuts, raw" (FDC ID 170184). 86-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170184/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'cashew', cat:'fatnut', verified:true,
+   el:'Κάσιους', en:'Cashews', elSub:'Ωμά', enSub:'Nuts, cashew nuts, raw',
+   portions:[{el:'Χούφτα',en:'Χούφτα',g:30}],
+   n:{ kcal:553, water:5.2, carbs:30.2, fiber:3.3, starch:23.5, sugars:5.91, fructose:0.05, galactose:0, glucose:0.05, lactose:0, maltose:0, sucrose:5.81, fat:43.8, mufa:23.8, f161:0.136, f181:23.5, pufa:7.84, epa:0, dha:0, aa:0, sat:7.78, f4:0, f6:0, f8:0.015, f10:0.015, f12:0.015, f14:0.015, f16:3.92, f18:3.22, chol:0, protein:18.2, ala_a:837, arg:2120, asp:1800, cys:393, glu:4510, gly:937, his:456, ile:789, leu:1470, lys:928, met:362, phe:951, pro:812, ser:1080, thr:688, trp:287, tyr:508, val:1090, b1:0.423, b2:0.058, b3:1.06, b5:0.864, b6:0.417, b12:0, b9:25, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:22, lycopene:0, vitC:0.5, vitD:0, vitE:0.9, toco_b:0.03, toco_g:5.31, toco_d:0.36, vitK:34.1, ca:37, cu:2.2, fe:6.68, mg:292, mn:1.66, p:593, k:660, se:19.9, na:12, zn:5.78, ala:0.062, la:7.78, o3:0.062, o6:7.78 },
+   src:[{el:'USDA FoodData Central — «Nuts, cashew nuts, raw» (FDC ID 170162). Προφίλ 84 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Nuts, cashew nuts, raw" (FDC ID 170162). 84-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/170162/nutrients', d:'2019-04', a:'2026-07-19'}]
+  },
+  {
+   id:'pasta', cat:'grain', verified:true,
+   el:'Ζυμαρικά', en:'Pasta, dry', elSub:'Ξερά, ωμά', enSub:'Pasta, dry, enriched',
+   portions:[{el:'Μερίδα',en:'Μερίδα',g:80}],
+   n:{ kcal:371, alcohol:0, caffeine:0, water:9.9, carbs:74.7, fiber:3.2, starch:62.4, sugars:2.67, fructose:0.11, galactose:0, glucose:0.12, lactose:0, maltose:1.96, sucrose:0.48, fat:1.51, mufa:0.171, f161:0, f181:0.171, pufa:0.564, epa:0, dha:0, aa:0, sat:0.277, f4:0, f6:0, f8:0, f10:0, f12:0, f14:0, f16:0.251, f18:0.025, trans:0, chol:0, protein:13, ala_a:438, arg:474, asp:624, cys:255, glu:4600, gly:441, his:298, ile:511, leu:988, lys:298, met:147, phe:668, pro:1570, ser:617, thr:462, trp:185, tyr:243, val:588, b1:0.891, b2:0.4, b3:7.18, b5:0.431, b6:0.142, b12:0, choline:15.1, b9:237, vitA:0, retinol:0, betacar:0, alphacar:0, betacryp:0, lutzea:18, lycopene:0, vitC:0, vitD:0, vitE:0.11, toco_b:0.06, toco_g:0.88, toco_d:0, vitK:0.1, ca:21, cu:0.289, fl:18, fe:3.3, mg:53, mn:0.917, p:189, k:223, se:63.2, na:6, zn:1.41, ala:0.024, la:0.54, o3:0.024, o6:0.54 },
+   src:[{el:'USDA FoodData Central — «Pasta, dry, enriched» (FDC ID 169736). Προφίλ 89 θρεπτικών συστατικών.',
+     en:'USDA FoodData Central — "Pasta, dry, enriched" (FDC ID 169736). 89-nutrient profile.',
+     url:'https://fdc.nal.usda.gov/food-details/169736/nutrients', d:'2019-04', a:'2026-07-19'}]
+  }
 ];
 const fName=f=>f[L]||f.el;
 const fSub=f=>f[L+'Sub']||f.elSub;
