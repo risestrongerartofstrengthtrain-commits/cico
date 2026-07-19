@@ -381,6 +381,21 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
+/* ── Η Κατσαρόλα ── */
+.potlist{border:2px solid var(--line);border-radius:4px;overflow:hidden;background:var(--cream)}
+.potempty{padding:16px 12px;text-align:center;font-style:italic;color:var(--ink-soft);font-size:14px}
+.potrow{display:flex;align-items:center;gap:9px;padding:9px 10px;border-bottom:2px solid var(--line)}
+.potrow:last-child{border-bottom:0}
+.potn{flex:1;min-width:0;font-size:15px;font-weight:700;line-height:1.25}
+.potn small{display:block;font-weight:400;font-size:12px;color:var(--ink-soft);margin-top:2px}
+.potg{display:flex;align-items:center;border:2px solid var(--line);border-radius:3px;background:#fff;flex:0 0 auto}
+.potg input{width:62px;border:0;background:transparent;height:40px;padding:0 6px;font-size:16px;text-align:right}
+.potg span{padding:0 7px;font-size:12px;font-weight:700;color:var(--ink-soft)}
+.potx{flex:0 0 auto;width:34px;height:40px;border:0;background:transparent;color:var(--red);
+  font-size:24px;line-height:1;font-weight:700}
+.potsum{margin-top:9px;padding:8px 11px;border-left:3px solid var(--ochre-d);
+  background:rgba(184,134,44,.12);font-size:14px;border-radius:3px}
+.stamp.pot{border-color:var(--ochre-d);color:var(--ochre-d);background:rgba(184,134,44,.09)}
 /* ── Προέλευση & πραγματική απορρόφηση ── */
 .bioflag{display:inline-block;font-family:'Alegreya',serif;font-weight:800;font-size:12px;
   letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:2px;
@@ -860,6 +875,18 @@ const T={
   bioTitle:'Πόσο απορροφά πραγματικά ο άνθρωπος',
   bioAnimal:'Ζωικής προέλευσης', bioPlant:'Φυτικής προέλευσης', bioThisFood:'Σε αυτή την τροφή',
   bioHint:'Ο πίνακας πιο κάτω λέει πόσο περιέχει η τροφή. Εδώ λέει πόσο μπαίνει τελικά στο αίμα σου — γιατί δεν είναι το ίδιο πράγμα.',
+  potTitle:'Η Κατσαρόλα', potSub:'Τι έριξες μέσα, πόσες μερίδες έβγαλε',
+  potName:'Πώς το λες;', potNamePh:'π.χ. Η φασολάδα της μαμάς',
+  potWhatWentIn:'Τι μπήκε στην κατσαρόλα', potAddItem:'+ Πρόσθεσε υλικό',
+  potNoItems:'Δεν έχεις βάλει υλικά ακόμα.', potPickSub:'Διάλεξε τι έριξες μέσα',
+  potServings:'Πόσες μερίδες έβγαλε;', potPortions:'μερίδες', potPortion:'μερίδα',
+  potTotal:'Σύνολο υλικών', potEach:'Κάθε μερίδα', potEmpty:'Πρόσθεσε υλικά για να δεις τη μερίδα.',
+  potSave:'Αποθήκευσε την κατσαρόλα', potSaved:'Η κατσαρόλα σου αποθηκεύτηκε.',
+  potNeedName:'Δώσε της ένα όνομα.', potNeedItems:'Πρόσθεσε τουλάχιστον ένα υλικό.',
+  potFrom:'Από την κατσαρόλα σου', potTag:'Κατσαρόλα',
+  potDelQ:'Να διαγραφεί αυτή η κατσαρόλα;', potDeleted:'Διαγράφηκε.',
+  potMine:'Οι κατσαρόλες σου', potNew:'+ Νέα κατσαρόλα', potEdit:'Άλλαξε τα υλικά',
+  potNote:'Η μερίδα βγαίνει από το σύνολο των υλικών διά τις μερίδες — γι’ αυτό είναι σωστή ό,τι κι αν έγινε με το νερό στο μαγείρεμα. Διάλεξε πάντα «μερίδα» και όχι γραμμάρια, γιατί τα γραμμάρια εδώ αφορούν την πρώτη ύλη.',
   recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
   mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
   ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
@@ -960,6 +987,18 @@ const T={
   bioTitle:'How much you actually absorb',
   bioAnimal:'Animal origin', bioPlant:'Plant origin', bioThisFood:'In this food',
   bioHint:'The table below says how much the food contains. This says how much ends up in your blood — because they are not the same thing.',
+  potTitle:'The Pot', potSub:'What went in, how many portions it made',
+  potName:'What do you call it?', potNamePh:'e.g. Mum’s bean soup',
+  potWhatWentIn:'What went into the pot', potAddItem:'+ Add ingredient',
+  potNoItems:'No ingredients yet.', potPickSub:'Pick what you put in',
+  potServings:'How many portions did it make?', potPortions:'portions', potPortion:'portion',
+  potTotal:'Total ingredients', potEach:'Each portion', potEmpty:'Add ingredients to see the portion.',
+  potSave:'Save this pot', potSaved:'Your pot was saved.',
+  potNeedName:'Give it a name.', potNeedItems:'Add at least one ingredient.',
+  potFrom:'From your pot', potTag:'Pot',
+  potDelQ:'Delete this pot?', potDeleted:'Deleted.',
+  potMine:'Your pots', potNew:'+ New pot', potEdit:'Change the ingredients',
+  potNote:'The portion comes from total ingredients divided by portions — which is why it is right whatever happened to the water while cooking. Always pick "portion" rather than grams, because grams here refer to raw ingredients.',
   recentF:'Recent', frequentF:'Your usual', allF:'All foods',
   mineTag:'Mine', addOwn:'+ My own food',
   ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
@@ -2218,9 +2257,140 @@ function frequentIds(n){return Object.keys(foodUse).filter(id=>FMAP[id]&&foodUse
    Καταχωρούνται από τη συσκευασία. Σημειώνονται ΞΕΚΑΘΑΡΑ ως μη επαληθευμένες
    από το USDA, ώστε να μη συγχέονται ποτέ με τα επιστημονικά δεδομένα. */
 let foodsUser=load('foodsUser',[]);
-function allFoods(){return FOODS.concat(foodsUser)}
+function allFoods(){return FOODS.concat(foodsUser).concat(typeof potsUser!=='undefined'?potsUser:[])}
 function syncFMAP(){foodsUser.forEach(f=>{if(f&&f.id)FMAP[f.id]=f})}
 syncFMAP();
+
+/* ═══════════════════════════════════════════════════════════════════
+   Η ΚΑΤΣΑΡΟΛΑ
+   ───────────────────────────────────────────────────────────────────
+   Ο Έλληνας δεν τρώει «100 γραμμάρια βρασμένες φακές». Τρώει ένα πιάτο
+   φασολάδα από την κατσαρόλα. Οι ξένες εφαρμογές σε βάζουν να διαλύσεις
+   το πιάτο σου σε υλικά κάθε φορά — γι' αυτό ο κόσμος τα παρατάει.
+
+   Εδώ δηλώνεις ΤΙ ΕΡΙΞΕΣ ΜΕΣΑ και ΠΟΣΕΣ ΜΕΡΙΔΕΣ ΕΒΓΑΛΕ.
+
+   Γιατί αυτό είναι και το πιο σωστό επιστημονικά: τα θρεπτικά συστατικά
+   δεν εξατμίζονται μαζί με το νερό. Διαιρώντας το σύνολο των υλικών με
+   τις μερίδες, η μερίδα βγαίνει ακριβής — χωρίς να χρειάζεται να ξέρουμε
+   πόσο νερό έφυγε στο μαγείρεμα.
+   ═══════════════════════════════════════════════════════════════════ */
+let potsUser=load('potsUser',[]);
+let potDraft=null;
+function syncPots(){potsUser.forEach(p=>{if(p&&p.id)FMAP[p.id]=p})}
+syncPots();
+
+/* Υπολογισμός: υλικά -> θρεπτικά ανά 100 g πρώτης ύλης + βάρος μερίδας */
+function potCompute(items,serv){
+  const n={}; let g=0;
+  items.forEach(it=>{
+    const f=FMAP[it.id]; if(!f||!it.g)return;
+    g+=it.g; const r=it.g/100;
+    for(const k in f.n){ if(typeof f.n[k]==='number') n[k]=(n[k]||0)+f.n[k]*r; }
+  });
+  if(!g)return null;
+  const per100={}; for(const k in n) per100[k]=Math.round(n[k]/(g/100)*1000)/1000;
+  return {per100, totalG:g, servG:Math.round(g/Math.max(1,serv))};
+}
+function potPortionsFor(servG){
+  return [{el:'½ μερίδα',en:'½ portion',g:Math.max(1,Math.round(servG/2))},
+          {el:'1 μερίδα',en:'1 portion',g:servG},
+          {el:'1½ μερίδα',en:'1½ portions',g:Math.round(servG*1.5)},
+          {el:'2 μερίδες',en:'2 portions',g:servG*2}];
+}
+function newPot(){potDraft={id:null,name:'',items:[],serv:4};openPot()}
+function editPot(id){
+  const p=potsUser.find(x=>x.id===id); if(!p)return;
+  potDraft={id:p.id,name:p.el,items:JSON.parse(JSON.stringify(p.potItems||[])),serv:p.potServ||4};
+  openPot();
+}
+function openPot(){
+  if(!potDraft)return newPot();
+  const c=potCompute(potDraft.items,potDraft.serv);
+  const rows=potDraft.items.map((it,i)=>{
+    const f=FMAP[it.id]; if(!f)return '';
+    const kc=Math.round((f.n.kcal||0)*it.g/100);
+    return `<div class="potrow">
+      <div class="potn">${fName(f)}<small>${kc} kcal</small></div>
+      <div class="potg"><input type="number" inputmode="decimal" min="1" step="10" value="${it.g}" class="num" oninput="potSetG(${i},this.value)"><span>g</span></div>
+      <button class="potx" onclick="potDel(${i})" aria-label="διαγραφή">×</button></div>`;
+  }).join('');
+  const prev=c?`<div class="plive">
+      <div><b class="num">${Math.round((c.per100.kcal||0)*c.servG/100)}</b><small>kcal / ${t('potPortion')}</small></div>
+      <div><b class="num">${Math.round((c.per100.protein||0)*c.servG/100)}</b><small>${t('protein')} (g)</small></div>
+      <div><b class="num">${Math.round((c.per100.carbs||0)*c.servG/100)}</b><small>${t('carbs')} (g)</small></div>
+      <div><b class="num">${Math.round((c.per100.fat||0)*c.servG/100)}</b><small>${t('fat')} (g)</small></div>
+    </div><div class="potsum">${t('potTotal')}: <b class="num">${Math.round(c.totalG)} g</b> · ${t('potEach')}: <b class="num">${c.servG} g</b></div>`
+   :`<div class="empty">${t('potEmpty')}</div>`;
+  showSheet(
+    `<div style="flex:1;min-width:0"><h2>${t('potTitle')}</h2><div class="sub">${t('potSub')}</div></div>
+     <button class="sx" onclick="closeSheet()">×</button>`,
+    `<label class="f">${t('potName')}</label>
+     <input type="text" id="potName" maxlength="42" placeholder="${t('potNamePh')}" value="${(potDraft.name||'').replace(/"/g,'&quot;')}" oninput="potDraft.name=this.value" style="margin-bottom:14px">
+     <label class="f">${t('potWhatWentIn')}</label>
+     <div class="potlist">${rows||`<div class="potempty">${t('potNoItems')}</div>`}</div>
+     <button class="btn ghost full" style="margin:9px 0 16px" onclick="potPickOpen()">${t('potAddItem')}</button>
+     <label class="f">${t('potServings')}</label>
+     <div class="portion" style="margin-bottom:14px">
+       <button class="pbtn" onclick="potSetServ(${potDraft.serv-1})">−</button>
+       <div class="pin"><input type="number" inputmode="numeric" min="1" max="40" value="${potDraft.serv}" class="num" oninput="potSetServ(this.value)"><span>${t('potPortions')}</span></div>
+       <button class="pbtn" onclick="potSetServ(${potDraft.serv+1})">+</button>
+     </div>
+     ${prev}
+     <div class="warnbox" style="margin-top:14px">${t('potNote')}</div>`,
+    `<button class="btn full" onclick="savePot()">${t('potSave')}</button>`
+  );
+}
+function potSetG(i,v){ if(!potDraft)return; potDraft.items[i].g=Math.max(1,parseFloat(v)||1); const el=document.querySelector('.plive'); openPotSoft(); }
+function potDel(i){ if(!potDraft)return; potDraft.items.splice(i,1); openPot(); }
+function potSetServ(v){ if(!potDraft)return; potDraft.serv=Math.min(40,Math.max(1,parseInt(v)||1)); openPot(); }
+let _potT=null;
+function openPotSoft(){ clearTimeout(_potT); _potT=setTimeout(()=>{const n=document.getElementById('potName'); const keep=n?n.value:null; openPot(); if(keep!=null){const n2=document.getElementById('potName'); if(n2)n2.value=keep;}},420); }
+function potPickOpen(){
+  showSheet(
+    `<div style="flex:1;min-width:0"><h2>${t('potAddItem').replace('+ ','')}</h2><div class="sub">${t('potPickSub')}</div></div>
+     <button class="sx" onclick="openPot()">×</button>`,
+    `<input type="search" id="potQ" oninput="potFilter()" placeholder="${t('searchPh')}" autocomplete="off" style="margin-bottom:11px">
+     <div id="potList">${potListHTML('')}</div>`
+  );
+}
+function potListHTML(q){
+  const list=allFoods().filter(f=>!f.pot&&foodMatches(f,q));
+  return list.map(f=>`<button class="fcard" style="margin-bottom:9px" onclick="potAdd('${f.id}')"><div class="fn">${fName(f)}</div><div class="fl">${fSub(f)} · <span class="num">${Math.round(f.n.kcal||0)}</span> kcal / 100 g</div></button>`).join('')||`<div class="empty">${t('noRes')}</div>`;
+}
+function potFilter(){document.getElementById('potList').innerHTML=potListHTML((document.getElementById('potQ').value||'').trim())}
+function potAdd(id){ if(!potDraft)return; const f=FMAP[id]; const g=(f&&f.portions&&f.portions.length)?f.portions[Math.min(1,f.portions.length-1)].g:100; potDraft.items.push({id,g}); openPot(); }
+function savePot(){
+  if(!potDraft)return;
+  const nameEl=document.getElementById('potName');
+  const name=((nameEl?nameEl.value:potDraft.name)||'').trim();
+  if(!name){toast(t('potNeedName'));return}
+  if(!potDraft.items.length){toast(t('potNeedItems'));return}
+  const c=potCompute(potDraft.items,potDraft.serv);
+  if(!c){toast(t('potNeedItems'));return}
+  const id=potDraft.id||('pot_'+Date.now().toString(36)+Math.random().toString(36).slice(2,5));
+  const names=potDraft.items.map(it=>FMAP[it.id]?fName(FMAP[it.id]):'').filter(Boolean).slice(0,4).join(', ');
+  const pot={
+    id, cat:'other', pot:true, greek:true, verified:false, custom:false,
+    el:name, en:name, elSub:t('potFrom')+' · '+c.servG+' g', enSub:'Home pot · '+c.servG+' g',
+    n:c.per100, portions:potPortionsFor(c.servG),
+    potItems:JSON.parse(JSON.stringify(potDraft.items)), potServ:potDraft.serv, potTotalG:c.totalG,
+    src:[{el:'Υπολογίστηκε από τα υλικά που δήλωσες ('+names+(potDraft.items.length>4?' κ.ά.':'')+'), διαιρεμένα σε '+potDraft.serv+' μερίδες. Τα θρεπτικά κάθε υλικού προέρχονται από τις πηγές του.',
+          en:'Computed from the ingredients you declared, divided into '+potDraft.serv+' portions. Each ingredient keeps its own sources.',
+          url:'', d:new Date().toISOString().slice(0,10), a:new Date().toISOString().slice(0,10)}],
+    note:{el:'Η μερίδα υπολογίζεται από το σύνολο των υλικών διά τις μερίδες, οπότε είναι ακριβής ανεξάρτητα από το πόσο νερό εξατμίστηκε. Δύο πράγματα να έχεις υπόψη: (1) Τα γραμμάρια αφορούν <b>πρώτη ύλη</b> — αν ζυγίσεις το μαγειρεμένο πιάτο θα βγει διαφορετικό βάρος, γι’ αυτό διάλεξε μερίδα και όχι γραμμάρια. (2) Το μαγείρεμα καταστρέφει μέρος των υδατοδιαλυτών βιταμινών (C, φυλλικό, σύμπλεγμα Β) και αν πετάξεις το νερό φεύγουν και μέταλλα — οπότε αυτά είναι στην πραγματικότητα κάπως λιγότερα.',
+          en:'The portion is computed from total ingredients divided by portions, so it is accurate regardless of how much water evaporated. Two caveats: (1) Grams refer to <b>raw ingredients</b> — weighing the cooked dish gives a different weight, so pick a portion rather than grams. (2) Cooking destroys some water-soluble vitamins (C, folate, B group) and discarding the water removes minerals — so those are in reality somewhat lower.'}
+  };
+  const i=potsUser.findIndex(p=>p.id===id);
+  if(i>=0)potsUser[i]=pot; else potsUser.push(pot);
+  FMAP[id]=pot; save('potsUser',potsUser);
+  potDraft=null; closeSheet(); toast(t('potSaved')); pickPortion(id);
+}
+function delPot(id){
+  if(!confirm(t('potDelQ')))return;
+  potsUser=potsUser.filter(p=>p.id!==id); delete FMAP[id]; save('potsUser',potsUser);
+  closeSheet(); toast(t('potDeleted')); renderAll&&renderAll();
+}
 
 let recipesUser=load('recipesUser',[]);
 const allRecipes=()=>RECIPES_BUILTIN.concat(recipesUser);
@@ -2894,6 +3064,14 @@ function absHTML(f){
     <div class="src"><h4>${t('absRefs')}</h4><ul>${refs}</ul></div></div></div>`;
 }
 
+/* Τι ακριβώς μπήκε στην κατσαρόλα — ορατό μέσα στην τροφή */
+function potIngredientsHTML(f){
+  if(!f.pot||!f.potItems||!f.potItems.length)return '';
+  const rows=f.potItems.map(it=>{const x=FMAP[it.id];if(!x)return '';
+    return `<div class="ing"><span onclick="openFood('${it.id}')" style="cursor:pointer;color:var(--green-2)">${fName(x)}</span><span class="ig num">${it.g} g · ${Math.round((x.n.kcal||0)*it.g/100)} kcal</span></div>`}).join('');
+  return `<div class="acc open"><button class="acc-h" onclick="this.parentNode.classList.toggle('open')"><span class="cv">–</span>${t('potWhatWentIn')}</button>
+    <div class="acc-b">${rows}<div class="potsum">${t('potTotal')}: <b class="num">${Math.round(f.potTotalG||0)} g</b> · ${f.potServ} ${t('potPortions')} · ${t('potEach')}: <b class="num">${f.portions&&f.portions[1]?f.portions[1].g:0} g</b></div></div></div>`;
+}
 function openFood(id){
   const f=FMAP[id];if(!f)return;
   const isFav=favs.includes(id), gv=nid=>f.n[nid];
@@ -2909,10 +3087,13 @@ function openFood(id){
     `<div style="flex:1;min-width:0"><h2>${fName(f)}</h2><div class="sub">${fSub(f)} · ${t('per100')}</div>
        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">${f.greek?`<span class="stamp">${t('greekFlag')}</span>`:''}${f.verified?`<span class="stamp green">${t('verified')}</span>`:''}</div></div>
      <button class="sx" onclick="closeSheet()">×</button>`,
-    `<div class="plive" id="plive"></div>${bioHTML(f)}${absHTML(f)}${tbl}
+    `<div class="plive" id="plive"></div>${potIngredientsHTML(f)}${bioHTML(f)}${absHTML(f)}${tbl}
      ${f.note?`<div class="warn"><b>${t('caveat')}</b>${f.note[L]||f.note.el}</div>`:''}
-     <div class="src"><h4>${t('sources')}</h4><ul>${srcs}</ul></div>`,
-    `<button class="btn ghost" onclick="toggleFav('${f.id}')" style="flex:0 0 auto">${isFav?t('remFav'):t('addFav')}</button>
+     <div class="src"><h4>${t('sources')}</h4><ul>${srcs}</ul></div>
+     ${f.pot?`<button class="btn ghost full" style="margin-top:14px" onclick="delPot('${f.id}')">${t('del')}</button>`:''}`,
+    f.pot?`<button class="btn ghost" onclick="editPot('${f.id}')" style="flex:0 0 auto">${t('potEdit')}</button>
+     <button class="btn" style="flex:1" onclick="openAdd(null,'${f.id}')">${t('addToDay')}</button>`
+    :`<button class="btn ghost" onclick="toggleFav('${f.id}')" style="flex:0 0 auto">${isFav?t('remFav'):t('addFav')}</button>
      <button class="btn" style="flex:1" onclick="openAdd(null,'${f.id}')">${t('addToDay')}</button>`
   );
   livePortion(f,100);
@@ -2937,18 +3118,26 @@ function openAdd(meal,foodId){
   );
 }
 function foodCardHTML(f){
-  return `<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${f.custom?`<span class="stamp mine">${t('mineTag')}</span>`:(f.greek?`<span class="stamp flag">${t('greekFlag')}</span>`:'')}<div class="fn">${fName(f)}</div><div class="fl">${fSub(f)} · <span class="num">${Math.round(f.n.kcal)}</span> kcal / 100 g</div></button>`;
+  const tag=f.pot?`<span class="stamp pot">${t('potTag')}</span>`
+           :f.custom?`<span class="stamp mine">${t('mineTag')}</span>`
+           :f.greek?`<span class="stamp flag">${t('greekFlag')}</span>`:'';
+  const sub=f.pot?`${fSub(f)} · <span class="num">${Math.round((f.n.kcal||0)*(f.portions&&f.portions[1]?f.portions[1].g:100)/100)}</span> kcal / ${t('potPortion')}`
+                 :`${fSub(f)} · <span class="num">${Math.round(f.n.kcal)}</span> kcal / 100 g`;
+  return `<button class="fcard" style="margin-bottom:9px" onclick="pickPortion('${f.id}')">${tag}<div class="fn">${fName(f)}</div><div class="fl">${sub}</div></button>`;
 }
 function addListHTML(q){
   const all=allFoods();
+  const potBtn=`<button class="btn ghost full" style="margin:4px 0 6px" onclick="newPot()">${t('potNew')}</button>`;
   if(!q){
     // Χωρίς αναζήτηση: πρώτα ό,τι χρησιμοποιείς πραγματικά
     const rec=recentIds(6), frq=frequentIds(6).filter(id=>!rec.includes(id));
     let html='';
+    if(potsUser.length)html+=`<div class="secl">${t('potMine')}</div>`+potsUser.map(foodCardHTML).join('');
+    html+=potBtn;
     if(rec.length)html+=`<div class="secl">${t('recentF')}</div>`+rec.map(id=>foodCardHTML(FMAP[id])).join('');
     if(frq.length)html+=`<div class="secl">${t('frequentF')}</div>`+frq.map(id=>foodCardHTML(FMAP[id])).join('');
-    const rest=all.filter(f=>!rec.includes(f.id)&&!frq.includes(f.id));
-    if(html)html+=`<div class="secl">${t('allF')}</div>`;
+    const rest=all.filter(f=>!f.pot&&!rec.includes(f.id)&&!frq.includes(f.id));
+    html+=`<div class="secl">${t('allF')}</div>`;
     return html+rest.map(foodCardHTML).join('')+addOwnBtn();
   }
   const list=all.filter(f=>foodMatches(f,q));
@@ -3387,12 +3576,13 @@ function renderLearn(){
 const SB_URL='https://ghiunrsljudvzciigzpt.supabase.co';
 const SB_KEY='sb_publishable_D1TupC_nTAQjPvpi0Amheg_kmbgAoYm';
 let sb=null, sbUser=null, cloudTimer=null, authMode='login';
-const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse'];
+const CLOUD_KEYS=['days','goals','favs','weights','waterGoal','recipesUser','mealSeq','accOpen','lang','foodsUser','foodUse','potsUser'];
 function sbInit(){try{if(window.supabase&&window.supabase.createClient){sb=window.supabase.createClient(SB_URL,SB_KEY);return true}}catch(e){}return false}
 function gatherState(){const o={};CLOUD_KEYS.forEach(k=>{const v=Store.get('cico.'+k);if(v!=null)o[k]=v});return o}
 function applyState(o){if(!o)return;CLOUD_KEYS.forEach(k=>{if(o[k]!=null)Store.set('cico.'+k,o[k])});
   days=load('days',{});goals=load('goals',goals);favs=load('favs',[]);weights=load('weights',{});waterGoal=load('waterGoal',8);recipesUser=load('recipesUser',[]);mealSeq=load('mealSeq',mealSeq);accOpen=load('accOpen',accOpen);L=load('lang',L);
-  foodsUser=load('foodsUser',[]);foodUse=load('foodUse',{});syncFMAP();cur=todayKey();}
+  foodsUser=load('foodsUser',[]);foodUse=load('foodUse',{});potsUser=load('potsUser',[]);
+  syncFMAP();syncPots();cur=todayKey();}
 async function pullCloud(){if(!sb||!sbUser)return;try{
   const {data,error}=await sb.from('user_state').select('data').eq('user_id',sbUser.id).maybeSingle();
   if(error)return;
