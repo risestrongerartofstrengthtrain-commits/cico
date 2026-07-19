@@ -381,6 +381,18 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive b{display:block;font-size:17px;font-weight:700;color:var(--green);line-height:1.2;font-family:'Alegreya',serif}
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
+/* ── Προέλευση & πραγματική απορρόφηση ── */
+.bioflag{display:inline-block;font-family:'Alegreya',serif;font-weight:800;font-size:12px;
+  letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:2px;
+  border:2px solid;margin-bottom:10px;transform:rotate(-1.2deg)}
+.bioflag.animal{border-color:var(--red);color:var(--red);background:rgba(150,56,42,.07)}
+.bioflag.plant{border-color:var(--green);color:var(--green);background:rgba(29,63,51,.07)}
+.biol{margin:0;padding:0;list-style:none}
+.biol li{font-size:14px;line-height:1.55;margin-bottom:11px;padding:9px 11px;
+  border:2px solid var(--line);border-radius:3px;background:rgba(255,255,255,.4)}
+.biol li:last-child{margin-bottom:0}
+.bion{display:block;font-family:'Alegreya',serif;font-weight:800;font-size:12px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ochre-d);margin-bottom:4px}
 /* ── Συνδυασμοί απορρόφησης ── */
 .abshint{font-size:13px;line-height:1.5;color:var(--ink-soft);font-style:italic;
   border-left:3px solid var(--ochre-d);padding:6px 0 6px 10px;margin:2px 0 14px}
@@ -845,6 +857,9 @@ const T={
   absRefs:'Μελέτες που χρησιμοποιήθηκαν', absStrong:'Ισχυρά δεδομένα',
   absMid:'Μέτρια δεδομένα', absDebated:'Αμφιλεγόμενο',
   absStar:'Ο αστερίσκος (*) σημαίνει ότι το νούμερο είναι κατά προσέγγιση — το μέγεθος της επίδρασης αλλάζει ανάλογα με το γεύμα, τη δόση και το άτομο.',
+  bioTitle:'Πόσο απορροφά πραγματικά ο άνθρωπος',
+  bioAnimal:'Ζωικής προέλευσης', bioPlant:'Φυτικής προέλευσης', bioThisFood:'Σε αυτή την τροφή',
+  bioHint:'Ο πίνακας πιο κάτω λέει πόσο περιέχει η τροφή. Εδώ λέει πόσο μπαίνει τελικά στο αίμα σου — γιατί δεν είναι το ίδιο πράγμα.',
   recentF:'Πρόσφατα', frequentF:'Τα συνηθισμένα σου', allF:'Όλες οι τροφές',
   mineTag:'Δική μου', addOwn:'+ Δική μου τροφή',
   ownSub:'Από τη συσκευασία', ownName:'Όνομα', ownNamePh:'π.χ. Γιαούρτι 2%',
@@ -942,6 +957,9 @@ const T={
   absRefs:'Studies used', absStrong:'Strong evidence',
   absMid:'Moderate evidence', absDebated:'Debated',
   absStar:'An asterisk (*) means the number is approximate — the size of the effect changes with the meal, the dose and the person.',
+  bioTitle:'How much you actually absorb',
+  bioAnimal:'Animal origin', bioPlant:'Plant origin', bioThisFood:'In this food',
+  bioHint:'The table below says how much the food contains. This says how much ends up in your blood — because they are not the same thing.',
   recentF:'Recent', frequentF:'Your usual', allF:'All foods',
   mineTag:'Mine', addOwn:'+ My own food',
   ownSub:'From the package', ownName:'Name', ownNamePh:'e.g. Yogurt 2%',
@@ -2777,6 +2795,84 @@ const ABSREF=[
  {t:'«Calcium from milk or calcium-fortified foods does not inhibit nonheme-iron absorption from a whole diet consumed over a 4-d period.» Am J Clin Nutr, 2004.', u:'https://pubmed.ncbi.nlm.nih.gov/15277162/'},
  {t:'«Calcium does not inhibit the absorption of 5 mg of nonheme or heme iron at doses less than 800 mg in nonpregnant women.» J Nutr, 2011.', u:'https://pubmed.ncbi.nlm.nih.gov/21795430/'}
 ];
+/* ═══════════════════════════════════════════════════════════════════
+   ΦΥΤΙΚΗ Ή ΖΩΙΚΗ ΠΡΟΕΛΕΥΣΗ — ΠΟΣΟ ΑΠΟΡΡΟΦΑ ΤΕΛΙΚΑ Ο ΑΝΘΡΩΠΟΣ
+   ───────────────────────────────────────────────────────────────────
+   Δεν αρκεί να ξέρεις πόσος σίδηρος γράφει στον πίνακα. Σημασία έχει
+   πόσος μπαίνει στο αίμα σου. Ο ίδιος αριθμός σημαίνει άλλο πράγμα σε
+   φυτική και άλλο σε ζωική τροφή. Όλα τα ποσοστά με μελέτη από κάτω.
+   ═══════════════════════════════════════════════════════════════════ */
+function foodOrigin(f){
+  if(f.custom)return null;
+  if(f.cat==='dairy'||f.cat==='meat')return 'animal';
+  if(f.id==='egg'||f.id==='honey')return 'animal';
+  return 'plant';
+}
+/* Ειδικές περιπτώσεις ασβεστίου: τα οξαλικά αλλάζουν δραματικά την απορρόφηση */
+const CA_SPECIAL={spinach:5, greens:5, broccoli:61, cabbage:41, whitebeans:22, gigantes:22, fava:22, lentils:22, chickpeas:22};
+const BIO=[
+ {nut:'fe', min:0.8, key:'iron',
+  animal:{el:'<b>Αιμικός σίδηρος</b> (heme). Απορροφάται <b>15–35%</b> και σχεδόν αδιάφορα από το τι άλλο τρως.',
+          en:'<b>Heme iron</b>. Absorbed <b>15–35%</b>, and largely regardless of what else you eat.'},
+  plant:{el:'<b>Μη αιμικός σίδηρος</b> (non-heme). Απορροφάται μόλις <b>2–20%</b> και εξαρτάται πολύ από το γεύμα — γι’ αυτό μετράει τόσο η βιταμίνη C.',
+         en:'<b>Non-heme iron</b>. Absorbed only <b>2–20%</b> and depends heavily on the meal — which is why vitamin C matters so much.'}, ref:10},
+
+ {nut:'protein', min:5, key:'prot',
+  animal:{el:'Πλήρης πρωτεΐνη. Οι ζωικές πρωτεΐνες βαθμολογούνται συνήθως <b>DIAAS ≥ 100</b> — έχουν όλα τα απαραίτητα αμινοξέα σε επαρκή αναλογία.',
+          en:'Complete protein. Animal proteins usually score <b>DIAAS ≥ 100</b> — all essential amino acids in sufficient ratio.'},
+  plant:{el:'Οι φυτικές πρωτεΐνες βαθμολογούνται κατά μέσο όρο γύρω στο <b>58%</b>* (DIAAS ~0,58). Σιτάρι, ρύζι, καλαμπόκι και βρώμη πέφτουν <b>κάτω από 60</b>. Η σόγια και ο αρακάς είναι από τις καλύτερες. <b>Ο συνδυασμός οσπρίων με δημητριακά</b> (φακές με ρύζι, φασολάδα με ψωμί) καλύπτει τα κενά αμινοξέα.',
+         en:'Plant proteins average around <b>58%</b>* (DIAAS ~0.58). Wheat, rice, corn and oats fall <b>below 60</b>. Soy and pea are among the best. <b>Combining legumes with grains</b> (lentils with rice, bean soup with bread) fills the amino-acid gaps.'}, ref:13},
+
+ {nut:'vitA', min:20, key:'vita',
+  animal:{el:'<b>Ρετινόλη</b> — έτοιμη βιταμίνη Α. Ο οργανισμός τη χρησιμοποιεί απευθείας, χωρίς μετατροπή.',
+          en:'<b>Retinol</b> — ready-made vitamin A, used directly with no conversion.'},
+  plant:{el:'<b>Β-καροτένιο</b> — προβιταμίνη. Πρέπει να μετατραπεί σε ρετινόλη με αναλογία περίπου <b>12 προς 1</b> κατά βάρος. Δηλαδή 12 μg β-καροτενίου δίνουν 1 μg βιταμίνης Α. Η αναλογία ποικίλλει τεράστια από άνθρωπο σε άνθρωπο (<b>3,6:1 έως 28:1</b>)*.',
+         en:'<b>Β-carotene</b> — provitamin. Must be converted to retinol at roughly <b>12 to 1</b> by weight. The ratio varies enormously between people (<b>3.6:1 to 28:1</b>)*.'}, ref:11},
+
+ {nut:'o3', min:0.15, key:'omega',
+  animal:{el:'Αν είναι ψάρι: <b>EPA και DHA</b> έτοιμα. Αυτά είναι που χρειάζεται ο εγκέφαλος και η καρδιά — δεν απαιτούν μετατροπή.',
+          en:'If fish: <b>EPA and DHA</b> ready-made. These are what brain and heart need — no conversion required.'},
+  plant:{el:'<b>ALA</b> — η φυτική μορφή. Πρέπει να μετατραπεί, και η μετατροπή είναι <b>φτωχή</b>: στους άνδρες περίπου <b>8% σε EPA</b> και <b>0–4% σε DHA</b>. Στις γυναίκες αρκετά καλύτερη (<b>~21% και ~9%</b>) λόγω οιστρογόνων. Τα λιναρόσπορα και τα καρύδια <b>δεν αντικαθιστούν το ψάρι</b>.',
+         en:'<b>ALA</b> — the plant form. It must be converted, and conversion is <b>poor</b>: in men about <b>8% to EPA</b> and <b>0–4% to DHA</b>. In women considerably better (<b>~21% and ~9%</b>) due to oestrogen. Flaxseed and walnuts <b>do not replace fish</b>.'}, ref:12},
+
+ {nut:'b12', min:0.1, key:'b12',
+  animal:{el:'Η B12 υπάρχει <b>μόνο</b> σε ζωικές τροφές. Εδώ τη βρίσκεις σε ενεργή μορφή.',
+          en:'B12 exists <b>only</b> in animal foods. Here you find it in active form.'},
+  plant:{el:'', en:''}, ref:10},
+
+ {nut:'ca', min:60, key:'calc',
+  animal:{el:'Ασβέστιο από γαλακτοκομικά: απορροφάται περίπου <b>32%</b>.',
+          en:'Calcium from dairy: about <b>32%</b> absorbed.'},
+  plant:{el:'Η απορρόφηση φυτικού ασβεστίου <b>εξαρτάται από τα οξαλικά</b>. Μπρόκολο <b>~61%</b>, λάχανο <b>~41%</b>, όσπρια <b>~22%</b> — αλλά σπανάκι μόλις <b>~5%</b>, γιατί τα οξαλικά το δεσμεύουν. Το σπανάκι έχει πολύ ασβέστιο στον πίνακα και ελάχιστο στο αίμα σου.',
+         en:'Plant calcium absorption <b>depends on oxalates</b>. Broccoli <b>~61%</b>, cabbage <b>~41%</b>, legumes <b>~22%</b> — but spinach only <b>~5%</b>, because oxalates bind it. Spinach shows plenty of calcium on paper and very little in your blood.'}, ref:14}
+];
+ABSREF.push(
+ {t:'«Iron Absorption: Factors, Limitations, and Improvement Methods.» ACS Omega / PMC — αιμικός 15–35% έναντι μη αιμικού 2–20%.', u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC9219084/'},
+ {t:'«The challenge to reach nutritional adequacy for vitamin A: β-carotene bioavailability and conversion — evidence in humans.» Am J Clin Nutr. Αναλογία 12:1, εύρος 3,6:1 έως 28:1.', u:'https://ajcn.nutrition.org/article/S0002-9165(23)03028-9/fulltext'},
+ {t:'Essential Fatty Acids — Linus Pauling Institute, Oregon State University. Μετατροπή ALA σε EPA/DHA σε άνδρες και γυναίκες.', u:'https://lpi.oregonstate.edu/mic/other-nutrients/essential-fatty-acids'},
+ {t:'Herreman L. κ.ά. «Comprehensive overview of the quality of plant- and animal-sourced proteins based on the digestible indispensable amino acid score (DIAAS).» Food Sci Nutr, 2020.', u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC7590266/'},
+ {t:'«Calcium Absorption from Food Products: Food Matrix Effects.» PMC — απορρόφηση ασβεστίου ανά τρόφιμο και ο ρόλος των οξαλικών.', u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC8746734/'}
+);
+function bioHTML(f){
+  const org=foodOrigin(f); if(!org)return '';
+  const rows=BIO.filter(b=>{const v=f.n[b.nut]; return typeof v==='number' && v>=b.min && (b[org][L]||b[org].el);})
+   .map(b=>{
+     let txt=b[org][L]||b[org].el;
+     if(b.nut==='ca'&&org==='plant'&&CA_SPECIAL[f.id]!=null)
+       txt=`<b>${t('bioThisFood')}: ~${CA_SPECIAL[f.id]}%</b> απορρόφηση. `+txt;
+     return `<li><span class="bion">${t('n_'+b.nut)||b.nut}</span>${txt}<sup class="absr">[${b.ref+1}]</sup></li>`;
+   }).join('');
+  if(!rows)return '';
+  const used=[...new Set(BIO.filter(b=>{const v=f.n[b.nut];return typeof v==='number'&&v>=b.min&&(b[org][L]||b[org].el)}).map(b=>b.ref))].sort((a,b)=>a-b);
+  const refs=used.map(r=>`<li><sup>[${r+1}]</sup> ${ABSREF[r].t}<br><a href="${ABSREF[r].u}" target="_blank" rel="noopener">${ABSREF[r].u}</a></li>`).join('');
+  return `<div class="acc open"><button class="acc-h" onclick="this.parentNode.classList.toggle('open')"><span class="cv">–</span>${t('bioTitle')}</button>
+   <div class="acc-b">
+     <div class="bioflag ${org}">${org==='animal'?t('bioAnimal'):t('bioPlant')}</div>
+     <p class="abshint">${t('bioHint')}</p>
+     <ul class="biol">${rows}</ul>
+     <div class="src"><h4>${t('absRefs')}</h4><ul>${refs}</ul></div></div></div>`;
+}
+
 /* Ποια θρεπτικά της τροφής αξίζει να σχολιάσουμε: μόνο όσα υπάρχουν σε ουσιαστική ποσότητα */
 function absFor(f){ return ABS.filter(a=>{const v=f.n[a.nut]; return typeof v==='number' && v>=a.min}); }
 function absHTML(f){
@@ -2813,7 +2909,7 @@ function openFood(id){
     `<div style="flex:1;min-width:0"><h2>${fName(f)}</h2><div class="sub">${fSub(f)} · ${t('per100')}</div>
        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px">${f.greek?`<span class="stamp">${t('greekFlag')}</span>`:''}${f.verified?`<span class="stamp green">${t('verified')}</span>`:''}</div></div>
      <button class="sx" onclick="closeSheet()">×</button>`,
-    `<div class="plive" id="plive"></div>${absHTML(f)}${tbl}
+    `<div class="plive" id="plive"></div>${bioHTML(f)}${absHTML(f)}${tbl}
      ${f.note?`<div class="warn"><b>${t('caveat')}</b>${f.note[L]||f.note.el}</div>`:''}
      <div class="src"><h4>${t('sources')}</h4><ul>${srcs}</ul></div>`,
     `<button class="btn ghost" onclick="toggleFav('${f.id}')" style="flex:0 0 auto">${isFav?t('remFav'):t('addFav')}</button>
