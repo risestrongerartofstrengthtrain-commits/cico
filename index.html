@@ -406,10 +406,19 @@ label.f{display:block;font-family:'Alegreya',serif;font-weight:600;font-size:13p
 .plive small{font-size:11px;color:var(--ink-faint);font-family:'Alegreya',serif;font-style:italic}
 /* ---------- Chips (κουτάκια επιλογής) ---------- */
 /* Λογότυπο στην οθόνη σύνδεσης */
-.auth-logo{display:flex;justify-content:center;margin-bottom:12px}
-.auth-logo img{width:112px;height:112px;border-radius:50%;object-fit:cover;
-  border:3px solid var(--green);box-shadow:0 3px 12px rgba(0,0,0,.28);background:var(--cream)}
-@media(max-height:680px){.auth-logo img{width:84px;height:84px}.auth-logo{margin-bottom:8px}}
+/* Σφραγίδα: κάθεται ΠΑΝΩ στην άκρη της κάρτας, σαν βουλοκέρι σε φάκελο.
+   Διπλός δακτύλιος — χρυσός έξω, πράσινος μέσα — όπως οι παλιές σφραγίδες. */
+.auth-logo{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);z-index:2}
+.auth-logo img{width:128px;height:128px;border-radius:50%;object-fit:cover;display:block;
+  border:3px solid var(--green);background:var(--cream);
+  box-shadow:0 0 0 4px var(--cream), 0 0 0 7px var(--ochre), 0 8px 22px rgba(0,0,0,.42)}
+.auth-mark{margin-top:52px}
+@media(max-height:700px){
+  .auth-card{margin-top:52px;padding-top:20px}
+  .auth-logo img{width:104px;height:104px;box-shadow:0 0 0 3px var(--cream),0 0 0 6px var(--ochre),0 6px 16px rgba(0,0,0,.4)}
+  .auth-mark{margin-top:42px}
+  .auth-mark span{font-size:36px}
+}
 /* ── Νηστεία ── */
 .fastban{border:2px solid var(--ochre-d);border-radius:4px;padding:10px 12px;margin-bottom:13px;
   background:linear-gradient(170deg,rgba(184,134,44,.16),rgba(184,134,44,.07))}
@@ -716,8 +725,8 @@ body.night .nightbtn{background:rgba(43,36,27,.95)}
 .auth-screen{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
   background-color:#dcccaa;background-image:radial-gradient(circle at 20% 20%,rgba(255,250,235,.5) 0,transparent 40%),radial-gradient(circle at 82% 82%,rgba(120,95,60,.16) 0,transparent 42%),repeating-linear-gradient(92deg,rgba(140,115,75,.05) 0 2px,transparent 2px 5px)}
 .auth-screen.on{display:flex}
-.auth-card{width:100%;max-width:380px;background:linear-gradient(175deg,var(--cream),var(--cream-2));border:3px double var(--green);border-radius:4px;box-shadow:0 14px 40px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.5);padding:26px 22px 22px;text-align:center}
-.auth-mark span{font-family:'Alegreya',serif;font-weight:900;font-size:42px;letter-spacing:.13em;color:var(--green);text-shadow:1px 1px 0 rgba(184,134,44,.3)}
+.auth-card{width:100%;max-width:380px;background:linear-gradient(175deg,var(--cream),var(--cream-2));border:3px double var(--green);border-radius:4px;box-shadow:0 14px 40px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.5);padding:26px 22px 22px;text-align:center;position:relative;margin-top:64px}
+.auth-mark span{font-family:'Alegreya',serif;font-weight:900;font-size:38px;letter-spacing:.13em;color:var(--green);text-shadow:1px 1px 0 rgba(184,134,44,.3)}
 .auth-brand{font-family:'Alegreya',serif;font-style:italic;color:var(--ochre-d);margin:2px 0 18px;font-size:14px}
 .auth-tabs{display:flex;border:2px solid var(--line);border-radius:3px;overflow:hidden;margin-bottom:16px;box-shadow:2px 2px 0 var(--shadow)}
 .auth-tabs button{flex:1;min-height:44px;border:0;background:var(--cream);font-family:'Alegreya',serif;font-weight:700;font-size:16px;color:var(--ink-soft)}
