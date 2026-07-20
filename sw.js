@@ -2,8 +2,8 @@
    Κρατά την εφαρμογή στη μνήμη ώστε να ανοίγει και χωρίς ίντερνετ.
    Στρατηγική: δίκτυο πρώτα (για να παίρνεις πάντα τη νέα έκδοση),
    με πτώση στη μνήμη όταν δεν υπάρχει σύνδεση. */
-const CACHE='cico-v1';
-const ASSETS=['./','./index.html'];
+const CACHE='cico-v2';
+const ASSETS=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png','./icon-180.png'];
 self.addEventListener('install',e=>{
   self.skipWaiting();
   e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).catch(()=>{}));
